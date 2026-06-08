@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#0A0A0A">
-<title>GUÍA NUTRICIONAL | SLAB</title>
+<title>GUÍA ALIMENTARIA | SLAB</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -141,13 +141,12 @@ body{font-family:'Outfit',sans-serif;background:#0A0A0A;color:#F0EDE8;min-height
 .accord-body.open{display:block}
 .safe-bottom{height:calc(20px + var(--r-safe-bottom))}
 .sticky-nav{position:sticky;top:57px;z-index:99;background:var(--ink2);}
+@media(min-width:480px){.app-header,.panel,.hero{max-width:480px;margin-left:auto;margin-right:auto}.sticky-nav{max-width:100%;}}
 /* ── TRACKER ── */
 .tracker-date-strip{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;}
 .tracker-date-btn{background:none;border:1px solid var(--ink4);color:var(--text3);font-family:'Outfit',sans-serif;font-size:12px;padding:8px 14px;border-radius:8px;cursor:pointer;}
-.tracker-date-btn:active{opacity:0.7}
 .tracker-date-label{font-size:13px;font-weight:600;color:var(--text);}
-.macro-donut-wrap{display:flex;justify-content:center;margin:0 0 22px;}
-.macro-ring-card{background:var(--ink2);border:1px solid var(--ink4);border-radius:18px;padding:20px;width:100%;}
+.macro-ring-card{background:var(--ink2);border:1px solid var(--ink4);border-radius:18px;padding:20px;width:100%;margin-bottom:20px;}
 .ring-title{font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--text3);font-weight:500;margin-bottom:16px;text-align:center;}
 .ring-wrap{position:relative;width:140px;height:140px;margin:0 auto 16px;}
 .ring-center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;}
@@ -183,9 +182,9 @@ body{font-family:'Outfit',sans-serif;background:#0A0A0A;color:#F0EDE8;min-height
 .reco-header-text{font-size:15px;font-weight:600;color:var(--text);}
 .reco-header-sub{font-size:11px;color:var(--text3);margin-top:2px;}
 .reco-card{background:var(--ink2);border:1px solid var(--ink4);border-radius:14px;padding:16px;margin-bottom:10px;animation:fadeUp 0.3s ease;}
-.reco-card.urgent{border-color:var(--red);background:var(--red-bg);}
+.reco-card.urgent{border-color:var(--red);}
 .reco-card.warning{border-color:var(--gold-dim);}
-.reco-card.ok{border-color:var(--green);background:var(--green-bg);}
+.reco-card.ok{border-color:var(--green);}
 .reco-tag{display:inline-block;font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:3px 8px;border-radius:5px;margin-bottom:8px;}
 .reco-tag.urgent{background:var(--red-bg);color:var(--red);}
 .reco-tag.warning{background:var(--gold-glow);color:var(--gold);}
@@ -197,20 +196,19 @@ body{font-family:'Outfit',sans-serif;background:#0A0A0A;color:#F0EDE8;min-height
 .reco-food-detail{font-size:11px;color:var(--text2);margin-top:1px;}
 .shopping-section{margin-top:20px;}
 .shop-list{display:flex;flex-direction:column;gap:8px;}
-.shop-item{display:flex;align-items:center;gap:12px;padding:13px 14px;background:var(--ink2);border:1px solid var(--ink4);border-radius:12px;cursor:pointer;-webkit-user-select:none;user-select:none;transition:border-color 0.15s;}
-.shop-item.checked{opacity:0.5;text-decoration:line-through;}
-.shop-check{width:22px;height:22px;border-radius:6px;border:2px solid var(--ink4);background:none;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:13px;transition:all 0.15s;}
-.shop-item.checked .shop-check{background:var(--green);border-color:var(--green);}
+.shop-item{display:flex;align-items:center;gap:12px;padding:13px 14px;background:var(--ink2);border:1px solid var(--ink4);border-radius:12px;cursor:pointer;-webkit-user-select:none;user-select:none;}
+.shop-item.checked{opacity:0.45;}
+.shop-check{width:22px;height:22px;border-radius:6px;border:2px solid var(--ink4);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:12px;}
+.shop-item.checked .shop-check{background:var(--green);border-color:var(--green);color:#fff;}
 .shop-emoji{font-size:20px;flex-shrink:0;}
 .shop-name{font-size:13px;font-weight:500;color:var(--text);}
 .shop-why{font-size:11px;color:var(--text2);margin-top:1px;}
-.shop-macro-badge{margin-left:auto;font-size:10px;font-weight:600;padding:3px 8px;border-radius:5px;flex-shrink:0;}
-.save-btn{width:100%;font-family:'Outfit',sans-serif;font-size:14px;font-weight:600;color:#0A0A0A;background:var(--gold);border:none;border-radius:14px;padding:16px;cursor:pointer;letter-spacing:0.5px;margin-top:16px;transition:opacity 0.15s;}
+.shop-macro-badge{margin-left:auto;font-size:10px;font-weight:600;padding:3px 8px;border-radius:5px;flex-shrink:0;white-space:nowrap;}
+.save-btn{width:100%;font-family:'Outfit',sans-serif;font-size:14px;font-weight:600;color:#0A0A0A;background:var(--gold);border:none;border-radius:14px;padding:16px;cursor:pointer;letter-spacing:0.5px;margin-top:4px;transition:opacity 0.15s;}
 .save-btn:active{opacity:0.8}
 .saved-toast{position:fixed;bottom:calc(20px + var(--r-safe-bottom));left:50%;transform:translateX(-50%);background:var(--green);color:#fff;font-size:13px;font-weight:600;padding:10px 22px;border-radius:30px;z-index:999;opacity:0;transition:opacity 0.3s;pointer-events:none;}
 .saved-toast.show{opacity:1;}
-@media(min-width:480px){.panel-tracker{max-width:480px;margin-left:auto;margin-right:auto}}
-
+</style>
 </head>
 <body>
 
@@ -218,7 +216,7 @@ body{font-family:'Outfit',sans-serif;background:#0A0A0A;color:#F0EDE8;min-height
   <div class="header-inner">
     <div class="header-brand">
       <span class="header-eyebrow">SLAB | RENZO BELLO</span>
-      <span class="header-title">FOOD GUIDE | SLAB</span>
+      <span class="header-title">GUÍA ALIMENTARIA | SLAB</span>
     </div>
     <span class="header-badge">@reennzolifts</span>
   </div>
@@ -227,8 +225,8 @@ body{font-family:'Outfit',sans-serif;background:#0A0A0A;color:#F0EDE8;min-height
 <div style="background:#0A0A0A;">
   <div class="hero">
     <div class="hero-eyebrow">SLAB | ASESORÍAS PERSONALIZADAS</div>
-    <h1 class="hero-h">Alimentate <em>bien</em>,<br>progresa mejor</h1>
-    <p class="hero-p">Guía para Asesorados con alimentos de alto valor nutricional adaptada a tu sexo, etapa y restricciones. Con alternativas reales para cada situación.</p>
+    <h1 class="hero-h">Alimentate <em>bien</em>,<br>progresa más rapido</h1>
+    <p class="hero-p">Guía de alimentos para Asesorados. Incluye alimentos de alto valor nutricional adaptada a tu sexo, etapa y restricciones. Con alternativas reales para cada situación.</p>
   </div>
 </div>
 
@@ -274,11 +272,6 @@ body{font-family:'Outfit',sans-serif;background:#0A0A0A;color:#F0EDE8;min-height
   <div class="safe-bottom"></div>
 </section>
 
-<section class="panel" id="panel-tracker">
-  <div id="tracker-content"></div>
-  <div class="safe-bottom"></div>
-</section>
-
 <section class="panel" id="panel-macros">
   <div class="section-label">Los 3 pilares</div>
   <p style="font-size:13px;color:var(--text2);line-height:1.6;margin-bottom:20px;">Los mejores alimentos de cada macronutriente — con sus reemplazos reales para distintos estilos de vida.</p>
@@ -297,6 +290,12 @@ body{font-family:'Outfit',sans-serif;background:#0A0A0A;color:#F0EDE8;min-height
   <div class="section-label">Guía de restricciones</div>
   <p style="font-size:13px;color:var(--text2);line-height:1.6;margin-bottom:20px;">Tener restricciones no te limita. Te obliga a ser más inteligente con los alimentos que eliges.</p>
   <div id="restricciones-content"></div>
+  <div class="safe-bottom"></div>
+</section>
+
+<section class="panel" id="panel-tracker">
+  <div id="tracker-content"></div>
+  <div class="saved-toast" id="saved-toast">✓ Guardado</div>
   <div class="safe-bottom"></div>
 </section>
 
@@ -1225,370 +1224,256 @@ buildMacros();
 buildTiming();
 buildRestricciones();
 buildFaq();
-</script>
 
-<div class="saved-toast" id="saved-toast">✓ Guardado</div>
-
-<script>
-// ── TRACKER STATE ──
+// ── TRACKER ──
 const TRACKER_DEFAULTS = { prot:0, carb:0, fat:0, targetProt:150, targetCarb:200, targetFat:60 };
+
+function todayStr(){
+  return new Date().toISOString().slice(0,10);
+}
+
 let trackerDate = todayStr();
 let trackerData = {};
 let shopChecked = {};
 
-function todayStr(){
-  const d = new Date();
-  return d.toISOString().slice(0,10);
-}
-
-function loadTracker(){
-  try {
-    const all = {};
-    trackerData = all;
-  } catch(e){ trackerData = {}; }
-  try {
-    shopChecked = {};
-  } catch(e){ shopChecked = {}; }
-}
-
 function saveTracker(){
-  if(!trackerData[trackerDate]) trackerData[trackerDate] = {...TRACKER_DEFAULTS};
+  if(!trackerData[trackerDate]) trackerData[trackerDate] = Object.assign({}, TRACKER_DEFAULTS);
   trackerData[trackerDate].prot = +document.getElementById('inp-prot').value || 0;
   trackerData[trackerDate].carb = +document.getElementById('inp-carb').value || 0;
   trackerData[trackerDate].fat  = +document.getElementById('inp-fat').value  || 0;
   trackerData[trackerDate].targetProt = +document.getElementById('tgt-prot').value || 150;
   trackerData[trackerDate].targetCarb = +document.getElementById('tgt-carb').value || 200;
   trackerData[trackerDate].targetFat  = +document.getElementById('tgt-fat').value  || 60;
-  
   updateRing();
   renderRecos();
-  showToast();
-}
-
-function showToast(){
-  const t = document.getElementById('saved-toast');
-  t.classList.add('show');
-  setTimeout(()=>t.classList.remove('show'), 1800);
+  var t = document.getElementById('saved-toast');
+  if(t){ t.classList.add('show'); setTimeout(function(){ t.classList.remove('show'); }, 1800); }
 }
 
 function changeDay(delta){
-  const d = new Date(trackerDate + 'T12:00:00');
+  var d = new Date(trackerDate + 'T12:00:00');
   d.setDate(d.getDate() + delta);
   trackerDate = d.toISOString().slice(0,10);
   renderTracker();
 }
 
-function getDay(){ return trackerData[trackerDate] || {...TRACKER_DEFAULTS}; }
+function getDay(){ return trackerData[trackerDate] || Object.assign({}, TRACKER_DEFAULTS); }
+
+function macPct(val, target){ return Math.min(100, target > 0 ? Math.round(val/target*100) : 0); }
 
 function fmtDate(str){
-  const d = new Date(str + 'T12:00:00');
-  const today = todayStr();
-  const yest = new Date(); yest.setDate(yest.getDate()-1);
-  const yesterdayStr = yest.toISOString().slice(0,10);
+  var d = new Date(str + 'T12:00:00');
+  var today = todayStr();
+  var yest = new Date(); yest.setDate(yest.getDate()-1);
+  var yesterdayStr = yest.toISOString().slice(0,10);
   if(str === today) return 'Hoy';
   if(str === yesterdayStr) return 'Ayer';
   return d.toLocaleDateString('es',{weekday:'short',day:'numeric',month:'short'});
 }
 
-function pct(val, target){ return Math.min(100, target > 0 ? Math.round(val/target*100) : 0); }
-
-function buildDonutPath(rings){
-  // rings: [{pct, color}]
-  const cx=70, cy=70, r=52, strokeW=14;
-  const circ = 2*Math.PI*r;
-  let offset = 0;
-  let paths = '';
-  // background ring
-  paths += `<circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="#2A2A2A" stroke-width="${strokeW}"/>`;
-  for(const ring of rings){
-    const len = circ * ring.pct / 100;
-    paths += `<circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="${ring.color}" stroke-width="${strokeW}"
-      stroke-dasharray="${len} ${circ-len}" stroke-dashoffset="${-offset*circ/100}" stroke-linecap="round"
-      transform="rotate(-90 ${cx} ${cy})"/>`;
-    offset += ring.pct;
+function buildRingSVG(day){
+  var cx=70, cy=70, r=52, sw=14;
+  var circ = 2*Math.PI*r;
+  var pP = macPct(day.prot, day.targetProt);
+  var pC = macPct(day.carb, day.targetCarb);
+  var pF = macPct(day.fat,  day.targetFat);
+  // Each macro gets 1/3 of the ring
+  var segP = circ/3 * pP/100;
+  var segC = circ/3 * pC/100;
+  var segF = circ/3 * pF/100;
+  var gap = circ/3;
+  function arc(dashLen, dashOffset, color){
+    return '<circle cx="'+cx+'" cy="'+cy+'" r="'+r+'" fill="none" stroke="'+color+'" stroke-width="'+sw+'" stroke-dasharray="'+dashLen+' '+(circ-dashLen)+'" stroke-dashoffset="'+(-dashOffset)+'" stroke-linecap="round" transform="rotate(-90 '+cx+' '+cy+')"/>';
   }
-  return paths;
+  return '<circle cx="70" cy="70" r="52" fill="none" stroke="#2A2A2A" stroke-width="14"/>'
+    + arc(segP, 0,     '#4A85C8')
+    + arc(segC, gap,   '#C9A96E')
+    + arc(segF, gap*2, '#C8881A');
 }
 
 function updateRing(){
-  const day = getDay();
-  const tP = day.targetProt, tC = day.targetCarb, tF = day.targetFat;
-  const totalTarget = tP*4 + tC*4 + tF*9;
-  const consumed = day.prot*4 + day.carb*4 + day.fat*9;
-  const pctP = pct(day.prot, tP), pctC = pct(day.carb, tC), pctF = pct(day.fat, tF);
-  // Split ring: each macro takes 1/3 of circumference max, scaled by its own %
-  const rings = [
-    { pct: pctP/3, color:'#4A85C8' },
-    { pct: pctC/3, color:'#C9A96E' },
-    { pct: pctF/3, color:'#C8881A' },
+  var day = {
+    prot: +document.getElementById('inp-prot').value || 0,
+    carb: +document.getElementById('inp-carb').value || 0,
+    fat:  +document.getElementById('inp-fat').value  || 0,
+    targetProt: +document.getElementById('tgt-prot').value || 150,
+    targetCarb: +document.getElementById('tgt-carb').value || 200,
+    targetFat:  +document.getElementById('tgt-fat').value  || 60
+  };
+  var svg = document.getElementById('macro-ring-svg');
+  if(svg) svg.innerHTML = buildRingSVG(day);
+  var kcal = Math.round(day.prot*4 + day.carb*4 + day.fat*9);
+  var el = document.getElementById('ring-kcal');
+  if(el) el.textContent = kcal;
+  var bars = [
+    {id:'bar-prot', pct:macPct(day.prot,day.targetProt), color:'#4A85C8', pctId:'pct-prot'},
+    {id:'bar-carb', pct:macPct(day.carb,day.targetCarb), color:'#C9A96E', pctId:'pct-carb'},
+    {id:'bar-fat',  pct:macPct(day.fat, day.targetFat),  color:'#C8881A', pctId:'pct-fat'}
   ];
-  const svg = document.getElementById('macro-ring-svg');
-  if(!svg) return;
-  svg.innerHTML = buildDonutPath(rings);
-  document.getElementById('ring-kcal').textContent = consumed;
-
-  // update bars
-  const bars = [{id:'bar-prot',pct:pctP,color:'#4A85C8'},{id:'bar-carb',pct:pctC,color:'#C9A96E'},{id:'bar-fat',pct:pctF,color:'#C8881A'}];
-  bars.forEach(b=>{
-    const el = document.getElementById(b.id);
-    if(el){ el.style.width = b.pct+'%'; el.style.background = b.color; }
+  bars.forEach(function(b){
+    var bar = document.getElementById(b.id);
+    if(bar){ bar.style.width = b.pct+'%'; bar.style.background = b.color; }
+    var pctEl = document.getElementById(b.pctId);
+    if(pctEl) pctEl.textContent = b.pct+'%';
   });
-  document.getElementById('pct-prot').textContent = pctP+'%';
-  document.getElementById('pct-carb').textContent = pctC+'%';
-  document.getElementById('pct-fat').textContent  = pctF+'%';
 }
 
-// ── RECOMMENDATION ENGINE ──
-const RECO_DB = {
-  prot_low: {
-    tag:'urgent', tagLabel:'🚨 Proteína baja',
-    title:'Te faltan proteínas para hoy',
-    foods:[
-      {e:'🍗',n:'Pechuga de pollo (150g)',d:'~46g proteína · 250 kcal'},
-      {e:'🥚',n:'3 huevos + 1 clara',d:'~25g proteína · 270 kcal'},
-      {e:'🎣',n:'Atún al natural (lata 160g)',d:'~37g proteína · 150 kcal'},
-      {e:'🧀',n:'Queso cottage (200g)',d:'~22g proteína · 145 kcal'},
-    ]
-  },
-  prot_ok: {
-    tag:'ok', tagLabel:'✅ Proteína al día',
-    title:'¡Proteína en objetivo!',
-    foods:[]
-  },
-  carb_low: {
-    tag:'warning', tagLabel:'⚡ Carbos bajos',
-    title:'Carga carbohidratos antes o después del entreno',
-    foods:[
-      {e:'🍚',n:'Arroz blanco cocido (200g)',d:'~52g CHO · 240 kcal'},
-      {e:'🍌',n:'Banana grande',d:'~27g CHO · 100 kcal'},
-      {e:'🌾',n:'Avena cocida (100g seco)',d:'~60g CHO · 360 kcal'},
-      {e:'🍠',n:'Batata mediana (200g)',d:'~42g CHO · 180 kcal'},
-    ]
-  },
-  fat_low: {
-    tag:'warning', tagLabel:'🧠 Grasas bajas',
-    title:'Grasas insuficientes — impacto hormonal',
-    foods:[
-      {e:'🥑',n:'½ aguacate',d:'~11g grasas · 80 kcal'},
-      {e:'🌰',n:'Puñado almendras (30g)',d:'~14g grasas · 170 kcal'},
-      {e:'🫒',n:'1 cda aceite de oliva',d:'~14g grasas · 120 kcal'},
-      {e:'🐟',n:'Sardinas en lata (90g)',d:'~8g grasas · 160 kcal'},
-    ]
-  },
-  fat_excess: {
-    tag:'urgent', tagLabel:'⚠ Grasas elevadas',
-    title:'Grasas por encima del objetivo',
-    foods:[
-      {e:'🥦',n:'Brócoli / Coliflor al vapor',d:'Agrega volumen sin grasas'},
-      {e:'🍗',n:'Pechuga de pollo (magra)',d:'Proteína sin grasa adicional'},
-      {e:'🥬',n:'Ensalada verde grande',d:'Saciedad con 0g grasas'},
-    ]
-  },
-  carb_excess: {
-    tag:'urgent', tagLabel:'⚠ Carbos elevados',
-    title:'Carbohidratos por encima del objetivo',
-    foods:[
-      {e:'🥩',n:'Carne magra o pescado',d:'Proteína sin CHO'},
-      {e:'🥚',n:'Huevos + verduras',d:'Comida sin impacto en CHO'},
-      {e:'🫒',n:'Grasas saludables',d:'Saciedad sin subir CHO'},
-    ]
-  },
-  all_ok: {
-    tag:'ok', tagLabel:'🏆 Objetivo cumplido',
-    title:'Todos los macros en objetivo — ¡excelente!',
-    foods:[]
-  }
+var RECO_DB = {
+  prot_low:  { tag:'urgent',  label:'🚨 Proteína baja',      title:'Te faltan proteínas hoy',
+    foods:[{e:'🍗',n:'Pechuga de pollo (150g)',d:'~46g proteína · 250 kcal'},{e:'🥚',n:'3 huevos + 1 clara',d:'~25g proteína · 270 kcal'},{e:'🎣',n:'Atún al natural (160g)',d:'~37g proteína · 150 kcal'},{e:'🧀',n:'Queso cottage (200g)',d:'~22g proteína · 145 kcal'}] },
+  prot_ok:   { tag:'ok',     label:'✅ Proteína al día',     title:'¡Proteína en objetivo!', foods:[] },
+  carb_low:  { tag:'warning', label:'⚡ Carbos bajos',        title:'Cargá carbohidratos antes o después del entreno',
+    foods:[{e:'🍚',n:'Arroz blanco cocido (200g)',d:'~52g CHO · 240 kcal'},{e:'🍌',n:'Banana grande',d:'~27g CHO · 100 kcal'},{e:'🌾',n:'Avena (100g seco)',d:'~60g CHO · 360 kcal'},{e:'🍠',n:'Batata mediana (200g)',d:'~42g CHO · 180 kcal'}] },
+  fat_low:   { tag:'warning', label:'🧠 Grasas bajas',        title:'Grasas insuficientes — impacto hormonal',
+    foods:[{e:'🥑',n:'½ aguacate',d:'~11g grasas · 80 kcal'},{e:'🌰',n:'Almendras (30g)',d:'~14g grasas · 170 kcal'},{e:'🫒',n:'1 cda aceite de oliva',d:'~14g grasas · 120 kcal'},{e:'🐟',n:'Sardinas en lata (90g)',d:'~8g grasas · 160 kcal'}] },
+  fat_high:  { tag:'urgent',  label:'⚠ Grasas elevadas',     title:'Grasas por encima del objetivo',
+    foods:[{e:'🥦',n:'Brócoli al vapor',d:'Volumen sin grasas'},{e:'🍗',n:'Pechuga de pollo',d:'Proteína sin grasa extra'},{e:'🥬',n:'Ensalada verde grande',d:'Saciedad con 0g grasas'}] },
+  carb_high: { tag:'urgent',  label:'⚠ Carbos elevados',     title:'Carbohidratos por encima del objetivo',
+    foods:[{e:'🥩',n:'Carne magra o pescado',d:'Proteína sin CHO'},{e:'🥚',n:'Huevos + verduras',d:'Sin impacto en CHO'},{e:'🫒',n:'Grasas saludables',d:'Saciedad sin subir CHO'}] },
+  all_ok:    { tag:'ok',     label:'🏆 Objetivo cumplido',   title:'Todos los macros en objetivo — ¡excelente!', foods:[] }
 };
 
-const SHOPPING_DB = [
-  {e:'🍗',n:'Pechuga de pollo',w:'Proteína base del plan',macro:'prot',badge:'31g prot/100g',badgeColor:'var(--blue)'},
-  {e:'🥚',n:'Huevos (docena)',w:'Proteína completa + micronutrientes',macro:'prot',badge:'13g prot/100g',badgeColor:'var(--blue)'},
-  {e:'🎣',n:'Atún al natural (latas)',w:'Proteína rápida, económica',macro:'prot',badge:'23g prot/100g',badgeColor:'var(--blue)'},
-  {e:'🌾',n:'Avena tradicional',w:'Carbohidrato de desayuno ideal',macro:'carb',badge:'60g CHO/100g',badgeColor:'var(--gold)'},
-  {e:'🍚',n:'Arroz blanco',w:'Carbohidrato peri-entrenamiento',macro:'carb',badge:'28g CHO/100g',badgeColor:'var(--gold)'},
-  {e:'🍠',n:'Batatas / Camote',w:'CHO complejo + vitamina A',macro:'carb',badge:'20g CHO/100g',badgeColor:'var(--gold)'},
-  {e:'🫘',n:'Lentejas (bolsa)',w:'Proteína vegetal + hierro + CHO',macro:'prot',badge:'9g prot+20g CHO',badgeColor:'var(--blue)'},
-  {e:'🥑',n:'Aguacates',w:'Grasas mono + folato',macro:'fat',badge:'Grasas saludables',badgeColor:'var(--amber)'},
-  {e:'🌰',n:'Almendras + nueces',w:'Omega-3 ALA + vitamina E',macro:'fat',badge:'1 puñado/día',badgeColor:'var(--amber)'},
-  {e:'🫒',n:'Aceite de oliva EVOO',w:'Base de condimento diario',macro:'fat',badge:'Antiinflamatorio',badgeColor:'var(--amber)'},
-  {e:'🥦',n:'Brócoli / Coliflor',w:'Volumen libre + modulación hormonal',macro:'carb',badge:'30 kcal/100g',badgeColor:'var(--green)'},
-  {e:'🐠',n:'Sardinas en lata',w:'Omega-3 + calcio + proteína',macro:'fat',badge:'25g prot+omega-3',badgeColor:'var(--blue)'},
-  {e:'🫐',n:'Frutas rojas (fresas/arándanos)',w:'Antioxidantes + bajo IG',macro:'carb',badge:'Bajo IG',badgeColor:'var(--gold)'},
-  {e:'🧀',n:'Queso cottage / Ricota',w:'Caseína pre-cama',macro:'prot',badge:'12g prot/100g',badgeColor:'var(--blue)'},
+var SHOP_DB = [
+  {e:'🍗',n:'Pechuga de pollo',     w:'Proteína base del plan',          macro:'prot', badge:'31g prot/100g', color:'var(--blue)'},
+  {e:'🥚',n:'Huevos (docena)',       w:'Proteína completa + micronutrientes', macro:'prot', badge:'13g prot/100g', color:'var(--blue)'},
+  {e:'🎣',n:'Atún al natural (latas)',w:'Proteína rápida, económica',     macro:'prot', badge:'23g prot/100g', color:'var(--blue)'},
+  {e:'🌾',n:'Avena tradicional',     w:'Carbohidrato de desayuno ideal',  macro:'carb', badge:'60g CHO/100g',  color:'var(--gold)'},
+  {e:'🍚',n:'Arroz blanco',          w:'Carbo peri-entrenamiento',        macro:'carb', badge:'28g CHO/100g',  color:'var(--gold)'},
+  {e:'🍠',n:'Batatas / Camote',      w:'CHO complejo + vitamina A',       macro:'carb', badge:'20g CHO/100g',  color:'var(--gold)'},
+  {e:'🫘',n:'Lentejas (bolsa)',       w:'Proteína vegetal + hierro + CHO', macro:'prot', badge:'9g prot+20g CHO',color:'var(--blue)'},
+  {e:'🥑',n:'Aguacates',             w:'Grasas mono + folato',            macro:'fat',  badge:'Grasas saludables',color:'var(--amber)'},
+  {e:'🌰',n:'Almendras + nueces',    w:'Omega-3 ALA + vitamina E',        macro:'fat',  badge:'1 puñado/día',  color:'var(--amber)'},
+  {e:'🫒',n:'Aceite de oliva EVOO',  w:'Base de condimento diario',       macro:'fat',  badge:'Antiinflamatorio',color:'var(--amber)'},
+  {e:'🥦',n:'Brócoli / Coliflor',   w:'Volumen libre + modulación hormonal',macro:'carb',badge:'30 kcal/100g', color:'var(--green)'},
+  {e:'🐠',n:'Sardinas en lata',      w:'Omega-3 + calcio + proteína',     macro:'fat',  badge:'25g prot+omega-3',color:'var(--blue)'},
+  {e:'🫐',n:'Frutas rojas',          w:'Antioxidantes + bajo IG',         macro:'carb', badge:'Bajo IG',       color:'var(--gold)'},
+  {e:'🧀',n:'Queso cottage / Ricota',w:'Caseína pre-cama',                macro:'prot', badge:'12g prot/100g', color:'var(--blue)'}
 ];
 
 function renderRecos(){
-  const day = getDay();
-  const tP = day.targetProt, tC = day.targetCarb, tF = day.targetFat;
-  const pP = pct(day.prot, tP), pC = pct(day.carb, tC), pF = pct(day.fat, tF);
-  const recos = [];
-  if(pP < 75) recos.push('prot_low');
-  else recos.push('prot_ok');
-  if(pC < 60) recos.push('carb_low');
-  if(pC > 110) recos.push('carb_excess');
-  if(pF < 60) recos.push('fat_low');
-  if(pF > 115) recos.push('fat_excess');
-  if(pP >= 90 && pC >= 80 && pF >= 80 && pF <= 110 && pC <= 110) recos.push('all_ok');
+  var day = getDay();
+  var pP = macPct(day.prot, day.targetProt);
+  var pC = macPct(day.carb, day.targetCarb);
+  var pF = macPct(day.fat,  day.targetFat);
+  var keys = [];
+  if(pP < 75) keys.push('prot_low'); else keys.push('prot_ok');
+  if(pC < 60) keys.push('carb_low');
+  if(pC > 110) keys.push('carb_high');
+  if(pF < 60) keys.push('fat_low');
+  if(pF > 115) keys.push('fat_high');
+  if(pP >= 90 && pC >= 80 && pF >= 80 && pF <= 110 && pC <= 110) keys.push('all_ok');
 
-  let html = `<div class="reco-section">
-    <div class="reco-header">
-      <div class="reco-header-icon">🎯</div>
-      <div>
-        <div class="reco-header-text">Recomendaciones del día</div>
-        <div class="reco-header-sub">Basadas en tus macros registrados</div>
-      </div>
-    </div>`;
-
-  recos.forEach(key => {
-    const r = RECO_DB[key];
+  var html = '<div class="reco-section"><div class="reco-header"><div class="reco-header-icon">🎯</div><div><div class="reco-header-text">Recomendaciones del día</div><div class="reco-header-sub">Basadas en tus macros registrados</div></div></div>';
+  keys.forEach(function(key){
+    var r = RECO_DB[key];
     if(!r) return;
-    html += `<div class="reco-card ${r.tag}">
-      <span class="reco-tag ${r.tag}">${r.tagLabel}</span>
-      <div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:${r.foods.length?'0':'0'}">${r.title}</div>`;
+    html += '<div class="reco-card '+r.tag+'"><span class="reco-tag '+r.tag+'">'+r.label+'</span><div style="font-size:13px;font-weight:600;color:var(--text)">'+r.title+'</div>';
     if(r.foods.length){
-      html += `<div class="reco-food-list">`;
-      r.foods.forEach(f=>{
-        html += `<div class="reco-food-row">
-          <div class="reco-food-emoji">${f.e}</div>
-          <div>
-            <div class="reco-food-name">${f.n}</div>
-            <div class="reco-food-detail">${f.d}</div>
-          </div>
-        </div>`;
-      });
-      html += `</div>`;
+      html += '<div class="reco-food-list">';
+      r.foods.forEach(function(f){ html += '<div class="reco-food-row"><div class="reco-food-emoji">'+f.e+'</div><div><div class="reco-food-name">'+f.n+'</div><div class="reco-food-detail">'+f.d+'</div></div></div>'; });
+      html += '</div>';
     }
-    html += `</div>`;
+    html += '</div>';
   });
+  html += '</div>';
 
-  html += `</div>`;
-
-  // Shopping list filtered by what's most needed
-  const needProt = pct(day.prot, tP) < 85;
-  const needCarb = pct(day.carb, tC) < 85;
-  const needFat  = pct(day.fat, tF) < 85;
-  const shopItems = SHOPPING_DB.filter(item => {
-    if(item.macro === 'prot' && needProt) return true;
-    if(item.macro === 'carb' && needCarb) return true;
-    if(item.macro === 'fat' && needFat) return true;
-    if(!needProt && !needCarb && !needFat) return true; // show all if on target
+  var needProt = pP < 85, needCarb = pC < 85, needFat = pF < 85;
+  var showAll = !needProt && !needCarb && !needFat;
+  var items = SHOP_DB.filter(function(item){
+    if(showAll) return true;
+    if(item.macro==='prot' && needProt) return true;
+    if(item.macro==='carb' && needCarb) return true;
+    if(item.macro==='fat'  && needFat)  return true;
     return false;
   });
 
-  html += `<div class="shopping-section">
-    <div class="reco-header">
-      <div class="reco-header-icon">🛒</div>
-      <div>
-        <div class="reco-header-text">Lista de compras sugerida</div>
-        <div class="reco-header-sub">Toca para marcar lo que ya tenés</div>
-      </div>
-    </div>
-    <div class="shop-list">`;
-  shopItems.forEach((item,i)=>{
-    const key = 'shop_'+i+'_'+item.n.replace(/\s/g,'');
-    const checked = shopChecked[key] ? 'checked' : '';
-    html += `<div class="shop-item ${checked}" onclick="toggleShop('${key}',this)">
-      <div class="shop-check">${checked?'✓':''}</div>
-      <div class="shop-emoji">${item.e}</div>
-      <div style="flex:1">
-        <div class="shop-name">${item.n}</div>
-        <div class="shop-why">${item.w}</div>
-      </div>
-      <span class="shop-macro-badge" style="background:${item.badgeColor}22;color:${item.badgeColor};border:1px solid ${item.badgeColor}44">${item.badge}</span>
-    </div>`;
+  html += '<div class="shopping-section"><div class="reco-header"><div class="reco-header-icon">🛒</div><div><div class="reco-header-text">Lista de compras sugerida</div><div class="reco-header-sub">Tocá para marcar lo que ya tenés</div></div></div><div class="shop-list">';
+  items.forEach(function(item, i){
+    var key = 'shop_'+i;
+    var checked = shopChecked[key] ? 'checked' : '';
+    html += '<div class="shop-item '+checked+'" onclick="toggleShop(\''+key+'\',this)"><div class="shop-check">'+(checked?'✓':'')+'</div><div class="shop-emoji">'+item.e+'</div><div style="flex:1"><div class="shop-name">'+item.n+'</div><div class="shop-why">'+item.w+'</div></div><span class="shop-macro-badge" style="background:'+item.color+'22;color:'+item.color+';border:1px solid '+item.color+'44">'+item.badge+'</span></div>';
   });
-  html += `</div></div>`;
+  html += '</div></div>';
 
-  document.getElementById('reco-area').innerHTML = html;
+  var area = document.getElementById('reco-area');
+  if(area) area.innerHTML = html;
 }
 
 function toggleShop(key, el){
-  if(shopChecked[key]) delete shopChecked[key];
-  else shopChecked[key] = 1;
-  
+  if(shopChecked[key]) delete shopChecked[key]; else shopChecked[key] = 1;
   el.classList.toggle('checked');
-  const chk = el.querySelector('.shop-check');
+  var chk = el.querySelector('.shop-check');
   if(chk) chk.textContent = shopChecked[key] ? '✓' : '';
 }
 
 function renderTracker(){
-  const day = getDay();
-  const isToday = trackerDate === todayStr();
-  const tomorrow = new Date(trackerDate+'T12:00:00'); tomorrow.setDate(tomorrow.getDate()+1);
-  const canGoForward = tomorrow.toISOString().slice(0,10) <= todayStr();
+  var day = getDay();
+  var tomorrow = new Date(trackerDate+'T12:00:00'); tomorrow.setDate(tomorrow.getDate()+1);
+  var canFwd = tomorrow.toISOString().slice(0,10) <= todayStr();
+  var fwdStyle = canFwd ? '' : 'opacity:0.3;pointer-events:none';
 
-  document.getElementById('tracker-content').innerHTML = `
-  <div class="tracker-date-strip">
-    <button class="tracker-date-btn" onclick="changeDay(-1)">← Ayer</button>
-    <div class="tracker-date-label">${fmtDate(trackerDate)}</div>
-    <button class="tracker-date-btn" style="${canGoForward?'':'opacity:0.3;pointer-events:none'}" onclick="changeDay(1)">Mañana →</button>
-  </div>
+  var pP = macPct(day.prot, day.targetProt);
+  var pC = macPct(day.carb, day.targetCarb);
+  var pF = macPct(day.fat,  day.targetFat);
+  var kcal = Math.round(day.prot*4 + day.carb*4 + day.fat*9);
 
-  <div class="macro-ring-card" style="margin-bottom:20px">
-    <div class="ring-title">Calorías consumidas</div>
-    <div class="ring-wrap">
-      <svg id="macro-ring-svg" width="140" height="140" viewBox="0 0 140 140"></svg>
-      <div class="ring-center">
-        <div class="ring-kcal" id="ring-kcal">0</div>
-        <div class="ring-kcal-label">kcal</div>
-      </div>
-    </div>
-    <div class="ring-legend">
-      <div class="ring-leg-item"><div class="ring-leg-dot" style="background:#4A85C8"></div>Proteína</div>
-      <div class="ring-leg-item"><div class="ring-leg-dot" style="background:#C9A96E"></div>Carbos</div>
-      <div class="ring-leg-item"><div class="ring-leg-dot" style="background:#C8881A"></div>Grasas</div>
-    </div>
-  </div>
+  var html = '<div class="tracker-date-strip">'
+    + '<button class="tracker-date-btn" onclick="changeDay(-1)">← Ayer</button>'
+    + '<div class="tracker-date-label">'+fmtDate(trackerDate)+'</div>'
+    + '<button class="tracker-date-btn" style="'+fwdStyle+'" onclick="changeDay(1)">Mañana →</button>'
+    + '</div>'
 
-  <div class="section-label">Ingresá tus macros del día</div>
-  <div class="macro-inputs-grid">
-    <div class="macro-input-card prot">
-      <div class="macro-input-icon">💪</div>
-      <div class="macro-input-label prot">Proteína</div>
-      <input class="macro-num-input" id="inp-prot" type="number" min="0" max="500" value="${day.prot}" oninput="updateRing()">
-      <div class="macro-unit">gramos</div>
-      <div class="macro-progress-bar"><div class="macro-progress-fill" id="bar-prot" style="width:${pct(day.prot,day.targetProt)}%;background:#4A85C8"></div></div>
-      <div class="macro-target-row">
-        <span id="pct-prot">${pct(day.prot,day.targetProt)}%</span>
-        <div class="target-input-wrap">meta: <input class="target-input" id="tgt-prot" type="number" min="1" max="999" value="${day.targetProt}" oninput="updateRing()">g</div>
-      </div>
-    </div>
-    <div class="macro-input-card carb">
-      <div class="macro-input-icon">⚡</div>
-      <div class="macro-input-label carb">Carbos</div>
-      <input class="macro-num-input" id="inp-carb" type="number" min="0" max="999" value="${day.carb}" oninput="updateRing()">
-      <div class="macro-unit">gramos</div>
-      <div class="macro-progress-bar"><div class="macro-progress-fill" id="bar-carb" style="width:${pct(day.carb,day.targetCarb)}%;background:#C9A96E"></div></div>
-      <div class="macro-target-row">
-        <span id="pct-carb">${pct(day.carb,day.targetCarb)}%</span>
-        <div class="target-input-wrap">meta: <input class="target-input" id="tgt-carb" type="number" min="1" max="999" value="${day.targetCarb}" oninput="updateRing()">g</div>
-      </div>
-    </div>
-    <div class="macro-input-card fat">
-      <div class="macro-input-icon">🧠</div>
-      <div class="macro-input-label fat">Grasas</div>
-      <input class="macro-num-input" id="inp-fat" type="number" min="0" max="500" value="${day.fat}" oninput="updateRing()">
-      <div class="macro-unit">gramos</div>
-      <div class="macro-progress-bar"><div class="macro-progress-fill" id="bar-fat" style="width:${pct(day.fat,day.targetFat)}%;background:#C8881A"></div></div>
-      <div class="macro-target-row">
-        <span id="pct-fat">${pct(day.fat,day.targetFat)}%</span>
-        <div class="target-input-wrap">meta: <input class="target-input" id="tgt-fat" type="number" min="1" max="999" value="${day.targetFat}" oninput="updateRing()">g</div>
-      </div>
-    </div>
-  </div>
+    + '<div class="macro-ring-card">'
+    + '<div class="ring-title">Calorías consumidas</div>'
+    + '<div class="ring-wrap">'
+    + '<svg id="macro-ring-svg" width="140" height="140" viewBox="0 0 140 140">'+buildRingSVG(day)+'</svg>'
+    + '<div class="ring-center"><div class="ring-kcal" id="ring-kcal">'+kcal+'</div><div class="ring-kcal-label">kcal</div></div>'
+    + '</div>'
+    + '<div class="ring-legend">'
+    + '<div class="ring-leg-item"><div class="ring-leg-dot" style="background:#4A85C8"></div>Proteína</div>'
+    + '<div class="ring-leg-item"><div class="ring-leg-dot" style="background:#C9A96E"></div>Carbos</div>'
+    + '<div class="ring-leg-item"><div class="ring-leg-dot" style="background:#C8881A"></div>Grasas</div>'
+    + '</div></div>'
 
-  <button class="save-btn" onclick="saveTracker()">💾 Guardar macros del día</button>
+    + '<div class="section-label">Ingresá tus macros del día</div>'
+    + '<div class="macro-inputs-grid">'
 
-  <div id="reco-area"></div>
-  `;
+    + '<div class="macro-input-card prot">'
+    + '<div class="macro-input-icon">💪</div>'
+    + '<div class="macro-input-label prot">Proteína</div>'
+    + '<input class="macro-num-input" id="inp-prot" type="number" min="0" max="500" value="'+day.prot+'" oninput="updateRing()">'
+    + '<div class="macro-unit">gramos</div>'
+    + '<div class="macro-progress-bar"><div class="macro-progress-fill" id="bar-prot" style="width:'+pP+'%;background:#4A85C8"></div></div>'
+    + '<div class="macro-target-row"><span id="pct-prot">'+pP+'%</span><div class="target-input-wrap">meta: <input class="target-input" id="tgt-prot" type="number" min="1" max="999" value="'+day.targetProt+'" oninput="updateRing()">g</div></div>'
+    + '</div>'
 
-  updateRing();
+    + '<div class="macro-input-card carb">'
+    + '<div class="macro-input-icon">⚡</div>'
+    + '<div class="macro-input-label carb">Carbos</div>'
+    + '<input class="macro-num-input" id="inp-carb" type="number" min="0" max="999" value="'+day.carb+'" oninput="updateRing()">'
+    + '<div class="macro-unit">gramos</div>'
+    + '<div class="macro-progress-bar"><div class="macro-progress-fill" id="bar-carb" style="width:'+pC+'%;background:#C9A96E"></div></div>'
+    + '<div class="macro-target-row"><span id="pct-carb">'+pC+'%</span><div class="target-input-wrap">meta: <input class="target-input" id="tgt-carb" type="number" min="1" max="999" value="'+day.targetCarb+'" oninput="updateRing()">g</div></div>'
+    + '</div>'
+
+    + '<div class="macro-input-card fat">'
+    + '<div class="macro-input-icon">🧠</div>'
+    + '<div class="macro-input-label fat">Grasas</div>'
+    + '<input class="macro-num-input" id="inp-fat" type="number" min="0" max="500" value="'+day.fat+'" oninput="updateRing()">'
+    + '<div class="macro-unit">gramos</div>'
+    + '<div class="macro-progress-bar"><div class="macro-progress-fill" id="bar-fat" style="width:'+pF+'%;background:#C8881A"></div></div>'
+    + '<div class="macro-target-row"><span id="pct-fat">'+pF+'%</span><div class="target-input-wrap">meta: <input class="target-input" id="tgt-fat" type="number" min="1" max="999" value="'+day.targetFat+'" oninput="updateRing()">g</div></div>'
+    + '</div>'
+
+    + '</div>'
+    + '<button class="save-btn" onclick="saveTracker()">💾 Guardar macros del día</button>'
+    + '<div id="reco-area"></div>';
+
+  document.getElementById('tracker-content').innerHTML = html;
   renderRecos();
 }
 
-loadTracker();
 renderTracker();
 </script>
-
 </body>
 </html>
