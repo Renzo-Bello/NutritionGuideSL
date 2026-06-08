@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#0A0A0A">
-<title>FOOD GUIDE | SLAB</title>
+<title>GUÍA NUTRICIONAL | SLAB</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -141,8 +141,76 @@ body{font-family:'Outfit',sans-serif;background:#0A0A0A;color:#F0EDE8;min-height
 .accord-body.open{display:block}
 .safe-bottom{height:calc(20px + var(--r-safe-bottom))}
 .sticky-nav{position:sticky;top:57px;z-index:99;background:var(--ink2);}
-@media(min-width:480px){.app-header,.panel,.hero{max-width:480px;margin-left:auto;margin-right:auto}.sticky-nav{max-width:100%;}}
-</style>
+/* ── TRACKER ── */
+.tracker-date-strip{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;}
+.tracker-date-btn{background:none;border:1px solid var(--ink4);color:var(--text3);font-family:'Outfit',sans-serif;font-size:12px;padding:8px 14px;border-radius:8px;cursor:pointer;}
+.tracker-date-btn:active{opacity:0.7}
+.tracker-date-label{font-size:13px;font-weight:600;color:var(--text);}
+.macro-donut-wrap{display:flex;justify-content:center;margin:0 0 22px;}
+.macro-ring-card{background:var(--ink2);border:1px solid var(--ink4);border-radius:18px;padding:20px;width:100%;}
+.ring-title{font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--text3);font-weight:500;margin-bottom:16px;text-align:center;}
+.ring-wrap{position:relative;width:140px;height:140px;margin:0 auto 16px;}
+.ring-center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;}
+.ring-kcal{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:700;color:var(--text);line-height:1;}
+.ring-kcal-label{font-size:10px;color:var(--text3);margin-top:2px;}
+.ring-legend{display:flex;justify-content:center;gap:16px;}
+.ring-leg-item{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--text2);}
+.ring-leg-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+.macro-inputs-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:16px;}
+.macro-input-card{background:var(--ink2);border:1px solid var(--ink4);border-radius:14px;padding:14px 10px;text-align:center;}
+.macro-input-card.prot{border-color:rgba(74,133,200,0.4);}
+.macro-input-card.carb{border-color:rgba(201,169,110,0.4);}
+.macro-input-card.fat{border-color:rgba(200,136,26,0.4);}
+.macro-input-icon{font-size:20px;margin-bottom:4px;}
+.macro-input-label{font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:8px;}
+.macro-input-label.prot{color:var(--blue);}
+.macro-input-label.carb{color:var(--gold);}
+.macro-input-label.fat{color:var(--amber);}
+.macro-num-input{width:100%;font-family:'Outfit',sans-serif;font-size:22px;font-weight:600;color:var(--text);background:var(--ink3);border:1px solid var(--ink4);border-radius:10px;padding:10px 6px;text-align:center;-moz-appearance:textfield;}
+.macro-num-input::-webkit-outer-spin-button,.macro-num-input::-webkit-inner-spin-button{-webkit-appearance:none;}
+.macro-num-input:focus{outline:none;border-color:var(--gold-dim);}
+.macro-unit{font-size:10px;color:var(--text3);margin-top:4px;}
+.macro-progress-bar{height:6px;border-radius:3px;background:var(--ink4);overflow:hidden;margin-top:6px;}
+.macro-progress-fill{height:100%;border-radius:3px;transition:width 0.4s ease;}
+.macro-target-row{display:flex;justify-content:space-between;align-items:center;font-size:11px;color:var(--text3);margin-top:5px;}
+.target-input-wrap{display:flex;align-items:center;gap:4px;}
+.target-input{width:44px;font-family:'Outfit',sans-serif;font-size:11px;color:var(--text2);background:var(--ink3);border:1px solid var(--ink4);border-radius:6px;padding:3px 5px;text-align:center;-moz-appearance:textfield;}
+.target-input::-webkit-outer-spin-button,.target-input::-webkit-inner-spin-button{-webkit-appearance:none;}
+.target-input:focus{outline:none;border-color:var(--gold-dim);}
+.reco-section{margin-top:20px;}
+.reco-header{display:flex;align-items:center;gap:10px;margin-bottom:14px;}
+.reco-header-icon{font-size:22px;width:40px;height:40px;background:var(--gold-glow);border:1px solid var(--gold-line);border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.reco-header-text{font-size:15px;font-weight:600;color:var(--text);}
+.reco-header-sub{font-size:11px;color:var(--text3);margin-top:2px;}
+.reco-card{background:var(--ink2);border:1px solid var(--ink4);border-radius:14px;padding:16px;margin-bottom:10px;animation:fadeUp 0.3s ease;}
+.reco-card.urgent{border-color:var(--red);background:var(--red-bg);}
+.reco-card.warning{border-color:var(--gold-dim);}
+.reco-card.ok{border-color:var(--green);background:var(--green-bg);}
+.reco-tag{display:inline-block;font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:3px 8px;border-radius:5px;margin-bottom:8px;}
+.reco-tag.urgent{background:var(--red-bg);color:var(--red);}
+.reco-tag.warning{background:var(--gold-glow);color:var(--gold);}
+.reco-tag.ok{background:var(--green-bg);color:var(--green);}
+.reco-food-list{display:flex;flex-direction:column;gap:6px;margin-top:10px;}
+.reco-food-row{display:flex;align-items:center;gap:10px;padding:9px 11px;background:rgba(0,0,0,0.3);border-radius:10px;}
+.reco-food-emoji{font-size:20px;flex-shrink:0;}
+.reco-food-name{font-size:13px;font-weight:500;color:var(--text);}
+.reco-food-detail{font-size:11px;color:var(--text2);margin-top:1px;}
+.shopping-section{margin-top:20px;}
+.shop-list{display:flex;flex-direction:column;gap:8px;}
+.shop-item{display:flex;align-items:center;gap:12px;padding:13px 14px;background:var(--ink2);border:1px solid var(--ink4);border-radius:12px;cursor:pointer;-webkit-user-select:none;user-select:none;transition:border-color 0.15s;}
+.shop-item.checked{opacity:0.5;text-decoration:line-through;}
+.shop-check{width:22px;height:22px;border-radius:6px;border:2px solid var(--ink4);background:none;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:13px;transition:all 0.15s;}
+.shop-item.checked .shop-check{background:var(--green);border-color:var(--green);}
+.shop-emoji{font-size:20px;flex-shrink:0;}
+.shop-name{font-size:13px;font-weight:500;color:var(--text);}
+.shop-why{font-size:11px;color:var(--text2);margin-top:1px;}
+.shop-macro-badge{margin-left:auto;font-size:10px;font-weight:600;padding:3px 8px;border-radius:5px;flex-shrink:0;}
+.save-btn{width:100%;font-family:'Outfit',sans-serif;font-size:14px;font-weight:600;color:#0A0A0A;background:var(--gold);border:none;border-radius:14px;padding:16px;cursor:pointer;letter-spacing:0.5px;margin-top:16px;transition:opacity 0.15s;}
+.save-btn:active{opacity:0.8}
+.saved-toast{position:fixed;bottom:calc(20px + var(--r-safe-bottom));left:50%;transform:translateX(-50%);background:var(--green);color:#fff;font-size:13px;font-weight:600;padding:10px 22px;border-radius:30px;z-index:999;opacity:0;transition:opacity 0.3s;pointer-events:none;}
+.saved-toast.show{opacity:1;}
+@media(min-width:480px){.panel-tracker{max-width:480px;margin-left:auto;margin-right:auto}}
+
 </head>
 <body>
 
@@ -159,14 +227,15 @@ body{font-family:'Outfit',sans-serif;background:#0A0A0A;color:#F0EDE8;min-height
 <div style="background:#0A0A0A;">
   <div class="hero">
     <div class="hero-eyebrow">SLAB | ASESORÍAS PERSONALIZADAS</div>
-    <h1 class="hero-h">Come <em>para ti</em>,<br>no para todos</h1>
-    <p class="hero-p">Guía de alimentos de alto valor nutricional adaptada a tu sexo, etapa y restricciones. Con alternativas reales para cada situación.</p>
+    <h1 class="hero-h">Alimentate <em>bien</em>,<br>progresa mejor</h1>
+    <p class="hero-p">Guía para Asesorados con alimentos de alto valor nutricional adaptada a tu sexo, etapa y restricciones. Con alternativas reales para cada situación.</p>
   </div>
 </div>
 
 <div class="sticky-nav">
   <nav class="nav-tabs" role="tablist">
     <button class="nav-tab active" onclick="switchTab('plan',this)">Mi Plan</button>
+    <button class="nav-tab" onclick="switchTab('tracker',this)">📊 Mis Macros</button>
     <button class="nav-tab" onclick="switchTab('macros',this)">Macros</button>
     <button class="nav-tab" onclick="switchTab('timing',this)">Timing</button>
     <button class="nav-tab" onclick="switchTab('restricciones',this)">Restricciones</button>
@@ -202,6 +271,11 @@ body{font-family:'Outfit',sans-serif;background:#0A0A0A;color:#F0EDE8;min-height
     </div>
   </div>
   <div id="plan-content"></div>
+  <div class="safe-bottom"></div>
+</section>
+
+<section class="panel" id="panel-tracker">
+  <div id="tracker-content"></div>
   <div class="safe-bottom"></div>
 </section>
 
@@ -270,7 +344,7 @@ const HORMONA_DATA = {
     micros: [
       { icon: '🩸', txt: '<strong>Hierro</strong> — fundamental post-menstruación. Fuentes: carne roja magra, lentejas, espinaca. Combinar siempre con vitamina C para absorción.' },
       { icon: '🦴', txt: '<strong>Calcio + Vitamina D</strong> — densidad ósea, especialmente importante antes de los 35. Fuentes: lácteos, sardinas con espinas, brócoli, sol.' },
-      { icon: '🌸', txt: '<strong>Ácido fólico / Folato</strong> — salud hormonal y celular. Fuentes: palta, legumbres, vegetales de hoja verde.' },
+      { icon: '🌸', txt: '<strong>Ácido fólico / Folato</strong> — salud hormonal y celular. Fuentes: aguacate, legumbres, vegetales de hoja verde.' },
       { icon: '😌', txt: '<strong>Omega-3 EPA/DHA</strong> — reduce dismenorrea, regula estado de ánimo en fase lútea. Fuentes: salmón, sardinas, chía.' },
       { icon: '⚡', txt: '<strong>Magnesio</strong> — alivia PMS, mejora sueño y recuperación. Fuentes: chocolate negro +70%, almendras, espinaca, semillas.' },
       { icon: '🌿', txt: '<strong>Fitoestrógenos (con moderación)</strong> — semillas de lino, tofu, legumbres. Pueden ayudar a regular estrógenos de forma natural.' },
@@ -296,9 +370,6 @@ const PLAN_DATA = {
             { e:'🧀', n:'Queso cottage / Ricota', w:'Caseína natural. Proteína de absorción lenta — perfecto antes de dormir en volumen.', tags:['11-13g prot/100g','Caseína','Pre-cama'] },
             { e:'🫘', n:'Lentejas + arroz', w:'Combinación que forma proteína completa. Añade hierro y fibra.', tags:['9g prot/100g cocida','Hierro','Fibra'] },
             { e:'🐠', n:'Sardinas en lata', w:'Omega-3 concentrado, calcio (si comés las espinas), proteína. Subvalorado.', tags:['25g prot/100g','Omega-3','Calcio'] },
-            { e:'🌱', n:'Carne de soya (soja texturizada)', w:'Proteína vegetal económica y versátil. Rehidratada, se usa como sustituto de carne picada. Alta en proteína completa.', tags:['33g prot/100g seca','Vegetal','Económica'] },
-            { e:'🐚', n:'Choritos (mejillones) en lata', w:'Proteína + zinc + hierro + omega-3. Uno de los mariscos más densos nutricionalmente. Práctico y económico.', tags:['18g prot/100g','Zinc','Hierro','Omega-3'], star:true },
-            { e:'🐟', n:'Jurel en lata', w:'Omega-3 + proteína a bajo costo. Alternativa al atún con mejor perfil de ácidos grasos. Muy subestimado.', tags:['22g prot/100g','Omega-3','Económico'] },
           ],
           swap: [
             { from:'🥩', to:'<strong>Sin carne roja:</strong> Tofu firme prensado + pepitas de calabaza (zinc)' },
@@ -316,14 +387,6 @@ const PLAN_DATA = {
             { e:'🥔', n:'Papa hervida o al horno', w:'Similar a la batata pero más rápida. Excelente saciedad y facilidad digestiva.', tags:['17g CHO/100g','Versátil'] },
             { e:'🫘', n:'Garbanzos / Porotos', w:'CHO complejo + proteína vegetal + fibra. Triple beneficio.', tags:['20g CHO/100g','Proteína vegetal','Fibra'] },
             { e:'🌽', n:'Polenta / Maíz', w:'Fuente de CHO sin gluten. Útil para celíacos. Densa en calorías.', tags:['Sin gluten','Denso en calorías'] },
-            { e:'🍞', n:'Pan integral de molde', w:'CHO complejo con fibra. Práctico para comidas rápidas. Mejor que el pan blanco en comidas alejadas del entreno.', tags:['~40g CHO/100g','Fibra','Práctico'] },
-            { e:'🫓', n:'Pan pita integral', w:'Fácil de rellenar con proteína + vegetales. Versátil en volumen para sumar calorías de calidad.', tags:['~45g CHO/100g','Versátil','Práctico'] },
-            { e:'🍌', n:'Plátano maduro', w:'Más denso en azúcares que la banana estándar. Excelente pre/post entreno por su carga glucémica alta.', tags:['~22g CHO/100g','Energía rápida','Potasio'] },
-            { e:'🍇', n:'Uva', w:'Glucosa de rápida absorción + resveratrol antioxidante. Buena opción como snack pre-entreno rápido.', tags:['~17g CHO/100g','Antioxidante','Snack'] },
-            { e:'🍎', n:'Manzana', w:'Pectina para saciedad + bajo IG. Ideal como snack entre comidas en volumen.', tags:['~14g CHO/100g','Pectina','Bajo IG'] },
-            { e:'🥒', n:'Pepino', w:'Hidratación + volumen sin calorías. Ideal para acompañar comidas sin sumar calorías innecesarias.', tags:['~3 kcal/100g','Hidratación','Libre'] },
-            { e:'🍅', n:'Tomate', w:'Licopeno antioxidante + vitamina C. Acompañante diario en cualquier comida. Bajo en calorías.', tags:['~18 kcal/100g','Licopeno','Vitamina C'] },
-            { e:'🥗', n:'Betarraga (remolacha)', w:'Nitratos que mejoran el rendimiento aeróbico + folato + hierro vegetal. Pre-entreno natural.', tags:['Nitratos','Rendimiento','Hierro'] },
           ],
           swap: [
             { from:'🌾', to:'<strong>Sin gluten:</strong> Avena certificada sin gluten o copos de arroz' },
@@ -334,17 +397,15 @@ const PLAN_DATA = {
         {
           titulo: 'Grasas saludables', icon: '🧠', sub: 'Testosterona, absorción y saciedad',
           alimentos: [
-            { e:'🥑', n:'Palta', w:'Grasa mono + vitamina E + folato. Mejora absorción de vitaminas liposolubles. Comer con cada comida.', tags:['15g grasa/100g','Vitamina E','Saciante'], star:true },
+            { e:'🥑', n:'Aguacate', w:'Grasa mono + vitamina E + folato. Mejora absorción de vitaminas liposolubles. Comer con cada comida.', tags:['15g grasa/100g','Vitamina E','Saciante'], star:true },
             { e:'🫒', n:'Aceite de oliva extra virgen', w:'Oleocantal antiinflamatorio. 1–2 cdas en cada comida. No usar para fritura fuerte.', tags:['100g grasa/100ml','Antiinflamatorio'], star:true },
             { e:'🥜', n:'Almendras', w:'Vitamina E, magnesio, grasas mono. Snack perfecto entre comidas.', tags:['50g grasa/100g','Magnesio','Vitamina E'] },
             { e:'🌰', n:'Nueces', w:'Omega-3 ALA, polifenoles, melatonina. Las mejores nueces para recuperación y sueño.', tags:['65g grasa/100g','Omega-3 ALA','Sueño'] },
             { e:'🌻', n:'Pepitas de calabaza', w:'Zinc concentrado. Las semillas más importantes para el hombre — apoyan testosterona directamente.', tags:['Zinc alto','Testosterona','Magnesio'], star:true },
             { e:'🍫', n:'Chocolate negro +85%', w:'Magnesio + flavonoides. 20–30g post-cena. No es un capricho — tiene función real.', tags:['Magnesio','Flavonoides','Dopamina'] },
-            { e:'🥛', n:'Leche entera', w:'Calorías de calidad + caseína + calcio. En volumen, la leche entera suma nutrientes sin esfuerzo. 1–2 vasos al día.', tags:['~60 kcal/100ml','Calcio','Caseína'] },
-            { e:'🌰', n:'Frutos secos variados (mix)', w:'Almendras, nueces, pistachos, avellanas — un puñado diario de mix variado cubre vitamina E, magnesio y omega-3 ALA.', tags:['~600 kcal/100g','Vitamina E','Magnesio','Omega-3 ALA'] },
           ],
           swap: [
-            { from:'🫒', to:'<strong>Alternativa cocción:</strong> Aceite de palta o aceite de coco (para calor alto)' },
+            { from:'🫒', to:'<strong>Alternativa cocción:</strong> Aceite de aguacate o aceite de coco (para calor alto)' },
             { from:'🥜', to:'<strong>Alergia nueces:</strong> Semillas de girasol o tahini (pasta de sésamo)' },
             { from:'🌻', to:'<strong>Más omega-3:</strong> Semillas de lino molido (agregar a yogur/avena)' },
           ]
@@ -367,9 +428,6 @@ const PLAN_DATA = {
             { e:'🧀', n:'Yogur griego natural', w:'Calcio + proteína + probióticos. Mejor opción láctea para la mujer.', tags:['10g prot/100g','Calcio','Probióticos'] },
             { e:'🐠', n:'Sardinas con espinas', w:'Calcio + omega-3 + proteína. Triple beneficio para densidad ósea.', tags:['25g prot/100g','Calcio','Omega-3'] },
             { e:'🌱', n:'Tofu / Tempeh', w:'Proteína vegetal completa + fitoestrógenos que modulan el ciclo de forma natural.', tags:['8-20g prot/100g','Fitoestrógenos','Vegetal'] },
-            { e:'🌱', n:'Carne de soya (soja texturizada)', w:'Proteína vegetal económica. Rica en fitoestrógenos que apoyan la regulación hormonal femenina.', tags:['33g prot/100g seca','Fitoestrógenos','Económica'] },
-            { e:'🐚', n:'Choritos (mejillones) en lata', w:'Hierro + zinc + omega-3 + proteína. Especialmente valiosos post-menstruación para reponer hierro.', tags:['18g prot/100g','Hierro','Zinc','Omega-3'], star:true },
-            { e:'🐟', n:'Jurel en lata', w:'Omega-3 + proteína económica. 2–3 veces por semana como alternativa al salmón fresco.', tags:['22g prot/100g','Omega-3','Económico'] },
           ],
           swap: [
             { from:'🥩', to:'<strong>Sin carne:</strong> Lentejas + vitamina C (kiwi, naranja) para absorber hierro no-hemo' },
@@ -386,13 +444,6 @@ const PLAN_DATA = {
             { e:'🍚', n:'Arroz integral', w:'Más fibra que el blanco. Mejor en comidas principales alejadas del entreno.', tags:['23g CHO/100g','Fibra','Índice glucémico medio'] },
             { e:'🌿', n:'Quinoa', w:'Proteína completa + CHO + hierro. La mejor opción para mujeres vegetarianas.', tags:['14g prot + 21g CHO/100g','Hierro','Proteína completa'] },
             { e:'🍎', n:'Manzana / Pera', w:'Fibra pectina, bajo IG. Snack con buena saciedad sin pico de glucosa.', tags:['Bajo IG','Pectina','Saciante'] },
-            { e:'🍞', n:'Pan integral de molde', w:'CHO con fibra para comidas rápidas. Combinar con proteína + vegetales para comidas completas en volumen.', tags:['~40g CHO/100g','Fibra','Práctico'] },
-            { e:'🫓', n:'Pan pita integral', w:'Excelente para wraps con pollo + vegetales. Suma CHO de calidad de forma práctica.', tags:['~45g CHO/100g','Versátil'] },
-            { e:'🍌', n:'Plátano maduro', w:'Potasio + energía rápida. Snack pre-entreno ideal cuando hay poco tiempo.', tags:['~22g CHO/100g','Potasio','Pre-entreno'] },
-            { e:'🍇', n:'Uva', w:'Antioxidantes + glucosa natural. Snack liviano entre comidas en volumen femenino.', tags:['~17g CHO/100g','Antioxidante'] },
-            { e:'🥒', n:'Pepino', w:'Volumen sin calorías + hidratación. Excelente para ensaladas que acompañen las comidas principales.', tags:['Hidratación','Libre','Volumen'] },
-            { e:'🍅', n:'Tomate', w:'Licopeno + vitamina C que potencia la absorción del hierro no-hemo. Incluir en comidas con legumbres.', tags:['Licopeno','Vitamina C','Hierro'] },
-            { e:'🥗', n:'Betarraga (remolacha)', w:'Folato esencial para mujeres + hierro vegetal + nitratos para rendimiento. Pre-entreno natural.', tags:['Folato','Hierro','Nitratos'] },
           ],
           swap: [
             { from:'🌾', to:'<strong>Sin gluten:</strong> Copos de arroz o avena certificada sin gluten' },
@@ -403,18 +454,16 @@ const PLAN_DATA = {
         {
           titulo: 'Grasas saludables', icon: '🧠', sub: 'Balance hormonal y absorción',
           alimentos: [
-            { e:'🥑', n:'Palta', w:'Grasa mono + folato. Esencial para el equilibrio de estrógenos y absorción de vitaminas liposolubles.', tags:['15g grasa/100g','Folato','Estrógenos'], star:true },
+            { e:'🥑', n:'Aguacate', w:'Grasa mono + folato. Esencial para el equilibrio de estrógenos y absorción de vitaminas liposolubles.', tags:['15g grasa/100g','Folato','Estrógenos'], star:true },
             { e:'🌻', n:'Semillas de chía', w:'Omega-3 ALA + fibra soluble + calcio vegetal. 2 cdas al día en yogur o licuado.', tags:['31g grasa/100g','Omega-3 ALA','Calcio vegetal'], star:true },
             { e:'🌱', n:'Semillas de lino molido', w:'Fitoestrógenos + omega-3. Ayudan a modular el ciclo menstrual de forma natural.', tags:['Fitoestrógenos','Omega-3','Ciclo'], star:true },
             { e:'🫒', n:'Aceite de oliva extra virgen', w:'Antiinflamatorio. Base del condimento diario.', tags:['100g grasa/100ml','Antiinflamatorio'] },
             { e:'🍫', n:'Chocolate negro +85%', w:'Magnesio para PMS y hierro vegetal. 20g post-cena o en fase lútea.', tags:['Magnesio','PMS','Hierro vegetal'] },
             { e:'🥜', n:'Almendras', w:'Calcio vegetal + vitamina E. Snack ideal entre comidas.', tags:['Calcio vegetal','Vitamina E','Saciante'] },
-            { e:'🥛', n:'Leche (vaca o vegetal)', w:'Calcio + vitamina D + proteína. La leche semidesnatada o entera aporta nutrientes clave para densidad ósea femenina.', tags:['Calcio','Vitamina D','Versátil'] },
-            { e:'🌰', n:'Frutos secos variados (mix)', w:'Calcio vegetal, vitamina E y magnesio en un solo snack. Un puñado diario es suficiente.', tags:['Calcio vegetal','Vitamina E','Magnesio'] },
           ],
           swap: [
             { from:'🌻', to:'<strong>Sin semillas:</strong> Aceite de lino (1 cdita) en ensalada o batido' },
-            { from:'🥑', to:'<strong>Sin palta:</strong> Huevo entero + oliva (cubre grasas mono y vitamina E)' },
+            { from:'🥑', to:'<strong>Sin aguacate:</strong> Huevo entero + oliva (cubre grasas mono y vitamina E)' },
             { from:'🍫', to:'<strong>Sin cacao:</strong> Almendras + higos secos (magnesio similar)' },
           ]
         }
@@ -437,10 +486,6 @@ const PLAN_DATA = {
             { e:'🥩', n:'Carne roja magra (2x/semana)', w:'Zinc para sostener testosterona en déficit. Crítico — no eliminarla.', tags:['26g prot/100g','Zinc','Testosterona'] },
             { e:'🦐', n:'Langostinos / Gambas', w:'Proteína alta, calorías mínimas. Versátiles para ensaladas y salteados.', tags:['24g prot/100g','99 kcal'] },
             { e:'🍗', n:'Pavo (pechuga)', w:'Más magro que el pollo, triptófano para sueño y estado de ánimo.', tags:['30g prot/100g','Triptófano'] },
-            { e:'🐟', n:'Atún en lata al agua', w:'Proteína pura sin grasa. Control de calorías máximo. Ideal en cualquier comida de definición.', tags:['23g prot/100g','~100 kcal','Sin grasa'] },
-            { e:'🐟', n:'Jurel en lata', w:'Omega-3 + proteína magra. Mejor perfil graso que el atún. Igual de económico y práctico.', tags:['22g prot/100g','Omega-3','Económico'] },
-            { e:'🐚', n:'Choritos (mejillones) en lata', w:'Proteína + zinc + hierro. Muy bajo en calorías. El marisco más completo para definición.', tags:['18g prot/100g','Zinc','~80 kcal/100g'] },
-            { e:'🌱', n:'Carne de soya texturizada', w:'Proteína vegetal magra. Sin grasa significativa. Se prepara rápido y es altamente saciante con pocas calorías.', tags:['33g prot/100g seca','Magra','Saciante'] },
           ],
           swap: [
             { from:'🍗', to:'<strong>Vegetariano:</strong> Tofu firme + tempeh (rotar). Target proteico sube 20%' },
@@ -457,10 +502,6 @@ const PLAN_DATA = {
             { e:'🍠', n:'Batata (porción controlada)', w:'CHO complejo que no genera pico glucémico. Reemplaza el arroz en comidas principales.', tags:['86 kcal/100g','Bajo IG'] },
             { e:'🍋', n:'Frutas rojas / Cítricos', w:'Vitamina C para recuperación + bajo IG. Snack ideal cuando el hambre ataca.', tags:['40-60 kcal/100g','Vitamina C','Bajo IG'] },
             { e:'🥒', n:'Pepino / Apio / Zanahoria', w:'Snack de volumen puro. Casi sin calorías, alta saciedad hídrica.', tags:['10-40 kcal/100g','Snack'] },
-            { e:'🍅', n:'Tomate', w:'Licopeno + vitamina C + prácticamente sin calorías. Añade sabor y nutrientes a cualquier comida en déficit.', tags:['~18 kcal/100g','Licopeno','Libre'] },
-            { e:'🥗', n:'Betarraga (remolacha)', w:'Nitratos para mejor rendimiento en déficit + folato. Cuidar porción por su azúcar natural (~10g/100g).', tags:['Nitratos','Folato','~45 kcal/100g'] },
-            { e:'🍞', n:'Pan integral de molde (1-2 rebanadas)', w:'En definición, 1–2 rebanadas con proteína es una comida completa y saciante. Preferir versión con semillas.', tags:['~40g CHO/100g','Fibra','Saciante'] },
-            { e:'🍎', n:'Manzana / Pera', w:'Pectina para saciedad prolongada + bajo IG. Snack de volumen cuando el hambre ataca entre comidas.', tags:['~60 kcal/100g','Pectina','Bajo IG'] },
           ],
           swap: [
             { from:'🌾', to:'<strong>Sin gluten:</strong> Copos de arroz o quinoa hervida (mismo efecto saciante)' },
@@ -471,11 +512,10 @@ const PLAN_DATA = {
         {
           titulo: 'Grasas (moderadas pero no eliminadas)', icon: '🧠', sub: 'Hormonas y saciedad en déficit',
           alimentos: [
-            { e:'🥑', n:'Palta (½ unidad)', w:'Grasas que controlan el hambre y sostienen testosterona en déficit. No más de media por comida.', tags:['~80 kcal / media','Saciante','Testosterona'], star:true },
+            { e:'🥑', n:'Aguacate (½ unidad)', w:'Grasas que controlan el hambre y sostienen testosterona en déficit. No más de media por comida.', tags:['~80 kcal / media','Saciante','Testosterona'], star:true },
             { e:'🐟', n:'Salmón (2x/semana)', w:'Omega-3 reduce cortisol en déficit y preserva masa muscular. No es opcional.', tags:['200 kcal/100g','Omega-3','Anti-cortisol'], star:true },
             { e:'🫒', n:'Aceite de oliva (1 cda/comida)', w:'Antiinflamatorio. Máx 1 cda por comida — son 120 kcal que se suman rápido.', tags:['120 kcal/cda','Controlado'] },
             { e:'🌻', n:'Pepitas de calabaza (30g)', w:'Zinc concentrado. Snack que ayuda a sostener testosterona aunque estés en déficit.', tags:['Zinc','Testosterona','30g = ideal'] },
-            { e:'🥛', n:'Leche descremada', w:'Calcio + proteína con mínima grasa y pocas calorías. En definición la versión descremada cubre micronutrientes sin sumar calorías innecesarias.', tags:['~35 kcal/100ml','Calcio','Bajo en grasa'] },
           ],
           swap: [
             { from:'🥑', to:'<strong>Menos calorías:</strong> 5-6 aceitunas negras (mismas grasas mono, menos calorías)' },
@@ -501,10 +541,6 @@ const PLAN_DATA = {
             { e:'🦐', n:'Langostinos / Gambas', w:'Proteína alta, calorías mínimas. Fáciles de preparar, muy versátiles.', tags:['24g prot/100g','99 kcal'] },
             { e:'🐠', n:'Sardinas', w:'Calcio + omega-3 + proteína. Preserva densidad ósea en déficit.', tags:['25g prot/100g','Calcio','Omega-3'] },
             { e:'🫘', n:'Lentejas / Garbanzos', w:'Hierro no-hemo + fibra + proteína. Saciedad prolongada con pocas calorías.', tags:['9g prot/100g','Hierro','Fibra'] },
-            { e:'🐟', n:'Atún en lata al agua', w:'Proteína sin grasa. La opción más práctica en definición femenina. Combinar con vegetales y aceite de oliva (1 cda).', tags:['23g prot/100g','~100 kcal','Práctico'] },
-            { e:'🐟', n:'Jurel en lata', w:'Omega-3 + proteína magra a bajo costo. Alternativa al salmón fresco con igual beneficio hormonal.', tags:['22g prot/100g','Omega-3','Económico'] },
-            { e:'🐚', n:'Choritos (mejillones) en lata', w:'CRÍTICO en definición femenina: hierro + zinc + proteína con muy pocas calorías. Imprescindibles post-menstruación.', tags:['18g prot/100g','Hierro','Zinc','~80 kcal'], star:true },
-            { e:'🌱', n:'Carne de soya texturizada', w:'Proteína + fitoestrógenos. Saciante y muy baja en calorías. Ideal para mantener el déficit sin pasar hambre.', tags:['33g prot/100g seca','Saciante','Fitoestrógenos'] },
           ],
           swap: [
             { from:'🥩', to:'<strong>Sin carne:</strong> Lentejas + kiwi o naranja (vitamina C potencia absorción del hierro no-hemo)' },
@@ -521,10 +557,6 @@ const PLAN_DATA = {
             { e:'🍓', n:'Frutas rojas (fresas, arándanos)', w:'Antioxidantes para la inflamación del ciclo. Bajo IG. Snack perfecto en definición femenina.', tags:['40-55 kcal/100g','Bajo IG','Ciclo'] },
             { e:'🌿', n:'Quinoa', w:'CHO + proteína completa + hierro. La mejor opción para vegetarianas en definición.', tags:['120 kcal/100g','Hierro','Proteína'] },
             { e:'🥒', n:'Vegetales crudos de snack', w:'Pepino, apio, zanahoria, tomate cherry. Snack sin impacto calórico con alta saciedad.', tags:['10-40 kcal/100g','Snack libre'] },
-            { e:'🍅', n:'Tomate fresco', w:'Licopeno + vitamina C que potencia el hierro no-hemo. Incluir en todas las comidas con legumbres.', tags:['~18 kcal/100g','Licopeno','Vitamina C'] },
-            { e:'🥗', n:'Betarraga (remolacha)', w:'Folato + hierro vegetal + nitratos. Pre-entreno natural ideal en semana premenstrual para mejorar rendimiento.', tags:['Folato','Nitratos','~45 kcal/100g'] },
-            { e:'🍎', n:'Manzana / Pera', w:'Pectina que frena el hambre sin calorías significativas. Snack anti-antojos en fase lútea.', tags:['~60 kcal/100g','Anti-antojos','Pectina'] },
-            { e:'🍞', n:'Pan integral de molde (1-2 rebanadas)', w:'CHO con fibra para comidas rápidas sin cocinar. Relleno con proteína y vegetales = comida completa.', tags:['~40g CHO/100g','Fibra','Práctico'] },
           ],
           swap: [
             { from:'🌾', to:'<strong>Sin gluten:</strong> Avena certificada sin gluten o polenta instantánea' },
@@ -537,7 +569,7 @@ const PLAN_DATA = {
           alimentos: [
             { e:'🐟', n:'Salmón / Sardinas', w:'Omega-3 reduce inflamación del ciclo y cortisol en déficit. No negociable.', tags:['Omega-3','Anti-cortisol','Ciclo'], star:true },
             { e:'🌻', n:'Semillas de chía / lino', w:'Omega-3 vegetal + fitoestrógenos. 2 cdas en yogur o batido. Ayudan a regularizar ciclo.', tags:['Omega-3 ALA','Fitoestrógenos','Ciclo'], star:true },
-            { e:'🥑', n:'Palta (½ unidad)', w:'Grasas mono + folato. Control del hambre sin muchas calorías en porción razonable.', tags:['~80 kcal/½','Saciante','Folato'] },
+            { e:'🥑', n:'Aguacate (½ unidad)', w:'Grasas mono + folato. Control del hambre sin muchas calorías en porción razonable.', tags:['~80 kcal/½','Saciante','Folato'] },
             { e:'🍫', n:'Chocolate negro +85% (20g)', w:'Magnesio para PMS. No es trampa — tiene función real en fase lútea.', tags:['Magnesio','PMS','~120 kcal/20g'] },
           ],
           swap: [
@@ -564,10 +596,6 @@ const PLAN_DATA = {
             { e:'🐟', n:'Salmón', w:'Omega-3 mejora sensibilidad a la insulina — fundamental para recomposición eficiente.', tags:['20g prot/100g','Sensibilidad insulina','Omega-3'], star:true },
             { e:'🧀', n:'Queso cottage pre-cama', w:'Caseína para síntesis nocturna. En recomposición el sueño es cuando ocurre gran parte del proceso.', tags:['11-13g prot/100g','Caseína','Nocturno'] },
             { e:'🫘', n:'Lentejas + arroz', w:'Proteína completa + CHO moderado. Ideal para días de descanso donde querés proteína sin mucho CHO.', tags:['9g prot + 20g CHO/100g','Completo'] },
-            { e:'🐟', n:'Atún en lata al agua', w:'Proteína sin grasa para días de descanso (menos CHO, más proteína). Listo en segundos.', tags:['23g prot/100g','Sin grasa','Rápido'] },
-            { e:'🐟', n:'Jurel en lata', w:'Omega-3 + proteína. Sensibilidad a la insulina mejorada — fundamental para recomposición eficiente.', tags:['22g prot/100g','Omega-3','Insulina'] },
-            { e:'🐚', n:'Choritos (mejillones) en lata', w:'Zinc para testosterona + hierro + proteína. Perfecto para días de descanso donde se quiere proteína sin muchos carbohidratos.', tags:['18g prot/100g','Zinc','Hierro'] },
-            { e:'🌱', n:'Carne de soya texturizada', w:'Proteína completa versátil. En días de descanso reemplaza la carne con menos grasa saturada.', tags:['33g prot/100g seca','Versátil','Completa'] },
           ],
           swap: [
             { from:'🥚', to:'<strong>Más proteína sin grasas:</strong> 3 claras + 1 yema (proteína alta, calorías moderadas)' },
@@ -583,11 +611,6 @@ const PLAN_DATA = {
             { e:'🥦', n:'Verduras (todos los días)', w:'Sin importar si entrenas o no — las verduras no cuentan como "carbohidratos periodizados".', tags:['Todos los días','Sin restricción'] },
             { e:'🍠', n:'Batata (días de entreno)', w:'CHO complejo para comidas alejadas del entreno. Versátil y nutritiva.', tags:['Días entreno','Pre-almuerzo'] },
             { e:'🫘', n:'Legumbres (días descanso)', w:'CHO + proteína + fibra. Perfectas para días de descanso donde querés menos CHO rápidos.', tags:['Días descanso','Fibra','Proteína'] },
-            { e:'🍞', n:'Pan integral de molde (días entreno)', w:'CHO de calidad para días de entreno. 2–3 rebanadas con proteína forman una comida pre-entreno completa.', tags:['Días entreno','~40g CHO/100g','Fibra'] },
-            { e:'🫓', n:'Pan pita integral (días entreno)', w:'Versátil y práctico. Rellenar con pollo + vegetales = comida peri-entrenamiento equilibrada.', tags:['Días entreno','Versátil'] },
-            { e:'🍌', n:'Plátano (días entreno)', w:'Energía rápida para sesiones de fuerza. Consumir 30–45 min antes del entreno junto a proteína.', tags:['Días entreno','Pre-entreno','Potasio'] },
-            { e:'🍇', n:'Uva (días entreno)', w:'Glucosa + resveratrol. Snack pre-entreno rápido cuando no hay tiempo para una comida completa.', tags:['Días entreno','Glucosa rápida'] },
-            { e:'🍅', n:'Tomate + pepino', w:'Volumen sin calorías — todos los días sin importar si es día de entreno o descanso. Libre.', tags:['Todos los días','Libre','Hidratación'] },
           ],
           swap: [
             { from:'🌾', to:'<strong>Sin gluten / mañana acelerada:</strong> Batido de arroz con banana (CHO rápido similar)' },
@@ -598,13 +621,13 @@ const PLAN_DATA = {
         {
           titulo: 'Grasas', icon: '🧠', sub: 'Constantes en días de descanso',
           alimentos: [
-            { e:'🥑', n:'Palta', w:'Días de descanso: incluir más grasas para compensar menos CHO.', tags:['Días descanso','Grasas mono'], star:true },
+            { e:'🥑', n:'Aguacate', w:'Días de descanso: incluir más grasas para compensar menos CHO.', tags:['Días descanso','Grasas mono'], star:true },
             { e:'🐟', n:'Omega-3 (salmón/sardinas)', w:'Sensibilidad a la insulina + antiinflamatorio. Clave para que la recomposición funcione mejor.', tags:['Sensibilidad insulina','Antiinflamatorio'], star:true },
             { e:'🌰', n:'Nueces y almendras', w:'Snack para días de descanso. No en días de entreno justo antes de la sesión.', tags:['Días descanso','Snack'] },
             { e:'🌻', n:'Pepitas de calabaza', w:'Zinc para testosterona — nunca sacrificarlas, ni en días de descanso.', tags:['Zinc','Testosterona','Siempre'] },
           ],
           swap: [
-            { from:'🥑', to:'<strong>Sin palta:</strong> 1 huevo entero extra + aceite de oliva' },
+            { from:'🥑', to:'<strong>Sin aguacate:</strong> 1 huevo entero extra + aceite de oliva' },
             { from:'🐟', to:'<strong>Vegetariano:</strong> Semillas de chía + lino + suplemento algas (DHA/EPA vegano)' },
           ]
         }
@@ -624,10 +647,6 @@ const PLAN_DATA = {
             { e:'🫘', n:'Lentejas', w:'Hierro no-hemo + folato. Incluir 2–3 veces por semana, siempre con vitamina C.', tags:['Hierro','Folato','Con vitamina C'] },
             { e:'🥩', n:'Carne roja magra', w:'Hierro hemo post-menstruación. No opcionales — son la fuente más biodisponible.', tags:['Hierro hemo','2-3x/semana'] },
             { e:'🌱', n:'Tempeh', w:'Proteína vegetal fermentada. Más digestible que el tofu. Con fitoestrógenos.', tags:['20g prot/100g','Fermentado','Fitoestrógenos'] },
-            { e:'🐟', n:'Atún en lata al agua', w:'Proteína sin grasa para días de descanso. Práctico y económico. Combinar con vegetales.', tags:['23g prot/100g','Sin grasa','Práctico'] },
-            { e:'🐟', n:'Jurel en lata', w:'Omega-3 para salud hormonal en recomposición + proteína. Excelente relación precio/nutrientes.', tags:['22g prot/100g','Omega-3','Hormonal'] },
-            { e:'🐚', n:'Choritos (mejillones) en lata', w:'Hierro post-menstruación + zinc + omega-3 + proteína. Incluir 2–3 veces por semana.', tags:['18g prot/100g','Hierro','Zinc','Omega-3'], star:true },
-            { e:'🌱', n:'Carne de soya texturizada', w:'Proteína + fitoestrógenos para equilibrio hormonal en recomposición. Económica y saciante.', tags:['33g prot/100g seca','Fitoestrógenos','Saciante'] },
           ],
           swap: [
             { from:'🥩', to:'<strong>Sin carne:</strong> Lentejas negras + espinaca + limón (hierro no-hemo + vitamina C)' },
@@ -643,11 +662,6 @@ const PLAN_DATA = {
             { e:'🫐', n:'Frutas rojas / Banana', w:'Días de entreno: más CHO natural. Días de descanso: solo frutas de bajo IG.', tags:['Entreno: más','Descanso: bajo IG'] },
             { e:'🌿', n:'Quinoa', w:'La mejor opción en días de descanso por su contenido de proteína e hierro.', tags:['Días descanso','Proteína','Hierro'] },
             { e:'🥦', n:'Verduras crucíferas siempre', w:'Sin periodización — todos los días, sin restricción. Modulan estrógenos.', tags:['Todos los días','Estrógenos'] },
-            { e:'🍞', n:'Pan integral de molde (días entreno)', w:'CHO complejo para la fase folicular donde la tolerancia al carbohidrato es mayor. Práctico y fácil.', tags:['Días entreno','Fase folicular','Fibra'] },
-            { e:'🍌', n:'Plátano (días entreno)', w:'Potasio + energía rápida. Pre-entreno en fase folicular (semana 1–2) cuando el rendimiento está al máximo.', tags:['Días entreno','Potasio','Pre-entreno'] },
-            { e:'🍇', n:'Uva (días entreno)', w:'Glucosa rápida + resveratrol antioxidante. Snack pre-sesión de fuerza.', tags:['Días entreno','Glucosa'] },
-            { e:'🍅', n:'Tomate + pepino', w:'Todos los días sin restricción. Hidratación + licopeno + vitamina C. Acompañan cualquier comida.', tags:['Todos los días','Libre','Vitamina C'] },
-            { e:'🥗', n:'Betarraga (remolacha)', w:'Folato para regulación hormonal + nitratos para rendimiento. Útil en semana premenstrual.', tags:['Folato','Nitratos','Hormonal'] },
           ],
           swap: [
             { from:'🌾', to:'<strong>Sin gluten:</strong> Copos de arroz + plátano pre-entreno (CHO similar)' },
@@ -658,7 +672,7 @@ const PLAN_DATA = {
           titulo: 'Grasas', icon: '🧠', sub: 'Prioritarias en días de descanso',
           alimentos: [
             { e:'🌻', n:'Semillas de chía + lino', w:'Omega-3 y fitoestrógenos — apoyan el ciclo menstrual. 2 cdas diarias sin excepción.', tags:['Omega-3','Fitoestrógenos','Ciclo'], star:true },
-            { e:'🥑', n:'Palta', w:'Folato + grasas mono. Incluir en días de descanso para compensar menos CHO.', tags:['Folato','Días descanso'], star:true },
+            { e:'🥑', n:'Aguacate', w:'Folato + grasas mono. Incluir en días de descanso para compensar menos CHO.', tags:['Folato','Días descanso'], star:true },
             { e:'🍫', n:'Chocolate negro +85%', w:'Magnesio para fase lútea. 20–30g en semana 3–4 del ciclo.', tags:['Magnesio','Fase lútea','PMS'] },
             { e:'🥜', n:'Almendras', w:'Calcio vegetal + vitamina E. Snack para días de descanso.', tags:['Calcio','Vitamina E','Snack'] },
           ],
@@ -685,9 +699,6 @@ const PLAN_DATA = {
             { e:'🥩', n:'Carne roja (2x/semana)', w:'Zinc, hierro, B12. No eliminarla — rotar con cortes magros.', tags:['Zinc','Hierro','B12'] },
             { e:'🫘', n:'Legumbres (3-4x/semana)', w:'Proteína vegetal + fibra + hierro. Lunes sin carne = lentejas o garbanzos.', tags:['Proteína vegetal','Fibra'] },
             { e:'🧀', n:'Lácteos variados', w:'Yogur griego, ricota, queso cottage. Probióticos + calcio + caseína.', tags:['Calcio','Probióticos'] },
-            { e:'🐚', n:'Choritos (mejillones) en lata', w:'Zinc altísimo + hierro + omega-3. Rotar con carne roja como fuente de zinc y hierro. Muy completo.', tags:['Zinc','Hierro','Omega-3'] },
-            { e:'🐟', n:'Jurel / Atún en lata', w:'Rotar ambos para variedad de omega-3. El jurel tiene mayor aporte de EPA/DHA que el atún.', tags:['22-23g prot/100g','Omega-3','Rotación'] },
-            { e:'🌱', n:'Carne de soya texturizada', w:'Proteína vegetal para variar. Rotarla 1–2 veces por semana da variedad y cubre necesidades con menor saturada.', tags:['33g prot/100g seca','Vegetal','Rotación'] },
           ],
           swap: [
             { from:'🥚', to:'<strong>Vegano:</strong> Tofu + B12 suplementado (no existe B12 en plantas)' },
@@ -704,13 +715,6 @@ const PLAN_DATA = {
             { e:'🌿', n:'Quinoa (1–2x/semana)', w:'Proteína completa + CHO + hierro. Una vez por semana agrega mucho valor.', tags:['Proteína completa','Hierro'] },
             { e:'🫘', n:'Legumbres variadas', w:'Lentejas, garbanzos, frijoles negros, edamame. Cada uno tiene diferente perfil de micros.', tags:['Variedad','Fibra'] },
             { e:'🍎', n:'Frutas variadas (2-3/día)', w:'No monótono. Rotar kiwi, manzana, frutas rojas, banana, naranja.', tags:['Vitaminas','Fibra','Variedad'] },
-            { e:'🍞', n:'Pan integral de molde / ciabatta integral', w:'Rotar tipos de pan para variedad. El pan ciabatta tiene alveolos grandes — buena textura con menos densidad calórica.', tags:['~40-50g CHO/100g','Variedad','Fibra'] },
-            { e:'🫓', n:'Pan pita integral', w:'Versatilidad máxima. Relleno con proteína + vegetales = comida completa en 5 minutos.', tags:['~45g CHO/100g','Práctico','Versátil'] },
-            { e:'🍌', n:'Plátano', w:'Potasio + energía. Rotar con manzana, pera y frutas rojas para diversidad de micronutrientes.', tags:['~22g CHO/100g','Potasio','Rotación'] },
-            { e:'🍇', n:'Uva', w:'Resveratrol + antioxidantes cardiovasculares. Una porción (150g) como snack tiene función real.', tags:['Resveratrol','Antioxidante','~100 kcal/150g'] },
-            { e:'🍅', n:'Tomate', w:'Licopeno cardioprotector + vitamina C. Consumo diario ideal — en ensaladas, salsas o crudo.', tags:['Licopeno','Diario','Vitamina C'] },
-            { e:'🥒', n:'Pepino', w:'Hidratación + sílice para piel y articulaciones. Libre en cantidades.', tags:['Hidratación','Libre','Articulaciones'] },
-            { e:'🥗', n:'Betarraga (remolacha)', w:'Nitratos para rendimiento aeróbico + folato + hierro. 2–3 veces por semana en ensalada o asada.', tags:['Nitratos','Folato','Hierro'] },
           ],
           swap: [
             { from:'🌿', to:'<strong>Sin gluten:</strong> Quinoa y trigo sarraceno son naturalmente sin gluten' },
@@ -721,13 +725,13 @@ const PLAN_DATA = {
           titulo: 'Grasas de calidad', icon: '🧠', sub: 'Base hormonal y cardiovascular',
           alimentos: [
             { e:'🫒', n:'Aceite de oliva EVOO', w:'Base de condimento diario. Sin debate: el mejor aceite para cocina mediterránea.', tags:['Antiinflamatorio','Base diaria'], star:true },
-            { e:'🥑', n:'Palta (3-4x/semana)', w:'No diariamente — variedad. Rotar con otras grasas.', tags:['Grasas mono','Variedad'] },
+            { e:'🥑', n:'Aguacate (3-4x/semana)', w:'No diariamente — variedad. Rotar con otras grasas.', tags:['Grasas mono','Variedad'] },
             { e:'🥜', n:'Frutos secos variados', w:'Almendras, nueces, avellanas, pistachos — un puñado diario. Cada uno con perfil diferente.', tags:['Variedad','Omega-3','Vitamina E'], star:true },
             { e:'🐟', n:'Pescado graso (2–3x/semana)', w:'Salmón o sardinas para omega-3 animal.', tags:['Omega-3','DHA/EPA'] },
             { e:'🌻', n:'Semillas variadas', w:'Calabaza, chía, lino, girasol — agregar a yogur, ensalada o avena. Rotar.', tags:['Zinc','Omega-3','Variedad'] },
           ],
           swap: [
-            { from:'🫒', to:'<strong>Para cocción alta:</strong> Aceite de palta o ghee (mantequilla clarificada)' },
+            { from:'🫒', to:'<strong>Para cocción alta:</strong> Aceite de aguacate o ghee (mantequilla clarificada)' },
             { from:'🥜', to:'<strong>Alergia nueces:</strong> Semillas de girasol o mantequilla de almendras' },
           ]
         }
@@ -748,9 +752,6 @@ const PLAN_DATA = {
             { e:'🧀', n:'Lácteos (yogur griego, cottage)', w:'Calcio + proteína + probióticos. Salud ósea y microbiota.', tags:['Calcio','Probióticos'] },
             { e:'🫘', n:'Legumbres (4x/semana)', w:'Hierro + folato + fibra. Fundamental en mantenimiento femenino.', tags:['Hierro','Folato','Fibra'] },
             { e:'🌱', n:'Tofu / Tempeh', w:'Fitoestrógenos + calcio vegetal + proteína.', tags:['Fitoestrógenos','Calcio vegetal'] },
-            { e:'🐚', n:'Choritos (mejillones) en lata', w:'Hierro + zinc + omega-3 para ciclo menstrual. Una lata 2–3 veces por semana es hierro biodisponible sin muchas calorías.', tags:['Hierro','Zinc','Omega-3'], star:true },
-            { e:'🐟', n:'Jurel / Atún en lata', w:'Omega-3 de mantenimiento hormonal. Rotar jurel (más EPA/DHA) con atún (más práctico).', tags:['22-23g prot/100g','Omega-3','Hormonal'] },
-            { e:'🌱', n:'Carne de soya texturizada', w:'Proteína + fitoestrógenos para equilibrio estrogénico en mantenimiento. 1–2 veces por semana.', tags:['33g prot/100g seca','Fitoestrógenos','Rotación'] },
           ],
           swap: [
             { from:'🥩', to:'<strong>Sin carne:</strong> Mejillones (hierro y zinc altísimos) o espirulina (hierro vegetal)' },
@@ -767,12 +768,6 @@ const PLAN_DATA = {
             { e:'🍠', n:'Batata / Papa', w:'Potasio para retención de agua premenstrual. Carbohidrato tranquilizante en fase lútea.', tags:['Potasio','Fase lútea'] },
             { e:'🍓', n:'Frutas rojas y cítricos', w:'Vitamina C que mejora absorción de hierro no-hemo de legumbres y vegetales.', tags:['Vitamina C','Hierro','Antioxidantes'] },
             { e:'🥦', n:'Crucíferas (siempre)', w:'Metabolismo de estrógenos. Incluir en cada comida principal.', tags:['Estrógenos','Siempre','Fibra'] },
-            { e:'🍞', n:'Pan integral de molde / pita integral', w:'CHO con fibra para comidas rápidas. En mantenimiento femenino 2–3 rebanadas con proteína es una comida completa.', tags:['~40-45g CHO/100g','Fibra','Práctico'] },
-            { e:'🍌', n:'Plátano', w:'Potasio para retención de agua premenstrual + carbohidrato tranquilizante en fase lútea.', tags:['Potasio','Fase lútea','~22g CHO/100g'] },
-            { e:'🍇', n:'Uva', w:'Resveratrol + antioxidantes + glucosa natural. Snack entre comidas con moderación (150g).', tags:['Resveratrol','Snack','~100 kcal/150g'] },
-            { e:'🍅', n:'Tomate', w:'Vitamina C que potencia hierro no-hemo de legumbres. Incluir en todas las comidas con lentejas o garbanzos.', tags:['Vitamina C','Hierro','Diario'] },
-            { e:'🥒', n:'Pepino', w:'Hidratación + sílice. Libre en cantidades. Reduce retención de agua en fase lútea.', tags:['Hidratación','Libre','Fase lútea'] },
-            { e:'🥗', n:'Betarraga (remolacha)', w:'Folato para salud hormonal + nitratos para rendimiento + hierro vegetal. 2–3 veces por semana.', tags:['Folato','Hierro','Nitratos'] },
           ],
           swap: [
             { from:'🌿', to:'<strong>Más económico:</strong> Arroz integral + lentejas rojas (aminoácidos equivalentes)' },
@@ -783,12 +778,10 @@ const PLAN_DATA = {
           titulo: 'Grasas esenciales', icon: '🧠', sub: 'No negociables para la mujer',
           alimentos: [
             { e:'🌻', n:'Semillas de chía + lino', w:'Omega-3 + fitoestrógenos. El combo más importante para salud hormonal femenina. Todos los días.', tags:['Omega-3','Fitoestrógenos','Ciclo'], star:true },
-            { e:'🥑', n:'Palta', w:'Folato + grasas mono. 3–4 veces por semana.', tags:['Folato','Grasas mono'] },
+            { e:'🥑', n:'Aguacate', w:'Folato + grasas mono. 3–4 veces por semana.', tags:['Folato','Grasas mono'] },
             { e:'🫒', n:'Aceite de oliva EVOO', w:'Base de condimento diaria. Antiinflamatorio y vitamina E.', tags:['Antiinflamatorio','Vitamina E'], star:true },
             { e:'🍫', n:'Chocolate negro +85% (20g)', w:'Magnesio + hierro vegetal. Especialmente útil en semana premenstrual.', tags:['Magnesio','Hierro vegetal','PMS'] },
             { e:'🥜', n:'Almendras', w:'Calcio vegetal + vitamina E. Snack diario.', tags:['Calcio vegetal','Vitamina E'] },
-            { e:'🥛', n:'Leche (vaca o vegetal enriquecida)', w:'Calcio + vitamina D para densidad ósea femenina. Especialmente importante antes de los 35. 2 vasos al día mínimo.', tags:['Calcio','Vitamina D','Densidad ósea'], star:true },
-            { e:'🌰', n:'Frutos secos variados (mix)', w:'Calcio vegetal + vitamina E + magnesio para PMS. Un puñado de mix diario es la forma más fácil de cubrir estos micros.', tags:['Calcio vegetal','Vitamina E','Magnesio','PMS'] },
           ],
           swap: [
             { from:'🌻', to:'<strong>Sin semillas:</strong> Aceite de lino + aceite de oliva (omega-3 equivalente)' },
@@ -843,9 +836,9 @@ const MACROS_DATA = [
     desc:'Las grasas son esenciales para hormonas, absorción de vitaminas A/D/E/K y función cerebral. Eliminarlas es un error garrafal.',
     items:[
       {e:'🫒',n:'Aceite de oliva extra virgen',why:'Ácido oleico + oleocantal (antiinflamatorio). El condimento base de cada comida. No usar para fritura a alta temperatura.',
-       swaps:['🔥 Para fritura: aceite de palta o aceite de coco (más estable al calor)','💰 Económico: aceite de girasol alto oleico (similar perfil, más barato)','🌿 Sin procesar: aceitunas enteras (8-10 = aprox 1 cda de aceite)']},
-      {e:'🥑',n:'Palta',why:'Grasa monoinsaturada + vitamina E + folato + potasio. Mejora absorción de vitaminas liposolubles de otros alimentos.',
-       swaps:['💰 Más económico: aceitunas verdes o negras (mismas grasas mono)','🌰 Snack similar: almendras (más proteína, menos folato)','🥚 Sin palta: yema de huevo + aceite de oliva cubre similar función hormonal']},
+       swaps:['🔥 Para fritura: aceite de aguacate o aceite de coco (más estable al calor)','💰 Económico: aceite de girasol alto oleico (similar perfil, más barato)','🌿 Sin procesar: aceitunas enteras (8-10 = aprox 1 cda de aceite)']},
+      {e:'🥑',n:'Aguacate',why:'Grasa monoinsaturada + vitamina E + folato + potasio. Mejora absorción de vitaminas liposolubles de otros alimentos.',
+       swaps:['💰 Más económico: aceitunas verdes o negras (mismas grasas mono)','🌰 Snack similar: almendras (más proteína, menos folato)','🥚 Sin aguacate: yema de huevo + aceite de oliva cubre similar función hormonal']},
       {e:'🐟',n:'Salmón / Sardinas',why:'Omega-3 EPA y DHA de máxima biodisponibilidad. El omega-3 que realmente llega a las células.',
        swaps:['💰 Económico: sardinas en lata (igual omega-3)','🌿 Vegano: cápsulas de aceite de algas (única fuente vegana de EPA/DHA real)','🎣 Variedad: caballa, arenque, trucha de mar (todos ricos en omega-3)']},
       {e:'🌰',n:'Nueces y almendras',why:'Nueces: omega-3 ALA + melatonina + polifenoles. Almendras: vitamina E + calcio + magnesio. Un puñado de cada una.',
@@ -899,11 +892,11 @@ const TIMING_DATA = [
     label:'Pre-cama', tiempo:'2–3 hs antes de dormir', icon:'🌙', sub:'La comida más subestimada',
     items:[
       {dot:'blue',txt:'<strong>Proteína lenta (caseína):</strong> queso cottage, ricota, yogur griego, huevo. Mantiene la síntesis proteica durante el sueño de 6–8 hs.'},
-      {dot:'amber',txt:'<strong>Grasas moderadas:</strong> palta, aceite de oliva, almendras. Ralentizan la digestión — ideal para la noche.'},
+      {dot:'amber',txt:'<strong>Grasas moderadas:</strong> aguacate, aceite de oliva, almendras. Ralentizan la digestión — ideal para la noche.'},
       {dot:'neutral',txt:'Carbohidratos bajos o nulos, a menos que entrenaste esa mañana y aún no recargaste.'},
       {dot:'neutral',txt:'<strong>En volumen:</strong> no saltear esta comida. Es cuando más músculo se construye.'},
     ],
-    alimentos_ejemplo:['🧀 Queso cottage + almendras + canela','🥚 2 huevos revueltos + palta','🫘 Yogur griego + semillas de chía + fresas']
+    alimentos_ejemplo:['🧀 Queso cottage + almendras + canela','🥚 2 huevos revueltos + aguacate','🫘 Yogur griego + semillas de chía + fresas']
   }
 ];
 
@@ -940,7 +933,6 @@ const RESTRICCIONES_FULL = [
       {e:'🌾',n:'Avena certificada sin gluten',w:'Está disponible en muchos países. Si la toleras, es excelente. Verificar etiqueta.'},
       {e:'🌽',n:'Maíz / Harina de maíz / Polenta',w:'Naturalmente sin gluten. Controlar no tenga "puede contener trazas de gluten".'},
       {e:'🌱',n:'Trigo sarraceno (alforfón)',w:'A pesar del nombre, NO tiene gluten. Rico en proteína y minerales.'},
-      {e:'🫓',n:'Pan pita / pan de molde sin gluten',w:'Muchas marcas tienen versiones certificadas sin gluten. Revisar etiqueta. Permiten comer sándwiches sin problemas.'},
       {e:'🫘',n:'Legumbres certificadas',w:'Verificar etiqueta — algunas se procesan en plantas que también procesan gluten.'},
     ],
     micros:[
@@ -1234,5 +1226,369 @@ buildTiming();
 buildRestricciones();
 buildFaq();
 </script>
+
+<div class="saved-toast" id="saved-toast">✓ Guardado</div>
+
+<script>
+// ── TRACKER STATE ──
+const TRACKER_DEFAULTS = { prot:0, carb:0, fat:0, targetProt:150, targetCarb:200, targetFat:60 };
+let trackerDate = todayStr();
+let trackerData = {};
+let shopChecked = {};
+
+function todayStr(){
+  const d = new Date();
+  return d.toISOString().slice(0,10);
+}
+
+function loadTracker(){
+  try {
+    const all = {};
+    trackerData = all;
+  } catch(e){ trackerData = {}; }
+  try {
+    shopChecked = {};
+  } catch(e){ shopChecked = {}; }
+}
+
+function saveTracker(){
+  if(!trackerData[trackerDate]) trackerData[trackerDate] = {...TRACKER_DEFAULTS};
+  trackerData[trackerDate].prot = +document.getElementById('inp-prot').value || 0;
+  trackerData[trackerDate].carb = +document.getElementById('inp-carb').value || 0;
+  trackerData[trackerDate].fat  = +document.getElementById('inp-fat').value  || 0;
+  trackerData[trackerDate].targetProt = +document.getElementById('tgt-prot').value || 150;
+  trackerData[trackerDate].targetCarb = +document.getElementById('tgt-carb').value || 200;
+  trackerData[trackerDate].targetFat  = +document.getElementById('tgt-fat').value  || 60;
+  
+  updateRing();
+  renderRecos();
+  showToast();
+}
+
+function showToast(){
+  const t = document.getElementById('saved-toast');
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'), 1800);
+}
+
+function changeDay(delta){
+  const d = new Date(trackerDate + 'T12:00:00');
+  d.setDate(d.getDate() + delta);
+  trackerDate = d.toISOString().slice(0,10);
+  renderTracker();
+}
+
+function getDay(){ return trackerData[trackerDate] || {...TRACKER_DEFAULTS}; }
+
+function fmtDate(str){
+  const d = new Date(str + 'T12:00:00');
+  const today = todayStr();
+  const yest = new Date(); yest.setDate(yest.getDate()-1);
+  const yesterdayStr = yest.toISOString().slice(0,10);
+  if(str === today) return 'Hoy';
+  if(str === yesterdayStr) return 'Ayer';
+  return d.toLocaleDateString('es',{weekday:'short',day:'numeric',month:'short'});
+}
+
+function pct(val, target){ return Math.min(100, target > 0 ? Math.round(val/target*100) : 0); }
+
+function buildDonutPath(rings){
+  // rings: [{pct, color}]
+  const cx=70, cy=70, r=52, strokeW=14;
+  const circ = 2*Math.PI*r;
+  let offset = 0;
+  let paths = '';
+  // background ring
+  paths += `<circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="#2A2A2A" stroke-width="${strokeW}"/>`;
+  for(const ring of rings){
+    const len = circ * ring.pct / 100;
+    paths += `<circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="${ring.color}" stroke-width="${strokeW}"
+      stroke-dasharray="${len} ${circ-len}" stroke-dashoffset="${-offset*circ/100}" stroke-linecap="round"
+      transform="rotate(-90 ${cx} ${cy})"/>`;
+    offset += ring.pct;
+  }
+  return paths;
+}
+
+function updateRing(){
+  const day = getDay();
+  const tP = day.targetProt, tC = day.targetCarb, tF = day.targetFat;
+  const totalTarget = tP*4 + tC*4 + tF*9;
+  const consumed = day.prot*4 + day.carb*4 + day.fat*9;
+  const pctP = pct(day.prot, tP), pctC = pct(day.carb, tC), pctF = pct(day.fat, tF);
+  // Split ring: each macro takes 1/3 of circumference max, scaled by its own %
+  const rings = [
+    { pct: pctP/3, color:'#4A85C8' },
+    { pct: pctC/3, color:'#C9A96E' },
+    { pct: pctF/3, color:'#C8881A' },
+  ];
+  const svg = document.getElementById('macro-ring-svg');
+  if(!svg) return;
+  svg.innerHTML = buildDonutPath(rings);
+  document.getElementById('ring-kcal').textContent = consumed;
+
+  // update bars
+  const bars = [{id:'bar-prot',pct:pctP,color:'#4A85C8'},{id:'bar-carb',pct:pctC,color:'#C9A96E'},{id:'bar-fat',pct:pctF,color:'#C8881A'}];
+  bars.forEach(b=>{
+    const el = document.getElementById(b.id);
+    if(el){ el.style.width = b.pct+'%'; el.style.background = b.color; }
+  });
+  document.getElementById('pct-prot').textContent = pctP+'%';
+  document.getElementById('pct-carb').textContent = pctC+'%';
+  document.getElementById('pct-fat').textContent  = pctF+'%';
+}
+
+// ── RECOMMENDATION ENGINE ──
+const RECO_DB = {
+  prot_low: {
+    tag:'urgent', tagLabel:'🚨 Proteína baja',
+    title:'Te faltan proteínas para hoy',
+    foods:[
+      {e:'🍗',n:'Pechuga de pollo (150g)',d:'~46g proteína · 250 kcal'},
+      {e:'🥚',n:'3 huevos + 1 clara',d:'~25g proteína · 270 kcal'},
+      {e:'🎣',n:'Atún al natural (lata 160g)',d:'~37g proteína · 150 kcal'},
+      {e:'🧀',n:'Queso cottage (200g)',d:'~22g proteína · 145 kcal'},
+    ]
+  },
+  prot_ok: {
+    tag:'ok', tagLabel:'✅ Proteína al día',
+    title:'¡Proteína en objetivo!',
+    foods:[]
+  },
+  carb_low: {
+    tag:'warning', tagLabel:'⚡ Carbos bajos',
+    title:'Carga carbohidratos antes o después del entreno',
+    foods:[
+      {e:'🍚',n:'Arroz blanco cocido (200g)',d:'~52g CHO · 240 kcal'},
+      {e:'🍌',n:'Banana grande',d:'~27g CHO · 100 kcal'},
+      {e:'🌾',n:'Avena cocida (100g seco)',d:'~60g CHO · 360 kcal'},
+      {e:'🍠',n:'Batata mediana (200g)',d:'~42g CHO · 180 kcal'},
+    ]
+  },
+  fat_low: {
+    tag:'warning', tagLabel:'🧠 Grasas bajas',
+    title:'Grasas insuficientes — impacto hormonal',
+    foods:[
+      {e:'🥑',n:'½ aguacate',d:'~11g grasas · 80 kcal'},
+      {e:'🌰',n:'Puñado almendras (30g)',d:'~14g grasas · 170 kcal'},
+      {e:'🫒',n:'1 cda aceite de oliva',d:'~14g grasas · 120 kcal'},
+      {e:'🐟',n:'Sardinas en lata (90g)',d:'~8g grasas · 160 kcal'},
+    ]
+  },
+  fat_excess: {
+    tag:'urgent', tagLabel:'⚠ Grasas elevadas',
+    title:'Grasas por encima del objetivo',
+    foods:[
+      {e:'🥦',n:'Brócoli / Coliflor al vapor',d:'Agrega volumen sin grasas'},
+      {e:'🍗',n:'Pechuga de pollo (magra)',d:'Proteína sin grasa adicional'},
+      {e:'🥬',n:'Ensalada verde grande',d:'Saciedad con 0g grasas'},
+    ]
+  },
+  carb_excess: {
+    tag:'urgent', tagLabel:'⚠ Carbos elevados',
+    title:'Carbohidratos por encima del objetivo',
+    foods:[
+      {e:'🥩',n:'Carne magra o pescado',d:'Proteína sin CHO'},
+      {e:'🥚',n:'Huevos + verduras',d:'Comida sin impacto en CHO'},
+      {e:'🫒',n:'Grasas saludables',d:'Saciedad sin subir CHO'},
+    ]
+  },
+  all_ok: {
+    tag:'ok', tagLabel:'🏆 Objetivo cumplido',
+    title:'Todos los macros en objetivo — ¡excelente!',
+    foods:[]
+  }
+};
+
+const SHOPPING_DB = [
+  {e:'🍗',n:'Pechuga de pollo',w:'Proteína base del plan',macro:'prot',badge:'31g prot/100g',badgeColor:'var(--blue)'},
+  {e:'🥚',n:'Huevos (docena)',w:'Proteína completa + micronutrientes',macro:'prot',badge:'13g prot/100g',badgeColor:'var(--blue)'},
+  {e:'🎣',n:'Atún al natural (latas)',w:'Proteína rápida, económica',macro:'prot',badge:'23g prot/100g',badgeColor:'var(--blue)'},
+  {e:'🌾',n:'Avena tradicional',w:'Carbohidrato de desayuno ideal',macro:'carb',badge:'60g CHO/100g',badgeColor:'var(--gold)'},
+  {e:'🍚',n:'Arroz blanco',w:'Carbohidrato peri-entrenamiento',macro:'carb',badge:'28g CHO/100g',badgeColor:'var(--gold)'},
+  {e:'🍠',n:'Batatas / Camote',w:'CHO complejo + vitamina A',macro:'carb',badge:'20g CHO/100g',badgeColor:'var(--gold)'},
+  {e:'🫘',n:'Lentejas (bolsa)',w:'Proteína vegetal + hierro + CHO',macro:'prot',badge:'9g prot+20g CHO',badgeColor:'var(--blue)'},
+  {e:'🥑',n:'Aguacates',w:'Grasas mono + folato',macro:'fat',badge:'Grasas saludables',badgeColor:'var(--amber)'},
+  {e:'🌰',n:'Almendras + nueces',w:'Omega-3 ALA + vitamina E',macro:'fat',badge:'1 puñado/día',badgeColor:'var(--amber)'},
+  {e:'🫒',n:'Aceite de oliva EVOO',w:'Base de condimento diario',macro:'fat',badge:'Antiinflamatorio',badgeColor:'var(--amber)'},
+  {e:'🥦',n:'Brócoli / Coliflor',w:'Volumen libre + modulación hormonal',macro:'carb',badge:'30 kcal/100g',badgeColor:'var(--green)'},
+  {e:'🐠',n:'Sardinas en lata',w:'Omega-3 + calcio + proteína',macro:'fat',badge:'25g prot+omega-3',badgeColor:'var(--blue)'},
+  {e:'🫐',n:'Frutas rojas (fresas/arándanos)',w:'Antioxidantes + bajo IG',macro:'carb',badge:'Bajo IG',badgeColor:'var(--gold)'},
+  {e:'🧀',n:'Queso cottage / Ricota',w:'Caseína pre-cama',macro:'prot',badge:'12g prot/100g',badgeColor:'var(--blue)'},
+];
+
+function renderRecos(){
+  const day = getDay();
+  const tP = day.targetProt, tC = day.targetCarb, tF = day.targetFat;
+  const pP = pct(day.prot, tP), pC = pct(day.carb, tC), pF = pct(day.fat, tF);
+  const recos = [];
+  if(pP < 75) recos.push('prot_low');
+  else recos.push('prot_ok');
+  if(pC < 60) recos.push('carb_low');
+  if(pC > 110) recos.push('carb_excess');
+  if(pF < 60) recos.push('fat_low');
+  if(pF > 115) recos.push('fat_excess');
+  if(pP >= 90 && pC >= 80 && pF >= 80 && pF <= 110 && pC <= 110) recos.push('all_ok');
+
+  let html = `<div class="reco-section">
+    <div class="reco-header">
+      <div class="reco-header-icon">🎯</div>
+      <div>
+        <div class="reco-header-text">Recomendaciones del día</div>
+        <div class="reco-header-sub">Basadas en tus macros registrados</div>
+      </div>
+    </div>`;
+
+  recos.forEach(key => {
+    const r = RECO_DB[key];
+    if(!r) return;
+    html += `<div class="reco-card ${r.tag}">
+      <span class="reco-tag ${r.tag}">${r.tagLabel}</span>
+      <div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:${r.foods.length?'0':'0'}">${r.title}</div>`;
+    if(r.foods.length){
+      html += `<div class="reco-food-list">`;
+      r.foods.forEach(f=>{
+        html += `<div class="reco-food-row">
+          <div class="reco-food-emoji">${f.e}</div>
+          <div>
+            <div class="reco-food-name">${f.n}</div>
+            <div class="reco-food-detail">${f.d}</div>
+          </div>
+        </div>`;
+      });
+      html += `</div>`;
+    }
+    html += `</div>`;
+  });
+
+  html += `</div>`;
+
+  // Shopping list filtered by what's most needed
+  const needProt = pct(day.prot, tP) < 85;
+  const needCarb = pct(day.carb, tC) < 85;
+  const needFat  = pct(day.fat, tF) < 85;
+  const shopItems = SHOPPING_DB.filter(item => {
+    if(item.macro === 'prot' && needProt) return true;
+    if(item.macro === 'carb' && needCarb) return true;
+    if(item.macro === 'fat' && needFat) return true;
+    if(!needProt && !needCarb && !needFat) return true; // show all if on target
+    return false;
+  });
+
+  html += `<div class="shopping-section">
+    <div class="reco-header">
+      <div class="reco-header-icon">🛒</div>
+      <div>
+        <div class="reco-header-text">Lista de compras sugerida</div>
+        <div class="reco-header-sub">Toca para marcar lo que ya tenés</div>
+      </div>
+    </div>
+    <div class="shop-list">`;
+  shopItems.forEach((item,i)=>{
+    const key = 'shop_'+i+'_'+item.n.replace(/\s/g,'');
+    const checked = shopChecked[key] ? 'checked' : '';
+    html += `<div class="shop-item ${checked}" onclick="toggleShop('${key}',this)">
+      <div class="shop-check">${checked?'✓':''}</div>
+      <div class="shop-emoji">${item.e}</div>
+      <div style="flex:1">
+        <div class="shop-name">${item.n}</div>
+        <div class="shop-why">${item.w}</div>
+      </div>
+      <span class="shop-macro-badge" style="background:${item.badgeColor}22;color:${item.badgeColor};border:1px solid ${item.badgeColor}44">${item.badge}</span>
+    </div>`;
+  });
+  html += `</div></div>`;
+
+  document.getElementById('reco-area').innerHTML = html;
+}
+
+function toggleShop(key, el){
+  if(shopChecked[key]) delete shopChecked[key];
+  else shopChecked[key] = 1;
+  
+  el.classList.toggle('checked');
+  const chk = el.querySelector('.shop-check');
+  if(chk) chk.textContent = shopChecked[key] ? '✓' : '';
+}
+
+function renderTracker(){
+  const day = getDay();
+  const isToday = trackerDate === todayStr();
+  const tomorrow = new Date(trackerDate+'T12:00:00'); tomorrow.setDate(tomorrow.getDate()+1);
+  const canGoForward = tomorrow.toISOString().slice(0,10) <= todayStr();
+
+  document.getElementById('tracker-content').innerHTML = `
+  <div class="tracker-date-strip">
+    <button class="tracker-date-btn" onclick="changeDay(-1)">← Ayer</button>
+    <div class="tracker-date-label">${fmtDate(trackerDate)}</div>
+    <button class="tracker-date-btn" style="${canGoForward?'':'opacity:0.3;pointer-events:none'}" onclick="changeDay(1)">Mañana →</button>
+  </div>
+
+  <div class="macro-ring-card" style="margin-bottom:20px">
+    <div class="ring-title">Calorías consumidas</div>
+    <div class="ring-wrap">
+      <svg id="macro-ring-svg" width="140" height="140" viewBox="0 0 140 140"></svg>
+      <div class="ring-center">
+        <div class="ring-kcal" id="ring-kcal">0</div>
+        <div class="ring-kcal-label">kcal</div>
+      </div>
+    </div>
+    <div class="ring-legend">
+      <div class="ring-leg-item"><div class="ring-leg-dot" style="background:#4A85C8"></div>Proteína</div>
+      <div class="ring-leg-item"><div class="ring-leg-dot" style="background:#C9A96E"></div>Carbos</div>
+      <div class="ring-leg-item"><div class="ring-leg-dot" style="background:#C8881A"></div>Grasas</div>
+    </div>
+  </div>
+
+  <div class="section-label">Ingresá tus macros del día</div>
+  <div class="macro-inputs-grid">
+    <div class="macro-input-card prot">
+      <div class="macro-input-icon">💪</div>
+      <div class="macro-input-label prot">Proteína</div>
+      <input class="macro-num-input" id="inp-prot" type="number" min="0" max="500" value="${day.prot}" oninput="updateRing()">
+      <div class="macro-unit">gramos</div>
+      <div class="macro-progress-bar"><div class="macro-progress-fill" id="bar-prot" style="width:${pct(day.prot,day.targetProt)}%;background:#4A85C8"></div></div>
+      <div class="macro-target-row">
+        <span id="pct-prot">${pct(day.prot,day.targetProt)}%</span>
+        <div class="target-input-wrap">meta: <input class="target-input" id="tgt-prot" type="number" min="1" max="999" value="${day.targetProt}" oninput="updateRing()">g</div>
+      </div>
+    </div>
+    <div class="macro-input-card carb">
+      <div class="macro-input-icon">⚡</div>
+      <div class="macro-input-label carb">Carbos</div>
+      <input class="macro-num-input" id="inp-carb" type="number" min="0" max="999" value="${day.carb}" oninput="updateRing()">
+      <div class="macro-unit">gramos</div>
+      <div class="macro-progress-bar"><div class="macro-progress-fill" id="bar-carb" style="width:${pct(day.carb,day.targetCarb)}%;background:#C9A96E"></div></div>
+      <div class="macro-target-row">
+        <span id="pct-carb">${pct(day.carb,day.targetCarb)}%</span>
+        <div class="target-input-wrap">meta: <input class="target-input" id="tgt-carb" type="number" min="1" max="999" value="${day.targetCarb}" oninput="updateRing()">g</div>
+      </div>
+    </div>
+    <div class="macro-input-card fat">
+      <div class="macro-input-icon">🧠</div>
+      <div class="macro-input-label fat">Grasas</div>
+      <input class="macro-num-input" id="inp-fat" type="number" min="0" max="500" value="${day.fat}" oninput="updateRing()">
+      <div class="macro-unit">gramos</div>
+      <div class="macro-progress-bar"><div class="macro-progress-fill" id="bar-fat" style="width:${pct(day.fat,day.targetFat)}%;background:#C8881A"></div></div>
+      <div class="macro-target-row">
+        <span id="pct-fat">${pct(day.fat,day.targetFat)}%</span>
+        <div class="target-input-wrap">meta: <input class="target-input" id="tgt-fat" type="number" min="1" max="999" value="${day.targetFat}" oninput="updateRing()">g</div>
+      </div>
+    </div>
+  </div>
+
+  <button class="save-btn" onclick="saveTracker()">💾 Guardar macros del día</button>
+
+  <div id="reco-area"></div>
+  `;
+
+  updateRing();
+  renderRecos();
+}
+
+loadTracker();
+renderTracker();
+</script>
+
 </body>
 </html>
