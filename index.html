@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#0A0A0A">
-<title>GUÍA ALIMENTARIA | SLAB</title>
+<title>GUÍA NUTRICIONAL | SLAB</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -216,7 +216,7 @@ body{font-family:'Outfit',sans-serif;background:#0A0A0A;color:#F0EDE8;min-height
   <div class="header-inner">
     <div class="header-brand">
       <span class="header-eyebrow">SLAB | RENZO BELLO</span>
-      <span class="header-title">GUÍA ALIMENTARIA | SLAB</span>
+      <span class="header-title">GUÍA NUTRICIONAL | SLAB</span>
     </div>
     <span class="header-badge">@reennzolifts</span>
   </div>
@@ -225,8 +225,8 @@ body{font-family:'Outfit',sans-serif;background:#0A0A0A;color:#F0EDE8;min-height
 <div style="background:#0A0A0A;">
   <div class="hero">
     <div class="hero-eyebrow">SLAB | ASESORÍAS PERSONALIZADAS</div>
-    <h1 class="hero-h">Alimentate <em>bien</em>,<br>progresa más rapido</h1>
-    <p class="hero-p">Guía de alimentos para Asesorados. Incluye alimentos de alto valor nutricional adaptada a tu sexo, etapa y restricciones. Con alternativas reales para cada situación.</p>
+    <h1 class="hero-h">Come <em>para ti</em>,<br>no para todos</h1>
+    <p class="hero-p">Guía Para Asesorados con alimentos de alto valor nutricional adaptada a tu sexo, etapa y restricciones. Con alternativas reales para cada situación. Cada Item fue seleccionado selectivamente para aclarar y optimizar los resultados.</p>
   </div>
 </div>
 
@@ -238,6 +238,7 @@ body{font-family:'Outfit',sans-serif;background:#0A0A0A;color:#F0EDE8;min-height
     <button class="nav-tab" onclick="switchTab('timing',this)">Timing</button>
     <button class="nav-tab" onclick="switchTab('restricciones',this)">Restricciones</button>
     <button class="nav-tab" onclick="switchTab('faq',this)">FAQ</button>
+    <button class="nav-tab" onclick="switchTab('hacks',this)">Hacks</button>
   </nav>
 </div>
 
@@ -305,6 +306,13 @@ body{font-family:'Outfit',sans-serif;background:#0A0A0A;color:#F0EDE8;min-height
   <div class="safe-bottom"></div>
 </section>
 
+<section class="panel" id="panel-hacks">
+  <div class="section-label">Hacks</div>
+  <p style="font-size:13px;color:var(--text2);line-height:1.6;margin-bottom:20px;">Estrategias avanzadas basadas en evidencia para maximizar la composición corporal y el rendimiento.</p>
+  <div id="hacks-content"></div>
+  <div class="safe-bottom"></div>
+</section>
+
 <script>
 let restricciones = new Set();
 
@@ -369,6 +377,10 @@ const PLAN_DATA = {
             { e:'🧀', n:'Queso cottage / Ricota', w:'Caseína natural. Proteína de absorción lenta — perfecto antes de dormir en volumen.', tags:['11-13g prot/100g','Caseína','Pre-cama'] },
             { e:'🫘', n:'Lentejas + arroz', w:'Combinación que forma proteína completa. Añade hierro y fibra.', tags:['9g prot/100g cocida','Hierro','Fibra'] },
             { e:'🐠', n:'Sardinas en lata', w:'Omega-3 concentrado, calcio (si comés las espinas), proteína. Subvalorado.', tags:['25g prot/100g','Omega-3','Calcio'] },
+            { e:'🌱', n:'Carne de soya / Proteína texturizada (TVP)', w:'Sustituto directo de la carne picada. 50g seco = 25g proteína. Económico y versátil en guisos y bolognesa.', tags:['50g prot/100g seco','Vegetariano','Económico'] },
+            { e:'🧱', n:'Tempeh', w:'Soya fermentada prensada. Más densa que el tofu, mejor perfil aminoacídico y probióticos incluidos.', tags:['19g prot/100g','Fermentado','Probióticos'] },
+            { e:'🫙', n:'Tofu firme prensado', w:'Proteína vegetal completa. Prensarlo 30 min antes transforma la textura — absorbe marinadas y se dora bien.', tags:['8-17g prot/100g','Completo','Versátil'] },
+            { e:'🌿', n:'Seitán (gluten de trigo)', w:'La proteína vegetal más densa: 25g por 100g. Textura carnosa. No apto para celíacos pero ideal para vegetarianos.', tags:['25g prot/100g','Alta densidad','No celíacos'] },
           ],
           swap: [
             { from:'🥩', to:'<strong>Sin carne roja:</strong> Tofu firme prensado + pepitas de calabaza (zinc)' },
@@ -383,6 +395,9 @@ const PLAN_DATA = {
             { e:'🌾', n:'Avena', w:'Beta-glucano para saciedad + digestión lenta. Desayuno ideal antes del entreno matutino.', tags:['12g CHO/100g','Fibra','Pre-entreno'], star:true },
             { e:'🍠', n:'Batata', w:'Vitamina A, potasio, digestión media. Mejor que la papa en comidas alejadas del entreno.', tags:['20g CHO/100g','Vitamina A','Potasio'] },
             { e:'🍌', n:'Banana', w:'Fructosa + glucosa + potasio. Pre o post entreno inmediato para energía rápida.', tags:['23g CHO/100g','Potasio','Rápido'] },
+            { e:'🥭', n:'Mango', w:'Fructosa natural con digestión más lenta que la banana. Rico en vitamina C y betacaroteno. Ideal como pre-entreno matutino.', tags:['15g CHO/100g','Vitamina C','Betacaroteno'] },
+            { e:'🍍', n:'Piña / Ananá', w:'Bromelina que mejora digestión de proteínas y reduce inflamación. Combinar con comidas altas en proteína.', tags:['13g CHO/100g','Bromelina','Antiinflamatoria'] },
+            { e:'🍇', n:'Uvas / Pasas de uva', w:'Glucosa concentrada. Las pasas son carbohidrato rápido portable — ideal intra o post entreno inmediato.', tags:['17-79g CHO/100g','Portable','Rápido'] },
             { e:'🥔', n:'Papa hervida o al horno', w:'Similar a la batata pero más rápida. Excelente saciedad y facilidad digestiva.', tags:['17g CHO/100g','Versátil'] },
             { e:'🫘', n:'Garbanzos / Porotos', w:'CHO complejo + proteína vegetal + fibra. Triple beneficio.', tags:['20g CHO/100g','Proteína vegetal','Fibra'] },
             { e:'🌽', n:'Polenta / Maíz', w:'Fuente de CHO sin gluten. Útil para celíacos. Densa en calorías.', tags:['Sin gluten','Denso en calorías'] },
@@ -967,11 +982,9 @@ const FAQ_DATA = [
   {q:'¿Cuánta proteína necesito realmente?',tag:'gold',a:'Para quienes entrenan: <strong>1,6–2,2 g/kg de peso corporal/día</strong>. En definición subes a 2,2–2,6 g/kg para preservar músculo en déficit. Más de eso no tiene evidencia de beneficio adicional — el exceso se oxida como energía.'},
   {q:'¿El timing de las comidas importa?',tag:'gold',a:'Importa pero menos que el total diario. Dicho eso: proteína de calidad dentro de 1–2 hs post-entrenamiento optimiza la síntesis proteica. Si llegas a tu objetivo diario de macros, el timing es un detalle fino. Si no llegas al objetivo, el timing no sirve de nada.'},
   {q:'¿Puedo ganar músculo siendo vegetariano?',tag:'amber',a:'Absolutamente sí. La clave: 1) consumir suficiente proteína total (aumentar target 15–20%), 2) combinar fuentes para aminoácidos esenciales, 3) suplementar B12 y considerar creatina monohidratada. La creatina no se encuentra en plantas y los vegetarianos tienen depósitos basales más bajos.'},
-  {q:'¿La fruta engorda?',tag:'gold',a:'No en cantidades normales. El problema no es la fruta — es el jugo de fruta sin fibra y los azúcares añadidos. 2–3 porciones de fruta entera están muy lejos del umbral donde la fructosa se convierte en problema. La fibra ralentiza la absorción. No demonices la fruta.'},
-  {q:'¿Debo evitar los carbohidratos de noche?',tag:'gold',a:'No necesariamente. Lo que importa es el balance calórico total del día, no el horario. Dicho eso: si entrenas en la mañana y tu comida más grande de CHO es de noche, tiene sentido invertir ese orden. En términos hormonales, algunos estudios muestran beneficios de comer CHO por la noche para calidad del sueño.'},
   {q:'¿Por qué las grasas son importantes para las hormonas?',tag:'gold',a:'El colesterol dietario es el precursor directo de las hormonas esteroideas (testosterona, estrógenos, cortisol, vitamina D). Sin grasa suficiente — especialmente grasa saturada en cantidades normales y monoinsaturada — la producción hormonal cae. Mínimo 0,8–1g de grasa/kg de peso corporal.'},
   {q:'¿Qué hacer en la semana premenstrual (fase lútea)?',tag:'amber',a:'En fase lútea (semana 3–4 del ciclo) el metabolismo basal sube hasta 300 kcal, el apetito aumenta y el rendimiento puede bajar. Estrategias: aumentar magnesio (almendras, chocolate negro +85%, espinaca) para reducir PMS, no bajar calorías agresivamente, y priorizar proteína + CHO complejos para controlar los antojos.'},
-  {q:'¿El arroz blanco es malo?',tag:'gold',a:'No. El arroz blanco tiene mala fama sin merecerla. Para el peri-entrenamiento, su digestión rápida es una ventaja, no un problema. El arroz integral es mejor en comidas alejadas del entreno por su fibra. Ambos tienen su función — no descartes ninguno.'},
+  {q:'¿Cómo afecta el ciclo menstrual al metabolismo y la nutrición?',tag:'amber',a:'El ciclo tiene 4 fases con necesidades distintas. Fase folicular (días 1–14): estrógeno alto mejora la sensibilidad a la insulina y la recuperación muscular — es el mejor momento para entrenar fuerte y subir carbohidratos. Ovulación (día 14): pico de energía y fuerza. Fase lútea temprana (días 15–21): progesterona sube, aumenta el catabolismo proteico — subir proteína 10–15% estos días. Fase lútea tardía (días 22–28): metabolismo basal sube 100–300 kcal, aumentan antojos por caída de serotonina — no restringir, priorizar magnesio y triptófano (pavo, avena, chocolate negro) para modular el estado de ánimo. Sincronizar la dieta con el ciclo mejora composición corporal y rendimiento mejor que cualquier dieta genérica.'},
   {q:'¿Cómo cubro el hierro sin carne?',tag:'amber',a:'Hierro no-hemo vegetal: lentejas negras, espinaca, brócoli, pepitas de calabaza, quinoa. La clave: siempre combinar con vitamina C (kiwi, naranja, limón) en la misma comida — aumenta la absorción hasta 3 veces. Evitar té, café y calcio en la misma comida porque inhiben la absorción del hierro no-hemo.'},
   {q:'¿Cuántas comidas al día debo hacer?',tag:'gold',a:'No hay número mágico. Importa: 1) llegar a tu objetivo de macros, 2) distribuir proteína en al menos 3–4 tomas (el cuerpo no usa eficientemente más de ~40g por ingesta para síntesis), 3) que encaje con tu vida real. Más comidas no es automáticamente mejor.'},
 ];
@@ -1067,6 +1080,39 @@ function buildPlan(){
   });
 
   html += `<div class="info-banner"><strong>Recuerda:</strong> esta guía te proporciona alimentos y reemplazos de alta evidencia. Para tus propios números (calorías exactas, gramos de cada macro según tu peso y objetivo), eso lo trabajamos en la asesoría personalizada.</div>`;
+
+  if(etapa === 'definicion'){
+    html += `<div style="margin-top:20px">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
+        <div style="font-size:22px;width:40px;height:40px;background:var(--gold-glow);border:1px solid var(--gold-line);border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0">🎯</div>
+        <div>
+          <div style="font-size:15px;font-weight:600;color:var(--text)">BONUS Definición</div>
+          <div style="font-size:11px;color:var(--text3);margin-top:2px">Alimentos de alta saciedad y baja densidad calórica</div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px">`;
+    const bonusDef = [
+      {e:'🍮', n:'Gelatina Zero / Jaleas sin azúcar', d:'Postre en definición sin culpa. 0-5 kcal por porción. Satisface el antojo dulce sin impacto calórico. Buscar marcas sin aspartamo si hay sensibilidad.'},
+      {e:'🥤', n:'Gaseosa / Refresco Zero o Light', d:'Carbónico que aumenta saciedad a 0 kcal. Útil antes de comidas para comer menos. No abusar — puede generar gases y hinchazón.'},
+      {e:'☕', n:'Café negro / Té verde sin azúcar', d:'Termogénico natural. El café sube el metabolismo 3-11%. El té verde tiene EGCG que potencia la oxidación de grasa. Hasta 3 tazas/día.'},
+      {e:'🫙', n:'Caldo de huesos o vegetal claro', d:'Saciedad líquida con casi 0 calorías. Electrolitos naturales que ayudan a retener menos agua. Ideal entre comidas o como snack nocturno.'},
+      {e:'🥒', n:'Pepino / Apio con sal y limón', d:'Snack libre de calorías. Alta saciedad por volumen y agua. El apio tiene efecto diurético natural — reduce retención de líquidos.'},
+      {e:'🍓', n:'Fresas / Frutillas (gran porción)', d:'100g = 32 kcal. Podés comer 300g sin problema. Vitamina C para cortisol + antioxidantes + saciedad real por volumen.'},
+      {e:'🌶', n:'Salsa picante / Tabasco', d:'Capsaicina = termogénico. Agrega sabor intenso a cualquier comida sin calorías. Ayuda a comer más despacio y sentir más satisfacción.'},
+      {e:'🥗', n:'Mix de hojas verdes ilimitadas', d:'Rúcula, lechuga, espinaca, rúcula. Sin límite en definición. Fibra + micronutrientes + volumen = hambre bajo control.'},
+      {e:'🧊', n:'Agua helada con limón / pepino', d:'El cuerpo gasta calorías calentando el agua fría. Mínimo pero real. Más importante: controla el apetito y reduce la retención de líquidos.'},
+    ];
+    bonusDef.forEach(b => {
+      html += `<div style="background:var(--ink2);border:1px solid var(--gold-line);border-radius:12px;padding:14px;display:flex;gap:12px;align-items:flex-start">
+        <span style="font-size:26px;flex-shrink:0">${b.e}</span>
+        <div>
+          <div style="font-size:13px;font-weight:600;color:var(--text);margin-bottom:4px">${b.n}</div>
+          <div style="font-size:12px;color:var(--text2);line-height:1.55">${b.d}</div>
+        </div>
+      </div>`;
+    });
+    html += `</div></div>`;
+  }
 
   document.getElementById('plan-content').innerHTML = html;
 }
@@ -1224,6 +1270,51 @@ buildMacros();
 buildTiming();
 buildRestricciones();
 buildFaq();
+buildHacks();
+
+function buildHacks(){
+  var hacks = [
+    { num:'01', icon:'⚡', color:'var(--gold)', title:'Carbohidratos intraentrenamiento para sesiones +60 min',
+      body:'30–60g de carbohidratos simples (gel de dextrosa, plátano, arroz inflado) durante entrenos de más de 60 min reducen la fatiga central, preservan glucógeno muscular y elevan insulina lo suficiente para reducir el ambiente catabólico. Más efectivo que la cafeína sola.',
+      tags:['Rendimiento','Anti-catabolismo','Glucógeno'] },
+    { num:'02', icon:'🔬', color:'var(--blue)', title:'Leucina como disparador anabólico aislado',
+      body:'2.5–3g de leucina libre activa mTOR de forma independiente a la proteína total. Útil si una comida es baja en proteína — agregar leucina pura mantiene la señalización anabólica activa sin depender de la comida entera.',
+      tags:['mTOR','Anabolismo','Leucina libre'] },
+    { num:'03', icon:'📈', color:'var(--amber)', title:'Días de recarga (refeed) estratégicos',
+      body:'En fases de déficit prolongado, 1 día de alta ingesta calórica (mantenimiento +20–30%) eleva la leptina, normaliza hormonas tiroideas y reduce el cortisol. Esto no es "trampa" — es fisiología. La recarga activa la señal de abundancia energética que las hormonas anabólicas necesitan.',
+      tags:['Leptina','Cortisol','Déficit'] },
+    { num:'04', icon:'🧠', color:'var(--blue)', title:'Ciclo de proteína para sensitizar mTOR',
+      body:'Evidencia emergente sugiere que períodos breves de baja proteína (1 día/semana con 0.8g/kg) seguidos de alta proteína pueden sensitizar los receptores de mTOR, produciendo una respuesta anabólica más intensa al volver a alta ingesta. Aún en investigación pero utilizado por atletas de élite.',
+      tags:['mTOR','Élite','Emergente'] },
+    { num:'05', icon:'⏱', color:'var(--text3)', title:'Ayuno intermitente para atletas de fuerza: ¿mito o realidad?',
+      body:'El AI (16:8) no es inferior al 5–6 comidas/día para composición corporal cuando la proteína total es adecuada. La diferencia está en la distribución de MPS: el AI produce menos pulsos de síntesis. Para hipertrofia máxima, la distribución clásica es superior. Para definición, el AI es una herramienta válida.',
+      tags:['Ayuno 16:8','MPS','Definición'] },
+    { num:'07', icon:'🦠', color:'var(--green)', title:'El rol del microbioma en el rendimiento deportivo',
+      body:'Atletas de élite tienen microbiomas distintos — mayor diversidad y más bacterias productoras de butirato (antiinflamatorio). Fermentados (kéfir, chucrut, kimchi) + fibra diversa (30+ plantas/semana) optimizan la absorción de nutrientes y reducen inflamación sistémica. El intestino produce el 90% de la serotonina — también impacta el rendimiento mental.',
+      tags:['Microbioma','Fermentados','Serotonina'] },
+    { num:'08', icon:'📆', color:'var(--gold)', title:'Periodización nutricional: sincroniza la dieta con el mesociclo',
+      body:'En semanas de alta carga (volumen máximo), sube carbohidratos 20–30%. En semanas de descarga (deload), reduce carbos y sube grasas. Esto sincroniza la disponibilidad energética con la demanda real, optimizando adaptaciones y composición corporal simultáneamente.',
+      tags:['Periodización','Deload','Mesociclo'] },
+  ];
+
+  var html = '<div style="display:flex;flex-direction:column;gap:14px">';
+  hacks.forEach(function(h){
+    html += '<div style="background:var(--ink2);border:1px solid var(--ink4);border-radius:16px;overflow:hidden">'
+      + '<div style="display:flex;align-items:center;gap:12px;padding:16px 16px 12px">'
+      + '<div style="font-weight:800;color:'+h.color+';font-family:\'Cormorant Garamond\',serif;font-size:28px;line-height:1;min-width:36px">'+h.num+'</div>'
+      + '<div style="font-size:13px;font-weight:700;color:var(--text);line-height:1.35;flex:1">'+h.title+'</div>'
+      + '</div>'
+      + '<div style="padding:0 16px 14px">'
+      + '<p style="font-size:12.5px;color:var(--text2);line-height:1.65;margin:0 0 10px">'+h.body+'</p>'
+      + '<div style="display:flex;flex-wrap:wrap;gap:6px">';
+    h.tags.forEach(function(t){
+      html += '<span style="font-size:10px;font-weight:600;padding:3px 9px;border-radius:6px;background:'+h.color+'18;color:'+h.color+';border:1px solid '+h.color+'33;letter-spacing:0.5px">'+t+'</span>';
+    });
+    html += '</div></div></div>';
+  });
+  html += '</div>';
+  document.getElementById('hacks-content').innerHTML = html;
+}
 
 // ── TRACKER ──
 const TRACKER_DEFAULTS = { prot:0, carb:0, fat:0, targetProt:150, targetCarb:200, targetFat:60 };
