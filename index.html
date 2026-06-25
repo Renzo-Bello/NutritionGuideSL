@@ -3,408 +3,504 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="theme-color" content="#080808">
-<title>Guía Nutricional — SLAB</title>
+<meta name="theme-color" content="#F7F4EE">
+<title>Guía Nutricional — STRENGTHLAB</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-/* ─── RESET & BASE ─── */
+/* ─── RESET ─── */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 html{font-size:16px;scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-body{font-family:'Outfit',sans-serif;background:#080808;color:#EDE9E3;min-height:100vh;overflow-x:hidden;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}
+body{
+  font-family:'DM Sans',sans-serif;
+  background:#F7F4EE;
+  color:#1A1714;
+  min-height:100vh;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
 
 /* ─── TOKENS ─── */
 :root{
-  /* Gold system */
-  --gold:#C4A35A;
-  --gold-bright:#D4B870;
-  --gold-dim:#7A6030;
-  --gold-glow:rgba(196,163,90,0.10);
-  --gold-glow-strong:rgba(196,163,90,0.18);
-  --gold-line:rgba(196,163,90,0.20);
-  --gold-line-strong:rgba(196,163,90,0.35);
+  --cream:#F7F4EE;
+  --white:#FFFFFF;
+  --ink:#1A1714;
+  --ink2:#3D3A35;
+  --ink3:#6B6660;
+  --ink4:#9B9490;
 
-  /* Ink system */
-  --ink:#080808;
-  --ink2:#111111;
-  --ink3:#191919;
-  --ink4:#222222;
-  --ink5:#2E2E2E;
+  --gold:#B8924A;
+  --gold-bg:#F5ECD8;
+  --gold-line:rgba(184,146,74,0.22);
+  --gold-line-strong:rgba(184,146,74,0.45);
 
-  /* Text system */
-  --text:#EDE9E3;
-  --text2:#A8A49E;
-  --text3:#5A5752;
+  --green:#1E5C3A;
+  --green-bg:#E4F0E9;
+  --green-line:rgba(30,92,58,0.22);
 
-  /* Semantic */
-  --green:#4E9468;
-  --green-bg:rgba(78,148,104,0.10);
-  --green-line:rgba(78,148,104,0.30);
-  --red:#B84A44;
-  --red-bg:rgba(184,74,68,0.10);
-  --red-line:rgba(184,74,68,0.30);
-  --amber:#B87D1A;
-  --amber-bg:rgba(184,125,26,0.10);
-  --amber-line:rgba(184,125,26,0.30);
-  --blue:#4480B8;
-  --blue-bg:rgba(68,128,184,0.10);
-  --blue-line:rgba(68,128,184,0.30);
+  --red:#8B1F2F;
+  --red-bg:#F5E8EA;
+  --red-line:rgba(139,31,47,0.20);
 
-  /* Safe areas */
+  --amber:#7A5015;
+  --amber-bg:#FBF0DC;
+  --amber-line:rgba(122,80,21,0.22);
+
+  --blue:#1A4A7A;
+  --blue-bg:#E8EFF8;
+  --blue-line:rgba(26,74,122,0.20);
+
+  --border:rgba(26,23,20,0.10);
+  --border-mid:rgba(26,23,20,0.18);
+
   --sat:env(safe-area-inset-top,0px);
   --sab:env(safe-area-inset-bottom,0px);
 
-  /* Spacing */
-  --gap-xs:6px;
-  --gap-sm:10px;
-  --gap-md:16px;
-  --gap-lg:24px;
-  --gap-xl:32px;
-
-  /* Radius */
-  --r-sm:8px;
-  --r-md:12px;
-  --r-lg:16px;
-  --r-xl:20px;
+  --r-sm:6px;
+  --r-md:10px;
+  --r-lg:14px;
+  --r-xl:18px;
   --r-pill:100px;
+
+  --max:440px;
+  --px:22px;
 }
 
 /* ─── SCROLLBAR ─── */
-::-webkit-scrollbar{width:2px;height:2px}
+::-webkit-scrollbar{width:3px;height:3px}
 ::-webkit-scrollbar-track{background:transparent}
-::-webkit-scrollbar-thumb{background:var(--gold-dim);border-radius:2px}
+::-webkit-scrollbar-thumb{background:rgba(184,146,74,0.3);border-radius:3px}
 
 /* ─── HEADER ─── */
 .app-header{
   position:sticky;top:0;z-index:200;
-  background:rgba(8,8,8,0.95);
-  backdrop-filter:blur(20px) saturate(1.5);
-  -webkit-backdrop-filter:blur(20px) saturate(1.5);
-  border-bottom:1px solid var(--gold-line);
-  padding:calc(10px + var(--sat)) 20px 10px;
+  background:rgba(247,244,238,0.96);
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--border);
+  padding:calc(12px + var(--sat)) var(--px) 12px;
 }
 .header-inner{
   display:flex;align-items:center;justify-content:space-between;
-  max-width:480px;margin:0 auto;gap:12px;
+  max-width:var(--max);margin:0 auto;gap:12px;
 }
-.header-brand{display:flex;flex-direction:column;gap:2px;}
+.header-brand{display:flex;flex-direction:column;gap:3px;}
 .header-eyebrow{
-  font-size:9px;letter-spacing:3.5px;text-transform:uppercase;
+  font-family:'DM Mono',monospace;
+  font-size:9px;letter-spacing:2.5px;text-transform:uppercase;
   color:var(--gold);font-weight:500;
+  display:flex;align-items:center;gap:8px;
+}
+.header-eyebrow::before{
+  content:'';width:18px;height:1px;
+  background:var(--gold);display:block;flex-shrink:0;
 }
 .header-wordmark{
-  font-family:'Cormorant Garamond',serif;
-  font-size:18px;font-weight:700;color:var(--text);
-  line-height:1;letter-spacing:0.5px;
+  font-family:'DM Serif Display',serif;
+  font-size:19px;font-weight:400;color:var(--ink);
+  line-height:1;letter-spacing:-0.2px;
 }
 .header-badge{
-  font-size:10px;font-weight:500;
-  background:var(--gold-glow);
+  font-family:'DM Mono',monospace;
+  font-size:9px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;
+  background:var(--gold-bg);
   border:1px solid var(--gold-line);
-  color:var(--gold);padding:5px 12px;
-  border-radius:var(--r-pill);letter-spacing:0.3px;
+  color:var(--gold);padding:6px 12px;
+  border-radius:var(--r-pill);
   white-space:nowrap;
 }
 
 /* ─── NAV ─── */
 .sticky-nav{
-  position:sticky;top:52px;z-index:190;
-  background:rgba(8,8,8,0.97);
-  backdrop-filter:blur(12px);
-  -webkit-backdrop-filter:blur(12px);
-  border-bottom:1px solid rgba(255,255,255,0.04);
+  position:sticky;top:57px;z-index:190;
+  background:rgba(247,244,238,0.97);
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--border);
 }
 .nav-tabs{
   display:flex;overflow-x:auto;-webkit-overflow-scrolling:touch;
   scrollbar-width:none;
-  padding:0 16px;
-  max-width:480px;margin:0 auto;
+  padding:0 var(--px);
+  max-width:var(--max);margin:0 auto;
+  gap:2px;
 }
 .nav-tabs::-webkit-scrollbar{display:none}
 .nav-tab{
   flex-shrink:0;
-  font-family:'Outfit',sans-serif;font-size:12px;font-weight:400;
-  color:var(--text3);
-  padding:13px 14px 12px;
+  font-family:'DM Sans',sans-serif;font-size:12px;font-weight:400;
+  color:var(--ink3);
+  padding:13px 13px 11px;
   border:none;background:none;cursor:pointer;
   border-bottom:2px solid transparent;
   transition:color 0.2s,border-color 0.2s;
-  white-space:nowrap;letter-spacing:0.2px;
+  white-space:nowrap;letter-spacing:0.1px;
 }
-.nav-tab.active{color:var(--gold);border-bottom-color:var(--gold);font-weight:500;}
+.nav-tab.active{color:var(--gold);border-bottom-color:var(--gold);font-weight:600;}
 .nav-tab:active{opacity:0.65}
-
-/* ─── PANELS ─── */
-.panel{display:none;padding:20px;max-width:480px;margin:0 auto;animation:panelIn 0.22s ease;}
-.panel.active{display:block}
-@keyframes panelIn{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
 
 /* ─── HERO ─── */
 .hero{
-  padding:32px 20px 28px;
-  border-bottom:1px solid var(--gold-line);
-  max-width:480px;margin:0 auto;
-  position:relative;overflow:hidden;
-}
-.hero::before{
-  content:'';position:absolute;
-  top:-60px;right:-40px;
-  width:200px;height:200px;
-  border-radius:50%;
-  background:radial-gradient(circle,rgba(196,163,90,0.06) 0%,transparent 70%);
-  pointer-events:none;
+  padding:36px var(--px) 32px;
+  border-bottom:1px solid var(--border);
+  max-width:var(--max);margin:0 auto;
 }
 .hero-eyebrow{
-  font-size:9px;letter-spacing:3.5px;text-transform:uppercase;
-  color:var(--gold);font-weight:500;margin-bottom:14px;
+  font-family:'DM Mono',monospace;
+  font-size:9px;letter-spacing:2.5px;text-transform:uppercase;
+  color:var(--gold);font-weight:500;margin-bottom:16px;
   display:flex;align-items:center;gap:10px;
 }
-.hero-eyebrow::before{content:'';width:24px;height:1px;background:var(--gold);display:block;}
+.hero-eyebrow::before{content:'';width:28px;height:1px;background:var(--gold);display:block;flex-shrink:0;}
 .hero-h{
-  font-family:'Cormorant Garamond',serif;
-  font-size:36px;font-weight:700;
-  color:var(--text);line-height:1.08;margin-bottom:14px;
-  letter-spacing:-0.3px;
+  font-family:'DM Serif Display',serif;
+  font-size:38px;font-weight:400;
+  color:var(--ink);line-height:1.06;margin-bottom:14px;
+  letter-spacing:-0.5px;
 }
 .hero-h em{color:var(--gold);font-style:italic;}
-.hero-p{font-size:13.5px;color:var(--text2);line-height:1.65;max-width:400px;}
+.hero-p{font-size:14px;color:var(--ink3);line-height:1.7;max-width:380px;}
 
-/* ─── SECTION LABEL ─── */
-.section-label{
-  font-size:9px;letter-spacing:3px;text-transform:uppercase;
-  color:var(--text3);font-weight:500;margin-bottom:16px;
+/* ─── PANELS ─── */
+.panel{display:none;padding:24px var(--px);max-width:var(--max);margin:0 auto;animation:panelIn 0.2s ease;}
+.panel.active{display:block}
+@keyframes panelIn{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+
+/* ─── EYEBROW SECTION ─── */
+.section-eyebrow{
+  font-family:'DM Mono',monospace;
+  font-size:9px;letter-spacing:2.5px;text-transform:uppercase;
+  color:var(--gold);font-weight:500;margin-bottom:18px;
+  display:flex;align-items:center;gap:8px;
 }
+.section-eyebrow::before{content:'';width:18px;height:1px;background:var(--gold);display:block;flex-shrink:0;}
+
+/* ─── DIVIDER ─── */
+.divider{height:1px;background:var(--border);margin:22px 0;}
+
+/* ─── WHITE CARD ─── */
+.wcard{
+  background:var(--white);border:1px solid var(--border);
+  border-radius:var(--r-lg);padding:18px;
+  margin-bottom:12px;
+}
+.wcard + .wcard{margin-top:0;}
 
 /* ─── FORM FIELDS ─── */
 .field-group{margin-bottom:16px;}
 .field-label{
-  display:block;font-size:11px;font-weight:500;
-  letter-spacing:1.5px;text-transform:uppercase;
-  color:var(--text3);margin-bottom:8px;
+  display:block;
+  font-family:'DM Mono',monospace;
+  font-size:9px;font-weight:500;
+  letter-spacing:2px;text-transform:uppercase;
+  color:var(--ink3);margin-bottom:8px;
 }
 .field-select{
-  width:100%;font-family:'Outfit',sans-serif;font-size:14px;
-  font-weight:400;color:var(--text);
-  background:var(--ink3);
-  border:1px solid var(--ink5);border-radius:var(--r-md);
-  padding:14px 42px 14px 16px;
+  width:100%;font-family:'DM Sans',sans-serif;font-size:14px;
+  font-weight:400;color:var(--ink);
+  background:var(--white);
+  border:1px solid var(--border-mid);border-radius:var(--r-md);
+  padding:13px 40px 13px 15px;
   appearance:none;-webkit-appearance:none;cursor:pointer;
-  transition:border-color 0.2s,background 0.2s;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%235A5752' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-  background-repeat:no-repeat;background-position:right 16px center;
+  transition:border-color 0.2s;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236B6660' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 15px center;
 }
-.field-select:focus{outline:none;border-color:var(--gold-dim);background-color:var(--ink4);}
-.field-select option{background:#191919;color:#EDE9E3;}
+.field-select:focus{outline:none;border-color:var(--gold);}
+.field-select option{background:#fff;color:#1A1714;}
 
 /* ─── CHIPS ─── */
-.chips-wrap{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px;}
+.chips-wrap{display:flex;flex-wrap:wrap;gap:7px;margin-top:4px;}
 .chip-btn{
-  font-family:'Outfit',sans-serif;font-size:12px;font-weight:400;
-  color:var(--text3);padding:8px 16px;
+  font-family:'DM Sans',sans-serif;font-size:12px;font-weight:400;
+  color:var(--ink3);padding:8px 15px;
   border-radius:var(--r-pill);
-  border:1px solid var(--ink5);background:none;cursor:pointer;
-  transition:all 0.18s;-webkit-user-select:none;user-select:none;
+  border:1px solid var(--border-mid);background:var(--white);cursor:pointer;
+  transition:all 0.16s;-webkit-user-select:none;user-select:none;
 }
 .chip-btn.active{
-  background:var(--gold-glow-strong);
-  border-color:var(--gold-dim);color:var(--gold);
+  background:var(--gold-bg);
+  border-color:var(--gold-line-strong);color:var(--gold);font-weight:500;
 }
 .chip-btn:active{transform:scale(0.96);}
 
 /* ─── BADGES ─── */
 .badge{
   display:inline-flex;align-items:center;gap:5px;
-  font-size:10px;font-weight:600;letter-spacing:0.8px;
+  font-family:'DM Mono',monospace;
+  font-size:9px;font-weight:500;letter-spacing:1px;
   text-transform:uppercase;padding:5px 10px;border-radius:var(--r-sm);
 }
-.badge-green{background:var(--green-bg);color:var(--green);}
-.badge-amber{background:var(--amber-bg);color:var(--amber);}
-.badge-red{background:var(--red-bg);color:var(--red);}
-.badge-blue{background:var(--blue-bg);color:var(--blue);}
-.badge-gold{background:var(--gold-glow);color:var(--gold);}
+.badge-gold{background:var(--gold-bg);color:var(--gold);border:1px solid var(--gold-line);}
+.badge-green{background:var(--green-bg);color:var(--green);border:1px solid var(--green-line);}
+.badge-red{background:var(--red-bg);color:var(--red);border:1px solid var(--red-line);}
+.badge-amber{background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-line);}
+.badge-blue{background:var(--blue-bg);color:var(--blue);border:1px solid var(--blue-line);}
 
-/* ─── RESULT CARD ─── */
-.result-card{
-  border:1px solid var(--gold-dim);border-radius:var(--r-xl);
-  overflow:hidden;margin-top:4px;
-  animation:fadeUp 0.28s ease;
+/* ─── PLAN SUMMARY CARD ─── */
+.plan-summary{
+  background:var(--white);border:1px solid var(--border);border-radius:var(--r-xl);
+  overflow:hidden;margin-bottom:20px;
+  animation:fadeUp 0.25s ease;
 }
-@keyframes fadeUp{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+.plan-summary-top{
+  border-bottom:1px solid var(--border);
+  padding:20px 20px 18px;
+  background:var(--gold-bg);
+}
+.plan-summary-title{
+  font-family:'DM Serif Display',serif;
+  font-size:22px;font-weight:400;color:var(--ink);line-height:1.15;margin-bottom:6px;
+}
+.plan-summary-ratio{
+  font-family:'DM Mono',monospace;
+  font-size:10px;letter-spacing:1px;color:var(--gold);font-weight:500;
+}
+.plan-summary-body{padding:18px 20px;font-size:13.5px;color:var(--ink2);line-height:1.7;}
 
-.result-top{
-  background:linear-gradient(140deg,#1C1508 0%,#0D0A04 100%);
-  padding:20px;border-bottom:1px solid var(--gold-line);
-  position:relative;overflow:hidden;
+/* ─── HORMONE CARD ─── */
+.hormone-card{
+  background:var(--white);border:1px solid var(--border);
+  border-left:3px solid var(--gold);
+  border-radius:var(--r-lg);padding:18px;margin-bottom:20px;
 }
-.result-top::after{
-  content:'';position:absolute;
-  bottom:-20px;right:-20px;width:100px;height:100px;border-radius:50%;
-  background:radial-gradient(circle,rgba(196,163,90,0.06) 0%,transparent 70%);
-  pointer-events:none;
+.hormone-title{
+  font-family:'DM Serif Display',serif;
+  font-size:19px;color:var(--ink);margin-bottom:3px;
 }
-.result-name{
-  font-family:'Cormorant Garamond',serif;
-  font-size:22px;font-weight:700;color:var(--text);line-height:1.1;
+.hormone-sub{
+  font-family:'DM Mono',monospace;
+  font-size:9px;letter-spacing:1.5px;text-transform:uppercase;
+  color:var(--gold);margin-bottom:12px;
 }
-.result-sub{font-size:12px;color:var(--gold);margin-top:5px;font-weight:400;letter-spacing:0.3px;}
+.hormone-desc{font-size:13px;color:var(--ink2);line-height:1.7;margin-bottom:14px;}
+.micro-list{display:flex;flex-direction:column;gap:6px;}
+.micro-row{
+  display:flex;gap:10px;align-items:flex-start;
+  padding:10px 12px;background:var(--cream);
+  border-radius:var(--r-sm);border:1px solid var(--border);
+}
+.micro-icon{font-size:15px;flex-shrink:0;margin-top:1px;}
+.micro-text{font-size:12.5px;color:var(--ink2);line-height:1.55;}
+.micro-text strong{color:var(--ink);font-weight:600;}
 
 /* ─── ALERT BOXES ─── */
-.alert-box{border-radius:var(--r-md);padding:14px 16px;margin-bottom:12px;}
-.alert-box.gold{background:var(--gold-glow);border:1px solid var(--gold-line);}
+.alert-box{border-radius:var(--r-md);padding:13px 15px;margin-bottom:12px;}
+.alert-box.gold{background:var(--gold-bg);border:1px solid var(--gold-line);}
 .alert-box.amber{background:var(--amber-bg);border:1px solid var(--amber-line);}
 .alert-box.red{background:var(--red-bg);border:1px solid var(--red-line);}
 .alert-box.blue{background:var(--blue-bg);border:1px solid var(--blue-line);}
 .alert-box.green{background:var(--green-bg);border:1px solid var(--green-line);}
-.alert-title{font-size:10px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;margin-bottom:6px;}
+.alert-title{font-family:'DM Mono',monospace;font-size:9px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:6px;}
 .alert-title.gold{color:var(--gold)}.alert-title.amber{color:var(--amber)}.alert-title.red{color:var(--red)}.alert-title.blue{color:var(--blue)}.alert-title.green{color:var(--green)}
-.alert-body{font-size:13px;color:var(--text2);line-height:1.6;}
-
-/* ─── DIVIDERS ─── */
-.gold-divider{height:1px;background:var(--gold-line);margin:22px 0;}
-
-/* ─── INFO BANNER ─── */
-.info-banner{
-  background:var(--ink3);border:1px solid var(--ink5);
-  border-radius:var(--r-md);padding:16px;
-  margin-top:16px;font-size:12.5px;color:var(--text3);line-height:1.6;
-}
-.info-banner strong{color:var(--text2);font-weight:500;}
-
-/* ─── TIP BLOCK ─── */
-.tip-block{padding:16px;background:var(--ink2);border-radius:0 0 var(--r-xl) var(--r-xl);}
-.tip-inner{
-  border-left:2px solid var(--gold);padding:10px 14px;
-  background:var(--gold-glow);border-radius:0 var(--r-sm) var(--r-sm) 0;
-  font-size:13px;line-height:1.6;color:var(--text2);
-}
-.tip-inner strong{color:var(--text);font-weight:500;}
-
-/* ─── FAQ ─── */
-.faq-item{border-bottom:1px solid var(--ink3);}
-.faq-item:last-child{border-bottom:none;}
-.faq-q{
-  display:flex;align-items:center;justify-content:space-between;
-  gap:14px;padding:18px 0;cursor:pointer;
-  -webkit-user-select:none;user-select:none;
-}
-.faq-q-text{font-size:14px;font-weight:500;color:var(--text);line-height:1.4;flex:1;}
-.faq-icon{
-  color:var(--gold);font-size:20px;flex-shrink:0;
-  font-weight:300;transition:transform 0.25s;
-  width:24px;height:24px;display:flex;align-items:center;justify-content:center;
-}
-.faq-icon.open{transform:rotate(45deg);}
-.faq-a{display:none;font-size:13px;color:var(--text2);line-height:1.65;padding:0 0 18px;}
-.faq-a.open{display:block;}
-.faq-tag{
-  display:inline-block;font-size:9px;font-weight:600;
-  letter-spacing:1px;text-transform:uppercase;
-  padding:3px 8px;border-radius:4px;margin-bottom:10px;
-}
-.faq-tag.gold{background:var(--gold-glow);color:var(--gold);}
-.faq-tag.amber{background:var(--amber-bg);color:var(--amber);}
+.alert-body{font-size:13px;color:var(--ink2);line-height:1.6;}
 
 /* ─── FOOD BLOCKS ─── */
-.food-block{margin-bottom:24px;}
+.food-block{margin-bottom:26px;}
 .food-block-header{
   display:flex;align-items:center;gap:12px;
-  margin-bottom:14px;padding-bottom:12px;
-  border-bottom:1px solid var(--gold-line);
+  margin-bottom:14px;padding-bottom:13px;
+  border-bottom:1px solid var(--border);
 }
 .food-block-icon{
-  font-size:18px;width:38px;height:38px;
-  background:var(--gold-glow);border:1px solid var(--gold-line);
+  font-size:17px;width:38px;height:38px;
+  background:var(--gold-bg);border:1px solid var(--gold-line);
   border-radius:var(--r-md);display:flex;align-items:center;justify-content:center;flex-shrink:0;
 }
-.food-block-title{font-size:14px;font-weight:600;color:var(--text);}
-.food-block-sub{font-size:11px;color:var(--text3);margin-top:2px;}
+.food-block-title{font-family:'DM Serif Display',serif;font-size:17px;color:var(--ink);}
+.food-block-sub{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1px;color:var(--ink3);margin-top:3px;text-transform:uppercase;}
 .food-grid{display:flex;flex-direction:column;gap:8px;}
 
 /* ─── FOOD CARDS ─── */
 .food-card{
-  background:var(--ink2);border:1px solid var(--ink4);
-  border-radius:var(--r-lg);padding:16px;
+  background:var(--white);border:1px solid var(--border);
+  border-radius:var(--r-lg);padding:15px;
   transition:border-color 0.2s;
 }
-.food-card.star{border-color:rgba(196,163,90,0.30);}
+.food-card.star{border-left:3px solid var(--gold);}
 .food-card-top{display:flex;align-items:flex-start;gap:12px;}
-.food-emoji{font-size:24px;width:30px;text-align:center;flex-shrink:0;margin-top:1px;}
-.food-name{
-  font-size:14px;font-weight:600;color:var(--text);
-  margin-bottom:4px;line-height:1.3;
-}
-.food-why{font-size:12.5px;color:var(--text2);line-height:1.55;}
+.food-emoji{font-size:22px;width:28px;text-align:center;flex-shrink:0;margin-top:1px;}
+.food-name{font-size:13.5px;font-weight:600;color:var(--ink);margin-bottom:4px;line-height:1.3;}
+.food-why{font-size:12.5px;color:var(--ink2);line-height:1.6;}
 .food-tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:9px;}
-.food-tag{font-size:10px;font-weight:500;padding:4px 9px;border-radius:5px;letter-spacing:0.2px;}
-.food-tag.macro{background:var(--gold-glow);color:var(--gold);}
+.food-tag{
+  font-family:'DM Mono',monospace;
+  font-size:9px;font-weight:500;padding:4px 8px;
+  border-radius:4px;letter-spacing:0.5px;text-transform:uppercase;
+}
+.food-tag.macro{background:var(--gold-bg);color:var(--gold);}
 .food-tag.micro{background:var(--green-bg);color:var(--green);}
 .food-tag.hor{background:var(--amber-bg);color:var(--amber);}
 .food-tag.tip{background:var(--blue-bg);color:var(--blue);}
+.star-badge{
+  font-family:'DM Mono',monospace;
+  font-size:8px;color:var(--gold);font-weight:500;
+  letter-spacing:0.5px;text-transform:uppercase;
+  background:var(--gold-bg);border:1px solid var(--gold-line);
+  padding:2px 6px;border-radius:3px;margin-left:5px;vertical-align:middle;
+}
 
 /* ─── SWAP BLOCK ─── */
 .swap-block{
   margin-top:12px;padding:12px 14px;
-  background:var(--ink3);border-radius:var(--r-sm);
-  border-left:2px solid var(--gold-dim);
+  background:var(--cream);border-radius:var(--r-sm);
+  border-left:2px solid var(--gold-line-strong);
 }
 .swap-title{
-  font-size:9px;font-weight:600;letter-spacing:1.2px;
+  font-family:'DM Mono',monospace;
+  font-size:8px;font-weight:500;letter-spacing:1.5px;
   text-transform:uppercase;color:var(--gold);margin-bottom:8px;
 }
 .swap-row{display:flex;align-items:flex-start;gap:9px;margin-bottom:6px;}
 .swap-row:last-child{margin-bottom:0;}
-.swap-from{font-size:13px;color:var(--text3);min-width:20px;}
-.swap-arrow{font-size:11px;color:var(--gold-dim);flex-shrink:0;padding-top:2px;}
-.swap-to{font-size:12.5px;color:var(--text2);line-height:1.45;flex:1;}
-.swap-to strong{color:var(--text);font-weight:500;}
+.swap-from{font-size:13px;color:var(--ink3);min-width:20px;}
+.swap-arrow{font-size:11px;color:var(--gold);flex-shrink:0;padding-top:2px;}
+.swap-to{font-size:12.5px;color:var(--ink2);line-height:1.5;flex:1;}
+.swap-to strong{color:var(--ink);font-weight:600;}
 
-/* ─── HORMONE CARD ─── */
-.hormone-card{
-  background:linear-gradient(140deg,#1C1508,#0D0A04);
-  border:1px solid var(--gold-line);border-radius:var(--r-lg);
-  padding:18px;margin-bottom:16px;
+/* ─── INFO BANNER ─── */
+.info-banner{
+  background:var(--white);border:1px solid var(--border);
+  border-radius:var(--r-md);padding:15px;
+  margin-top:16px;font-size:13px;color:var(--ink3);line-height:1.65;
 }
-.hormone-title{
-  font-family:'Cormorant Garamond',serif;
-  font-size:20px;font-weight:700;color:var(--text);margin-bottom:4px;
-}
-.hormone-sub{font-size:11px;color:var(--gold);margin-bottom:12px;letter-spacing:0.3px;}
-.hormone-desc{font-size:13px;color:var(--text2);line-height:1.65;margin-bottom:14px;}
-.micro-list{display:flex;flex-direction:column;gap:7px;}
-.micro-row{
-  display:flex;gap:10px;align-items:flex-start;
-  padding:10px 12px;background:rgba(0,0,0,0.28);border-radius:var(--r-sm);
-}
-.micro-icon{font-size:16px;flex-shrink:0;}
-.micro-text{font-size:12.5px;color:var(--text2);line-height:1.5;}
-.micro-text strong{color:var(--text);font-weight:500;}
+.info-banner strong{color:var(--ink2);font-weight:500;}
 
-/* ─── ACCORDION ─── */
+/* ─── BONUS CARDS ─── */
+.bonus-card{
+  background:var(--white);border:1px solid var(--border);
+  border-radius:var(--r-md);padding:15px;
+  display:flex;gap:13px;align-items:flex-start;
+}
+.bonus-emoji{font-size:24px;flex-shrink:0;}
+.bonus-name{font-size:13.5px;font-weight:600;color:var(--ink);margin-bottom:4px;}
+.bonus-desc{font-size:12.5px;color:var(--ink2);line-height:1.6;}
+
+/* ─── MACRO ACCORDIONS ─── */
 .accord{
-  border:1px solid var(--ink4);border-radius:var(--r-lg);
-  overflow:hidden;margin-bottom:10px;
+  border:1px solid var(--border);border-radius:var(--r-lg);
+  overflow:hidden;margin-bottom:10px;background:var(--white);
 }
 .accord-head{
-  padding:16px;background:var(--ink2);cursor:pointer;
+  padding:16px;cursor:pointer;
   display:flex;align-items:center;justify-content:space-between;
   -webkit-user-select:none;user-select:none;
   transition:background 0.15s;
 }
-.accord-head:active{background:var(--ink3);}
+.accord-head:active{background:var(--cream);}
 .accord-icon{
-  font-size:18px;width:38px;height:38px;border-radius:var(--r-sm);
+  font-size:17px;width:36px;height:36px;border-radius:var(--r-sm);
   display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  background:var(--gold-bg);border:1px solid var(--gold-line);
 }
-.accord-name{font-size:14px;font-weight:600;color:var(--text);}
-.accord-sub{font-size:11px;color:var(--text3);margin-top:2px;}
-.accord-arrow{color:var(--gold);font-size:18px;transition:transform 0.25s;}
+.accord-name{font-family:'DM Serif Display',serif;font-size:16px;color:var(--ink);}
+.accord-sub{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1px;color:var(--ink3);margin-top:3px;text-transform:uppercase;}
+.accord-arrow{color:var(--gold);font-size:18px;transition:transform 0.22s;flex-shrink:0;}
 .accord-arrow.open{transform:rotate(180deg);}
-.accord-body{display:none;padding:18px;background:var(--ink);}
+.accord-body{display:none;padding:18px;border-top:1px solid var(--border);background:var(--cream);}
 .accord-body.open{display:block;}
 
-/* ─── SAFE AREA ─── */
-.safe-bottom{height:calc(24px + var(--sab));}
+/* ─── FAQ ─── */
+.faq-item{border-bottom:1px solid var(--border);background:var(--white);}
+.faq-item:first-child{border-radius:var(--r-lg) var(--r-lg) 0 0;overflow:hidden;}
+.faq-item:last-child{border-radius:0 0 var(--r-lg) var(--r-lg);overflow:hidden;border-bottom:none;}
+.faq-container{border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;}
+.faq-q{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:14px;padding:17px 18px;cursor:pointer;
+  -webkit-user-select:none;user-select:none;
+}
+.faq-q-text{font-size:14px;font-weight:500;color:var(--ink);line-height:1.4;flex:1;}
+.faq-icon{
+  color:var(--gold);font-size:20px;flex-shrink:0;
+  font-weight:300;transition:transform 0.22s;
+  width:24px;height:24px;display:flex;align-items:center;justify-content:center;
+}
+.faq-icon.open{transform:rotate(45deg);}
+.faq-a{display:none;font-size:13px;color:var(--ink2);line-height:1.7;padding:0 18px 18px;}
+.faq-a.open{display:block;}
+.faq-tag{
+  display:inline-block;
+  font-family:'DM Mono',monospace;
+  font-size:8px;font-weight:500;
+  letter-spacing:1.5px;text-transform:uppercase;
+  padding:3px 8px;border-radius:3px;margin-bottom:10px;
+}
+.faq-tag.gold{background:var(--gold-bg);color:var(--gold);}
+.faq-tag.amber{background:var(--amber-bg);color:var(--amber);}
+
+/* ─── RESTRICCIONES ─── */
+.rest-accord{
+  border:1px solid var(--border);border-radius:var(--r-lg);
+  overflow:hidden;margin-bottom:12px;background:var(--white);
+}
+.rest-head{
+  padding:16px;cursor:pointer;
+  display:flex;align-items:center;justify-content:space-between;
+  transition:background 0.15s;
+  -webkit-user-select:none;user-select:none;
+}
+.rest-head:active{background:var(--cream);}
+.rest-icon-wrap{display:flex;align-items:center;gap:12px;}
+.rest-icon{font-size:22px;}
+.rest-title{font-family:'DM Serif Display',serif;font-size:16px;color:var(--ink);}
+.rest-sub{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.5px;color:var(--ink3);margin-top:3px;}
+.rest-arrow{color:var(--gold);font-size:18px;transition:transform 0.22s;flex-shrink:0;}
+.rest-arrow.open{transform:rotate(180deg);}
+.rest-body{display:none;padding:18px;border-top:1px solid var(--border);background:var(--cream);}
+.rest-body.open{display:block;}
+
+/* ─── TIMING ─── */
+.timing-card{
+  background:var(--white);border:1px solid var(--border);
+  border-radius:var(--r-lg);overflow:hidden;margin-bottom:10px;
+}
+.timing-head{
+  padding:14px 16px;border-bottom:1px solid var(--border);
+  display:flex;align-items:center;gap:12px;
+  background:var(--gold-bg);
+}
+.timing-icon{font-size:20px;}
+.timing-title{font-family:'DM Serif Display',serif;font-size:17px;color:var(--ink);}
+.timing-meta{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1px;text-transform:uppercase;color:var(--gold);margin-top:2px;}
+.timing-body{padding:16px;}
+.timing-dot-row{display:flex;gap:11px;align-items:flex-start;margin-bottom:9px;}
+.timing-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0;margin-top:7px;}
+.timing-text{font-size:13px;color:var(--ink2);line-height:1.6;}
+.timing-examples{
+  margin-top:12px;padding:12px 14px;
+  background:var(--cream);border-radius:var(--r-sm);
+  border:1px solid var(--border);
+}
+.timing-examples-label{
+  font-family:'DM Mono',monospace;
+  font-size:8px;font-weight:500;letter-spacing:1.5px;
+  text-transform:uppercase;color:var(--gold);margin-bottom:8px;
+}
+.timing-example-item{font-size:12.5px;color:var(--ink2);margin-bottom:4px;line-height:1.5;}
+
+/* ─── HACKS ─── */
+.hack-card{
+  background:var(--white);border:1px solid var(--border);
+  border-radius:var(--r-lg);overflow:hidden;
+}
+.hack-head{display:flex;align-items:flex-start;gap:14px;padding:18px 18px 14px;}
+.hack-num{
+  font-family:'DM Serif Display',serif;font-style:italic;
+  font-size:32px;font-weight:400;line-height:1;min-width:38px;
+  color:var(--gold);opacity:0.7;
+}
+.hack-title{font-size:13.5px;font-weight:600;color:var(--ink);line-height:1.4;flex:1;padding-top:4px;}
+.hack-body{padding:0 18px 18px;}
+.hack-desc{font-size:13px;color:var(--ink2);line-height:1.7;margin-bottom:12px;}
+.hack-tags{display:flex;flex-wrap:wrap;gap:6px;}
+.hack-tag{
+  font-family:'DM Mono',monospace;
+  font-size:9px;font-weight:500;padding:4px 9px;
+  border-radius:4px;letter-spacing:0.5px;text-transform:uppercase;
+}
 
 /* ─── TRACKER ─── */
 .tracker-date-strip{
@@ -412,255 +508,175 @@ body{font-family:'Outfit',sans-serif;background:#080808;color:#EDE9E3;min-height
   margin-bottom:20px;
 }
 .tracker-date-btn{
-  background:none;border:1px solid var(--ink5);color:var(--text2);
-  font-family:'Outfit',sans-serif;font-size:12px;font-weight:500;
-  padding:9px 16px;border-radius:var(--r-sm);cursor:pointer;
+  background:var(--white);border:1px solid var(--border-mid);color:var(--ink2);
+  font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;
+  padding:9px 15px;border-radius:var(--r-md);cursor:pointer;
   transition:all 0.15s;
 }
-.tracker-date-btn:active{background:var(--ink3);}
-.tracker-date-label{font-size:14px;font-weight:600;color:var(--text);}
+.tracker-date-btn:active{background:var(--cream);}
+.tracker-date-label{
+  font-family:'DM Serif Display',serif;
+  font-size:17px;color:var(--ink);
+}
 
 .macro-ring-card{
-  background:var(--ink2);border:1px solid var(--ink4);
-  border-radius:var(--r-xl);padding:22px;width:100%;margin-bottom:20px;
+  background:var(--white);border:1px solid var(--border);
+  border-radius:var(--r-xl);padding:22px;width:100%;margin-bottom:18px;
 }
 .ring-title{
-  font-size:9px;letter-spacing:2.5px;text-transform:uppercase;
-  color:var(--text3);font-weight:500;margin-bottom:18px;text-align:center;
+  font-family:'DM Mono',monospace;
+  font-size:9px;letter-spacing:2px;text-transform:uppercase;
+  color:var(--ink3);font-weight:500;margin-bottom:18px;text-align:center;
 }
 .ring-wrap{position:relative;width:140px;height:140px;margin:0 auto 18px;}
 .ring-center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;}
 .ring-kcal{
-  font-family:'Cormorant Garamond',serif;
-  font-size:28px;font-weight:700;color:var(--text);line-height:1;
+  font-family:'DM Serif Display',serif;
+  font-size:30px;font-weight:400;color:var(--ink);line-height:1;
 }
-.ring-kcal-label{font-size:10px;color:var(--text3);margin-top:3px;letter-spacing:0.5px;}
-.ring-legend{display:flex;justify-content:center;gap:18px;}
-.ring-leg-item{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--text2);}
+.ring-kcal-label{font-family:'DM Mono',monospace;font-size:9px;color:var(--ink3);margin-top:3px;letter-spacing:1px;text-transform:uppercase;}
+.ring-legend{display:flex;justify-content:center;gap:16px;}
+.ring-leg-item{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--ink2);}
 .ring-leg-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;}
 
-.macro-inputs-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:16px;}
+.macro-inputs-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:9px;margin-bottom:14px;}
 .macro-input-card{
-  background:var(--ink2);border:1px solid var(--ink4);
-  border-radius:var(--r-lg);padding:14px 10px;text-align:center;
-  transition:border-color 0.2s;
+  background:var(--white);border:1px solid var(--border);
+  border-radius:var(--r-lg);padding:13px 10px;text-align:center;
 }
-.macro-input-card.prot{border-color:rgba(68,128,184,0.35);}
-.macro-input-card.carb{border-color:rgba(196,163,90,0.35);}
-.macro-input-card.fat{border-color:rgba(184,125,26,0.35);}
-.macro-input-icon{font-size:20px;margin-bottom:5px;}
-.macro-input-label{font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:9px;}
+.macro-input-card.prot{border-top:3px solid var(--blue);}
+.macro-input-card.carb{border-top:3px solid var(--gold);}
+.macro-input-card.fat{border-top:3px solid var(--amber);}
+.macro-input-icon{font-size:18px;margin-bottom:5px;}
+.macro-input-label{
+  font-family:'DM Mono',monospace;
+  font-size:9px;font-weight:500;letter-spacing:1px;text-transform:uppercase;margin-bottom:8px;
+}
 .macro-input-label.prot{color:var(--blue);}
 .macro-input-label.carb{color:var(--gold);}
 .macro-input-label.fat{color:var(--amber);}
 .macro-num-input{
-  width:100%;font-family:'Outfit',sans-serif;
-  font-size:22px;font-weight:600;color:var(--text);
-  background:var(--ink3);border:1px solid var(--ink4);
-  border-radius:var(--r-sm);padding:10px 6px;text-align:center;
+  width:100%;font-family:'DM Serif Display',serif;
+  font-size:24px;font-weight:400;color:var(--ink);
+  background:var(--cream);border:1px solid var(--border);
+  border-radius:var(--r-sm);padding:8px 4px;text-align:center;
   -moz-appearance:textfield;transition:border-color 0.2s;
 }
 .macro-num-input::-webkit-outer-spin-button,.macro-num-input::-webkit-inner-spin-button{-webkit-appearance:none;}
-.macro-num-input:focus{outline:none;border-color:var(--gold-dim);}
-.macro-unit{font-size:10px;color:var(--text3);margin-top:5px;}
-.macro-progress-bar{height:5px;border-radius:3px;background:var(--ink5);overflow:hidden;margin-top:8px;}
-.macro-progress-fill{height:100%;border-radius:3px;transition:width 0.4s ease;}
+.macro-num-input:focus{outline:none;border-color:var(--gold);}
+.macro-unit{font-family:'DM Mono',monospace;font-size:9px;color:var(--ink3);margin-top:5px;letter-spacing:1px;text-transform:uppercase;}
+.macro-progress-bar{height:4px;border-radius:2px;background:var(--cream);overflow:hidden;margin-top:8px;border:1px solid var(--border);}
+.macro-progress-fill{height:100%;border-radius:2px;transition:width 0.4s ease;}
 .macro-target-row{
   display:flex;justify-content:space-between;align-items:center;
-  font-size:10px;color:var(--text3);margin-top:6px;
+  font-family:'DM Mono',monospace;
+  font-size:9px;color:var(--ink3);margin-top:6px;letter-spacing:0.5px;
 }
 .target-input-wrap{display:flex;align-items:center;gap:3px;}
 .target-input{
-  width:42px;font-family:'Outfit',sans-serif;font-size:10px;
-  color:var(--text2);background:var(--ink3);
-  border:1px solid var(--ink4);border-radius:5px;
-  padding:3px 5px;text-align:center;-moz-appearance:textfield;
+  width:40px;font-family:'DM Mono',monospace;font-size:9px;
+  color:var(--ink2);background:var(--cream);
+  border:1px solid var(--border);border-radius:4px;
+  padding:3px 4px;text-align:center;-moz-appearance:textfield;
 }
 .target-input::-webkit-outer-spin-button,.target-input::-webkit-inner-spin-button{-webkit-appearance:none;}
-.target-input:focus{outline:none;border-color:var(--gold-dim);}
+.target-input:focus{outline:none;border-color:var(--gold);}
 
 /* ─── RECO CARDS ─── */
 .reco-section{margin-top:22px;}
-.reco-header{display:flex;align-items:center;gap:12px;margin-bottom:16px;}
+.reco-header{display:flex;align-items:center;gap:12px;margin-bottom:14px;}
 .reco-header-icon{
-  font-size:20px;width:40px;height:40px;
-  background:var(--gold-glow);border:1px solid var(--gold-line);
+  font-size:18px;width:38px;height:38px;
+  background:var(--gold-bg);border:1px solid var(--gold-line);
   border-radius:var(--r-md);display:flex;align-items:center;justify-content:center;flex-shrink:0;
 }
-.reco-header-text{font-size:15px;font-weight:600;color:var(--text);}
-.reco-header-sub{font-size:11px;color:var(--text3);margin-top:2px;}
+.reco-header-text{font-family:'DM Serif Display',serif;font-size:16px;color:var(--ink);}
+.reco-header-sub{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1px;color:var(--ink3);margin-top:2px;text-transform:uppercase;}
 .reco-card{
-  background:var(--ink2);border:1px solid var(--ink4);
-  border-radius:var(--r-lg);padding:16px;margin-bottom:10px;
-  animation:fadeUp 0.28s ease;
+  background:var(--white);border:1px solid var(--border);
+  border-radius:var(--r-lg);padding:15px;margin-bottom:9px;
+  animation:fadeUp 0.25s ease;
 }
-.reco-card.urgent{border-color:var(--red-line);}
-.reco-card.warning{border-color:var(--gold-dim);}
-.reco-card.ok{border-color:var(--green-line);}
+.reco-card.urgent{border-left:3px solid var(--red);}
+.reco-card.warning{border-left:3px solid var(--gold);}
+.reco-card.ok{border-left:3px solid var(--green);}
 .reco-tag{
-  display:inline-block;font-size:9px;font-weight:700;
-  letter-spacing:1px;text-transform:uppercase;
-  padding:3px 9px;border-radius:5px;margin-bottom:9px;
+  display:inline-block;
+  font-family:'DM Mono',monospace;
+  font-size:8px;font-weight:500;
+  letter-spacing:1.5px;text-transform:uppercase;
+  padding:3px 8px;border-radius:3px;margin-bottom:8px;
 }
 .reco-tag.urgent{background:var(--red-bg);color:var(--red);}
-.reco-tag.warning{background:var(--gold-glow);color:var(--gold);}
+.reco-tag.warning{background:var(--gold-bg);color:var(--gold);}
 .reco-tag.ok{background:var(--green-bg);color:var(--green);}
 
-.reco-food-list{display:flex;flex-direction:column;gap:7px;margin-top:12px;}
+.reco-food-list{display:flex;flex-direction:column;gap:6px;margin-top:11px;}
 .reco-food-row{
   display:flex;align-items:center;gap:11px;padding:10px 12px;
-  background:rgba(0,0,0,0.25);border-radius:var(--r-sm);
+  background:var(--cream);border-radius:var(--r-sm);border:1px solid var(--border);
 }
-.reco-food-emoji{font-size:20px;flex-shrink:0;}
-.reco-food-name{font-size:13px;font-weight:500;color:var(--text);}
-.reco-food-detail{font-size:11px;color:var(--text2);margin-top:2px;}
+.reco-food-emoji{font-size:18px;flex-shrink:0;}
+.reco-food-name{font-size:13px;font-weight:500;color:var(--ink);}
+.reco-food-detail{font-size:11px;color:var(--ink3);margin-top:2px;}
 
 /* ─── SHOPPING ─── */
 .shopping-section{margin-top:22px;}
-.shop-list{display:flex;flex-direction:column;gap:8px;}
+.shop-list{display:flex;flex-direction:column;gap:7px;}
 .shop-item{
-  display:flex;align-items:center;gap:12px;padding:14px 16px;
-  background:var(--ink2);border:1px solid var(--ink4);border-radius:var(--r-lg);
+  display:flex;align-items:center;gap:12px;padding:13px 15px;
+  background:var(--white);border:1px solid var(--border);border-radius:var(--r-lg);
   cursor:pointer;-webkit-user-select:none;user-select:none;
-  transition:opacity 0.25s;
+  transition:opacity 0.22s;
 }
-.shop-item.checked{opacity:0.4;}
+.shop-item.checked{opacity:0.38;}
 .shop-check{
-  width:22px;height:22px;border-radius:6px;border:2px solid var(--ink5);
+  width:20px;height:20px;border-radius:5px;border:1.5px solid var(--border-mid);
   flex-shrink:0;display:flex;align-items:center;justify-content:center;
-  font-size:12px;transition:all 0.18s;
+  font-size:11px;transition:all 0.16s;
 }
 .shop-item.checked .shop-check{background:var(--green);border-color:var(--green);color:#fff;}
-.shop-emoji{font-size:20px;flex-shrink:0;}
-.shop-name{font-size:13px;font-weight:500;color:var(--text);}
-.shop-why{font-size:11px;color:var(--text2);margin-top:2px;}
+.shop-emoji{font-size:18px;flex-shrink:0;}
+.shop-name{font-size:13px;font-weight:500;color:var(--ink);}
+.shop-why{font-size:11px;color:var(--ink3);margin-top:2px;}
 .shop-macro-badge{
-  margin-left:auto;font-size:10px;font-weight:600;
-  padding:4px 9px;border-radius:5px;flex-shrink:0;white-space:nowrap;
+  margin-left:auto;
+  font-family:'DM Mono',monospace;
+  font-size:8px;font-weight:500;letter-spacing:0.5px;text-transform:uppercase;
+  padding:4px 8px;border-radius:4px;flex-shrink:0;white-space:nowrap;
 }
 
 /* ─── SAVE BUTTON ─── */
 .save-btn{
-  width:100%;font-family:'Outfit',sans-serif;
-  font-size:14px;font-weight:600;color:#080808;
-  background:var(--gold);border:none;border-radius:var(--r-lg);
-  padding:17px;cursor:pointer;letter-spacing:0.5px;margin-top:4px;
-  transition:opacity 0.18s,transform 0.12s;
-  position:relative;overflow:hidden;
+  width:100%;font-family:'DM Sans',sans-serif;
+  font-size:14px;font-weight:600;color:#fff;
+  background:var(--ink);border:none;border-radius:var(--r-lg);
+  padding:16px;cursor:pointer;letter-spacing:0.3px;margin-top:4px;
+  transition:opacity 0.16s,transform 0.12s;
 }
-.save-btn::after{
-  content:'';position:absolute;inset:0;
-  background:linear-gradient(to bottom,rgba(255,255,255,0.10),transparent);
-  pointer-events:none;
-}
-.save-btn:active{opacity:0.85;transform:scale(0.99);}
+.save-btn:active{opacity:0.82;transform:scale(0.99);}
 
 /* ─── TOAST ─── */
 .saved-toast{
   position:fixed;bottom:calc(24px + var(--sab));left:50%;
-  transform:translateX(-50%) translateY(4px);
+  transform:translateX(-50%) translateY(5px);
   background:var(--green);color:#fff;
-  font-size:13px;font-weight:600;padding:11px 24px;
-  border-radius:var(--r-pill);z-index:999;
-  opacity:0;transition:opacity 0.25s,transform 0.25s;pointer-events:none;
+  font-family:'DM Mono',monospace;
+  font-size:11px;font-weight:500;letter-spacing:1px;text-transform:uppercase;
+  padding:11px 22px;border-radius:var(--r-pill);z-index:999;
+  opacity:0;transition:opacity 0.22s,transform 0.22s;pointer-events:none;
 }
 .saved-toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
 
-/* ─── RESTRICCIONES ─── */
-.rest-accord{
-  border:1px solid var(--ink4);border-radius:var(--r-lg);
-  overflow:hidden;margin-bottom:12px;
-}
-.rest-head{
-  padding:16px;background:var(--ink2);cursor:pointer;
-  display:flex;align-items:center;justify-content:space-between;
-  transition:background 0.15s;
-}
-.rest-head:active{background:var(--ink3);}
-.rest-icon-wrap{display:flex;align-items:center;gap:12px;}
-.rest-icon{font-size:22px;}
-.rest-title{font-size:14px;font-weight:600;color:var(--text);}
-.rest-sub{font-size:11px;color:var(--text3);margin-top:2px;}
-.rest-arrow{color:var(--gold);font-size:18px;transition:transform 0.25s;flex-shrink:0;}
-.rest-arrow.open{transform:rotate(180deg);}
-.rest-body{display:none;padding:18px;background:var(--ink);}
-.rest-body.open{display:block;}
-
-/* ─── TIMING ─── */
-.timing-card{
-  background:var(--ink2);border:1px solid var(--ink4);
-  border-radius:var(--r-lg);overflow:hidden;margin-bottom:10px;
-}
-.timing-head{
-  background:linear-gradient(90deg,#1A1408,#111);
-  padding:14px 16px;border-bottom:1px solid var(--gold-line);
-  display:flex;align-items:center;gap:12px;
-}
-.timing-icon{font-size:20px;}
-.timing-title{
-  font-family:'Cormorant Garamond',serif;
-  font-size:18px;font-weight:700;color:var(--text);
-}
-.timing-meta{font-size:11px;color:var(--gold);margin-top:2px;}
-.timing-body{padding:16px;}
-.timing-dot-row{display:flex;gap:11px;align-items:flex-start;margin-bottom:9px;}
-.timing-dot{
-  width:6px;height:6px;border-radius:50%;
-  flex-shrink:0;margin-top:7px;
-}
-.timing-text{font-size:13px;color:var(--text2);line-height:1.55;}
-.timing-examples{
-  margin-top:12px;padding:12px 14px;
-  background:var(--ink3);border-radius:var(--r-sm);
-}
-.timing-examples-label{
-  font-size:9px;font-weight:600;letter-spacing:1.2px;
-  text-transform:uppercase;color:var(--gold);margin-bottom:8px;
-}
-.timing-example-item{font-size:12.5px;color:var(--text2);margin-bottom:4px;}
-
-/* ─── HACKS ─── */
-.hack-card{
-  background:var(--ink2);border:1px solid var(--ink4);
-  border-radius:var(--r-lg);overflow:hidden;
-}
-.hack-head{display:flex;align-items:center;gap:14px;padding:18px 18px 14px;}
-.hack-num{
-  font-family:'Cormorant Garamond',serif;
-  font-size:30px;font-weight:700;line-height:1;min-width:38px;
-}
-.hack-title{font-size:13.5px;font-weight:600;color:var(--text);line-height:1.35;flex:1;}
-.hack-body{padding:0 18px 18px;}
-.hack-desc{font-size:13px;color:var(--text2);line-height:1.65;margin-bottom:12px;}
-.hack-tags{display:flex;flex-wrap:wrap;gap:6px;}
-.hack-tag{
-  font-size:10px;font-weight:600;padding:4px 10px;
-  border-radius:6px;letter-spacing:0.4px;
-}
-
-/* ─── PRIORITY STAR ─── */
-.star-badge{
-  font-size:9px;color:var(--gold);font-weight:600;
-  letter-spacing:0.5px;margin-left:4px;
-}
-
-/* ─── BONUS CARDS ─── */
-.bonus-card{
-  background:var(--ink2);border:1px solid var(--gold-line);
-  border-radius:var(--r-md);padding:16px;
-  display:flex;gap:14px;align-items:flex-start;
-}
-.bonus-emoji{font-size:28px;flex-shrink:0;}
-.bonus-name{font-size:13.5px;font-weight:600;color:var(--text);margin-bottom:5px;}
-.bonus-desc{font-size:12.5px;color:var(--text2);line-height:1.55;}
+/* ─── SAFE AREA ─── */
+.safe-bottom{height:calc(28px + var(--sab));}
 
 /* ─── RESPONSIVE ─── */
-@media(min-width:480px){
-  .app-header .header-inner,
-  .panel,
-  .hero{max-width:480px;margin-left:auto;margin-right:auto;}
+@media(min-width:440px){
+  .panel,.hero{max-width:var(--max);margin-left:auto;margin-right:auto;}
   .sticky-nav{max-width:100%;}
-  .nav-tabs{max-width:480px;}
+  .nav-tabs{max-width:var(--max);}
+  .app-header .header-inner{max-width:var(--max);}
 }
 </style>
 </head>
@@ -670,23 +686,23 @@ body{font-family:'Outfit',sans-serif;background:#080808;color:#EDE9E3;min-height
 <header class="app-header">
   <div class="header-inner">
     <div class="header-brand">
-      <span class="header-eyebrow">Asesorías Personalizadas · Renzo Bello</span>
-      <span class="header-wordmark">SLAB Nutrición</span>
+      <span class="header-eyebrow">Asesorías · Renzo Bello</span>
+      <span class="header-wordmark">STRENGTHLAB Nutrición</span>
     </div>
     <span class="header-badge">@reennzolifts</span>
   </div>
 </header>
 
 <!-- HERO -->
-<div style="background:var(--ink)">
+<div style="border-bottom:1px solid var(--border)">
   <div class="hero">
-    <div class="hero-eyebrow">Guía personalizada de Nutrición</div>
-    <h1 class="hero-h">Alimentate <em>mejor</em>,<br>progresa más rapido</h1>
-    <p class="hero-p">Alimentos de alto valor nutricional adaptados a tu sexo, etapa y restricciones. Con alternativas reales para cada situación.</p>
+    <div class="hero-eyebrow">Guía personalizada de nutrición</div>
+    <h1 class="hero-h">Comé <em>mejor</em>,<br>progresá más rápido.</h1>
+    <p class="hero-p">Alimentos de alto valor nutricional adaptados a tu sexo, objetivo y restricciones. Con alternativas reales para cada situación.</p>
   </div>
 </div>
 
-<!-- NAV TABS -->
+<!-- NAV -->
 <div class="sticky-nav">
   <nav class="nav-tabs" role="tablist">
     <button class="nav-tab active" onclick="switchTab('plan',this)" role="tab">Mi Plan</button>
@@ -699,9 +715,9 @@ body{font-family:'Outfit',sans-serif;background:#080808;color:#EDE9E3;min-height
   </nav>
 </div>
 
-<!-- ── PANEL: MI PLAN ── -->
+<!-- PANEL: MI PLAN -->
 <section class="panel active" id="panel-plan">
-  <div class="section-label">Configura tu guía</div>
+  <div class="section-eyebrow">Configurá tu guía</div>
 
   <div class="field-group">
     <label class="field-label" for="sel-sexo">Sexo biológico</label>
@@ -710,7 +726,6 @@ body{font-family:'Outfit',sans-serif;background:#080808;color:#EDE9E3;min-height
       <option value="f">Femenino</option>
     </select>
   </div>
-
   <div class="field-group">
     <label class="field-label" for="sel-etapa">Objetivo actual</label>
     <select class="field-select" id="sel-etapa" onchange="buildPlan()">
@@ -720,7 +735,6 @@ body{font-family:'Outfit',sans-serif;background:#080808;color:#EDE9E3;min-height
       <option value="mantenimiento">Mantenimiento</option>
     </select>
   </div>
-
   <div class="field-group">
     <label class="field-label">Restricciones alimentarias</label>
     <div class="chips-wrap">
@@ -735,84 +749,82 @@ body{font-family:'Outfit',sans-serif;background:#080808;color:#EDE9E3;min-height
   <div class="safe-bottom"></div>
 </section>
 
-<!-- ── PANEL: TRACKER ── -->
+<!-- PANEL: TRACKER -->
 <section class="panel" id="panel-tracker">
   <div id="tracker-content"></div>
   <div class="saved-toast" id="saved-toast">✓ Guardado</div>
   <div class="safe-bottom"></div>
 </section>
 
-<!-- ── PANEL: MACROS ── -->
+<!-- PANEL: MACROS -->
 <section class="panel" id="panel-macros">
-  <div class="section-label">Los 3 pilares</div>
-  <p style="font-size:13.5px;color:var(--text2);line-height:1.65;margin-bottom:22px;">Los mejores alimentos de cada macronutriente — con sus reemplazos reales para distintos estilos de vida.</p>
+  <div class="section-eyebrow">Los 3 pilares</div>
+  <p style="font-size:13.5px;color:var(--ink2);line-height:1.7;margin-bottom:22px;">Los mejores alimentos de cada macronutriente, con sus reemplazos reales para distintos estilos de vida.</p>
   <div id="macros-content"></div>
   <div class="safe-bottom"></div>
 </section>
 
-<!-- ── PANEL: TIMING ── -->
+<!-- PANEL: TIMING -->
 <section class="panel" id="panel-timing">
-  <div class="section-label">Nutrición peri-entrenamiento</div>
-  <p style="font-size:13.5px;color:var(--text2);line-height:1.65;margin-bottom:22px;">Qué comer antes, durante y después del entrenamiento. No necesitas suplementos para hacer esto bien.</p>
+  <div class="section-eyebrow">Nutrición peri-entrenamiento</div>
+  <p style="font-size:13.5px;color:var(--ink2);line-height:1.7;margin-bottom:22px;">Qué comer antes, durante y después del entrenamiento. No necesitás suplementos para hacer esto bien.</p>
   <div id="timing-content"></div>
   <div class="safe-bottom"></div>
 </section>
 
-<!-- ── PANEL: RESTRICCIONES ── -->
+<!-- PANEL: RESTRICCIONES -->
 <section class="panel" id="panel-restricciones">
-  <div class="section-label">Guía de restricciones</div>
-  <p style="font-size:13.5px;color:var(--text2);line-height:1.65;margin-bottom:22px;">Tener restricciones no te limita. Te obliga a ser más inteligente con los alimentos que eliges.</p>
+  <div class="section-eyebrow">Guía de restricciones</div>
+  <p style="font-size:13.5px;color:var(--ink2);line-height:1.7;margin-bottom:22px;">Tener restricciones no te limita. Te obliga a ser más inteligente con los alimentos que elegís.</p>
   <div id="restricciones-content"></div>
   <div class="safe-bottom"></div>
 </section>
 
-<!-- ── PANEL: FAQ ── -->
+<!-- PANEL: FAQ -->
 <section class="panel" id="panel-faq">
-  <div class="section-label">Preguntas frecuentes</div>
+  <div class="section-eyebrow">Preguntas frecuentes</div>
   <div id="faq-list"></div>
   <div class="safe-bottom"></div>
 </section>
 
-<!-- ── PANEL: HACKS ── -->
+<!-- PANEL: HACKS -->
 <section class="panel" id="panel-hacks">
-  <div class="section-label">Estrategias avanzadas</div>
-  <p style="font-size:13.5px;color:var(--text2);line-height:1.65;margin-bottom:22px;">Basadas en evidencia para maximizar la composición corporal y el rendimiento.</p>
+  <div class="section-eyebrow">Estrategias avanzadas</div>
+  <p style="font-size:13.5px;color:var(--ink2);line-height:1.7;margin-bottom:22px;">Basadas en evidencia para maximizar la composición corporal y el rendimiento.</p>
   <div id="hacks-content"></div>
   <div class="safe-bottom"></div>
 </section>
 
 <script>
-/* ═══════════════════════════════════════════
-   DATA — unchanged from original, preserved
-   ═══════════════════════════════════════════ */
+/* ═══ DATA ═══ */
 let restricciones = new Set();
 
 function toggleChip(btn, key){
   if(key === 'ninguna'){
     restricciones.clear();
-    document.querySelectorAll('.chip-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.chip-btn').forEach(b=>b.classList.remove('active'));
     btn.classList.add('active');
   } else {
     document.getElementById('chip-ninguna').classList.remove('active');
-    if(restricciones.has(key)){ restricciones.delete(key); btn.classList.remove('active'); }
-    else { restricciones.add(key); btn.classList.add('active'); }
-    if(restricciones.size === 0) document.getElementById('chip-ninguna').classList.add('active');
+    if(restricciones.has(key)){restricciones.delete(key);btn.classList.remove('active');}
+    else{restricciones.add(key);btn.classList.add('active');}
+    if(restricciones.size===0) document.getElementById('chip-ninguna').classList.add('active');
   }
   buildPlan();
 }
 
 const HORMONA_DATA = {
-  m:{titulo:'Perfil hormonal masculino',sub:'Testosterona · GH · IGF-1',desc:'La testosterona es la hormona anabólica principal del hombre. Su producción depende directamente del colesterol dietario, zinc y vitamina D. Sin grasa y sin micronutrientes, el perfil hormonal cae — y con él, la ganancia muscular, la libido y la recuperación.',micros:[{icon:'⚡',txt:'<strong>Zinc</strong> — clave para producción de testosterona. Fuentes: carne roja, pepitas de calabaza, ostras, legumbres.'},{icon:'☀️',txt:'<strong>Vitamina D</strong> — actúa como hormona, eleva testosterona libre. Fuentes: salmón, yema, sol directo 20 min/día.'},{icon:'🧠',txt:'<strong>Colesterol bueno (HDL)</strong> — precursor de testosterona. No elimines las grasas saludables.'},{icon:'💪',txt:'<strong>Magnesio</strong> — calidad del sueño y síntesis proteica. Fuentes: almendras, espinaca, banana, cacao puro.'},{icon:'🔴',txt:'<strong>Hierro</strong> — transporte de oxígeno y energía en el entrenamiento. Fuentes: carne roja, lentejas + vitamina C.'},{icon:'🐟',txt:'<strong>Omega-3 EPA/DHA</strong> — reduce cortisol, mejora sensibilidad a la insulina y salud cardiovascular.'}]},
-  f:{titulo:'Perfil hormonal femenino',sub:'Estrógenos · Progesterona · Ciclo menstrual',desc:'El ciclo menstrual genera variaciones reales en energía, fuerza y apetito. La fase lútea (semana 3–4) eleva el metabolismo basal hasta 300 kcal. El hierro, el ácido fólico y los omega-3 son no negociables para la mujer que entrena.',micros:[{icon:'🩸',txt:'<strong>Hierro</strong> — fundamental post-menstruación. Fuentes: carne roja magra, lentejas, espinaca. Combinar siempre con vitamina C para absorción.'},{icon:'🦴',txt:'<strong>Calcio + Vitamina D</strong> — densidad ósea, especialmente importante antes de los 35. Fuentes: lácteos, sardinas con espinas, brócoli, sol.'},{icon:'🌸',txt:'<strong>Ácido fólico / Folato</strong> — salud hormonal y celular. Fuentes: aguacate, legumbres, vegetales de hoja verde.'},{icon:'😌',txt:'<strong>Omega-3 EPA/DHA</strong> — reduce dismenorrea, regula estado de ánimo en fase lútea. Fuentes: salmón, sardinas, chía.'},{icon:'⚡',txt:'<strong>Magnesio</strong> — alivia PMS, mejora sueño y recuperación. Fuentes: chocolate negro +70%, almendras, espinaca, semillas.'},{icon:'🌿',txt:'<strong>Fitoestrógenos (con moderación)</strong> — semillas de lino, tofu, legumbres. Pueden ayudar a regular estrógenos de forma natural.'}]}
+  m:{titulo:'Perfil hormonal masculino',sub:'Testosterona · GH · IGF-1',desc:'La testosterona es la hormona anabólica principal del hombre. Su producción depende directamente del colesterol dietario, zinc y vitamina D. Sin grasa y sin micronutrientes, el perfil hormonal cae — y con él, la ganancia muscular, la libido y la recuperación.',micros:[{icon:'⚡',txt:'<strong>Zinc</strong> — clave para producción de testosterona. Fuentes: carne roja, pepitas de calabaza, ostras, legumbres.'},{icon:'☀️',txt:'<strong>Vitamina D</strong> — actúa como hormona, eleva testosterona libre. Fuentes: salmón, yema, sol directo 20 min/día.'},{icon:'🧠',txt:'<strong>Colesterol HDL</strong> — precursor de testosterona. No elimines las grasas saludables.'},{icon:'💪',txt:'<strong>Magnesio</strong> — calidad del sueño y síntesis proteica. Fuentes: almendras, espinaca, banana, cacao puro.'},{icon:'🔴',txt:'<strong>Hierro</strong> — transporte de oxígeno y energía. Fuentes: carne roja, lentejas + vitamina C.'},{icon:'🐟',txt:'<strong>Omega-3 EPA/DHA</strong> — reduce cortisol, mejora sensibilidad a la insulina y salud cardiovascular.'}]},
+  f:{titulo:'Perfil hormonal femenino',sub:'Estrógenos · Progesterona · Ciclo menstrual',desc:'El ciclo menstrual genera variaciones reales en energía, fuerza y apetito. La fase lútea (semana 3–4) eleva el metabolismo basal hasta 300 kcal. El hierro, el ácido fólico y los omega-3 son no negociables para la mujer que entrena.',micros:[{icon:'🩸',txt:'<strong>Hierro</strong> — fundamental post-menstruación. Fuentes: carne roja magra, lentejas, espinaca. Combinar siempre con vitamina C.'},{icon:'🦴',txt:'<strong>Calcio + Vitamina D</strong> — densidad ósea. Fuentes: lácteos, sardinas con espinas, brócoli, sol.'},{icon:'🌸',txt:'<strong>Ácido fólico / Folato</strong> — salud hormonal y celular. Fuentes: aguacate, legumbres, vegetales de hoja verde.'},{icon:'😌',txt:'<strong>Omega-3 EPA/DHA</strong> — reduce dismenorrea, regula estado de ánimo en fase lútea. Fuentes: salmón, sardinas, chía.'},{icon:'⚡',txt:'<strong>Magnesio</strong> — alivia PMS, mejora sueño y recuperación. Fuentes: chocolate negro +70%, almendras, espinaca, semillas.'},{icon:'🌿',txt:'<strong>Fitoestrógenos (con moderación)</strong> — semillas de lino, tofu, legumbres. Ayudan a regular estrógenos de forma natural.'}]}
 };
 
 const PLAN_DATA = {
   volumen:{
-    m:{desc:'En volumen masculino, los carbohidratos son tu combustible principal y la proteína construye el tejido. Las grasas sostienen la testosterona. Superávit de 300–400 kcal sobre tu TDEE.',ratio:'55% CHO · 25% PRO · 20% GRA',proteina_g:'1.8–2.2 g/kg',bloques:[{titulo:'Proteínas top',icon:'💪',sub:'8+ fuentes de alta biodisponibilidad',alimentos:[{e:'🥩',n:'Carne vacuna magra',w:'Cortes magros (lomo, solomillo). Proteína completa + zinc + hierro hemo. El rey para testosterona.',tags:['26g prot/100g','Zinc','Testosterona'],star:true},{e:'🍗',n:'Pechuga de pollo',w:'La relación proteína/caloría imbatible. Base de cualquier plan de volumen.',tags:['31g prot/100g','Magro']},{e:'🥚',n:'Huevo entero',w:'Proteína de referencia biológica. La yema tiene vitamina D, colina y colesterol bueno para testosterona.',tags:['13g prot/100g','Vitamina D','Colina'],star:true},{e:'🐟',n:'Salmón',w:'Proteína + omega-3 EPA/DHA + vitamina D. Reduce inflamación post-entreno.',tags:['20g prot/100g','Omega-3'],star:true},{e:'🎣',n:'Atún al natural',w:'Proteína rápida y económica. Ideal post-entreno cuando no hay tiempo de cocinar.',tags:['23g prot/100g','Práctico']},{e:'🧀',n:'Queso cottage / Ricota',w:'Caseína natural. Proteína de absorción lenta — perfecto antes de dormir en volumen.',tags:['11-13g prot/100g','Caseína','Pre-cama']},{e:'🫘',n:'Lentejas + arroz',w:'Combinación que forma proteína completa. Añade hierro y fibra.',tags:['9g prot/100g cocida','Hierro','Fibra']},{e:'🐠',n:'Sardinas en lata',w:'Omega-3 concentrado, calcio (si comés las espinas), proteína. Subvalorado.',tags:['25g prot/100g','Omega-3','Calcio']},{e:'🌱',n:'Carne de soya / TVP',w:'Sustituto directo de la carne picada. 50g seco = 25g proteína. Económico y versátil.',tags:['50g prot/100g seco','Vegetariano','Económico']},{e:'🧱',n:'Tempeh',w:'Soya fermentada prensada. Más densa que el tofu, mejor perfil aminoacídico y probióticos incluidos.',tags:['19g prot/100g','Fermentado','Probióticos']},{e:'🫙',n:'Tofu firme prensado',w:'Proteína vegetal completa. Prensarlo 30 min antes transforma la textura — absorbe marinadas y se dora bien.',tags:['8-17g prot/100g','Completo','Versátil']},{e:'🌿',n:'Seitán (gluten de trigo)',w:'La proteína vegetal más densa: 25g por 100g. Textura carnosa. No apto para celíacos.',tags:['25g prot/100g','Alta densidad','No celíacos']}],swap:[{from:'🥩',to:'<strong>Sin carne roja:</strong> Tofu firme prensado + pepitas de calabaza (zinc)'},{from:'🧀',to:'<strong>Sin lactosa:</strong> Huevo + pechuga extra / Tofu sedoso pre-cama'},{from:'🐟',to:'<strong>Vegetariano:</strong> Nueces + chía (omega-3 ALA) + suplemento algas (EPA/DHA)'}]},{titulo:'Carbohidratos energéticos',icon:'⚡',sub:'Glucógeno, rendimiento y recuperación',alimentos:[{e:'🍚',n:'Arroz blanco',w:'El carbohidrato post-entreno de referencia. Digestión rápida, recarga glucógeno sin hinchazón.',tags:['28g CHO/100g cocido','Post-entreno'],star:true},{e:'🌾',n:'Avena',w:'Beta-glucano para saciedad + digestión lenta. Desayuno ideal antes del entreno matutino.',tags:['12g CHO/100g','Fibra','Pre-entreno'],star:true},{e:'🍠',n:'Batata',w:'Vitamina A, potasio, digestión media. Mejor que la papa en comidas alejadas del entreno.',tags:['20g CHO/100g','Vitamina A','Potasio']},{e:'🍌',n:'Banana',w:'Fructosa + glucosa + potasio. Pre o post entreno inmediato para energía rápida.',tags:['23g CHO/100g','Potasio','Rápido']},{e:'🥭',n:'Mango',w:'Fructosa natural con digestión más lenta que la banana. Rico en vitamina C y betacaroteno.',tags:['15g CHO/100g','Vitamina C','Betacaroteno']},{e:'🍍',n:'Piña / Ananá',w:'Bromelina que mejora digestión de proteínas y reduce inflamación. Combinar con comidas altas en proteína.',tags:['13g CHO/100g','Bromelina','Antiinflamatoria']},{e:'🥔',n:'Papa hervida o al horno',w:'Similar a la batata pero más rápida. Excelente saciedad y facilidad digestiva.',tags:['17g CHO/100g','Versátil']},{e:'🫘',n:'Garbanzos / Porotos',w:'CHO complejo + proteína vegetal + fibra. Triple beneficio.',tags:['20g CHO/100g','Proteína vegetal','Fibra']},{e:'🌽',n:'Polenta / Maíz',w:'Fuente de CHO sin gluten. Útil para celíacos. Densa en calorías.',tags:['Sin gluten','Denso en calorías']}],swap:[{from:'🌾',to:'<strong>Sin gluten:</strong> Avena certificada sin gluten o copos de arroz'},{from:'🍚',to:'<strong>Más micronutrientes:</strong> Quinoa (además tiene proteína completa)'},{from:'🍌',to:'<strong>Más fibra:</strong> Piña o mango (fructosa natural + digestión más lenta)'}]},{titulo:'Grasas saludables',icon:'🧠',sub:'Testosterona, absorción y saciedad',alimentos:[{e:'🥑',n:'Aguacate',w:'Grasa mono + vitamina E + folato. Mejora absorción de vitaminas liposolubles. Comer con cada comida.',tags:['15g grasa/100g','Vitamina E','Saciante'],star:true},{e:'🫒',n:'Aceite de oliva extra virgen',w:'Oleocantal antiinflamatorio. 1–2 cdas en cada comida. No usar para fritura fuerte.',tags:['100g grasa/100ml','Antiinflamatorio'],star:true},{e:'🥜',n:'Almendras',w:'Vitamina E, magnesio, grasas mono. Snack perfecto entre comidas.',tags:['50g grasa/100g','Magnesio','Vitamina E']},{e:'🌰',n:'Nueces',w:'Omega-3 ALA, polifenoles, melatonina. Las mejores nueces para recuperación y sueño.',tags:['65g grasa/100g','Omega-3 ALA','Sueño']},{e:'🌻',n:'Pepitas de calabaza',w:'Zinc concentrado. Las semillas más importantes para el hombre — apoyan testosterona directamente.',tags:['Zinc alto','Testosterona','Magnesio'],star:true},{e:'🍫',n:'Chocolate negro +85%',w:'Magnesio + flavonoides. 20–30g post-cena. No es un capricho — tiene función real.',tags:['Magnesio','Flavonoides','Dopamina']}],swap:[{from:'🫒',to:'<strong>Alternativa cocción:</strong> Aceite de aguacate o aceite de coco (para calor alto)'},{from:'🥜',to:'<strong>Alergia nueces:</strong> Semillas de girasol o tahini (pasta de sésamo)'},{from:'🌻',to:'<strong>Más omega-3:</strong> Semillas de lino molido (agregar a yogur/avena)'}]}]},
+    m:{desc:'En volumen masculino, los carbohidratos son tu combustible principal y la proteína construye el tejido. Las grasas sostienen la testosterona. Superávit de 300–400 kcal sobre tu TDEE.',ratio:'55% CHO · 25% PRO · 20% GRA',proteina_g:'1.8–2.2 g/kg',bloques:[{titulo:'Proteínas top',icon:'💪',sub:'8+ fuentes de alta biodisponibilidad',alimentos:[{e:'🥩',n:'Carne vacuna magra',w:'Cortes magros (lomo, solomillo). Proteína completa + zinc + hierro hemo. El rey para testosterona.',tags:['26g prot/100g','Zinc','Testosterona'],star:true},{e:'🍗',n:'Pechuga de pollo',w:'La relación proteína/caloría imbatible. Base de cualquier plan de volumen.',tags:['31g prot/100g','Magro']},{e:'🥚',n:'Huevo entero',w:'Proteína de referencia biológica. La yema tiene vitamina D, colina y colesterol bueno para testosterona.',tags:['13g prot/100g','Vitamina D','Colina'],star:true},{e:'🐟',n:'Salmón',w:'Proteína + omega-3 EPA/DHA + vitamina D. Reduce inflamación post-entreno.',tags:['20g prot/100g','Omega-3'],star:true},{e:'🎣',n:'Atún al natural',w:'Proteína rápida y económica. Ideal post-entreno cuando no hay tiempo de cocinar.',tags:['23g prot/100g','Práctico']},{e:'🧀',n:'Queso cottage / Ricota',w:'Caseína natural. Proteína de absorción lenta — perfecto antes de dormir en volumen.',tags:['11-13g prot/100g','Caseína','Pre-cama']},{e:'🫘',n:'Lentejas + arroz',w:'Combinación que forma proteína completa. Añade hierro y fibra.',tags:['9g prot/100g','Hierro','Fibra']},{e:'🐠',n:'Sardinas en lata',w:'Omega-3 concentrado, calcio (si comés las espinas), proteína. Subvalorado.',tags:['25g prot/100g','Omega-3','Calcio']},{e:'🌱',n:'Carne de soya / TVP',w:'Sustituto directo de la carne picada. 50g seco = 25g proteína. Económico y versátil.',tags:['50g prot/100g seco','Vegetariano','Económico']},{e:'🧱',n:'Tempeh',w:'Soya fermentada prensada. Más densa que el tofu, mejor perfil aminoacídico y probióticos incluidos.',tags:['19g prot/100g','Fermentado','Probióticos']},{e:'🫙',n:'Tofu firme prensado',w:'Proteína vegetal completa. Prensarlo 30 min antes transforma la textura — absorbe marinadas y se dora bien.',tags:['8-17g prot/100g','Completo','Versátil']},{e:'🌿',n:'Seitán (gluten de trigo)',w:'La proteína vegetal más densa: 25g por 100g. Textura carnosa. No apto para celíacos.',tags:['25g prot/100g','Alta densidad','No celíacos']}],swap:[{from:'🥩',to:'<strong>Sin carne roja:</strong> Tofu firme prensado + pepitas de calabaza (zinc)'},{from:'🧀',to:'<strong>Sin lactosa:</strong> Huevo + pechuga extra / Tofu sedoso pre-cama'},{from:'🐟',to:'<strong>Vegetariano:</strong> Nueces + chía (omega-3 ALA) + suplemento algas (EPA/DHA)'}]},{titulo:'Carbohidratos energéticos',icon:'⚡',sub:'Glucógeno, rendimiento y recuperación',alimentos:[{e:'🍚',n:'Arroz blanco',w:'El carbohidrato post-entreno de referencia. Digestión rápida, recarga glucógeno sin hinchazón.',tags:['28g CHO/100g cocido','Post-entreno'],star:true},{e:'🌾',n:'Avena',w:'Beta-glucano para saciedad + digestión lenta. Desayuno ideal antes del entreno matutino.',tags:['12g CHO/100g','Fibra','Pre-entreno'],star:true},{e:'🍠',n:'Batata',w:'Vitamina A, potasio, digestión media. Mejor que la papa en comidas alejadas del entreno.',tags:['20g CHO/100g','Vitamina A','Potasio']},{e:'🍌',n:'Banana',w:'Fructosa + glucosa + potasio. Pre o post entreno inmediato para energía rápida.',tags:['23g CHO/100g','Potasio','Rápido']},{e:'🥭',n:'Mango',w:'Fructosa natural con digestión más lenta que la banana. Rico en vitamina C y betacaroteno.',tags:['15g CHO/100g','Vitamina C','Betacaroteno']},{e:'🍍',n:'Piña / Ananá',w:'Bromelina que mejora digestión de proteínas y reduce inflamación. Combinar con comidas altas en proteína.',tags:['13g CHO/100g','Bromelina','Antiinflamatorio']},{e:'🥔',n:'Papa hervida o al horno',w:'Similar a la batata pero más rápida. Excelente saciedad y facilidad digestiva.',tags:['17g CHO/100g','Versátil']},{e:'🫘',n:'Garbanzos / Porotos',w:'CHO complejo + proteína vegetal + fibra. Triple beneficio.',tags:['20g CHO/100g','Proteína vegetal','Fibra']},{e:'🌽',n:'Polenta / Maíz',w:'Fuente de CHO sin gluten. Útil para celíacos. Densa en calorías.',tags:['Sin gluten','Denso en calorías']}],swap:[{from:'🌾',to:'<strong>Sin gluten:</strong> Avena certificada sin gluten o copos de arroz'},{from:'🍚',to:'<strong>Más micronutrientes:</strong> Quinoa (además tiene proteína completa)'},{from:'🍌',to:'<strong>Más fibra:</strong> Piña o mango (fructosa natural + digestión más lenta)'}]},{titulo:'Grasas saludables',icon:'🧠',sub:'Testosterona, absorción y saciedad',alimentos:[{e:'🥑',n:'Aguacate',w:'Grasa mono + vitamina E + folato. Mejora absorción de vitaminas liposolubles. Comer con cada comida.',tags:['15g grasa/100g','Vitamina E','Saciante'],star:true},{e:'🫒',n:'Aceite de oliva extra virgen',w:'Oleocantal antiinflamatorio. 1–2 cdas en cada comida. No usar para fritura fuerte.',tags:['100g grasa/100ml','Antiinflamatorio'],star:true},{e:'🥜',n:'Almendras',w:'Vitamina E, magnesio, grasas mono. Snack perfecto entre comidas.',tags:['50g grasa/100g','Magnesio','Vitamina E']},{e:'🌰',n:'Nueces',w:'Omega-3 ALA, polifenoles, melatonina. Las mejores para recuperación y sueño.',tags:['65g grasa/100g','Omega-3 ALA','Sueño']},{e:'🌻',n:'Pepitas de calabaza',w:'Zinc concentrado. Las semillas más importantes para el hombre — apoyan testosterona directamente.',tags:['Zinc alto','Testosterona','Magnesio'],star:true},{e:'🍫',n:'Chocolate negro +85%',w:'Magnesio + flavonoides. 20–30g post-cena. No es un capricho — tiene función real.',tags:['Magnesio','Flavonoides','Dopamina']}],swap:[{from:'🫒',to:'<strong>Alternativa cocción:</strong> Aceite de aguacate o aceite de coco (para calor alto)'},{from:'🥜',to:'<strong>Alergia nueces:</strong> Semillas de girasol o tahini (pasta de sésamo)'},{from:'🌻',to:'<strong>Más omega-3:</strong> Semillas de lino molido (agregar a yogur/avena)'}]}]},
     f:{desc:'En volumen femenino, la clave es un superávit moderado con énfasis en proteína y hierro. Las grasas saludables sostienen el equilibrio hormonal. Superávit de 200–300 kcal — más conservador que el masculino.',ratio:'50% CHO · 28% PRO · 22% GRA',proteina_g:'1.8–2.2 g/kg',bloques:[{titulo:'Proteínas top',icon:'💪',sub:'8+ fuentes prioritarias para la mujer',alimentos:[{e:'🍗',n:'Pechuga de pollo',w:'Base proteica diaria. Magra, versátil, alta calidad biológica.',tags:['31g prot/100g','Magro'],star:true},{e:'🥚',n:'Huevo entero',w:'La yema tiene colina (metabolismo hormonal), vitamina D y folato. No la descartes.',tags:['13g prot/100g','Colina','Vitamina D'],star:true},{e:'🐟',n:'Salmón',w:'Omega-3 EPA/DHA para regular ciclo menstrual, estado de ánimo y dismenorrea.',tags:['20g prot/100g','Omega-3','Hormonal'],star:true},{e:'🥩',n:'Carne roja magra (2-3x/semana)',w:'Hierro hemo — el más biodisponible. Fundamental para reponer hierro post-menstruación.',tags:['26g prot/100g','Hierro hemo','Post-ciclo']},{e:'🫘',n:'Lentejas',w:'Hierro no-hemo + proteína vegetal + folato. Comer siempre con vitamina C para hierro.',tags:['9g prot/100g','Hierro','Folato']},{e:'🧀',n:'Yogur griego natural',w:'Calcio + proteína + probióticos. Mejor opción láctea para la mujer.',tags:['10g prot/100g','Calcio','Probióticos']},{e:'🐠',n:'Sardinas con espinas',w:'Calcio + omega-3 + proteína. Triple beneficio para densidad ósea.',tags:['25g prot/100g','Calcio','Omega-3']},{e:'🌱',n:'Tofu / Tempeh',w:'Proteína vegetal completa + fitoestrógenos que modulan el ciclo de forma natural.',tags:['8-20g prot/100g','Fitoestrógenos','Vegetal']}],swap:[{from:'🥩',to:'<strong>Sin carne:</strong> Lentejas + vitamina C (kiwi, naranja) para absorber hierro no-hemo'},{from:'🧀',to:'<strong>Sin lactosa:</strong> Bebida de soja sin azúcar (calcio similar) + huevo extra'},{from:'🐟',to:'<strong>Vegetariana:</strong> Semillas de chía + suplemento de algas (omega-3 vegano real)'}]},{titulo:'Carbohidratos',icon:'⚡',sub:'Energía y salud hormonal',alimentos:[{e:'🌾',n:'Avena',w:'Fibra beta-glucano para regulación glucémica y saciedad prolongada. Clave en volumen femenino.',tags:['12g CHO/100g','Beta-glucano','Saciante'],star:true},{e:'🍠',n:'Batata',w:'Vitamina A y potasio. Mejor que el arroz en comidas principales por su densidad de micronutrientes.',tags:['20g CHO/100g','Vitamina A'],star:true},{e:'🫐',n:'Frutas rojas (fresas, arándanos)',w:'Bajo IG, antioxidantes que protegen salud hormonal. Ideales pre-cama o snack.',tags:['Bajo IG','Antioxidantes','Hormonal']},{e:'🍚',n:'Arroz integral',w:'Más fibra que el blanco. Mejor en comidas principales alejadas del entreno.',tags:['23g CHO/100g','Fibra','IG medio']},{e:'🌿',n:'Quinoa',w:'Proteína completa + CHO + hierro. La mejor opción para mujeres vegetarianas.',tags:['14g prot + 21g CHO/100g','Hierro','Proteína completa']},{e:'🍎',n:'Manzana / Pera',w:'Fibra pectina, bajo IG. Snack con buena saciedad sin pico de glucosa.',tags:['Bajo IG','Pectina','Saciante']}],swap:[{from:'🌾',to:'<strong>Sin gluten:</strong> Copos de arroz o avena certificada sin gluten'},{from:'🍠',to:'<strong>Variedad:</strong> Yuca, ñame o maíz cocido (similar densidad calórica)'},{from:'🌿',to:'<strong>Más económico:</strong> Arroz + lentejas (combo equivalente en aminoácidos)'}]},{titulo:'Grasas saludables',icon:'🧠',sub:'Balance hormonal y absorción',alimentos:[{e:'🥑',n:'Aguacate',w:'Grasa mono + folato. Esencial para el equilibrio de estrógenos y absorción de vitaminas liposolubles.',tags:['15g grasa/100g','Folato','Estrógenos'],star:true},{e:'🌻',n:'Semillas de chía',w:'Omega-3 ALA + fibra soluble + calcio vegetal. 2 cdas al día en yogur o licuado.',tags:['31g grasa/100g','Omega-3 ALA','Calcio vegetal'],star:true},{e:'🌱',n:'Semillas de lino molido',w:'Fitoestrógenos + omega-3. Ayudan a modular el ciclo menstrual de forma natural.',tags:['Fitoestrógenos','Omega-3','Ciclo'],star:true},{e:'🫒',n:'Aceite de oliva extra virgen',w:'Antiinflamatorio. Base del condimento diario.',tags:['100g grasa/100ml','Antiinflamatorio']},{e:'🍫',n:'Chocolate negro +85%',w:'Magnesio para PMS y hierro vegetal. 20g post-cena o en fase lútea.',tags:['Magnesio','PMS','Hierro vegetal']},{e:'🥜',n:'Almendras',w:'Calcio vegetal + vitamina E. Snack ideal entre comidas.',tags:['Calcio vegetal','Vitamina E','Saciante']}],swap:[{from:'🌻',to:'<strong>Sin semillas:</strong> Aceite de lino (1 cdita) en ensalada o batido'},{from:'🥑',to:'<strong>Sin aguacate:</strong> Huevo entero + oliva (cubre grasas mono y vitamina E)'},{from:'🍫',to:'<strong>Sin cacao:</strong> Almendras + higos secos (magnesio similar)'}]}]}
   },
   definicion:{
-    m:{desc:'En definición el objetivo es perder grasa sin perder músculo. La proteína alta protege el tejido muscular en déficit. Déficit de 300–500 kcal, proteína al máximo.',ratio:'35% CHO · 40% PRO · 25% GRA',proteina_g:'2.2–2.6 g/kg',bloques:[{titulo:'Proteínas (prioridad #1)',icon:'💪',sub:'Máxima proteína para preservar músculo',alimentos:[{e:'🍗',n:'Pechuga de pollo',w:'Relación proteína/caloría perfecta en déficit. Base de cada comida.',tags:['31g prot/100g','165 kcal'],star:true},{e:'🎣',n:'Merluza / Lenguado / Tilapia',w:'Proteína ultra magra. Menos de 90 kcal por 100g. Ideal para déficit calórico.',tags:['18-20g prot/100g','<90 kcal'],star:true},{e:'🥚',n:'Clara de huevo (+ 1 yema)',w:'Proteína casi pura. Siempre agregar 1 yema para micronutrientes hormonales.',tags:['11g prot/100g','52 kcal','Hormonal']},{e:'🎣',n:'Atún al natural',w:'Proteína rápida sin grasa. Control de calorías con comodidad.',tags:['23g prot/100g','100 kcal']},{e:'🥩',n:'Carne roja magra (2x/semana)',w:'Zinc para sostener testosterona en déficit. Crítico — no eliminarla.',tags:['26g prot/100g','Zinc','Testosterona']},{e:'🦐',n:'Langostinos / Gambas',w:'Proteína alta, calorías mínimas. Versátiles para ensaladas y salteados.',tags:['24g prot/100g','99 kcal']},{e:'🍗',n:'Pavo (pechuga)',w:'Más magro que el pollo, triptófano para sueño y estado de ánimo.',tags:['30g prot/100g','Triptófano']}],swap:[{from:'🍗',to:'<strong>Vegetariano:</strong> Tofu firme + tempeh (rotar). Target proteico sube 20%'},{from:'🎣',to:'<strong>Sin pescado:</strong> Pollo extra + suplemento omega-3 de algas'},{from:'🥚',to:'<strong>Sin lactosa / huevo:</strong> Tofu sedoso batido (textura similar a claras)'}]},{titulo:'Carbohidratos (estratégicos)',icon:'⚡',sub:'Volumen y rendimiento con pocas calorías',alimentos:[{e:'🥦',n:'Brócoli / Coliflor',w:'Máximo volumen con mínimas calorías. Llenate el plato sin culpa. Crucíferas además modulan estrógenos.',tags:['~30 kcal/100g','Alto volumen','Fibra'],star:true},{e:'🥬',n:'Espinaca / Rúcula / Lechuga',w:'Hierro vegetal, vitamina K, casi sin calorías. Base de cualquier plato en definición.',tags:['~20 kcal/100g','Hierro vegetal','Vitamina K'],star:true},{e:'🌾',n:'Avena (desayuno)',w:'Saciedad máxima. Beta-glucano controla glucosa — menos hambre durante el día.',tags:['68 kcal/100g','Saciante','Beta-glucano']},{e:'🍠',n:'Batata (porción controlada)',w:'CHO complejo que no genera pico glucémico. Reemplaza el arroz en comidas principales.',tags:['86 kcal/100g','Bajo IG']},{e:'🍋',n:'Frutas rojas / Cítricos',w:'Vitamina C para recuperación + bajo IG. Snack ideal cuando el hambre ataca.',tags:['40-60 kcal/100g','Vitamina C','Bajo IG']},{e:'🥒',n:'Pepino / Apio / Zanahoria',w:'Snack de volumen puro. Casi sin calorías, alta saciedad hídrica.',tags:['10-40 kcal/100g','Snack']}],swap:[{from:'🌾',to:'<strong>Sin gluten:</strong> Copos de arroz o quinoa hervida (mismo efecto saciante)'},{from:'🍠',to:'<strong>Más fibra:</strong> Papa con cáscara o lentejas en días de descanso'},{from:'🥦',to:'<strong>Si no te gustan las crucíferas:</strong> Calabacín / zucchini / ejotes'}]},{titulo:'Grasas (moderadas pero no eliminadas)',icon:'🧠',sub:'Hormonas y saciedad en déficit',alimentos:[{e:'🥑',n:'Aguacate (½ unidad)',w:'Grasas que controlan el hambre y sostienen testosterona en déficit. No más de media por comida.',tags:['~80 kcal / media','Saciante','Testosterona'],star:true},{e:'🐟',n:'Salmón (2x/semana)',w:'Omega-3 reduce cortisol en déficit y preserva masa muscular. No es opcional.',tags:['200 kcal/100g','Omega-3','Anti-cortisol'],star:true},{e:'🫒',n:'Aceite de oliva (1 cda/comida)',w:'Antiinflamatorio. Máx 1 cda por comida — son 120 kcal que se suman rápido.',tags:['120 kcal/cda','Controlado']},{e:'🌻',n:'Pepitas de calabaza (30g)',w:'Zinc concentrado. Snack que ayuda a sostener testosterona aunque estés en déficit.',tags:['Zinc','Testosterona','30g = ideal']}],swap:[{from:'🥑',to:'<strong>Menos calorías:</strong> 5-6 aceitunas negras (mismas grasas mono, menos calorías)'},{from:'🫒',to:'<strong>Para cocción:</strong> Spray de oliva (porción controlada sin medir)'},{from:'🐟',to:'<strong>Sin salmón fresco:</strong> Sardinas en lata al agua (omega-3 equivalente)'}]}]},
+    m:{desc:'En definición el objetivo es perder grasa sin perder músculo. La proteína alta protege el tejido muscular en déficit. Déficit de 300–500 kcal, proteína al máximo.',ratio:'35% CHO · 40% PRO · 25% GRA',proteina_g:'2.2–2.6 g/kg',bloques:[{titulo:'Proteínas (prioridad #1)',icon:'💪',sub:'Máxima proteína para preservar músculo',alimentos:[{e:'🍗',n:'Pechuga de pollo',w:'Relación proteína/caloría perfecta en déficit. Base de cada comida.',tags:['31g prot/100g','165 kcal'],star:true},{e:'🎣',n:'Merluza / Lenguado / Tilapia',w:'Proteína ultra magra. Menos de 90 kcal por 100g. Ideal para déficit calórico.',tags:['18-20g prot/100g','<90 kcal'],star:true},{e:'🥚',n:'Clara de huevo (+ 1 yema)',w:'Proteína casi pura. Siempre agregar 1 yema para micronutrientes hormonales.',tags:['11g prot/100g','52 kcal','Hormonal']},{e:'🎣',n:'Atún al natural',w:'Proteína rápida sin grasa. Control de calorías con comodidad.',tags:['23g prot/100g','100 kcal']},{e:'🥩',n:'Carne roja magra (2x/semana)',w:'Zinc para sostener testosterona en déficit. Crítico — no eliminarla.',tags:['26g prot/100g','Zinc','Testosterona']},{e:'🦐',n:'Langostinos / Gambas',w:'Proteína alta, calorías mínimas. Versátiles para ensaladas y salteados.',tags:['24g prot/100g','99 kcal']},{e:'🍗',n:'Pavo (pechuga)',w:'Más magro que el pollo, triptófano para sueño y estado de ánimo.',tags:['30g prot/100g','Triptófano']}],swap:[{from:'🍗',to:'<strong>Vegetariano:</strong> Tofu firme + tempeh (rotar). Target proteico sube 20%'},{from:'🎣',to:'<strong>Sin pescado:</strong> Pollo extra + suplemento omega-3 de algas'},{from:'🥚',to:'<strong>Sin huevo:</strong> Tofu sedoso batido (textura similar a claras)'}]},{titulo:'Carbohidratos (estratégicos)',icon:'⚡',sub:'Volumen y rendimiento con pocas calorías',alimentos:[{e:'🥦',n:'Brócoli / Coliflor',w:'Máximo volumen con mínimas calorías. Llenate el plato sin culpa. Crucíferas además modulan estrógenos.',tags:['~30 kcal/100g','Alto volumen','Fibra'],star:true},{e:'🥬',n:'Espinaca / Rúcula / Lechuga',w:'Hierro vegetal, vitamina K, casi sin calorías. Base de cualquier plato en definición.',tags:['~20 kcal/100g','Hierro vegetal','Vitamina K'],star:true},{e:'🌾',n:'Avena (desayuno)',w:'Saciedad máxima. Beta-glucano controla glucosa — menos hambre durante el día.',tags:['68 kcal/100g','Saciante','Beta-glucano']},{e:'🍠',n:'Batata (porción controlada)',w:'CHO complejo que no genera pico glucémico. Reemplaza el arroz en comidas principales.',tags:['86 kcal/100g','Bajo IG']},{e:'🍋',n:'Frutas rojas / Cítricos',w:'Vitamina C para recuperación + bajo IG. Snack ideal cuando el hambre ataca.',tags:['40-60 kcal/100g','Vitamina C','Bajo IG']},{e:'🥒',n:'Pepino / Apio / Zanahoria',w:'Snack de volumen puro. Casi sin calorías, alta saciedad hídrica.',tags:['10-40 kcal/100g','Snack']}],swap:[{from:'🌾',to:'<strong>Sin gluten:</strong> Copos de arroz o quinoa hervida (mismo efecto saciante)'},{from:'🍠',to:'<strong>Más fibra:</strong> Papa con cáscara o lentejas en días de descanso'},{from:'🥦',to:'<strong>Si no te gustan las crucíferas:</strong> Calabacín / zucchini / ejotes'}]},{titulo:'Grasas (moderadas pero no eliminadas)',icon:'🧠',sub:'Hormonas y saciedad en déficit',alimentos:[{e:'🥑',n:'Aguacate (½ unidad)',w:'Grasas que controlan el hambre y sostienen testosterona en déficit. No más de media por comida.',tags:['~80 kcal / media','Saciante','Testosterona'],star:true},{e:'🐟',n:'Salmón (2x/semana)',w:'Omega-3 reduce cortisol en déficit y preserva masa muscular. No es opcional.',tags:['200 kcal/100g','Omega-3','Anti-cortisol'],star:true},{e:'🫒',n:'Aceite de oliva (1 cda/comida)',w:'Antiinflamatorio. Máx 1 cda por comida — son 120 kcal que se suman rápido.',tags:['120 kcal/cda','Controlado']},{e:'🌻',n:'Pepitas de calabaza (30g)',w:'Zinc concentrado. Snack que ayuda a sostener testosterona aunque estés en déficit.',tags:['Zinc','Testosterona','30g = ideal']}],swap:[{from:'🥑',to:'<strong>Menos calorías:</strong> 5-6 aceitunas negras (mismas grasas mono, menos calorías)'},{from:'🫒',to:'<strong>Para cocción:</strong> Spray de oliva (porción controlada sin medir)'},{from:'🐟',to:'<strong>Sin salmón fresco:</strong> Sardinas en lata al agua (omega-3 equivalente)'}]}]},
     f:{desc:'En definición femenina, bajar calorías impacta las hormonas. La proteína alta y el hierro son críticos. Déficit moderado de 250–400 kcal — evitar déficits agresivos que alteren el ciclo.',ratio:'38% CHO · 38% PRO · 24% GRA',proteina_g:'2.0–2.4 g/kg',bloques:[{titulo:'Proteínas (prioridad #1)',icon:'💪',sub:'Preservar músculo y equilibrio hormonal',alimentos:[{e:'🍗',n:'Pechuga de pollo',w:'Base proteica magra. En definición, presente en cada comida principal.',tags:['31g prot/100g','165 kcal'],star:true},{e:'🎣',n:'Pescado blanco (merluza, lenguado)',w:'Ultra magro. La proteína más limpia en déficit femenino.',tags:['18-20g prot/100g','<90 kcal'],star:true},{e:'🥚',n:'Huevo entero',w:'No elimines la yema. Contiene colina y vitamina D, esenciales para equilibrio hormonal femenino.',tags:['13g prot/100g','Colina','Vitamina D'],star:true},{e:'🥩',n:'Carne roja magra (2-3x/semana)',w:'CRÍTICO en definición femenina: repone hierro post-menstruación y mantiene energía.',tags:['Hierro hemo','26g prot/100g']},{e:'🧀',n:'Queso cottage bajo en grasa',w:'Caseína para preservar músculo nocturno. Baja carga calórica.',tags:['12g prot/100g','72 kcal','Pre-cama']},{e:'🦐',n:'Langostinos / Gambas',w:'Proteína alta, calorías mínimas. Fáciles de preparar, muy versátiles.',tags:['24g prot/100g','99 kcal']},{e:'🐠',n:'Sardinas',w:'Calcio + omega-3 + proteína. Preserva densidad ósea en déficit.',tags:['25g prot/100g','Calcio','Omega-3']},{e:'🫘',n:'Lentejas / Garbanzos',w:'Hierro no-hemo + fibra + proteína. Saciedad prolongada con pocas calorías.',tags:['9g prot/100g','Hierro','Fibra']}],swap:[{from:'🥩',to:'<strong>Sin carne:</strong> Lentejas + kiwi o naranja (vitamina C potencia absorción del hierro no-hemo)'},{from:'🧀',to:'<strong>Sin lactosa:</strong> Tofu sedoso o bebida de soja sin azúcar pre-cama'},{from:'🦐',to:'<strong>Vegetariana:</strong> Tofu firme marinado + semillas de cáñamo'}]},{titulo:'Carbohidratos (volumen y fibra)',icon:'⚡',sub:'Saciedad máxima, calorías mínimas',alimentos:[{e:'🥦',n:'Crucíferas (brócoli, coliflor)',w:'Alto volumen, pocas calorías. Además modulan el metabolismo de estrógenos — doble función.',tags:['~30 kcal/100g','Estrógenos','Fibra'],star:true},{e:'🥬',n:'Verduras de hoja (espinaca, rúcula)',w:'Hierro vegetal + folato + casi sin calorías. Llenate el plato en cada comida.',tags:['~20 kcal/100g','Hierro vegetal','Folato'],star:true},{e:'🌾',n:'Avena',w:'Saciedad hormonal: la fibra beta-glucano reduce picos de glucosa que disparan antojos.',tags:['68 kcal/100g','Anti-antojos','Beta-glucano']},{e:'🍓',n:'Frutas rojas (fresas, arándanos)',w:'Antioxidantes para la inflamación del ciclo. Bajo IG. Snack perfecto en definición femenina.',tags:['40-55 kcal/100g','Bajo IG','Ciclo']},{e:'🌿',n:'Quinoa',w:'CHO + proteína completa + hierro. La mejor opción para vegetarianas en definición.',tags:['120 kcal/100g','Hierro','Proteína']},{e:'🥒',n:'Vegetales crudos de snack',w:'Pepino, apio, zanahoria, tomate cherry. Snack sin impacto calórico con alta saciedad.',tags:['10-40 kcal/100g','Snack libre']}],swap:[{from:'🌾',to:'<strong>Sin gluten:</strong> Avena certificada sin gluten o polenta instantánea'},{from:'🌿',to:'<strong>Más económico:</strong> Arroz integral + lentejas rojas (mismos aminoácidos, más barato)'},{from:'🥦',to:'<strong>No te gustan las crucíferas:</strong> Calabacín, ejotes, pepino (mismo efecto volumen)'}]},{titulo:'Grasas (sin eliminar)',icon:'🧠',sub:'Eliminarlas arruina las hormonas',alimentos:[{e:'🐟',n:'Salmón / Sardinas',w:'Omega-3 reduce inflamación del ciclo y cortisol en déficit. No negociable.',tags:['Omega-3','Anti-cortisol','Ciclo'],star:true},{e:'🌻',n:'Semillas de chía / lino',w:'Omega-3 vegetal + fitoestrógenos. 2 cdas en yogur o batido. Ayudan a regularizar ciclo.',tags:['Omega-3 ALA','Fitoestrógenos','Ciclo'],star:true},{e:'🥑',n:'Aguacate (½ unidad)',w:'Grasas mono + folato. Control del hambre sin muchas calorías en porción razonable.',tags:['~80 kcal/½','Saciante','Folato']},{e:'🍫',n:'Chocolate negro +85% (20g)',w:'Magnesio para PMS. No es trampa — tiene función real en fase lútea.',tags:['Magnesio','PMS','~120 kcal/20g']}],swap:[{from:'🐟',to:'<strong>Sin pescado:</strong> Cápsulas de omega-3 de algas (vegan, mismo EPA/DHA)'},{from:'🌻',to:'<strong>Sin semillas:</strong> 1 cdita de aceite de lino en ensalada (omega-3 ALA equivalente)'},{from:'🥑',to:'<strong>Menos calorías:</strong> 8 aceitunas verdes o negras (mismas grasas mono)'}]}]}
   },
   recomp:{
@@ -826,39 +838,37 @@ const PLAN_DATA = {
 };
 
 const MACROS_DATA = [
-  {key:'prot',nombre:'Proteínas',icon:'💪',sub:'Los mejores alimentos con sus reemplazos reales',color:'var(--blue)',bg:'var(--blue-bg)',desc:'La proteína es el macronutriente de construcción y preservación muscular. Objetivo mínimo: 1,6 g/kg/día entrenando.',items:[{e:'🥚',n:'Huevo entero',why:'La proteína de mayor biodisponibilidad del mundo real. PDCAAS 1.0. La yema tiene colina, vitamina D y colesterol bueno.',swaps:['🔄 Sin huevo: Tofu sedoso batido o proteína de arvejas','⬆️ Más proteína: 3 claras + 1 yema','💰 Económico: huevo + lentejas (combo completo)']},{e:'🍗',n:'Pechuga de pollo',why:'31g de proteína por 100g con solo 165 kcal. Imbatible en relación calidad/caloría.',swaps:['🔄 Más sabor: muslo de pollo sin piel (levemente más graso, más micronutrientes)','🌿 Veggie: pechuga de seitán o tofu firme marinado','⚡ Rápido: atún al natural (lata)']},{e:'🥩',n:'Carne vacuna magra',why:'Zinc + hierro hemo + B12 + proteína completa. Imposible de replicar al 100% con vegetales.',swaps:['🌿 Vegetariano: lentejas + pepitas de calabaza (zinc) + levadura nutricional (B12)','🐄 Menos grasa: lomo o solomillo vs. asado o costilla','🥫 Alternativa práctica: carne picada magra (hamburguesa casera)']},{e:'🐟',n:'Salmón',why:'Proteína + omega-3 EPA/DHA + vitamina D. El alimento más completo para un atleta.',swaps:['💰 Económico: sardinas en lata al agua (omega-3 equivalente)','🌿 Vegano: cápsulas de algas (único omega-3 vegano con EPA/DHA real)','🎣 Sin grasa: merluza o lenguado (proteína similar, menos omega-3)']},{e:'🫘',n:'Lentejas / Garbanzos',why:'Proteína vegetal + hierro + fibra + carbohidratos. El alimento más completo del reino vegetal.',swaps:['⬆️ Más proteína: combinar con arroz (aminoácidos completos)','🔄 Variedad: frijoles negros, edamame, habas','⚡ Rápido: lentejas en lata (ya cocidas)']},{e:'🧀',n:'Queso cottage / Ricota',why:'Caseína de absorción lenta. Ideal pre-cama para síntesis proteica nocturna.',swaps:['🥛 Sin lactosa: versión deslactosada (mismo perfil proteico)','🌿 Vegano: tofu sedoso con vainilla y stevia','💪 Más proteína: yogur griego 0% (15g prot/100g)']}]},
-  {key:'carb',nombre:'Carbohidratos',icon:'⚡',sub:'Los mejores con sus alternativas inteligentes',color:'var(--gold)',bg:'var(--gold-glow)',desc:'Los CHO son el combustible principal del entrenamiento. No son el enemigo — las fuentes de mala calidad sí lo son.',items:[{e:'🌾',n:'Avena',why:'Beta-glucano para saciedad + digestión lenta + fibra soluble. El mejor desayuno pre o post entreno matutino.',swaps:['🌾 Sin gluten: avena certificada sin gluten o copos de arroz','⚡ Más rápido: porridge instantáneo (revisar sin azúcar)','🍫 Con sabor: avena + cacao puro + banana (sin azúcar agregada)']},{e:'🍚',n:'Arroz blanco',why:'Digestión rápida post-entrenamiento. Sin antinutrientes. El carbohidrato de peri-entrenamiento por excelencia.',swaps:['🌿 Más nutrientes: quinoa (misma función + proteína + hierro)','🎑 Sin gluten: ya lo es naturalmente','🏆 Variedad: arroz integral en comidas no peri-entreno (más fibra)']},{e:'🍠',n:'Batata / Boniato',why:'Vitamina A, potasio, digestión media. Superior a la papa en densidad de micronutrientes.',swaps:['🥔 Alternativa: papa hervida o al horno (similar CHO, más saciante)','🌿 Exótico: ñame o yuca (sin gluten, misma función)','⚡ Más rápido: papa al microondas (8 min, misma calidad nutricional)']},{e:'🫘',n:'Legumbres',why:'CHO complejo + proteína vegetal + fibra + hierro. El carbohidrato más completo nutricionalmente.',swaps:['🔄 Variedad: frijoles negros, lentejas rojas (se cocinan en 15 min sin remojar), edamame','⚡ Práctico: versiones en lata (enjuagar bien para reducir sodio)','🌿 Quinoa: si querés CHO + proteína completa en uno']},{e:'🥦',n:'Verduras (volumen libre)',why:'Casi sin calorías pero con fibra, vitaminas y agua. No necesitan periodización — comer siempre.',swaps:['🔄 Crucíferas: brócoli, coliflor, coles de Bruselas, rúcula','🥬 De hoja: espinaca, lechuga, berro, rúcula','🎨 Color: zanahoria, pimiento rojo, tomate, remolacha']}]},
+  {key:'prot',nombre:'Proteínas',icon:'💪',sub:'Los mejores alimentos con sus reemplazos reales',color:'var(--blue)',bg:'var(--blue-bg)',desc:'La proteína es el macronutriente de construcción y preservación muscular. Objetivo mínimo: 1,6 g/kg/día entrenando.',items:[{e:'🥚',n:'Huevo entero',why:'La proteína de mayor biodisponibilidad del mundo real. PDCAAS 1.0. La yema tiene colina, vitamina D y colesterol bueno.',swaps:['🔄 Sin huevo: Tofu sedoso batido o proteína de arvejas','⬆️ Más proteína: 3 claras + 1 yema','💰 Económico: huevo + lentejas (combo completo)']},{e:'🍗',n:'Pechuga de pollo',why:'31g de proteína por 100g con solo 165 kcal. Imbatible en relación calidad/caloría.',swaps:['🔄 Más sabor: muslo de pollo sin piel (levemente más graso, más micronutrientes)','🌿 Veggie: pechuga de seitán o tofu firme marinado','⚡ Rápido: atún al natural (lata)']},{e:'🥩',n:'Carne vacuna magra',why:'Zinc + hierro hemo + B12 + proteína completa. Imposible de replicar al 100% con vegetales.',swaps:['🌿 Vegetariano: lentejas + pepitas de calabaza (zinc) + levadura nutricional (B12)','🐄 Menos grasa: lomo o solomillo vs. asado o costilla','🥫 Alternativa práctica: carne picada magra']},{e:'🐟',n:'Salmón',why:'Proteína + omega-3 EPA/DHA + vitamina D. El alimento más completo para un atleta.',swaps:['💰 Económico: sardinas en lata al agua (omega-3 equivalente)','🌿 Vegano: cápsulas de algas (único omega-3 vegano con EPA/DHA real)','🎣 Sin grasa: merluza o lenguado (proteína similar, menos omega-3)']},{e:'🫘',n:'Lentejas / Garbanzos',why:'Proteína vegetal + hierro + fibra + carbohidratos. El alimento más completo del reino vegetal.',swaps:['⬆️ Más proteína: combinar con arroz (aminoácidos completos)','🔄 Variedad: frijoles negros, edamame, habas','⚡ Rápido: lentejas en lata (ya cocidas)']},{e:'🧀',n:'Queso cottage / Ricota',why:'Caseína de absorción lenta. Ideal pre-cama para síntesis proteica nocturna.',swaps:['🥛 Sin lactosa: versión deslactosada (mismo perfil proteico)','🌿 Vegano: tofu sedoso con vainilla y stevia','💪 Más proteína: yogur griego 0% (15g prot/100g)']}]},
+  {key:'carb',nombre:'Carbohidratos',icon:'⚡',sub:'Los mejores con sus alternativas inteligentes',color:'var(--gold)',bg:'var(--gold-bg)',desc:'Los CHO son el combustible principal del entrenamiento. No son el enemigo — las fuentes de mala calidad sí lo son.',items:[{e:'🌾',n:'Avena',why:'Beta-glucano para saciedad + digestión lenta + fibra soluble. El mejor desayuno pre o post entreno matutino.',swaps:['🌾 Sin gluten: avena certificada sin gluten o copos de arroz','⚡ Más rápido: porridge instantáneo (revisar sin azúcar)','🍫 Con sabor: avena + cacao puro + banana (sin azúcar agregada)']},{e:'🍚',n:'Arroz blanco',why:'Digestión rápida post-entrenamiento. Sin antinutrientes. El carbohidrato de peri-entrenamiento por excelencia.',swaps:['🌿 Más nutrientes: quinoa (misma función + proteína + hierro)','🎑 Sin gluten: ya lo es naturalmente','🏆 Variedad: arroz integral en comidas no peri-entreno (más fibra)']},{e:'🍠',n:'Batata / Boniato',why:'Vitamina A, potasio, digestión media. Superior a la papa en densidad de micronutrientes.',swaps:['🥔 Alternativa: papa hervida o al horno (similar CHO, más saciante)','🌿 Exótico: ñame o yuca (sin gluten, misma función)','⚡ Más rápido: papa al microondas (8 min, misma calidad nutricional)']},{e:'🫘',n:'Legumbres',why:'CHO complejo + proteína vegetal + fibra + hierro. El carbohidrato más completo nutricionalmente.',swaps:['🔄 Variedad: frijoles negros, lentejas rojas (se cocinan en 15 min sin remojar), edamame','⚡ Práctico: versiones en lata (enjuagar bien para reducir sodio)','🌿 Quinoa: si querés CHO + proteína completa en uno']},{e:'🥦',n:'Verduras (volumen libre)',why:'Casi sin calorías pero con fibra, vitaminas y agua. No necesitan periodización — comer siempre.',swaps:['🔄 Crucíferas: brócoli, coliflor, coles de Bruselas, rúcula','🥬 De hoja: espinaca, lechuga, berro, rúcula','🎨 Color: zanahoria, pimiento rojo, tomate, remolacha']}]},
   {key:'fat',nombre:'Grasas saludables',icon:'🧠',sub:'Las buenas, con sus swaps para cada situación',color:'var(--amber)',bg:'var(--amber-bg)',desc:'Las grasas son esenciales para hormonas, absorción de vitaminas A/D/E/K y función cerebral. Eliminarlas es un error garrafal.',items:[{e:'🫒',n:'Aceite de oliva extra virgen',why:'Ácido oleico + oleocantal (antiinflamatorio). El condimento base de cada comida. No usar para fritura a alta temperatura.',swaps:['🔥 Para fritura: aceite de aguacate o aceite de coco (más estable al calor)','💰 Económico: aceite de girasol alto oleico (similar perfil, más barato)','🌿 Sin procesar: aceitunas enteras (8-10 = aprox 1 cda de aceite)']},{e:'🥑',n:'Aguacate',why:'Grasa monoinsaturada + vitamina E + folato + potasio. Mejora absorción de vitaminas liposolubles de otros alimentos.',swaps:['💰 Más económico: aceitunas verdes o negras (mismas grasas mono)','🌰 Snack similar: almendras (más proteína, menos folato)','🥚 Sin aguacate: yema de huevo + aceite de oliva cubre similar función hormonal']},{e:'🐟',n:'Salmón / Sardinas',why:'Omega-3 EPA y DHA de máxima biodisponibilidad. El omega-3 que realmente llega a las células.',swaps:['💰 Económico: sardinas en lata (igual omega-3)','🌿 Vegano: cápsulas de aceite de algas (única fuente vegana de EPA/DHA real)','🎣 Variedad: caballa, arenque, trucha de mar (todos ricos en omega-3)']},{e:'🌰',n:'Nueces y almendras',why:'Nueces: omega-3 ALA + melatonina + polifenoles. Almendras: vitamina E + calcio + magnesio. Un puñado de cada una.',swaps:['🥜 Sin nueces: semillas de girasol o tahini (pasta de sésamo)','💰 Económico: cacahuate (técnicamente legumbre, pero similar perfil de grasas)','🌿 Más omega-3: nueces de macadamia + semillas de lino molido']},{e:'🌻',n:'Semillas variadas',why:'Chía: omega-3 + calcio + fibra. Lino: fitoestrógenos + omega-3. Calabaza: zinc. Girasol: vitamina E. Rotar todas.',swaps:['⚡ Más fácil: semillas molidas o aceite de lino (más biodisponible que semilla entera)','🔄 Variedad: semillas de cáñamo (omega-3 + proteína completa)','🥣 Uso diario: agregar a yogur, avena o ensaladas']}]}
 ];
 
 const TIMING_DATA = [
-  {label:'Pre-entreno lejano',tiempo:'2–3 hs antes',icon:'🕑',sub:'Última comida completa',items:[{dot:'var(--gold)',txt:'<strong>Carbohidratos de digestión media-lenta:</strong> avena, arroz integral, batata, pasta. El combustible para la sesión.'},{dot:'var(--blue)',txt:'<strong>Proteína moderada:</strong> pechuga, huevo, cottage. 30–40g. Reduce catabolismo durante el entreno.'},{dot:'var(--text3)',txt:'<strong>Grasas mínimas:</strong> ralentizan la digestión. Máximo 10–15g en esta comida.'},{dot:'var(--text3)',txt:'Hidratación: empezar a hidratar desde esta comida. No llegar al gimnasio con sed.'}],alimentos_ejemplo:['🌾 Avena + huevo revuelto + fruta','🍚 Arroz + pechuga + verduras','🍠 Batata + atún + aceite de oliva (1 cda)']},
-  {label:'Pre-entreno cercano',tiempo:'30–45 min antes',icon:'⚡',sub:'Snack energizante (si lo necesitas)',items:[{dot:'var(--gold)',txt:'<strong>CHO rápido + proteína ligera:</strong> banana + proteína en polvo / taza de arroz + 3 claras / avena con leche descremada.'},{dot:'var(--text3)',txt:'<strong>Sin grasas ni fibra excesiva:</strong> dificultan la digestión y pueden generar malestar durante el entreno.'},{dot:'var(--text3)',txt:'<strong>Café negro:</strong> si no puedes comer, cafeína 30 min antes mejora fuerza y resistencia sin calorías.'}],alimentos_ejemplo:['🍌 Banana + yogur griego','🍚 Arroz frío + claras de huevo','☕ Café negro + banana (mínimo)']},
-  {label:'Intra-entrenamiento',tiempo:'Durante la sesión',icon:'🏋️',sub:'Sesiones de +60 minutos',items:[{dot:'var(--gold)',txt:'<strong>Agua es lo mínimo:</strong> 200–400ml cada 30 min. El rendimiento cae con solo 2% de deshidratación.'},{dot:'var(--gold)',txt:'<strong>Sesiones +60 min:</strong> 1 banana, 30g de dátiles o bebida con 30–60g de CHO por hora. Recargar glucógeno.'},{dot:'var(--text3)',txt:'<strong>No necesario en sesiones cortas:</strong> en 45–60 min, el glucógeno almacenado es suficiente si comiste bien antes.'}],alimentos_ejemplo:['🍌 Banana + agua','🌴 30g dátiles Medjool','🥤 Agua con glucosa + pizca de sal']},
-  {label:'Post-entrenamiento',tiempo:'30–90 min después',icon:'🔄',sub:'La ventana más importante del día',items:[{dot:'var(--blue)',txt:'<strong>Proteína de alta calidad, rápida:</strong> 30–40g. Whey, pechuga cocida, huevo, atún. La síntesis proteica está al máximo en este momento.'},{dot:'var(--gold)',txt:'<strong>Carbohidratos de digestión rápida:</strong> arroz blanco, papa, banana. Recarga el glucógeno gastado.'},{dot:'var(--text3)',txt:'<strong>Proporción: en volumen 3:1 CHO/proteína · en definición 1:1.</strong>'},{dot:'var(--text3)',txt:'<strong>Grasas al mínimo:</strong> ralentizan la absorción de proteína. Agregalas en la próxima comida.'}],alimentos_ejemplo:['🍚 Arroz + pechuga + vegetales','🍌 Batido: banana + proteína + leche','🥚 3 huevos revueltos + papa hervida']},
-  {label:'Pre-cama',tiempo:'2–3 hs antes de dormir',icon:'🌙',sub:'La comida más subestimada',items:[{dot:'var(--blue)',txt:'<strong>Proteína lenta (caseína):</strong> queso cottage, ricota, yogur griego, huevo. Mantiene la síntesis proteica durante el sueño de 6–8 hs.'},{dot:'var(--amber)',txt:'<strong>Grasas moderadas:</strong> aguacate, aceite de oliva, almendras. Ralentizan la digestión — ideal para la noche.'},{dot:'var(--text3)',txt:'Carbohidratos bajos o nulos, a menos que entrenaste esa mañana y aún no recargaste.'},{dot:'var(--text3)',txt:'<strong>En volumen:</strong> no saltear esta comida. Es cuando más músculo se construye.'}],alimentos_ejemplo:['🧀 Queso cottage + almendras + canela','🥚 2 huevos revueltos + aguacate','🫘 Yogur griego + semillas de chía + fresas']}
+  {label:'Pre-entreno lejano',tiempo:'2–3 hs antes',icon:'🕑',sub:'Última comida completa',items:[{dot:'var(--gold)',txt:'<strong>Carbohidratos de digestión media-lenta:</strong> avena, arroz integral, batata, pasta. El combustible para la sesión.'},{dot:'var(--blue)',txt:'<strong>Proteína moderada:</strong> pechuga, huevo, cottage. 30–40g. Reduce catabolismo durante el entreno.'},{dot:'var(--ink3)',txt:'<strong>Grasas mínimas:</strong> ralentizan la digestión. Máximo 10–15g en esta comida.'},{dot:'var(--ink3)',txt:'Hidratación: empezar a hidratar desde esta comida. No llegar al gimnasio con sed.'}],alimentos_ejemplo:['🌾 Avena + huevo revuelto + fruta','🍚 Arroz + pechuga + verduras','🍠 Batata + atún + aceite de oliva (1 cda)']},
+  {label:'Pre-entreno cercano',tiempo:'30–45 min antes',icon:'⚡',sub:'Snack energizante (si lo necesitás)',items:[{dot:'var(--gold)',txt:'<strong>CHO rápido + proteína ligera:</strong> banana + proteína en polvo / taza de arroz + 3 claras / avena con leche descremada.'},{dot:'var(--ink3)',txt:'<strong>Sin grasas ni fibra excesiva:</strong> dificultan la digestión y pueden generar malestar durante el entreno.'},{dot:'var(--ink3)',txt:'<strong>Café negro:</strong> si no podés comer, cafeína 30 min antes mejora fuerza y resistencia sin calorías.'}],alimentos_ejemplo:['🍌 Banana + yogur griego','🍚 Arroz frío + claras de huevo','☕ Café negro + banana (mínimo)']},
+  {label:'Intra-entrenamiento',tiempo:'Durante la sesión',icon:'🏋️',sub:'Sesiones de +60 minutos',items:[{dot:'var(--gold)',txt:'<strong>Agua es lo mínimo:</strong> 200–400ml cada 30 min. El rendimiento cae con solo 2% de deshidratación.'},{dot:'var(--gold)',txt:'<strong>Sesiones +60 min:</strong> 1 banana, 30g de dátiles o bebida con 30–60g de CHO por hora. Recargar glucógeno.'},{dot:'var(--ink3)',txt:'<strong>No necesario en sesiones cortas:</strong> en 45–60 min, el glucógeno almacenado es suficiente si comiste bien antes.'}],alimentos_ejemplo:['🍌 Banana + agua','🌴 30g dátiles Medjool','🥤 Agua con glucosa + pizca de sal']},
+  {label:'Post-entrenamiento',tiempo:'30–90 min después',icon:'🔄',sub:'La ventana más importante del día',items:[{dot:'var(--blue)',txt:'<strong>Proteína de alta calidad, rápida:</strong> 30–40g. Whey, pechuga cocida, huevo, atún. La síntesis proteica está al máximo en este momento.'},{dot:'var(--gold)',txt:'<strong>Carbohidratos de digestión rápida:</strong> arroz blanco, papa, banana. Recarga el glucógeno gastado.'},{dot:'var(--ink3)',txt:'<strong>Proporción: en volumen 3:1 CHO/proteína · en definición 1:1.</strong>'},{dot:'var(--ink3)',txt:'<strong>Grasas al mínimo:</strong> ralentizan la absorción de proteína. Agregarlas en la próxima comida.'}],alimentos_ejemplo:['🍚 Arroz + pechuga + vegetales','🍌 Batido: banana + proteína + leche','🥚 3 huevos revueltos + papa hervida']},
+  {label:'Pre-cama',tiempo:'2–3 hs antes de dormir',icon:'🌙',sub:'La comida más subestimada',items:[{dot:'var(--blue)',txt:'<strong>Proteína lenta (caseína):</strong> queso cottage, ricota, yogur griego, huevo. Mantiene la síntesis proteica durante el sueño de 6–8 hs.'},{dot:'var(--amber)',txt:'<strong>Grasas moderadas:</strong> aguacate, aceite de oliva, almendras. Ralentizan la digestión — ideal para la noche.'},{dot:'var(--ink3)',txt:'Carbohidratos bajos o nulos, a menos que entrenaste esa mañana y aún no recargaste.'},{dot:'var(--ink3)',txt:'<strong>En volumen:</strong> no saltear esta comida. Es cuando más músculo se construye.'}],alimentos_ejemplo:['🧀 Queso cottage + almendras + canela','🥚 2 huevos revueltos + aguacate','🫘 Yogur griego + semillas de chía + fresas']}
 ];
 
 const RESTRICCIONES_FULL = [
-  {key:'veg',titulo:'Vegetariano',icon:'🌿',desc:'Una dieta vegetariana puede sostener cualquier objetivo de composición corporal. La clave es planificación de proteína y micronutrientes críticos.',alerta:{tipo:'amber',txt:'La proteína vegetal tiene menor biodisponibilidad. Aumenta tu objetivo proteico un 15–20% por encima de lo normal.'},bases:[{e:'🥚',n:'Huevos',w:'Si los consumes, son la proteína más completa disponible para ti. No los limites.'},{e:'🧀',n:'Lácteos (ricota, cottage, yogur griego)',w:'Proteína + calcio. Pilar del vegetariano no vegano.'},{e:'🫘',n:'Lentejas + arroz',w:'La combinación clave: forma proteína completa. Hierro + zinc vegetal.'},{e:'🌱',n:'Tofu firme / Tempeh',w:'Tempeh > tofu. Fermentado, más proteína, más digestible, más micronutrientes.'},{e:'🌿',n:'Quinoa',w:'El único pseudo-cereal con proteína completa. Alto en hierro.'},{e:'🌱',n:'Edamame',w:'La legumbre más proteica. Alta en isoflavonas.'},{e:'🌻',n:'Semillas de cáñamo',w:'Proteína completa + omega-3. Agregar a batidos o ensaladas.'}],micros:[{icon:'💊',txt:'<strong>Vitamina B12:</strong> solo existe en alimentos animales. Si reduces lácteos y huevos, suplementar. No es opcional.'},{icon:'🩸',txt:'<strong>Hierro no-hemo:</strong> lentejas, espinaca, pepitas de calabaza. SIEMPRE combinar con vitamina C (kiwi, naranja, limón).'},{icon:'⚡',txt:'<strong>Zinc:</strong> pepitas de calabaza, legumbres, tahini. Menor biodisponibilidad que en carne.'},{icon:'🐟',txt:'<strong>Omega-3:</strong> chía y lino tienen ALA pero NO EPA/DHA. Para omega-3 real vegano: aceite de algas (no de peces).'},{icon:'🏋️',txt:'<strong>Creatina:</strong> no existe en plantas. Los vegetarianos tienen depósitos basales más bajos. Suplementar 3–5g/día tiene evidencia sólida.'}]},
-  {key:'cel',titulo:'Celíaco / Sin gluten',icon:'🌾',desc:'Sin trigo, avena (convencional), cebada ni centeno. No limita el rendimiento deportivo — solo requiere elegir bien las fuentes de CHO.',alerta:{tipo:'red',txt:'Contaminación cruzada: en restaurantes y productos industriales es real. Leer SIEMPRE la etiqueta "Sin gluten" certificada.'},bases:[{e:'🍚',n:'Arroz (blanco e integral)',w:'Tu CHO principal. Naturalmente sin gluten, versátil, digerible.'},{e:'🌿',n:'Quinoa',w:'Sin gluten + proteína completa + hierro. La más valiosa para celíacos.'},{e:'🍠',n:'Batata / Papa / Yuca',w:'CHO de alta densidad, naturalmente sin gluten.'},{e:'🌾',n:'Avena certificada sin gluten',w:'Está disponible en muchos países. Si la toleras, es excelente. Verificar etiqueta.'},{e:'🌽',n:'Maíz / Harina de maíz / Polenta',w:'Naturalmente sin gluten. Controlar no tenga "puede contener trazas de gluten".'},{e:'🌱',n:'Trigo sarraceno (alforfón)',w:'A pesar del nombre, NO tiene gluten. Rico en proteína y minerales.'},{e:'🫘',n:'Legumbres certificadas',w:'Verificar etiqueta — algunas se procesan en plantas que también procesan gluten.'}],micros:[{icon:'🩸',txt:'<strong>Hierro y B12:</strong> la celiaquía no tratada daña el intestino y reduce absorción. Controlar niveles en análisis de sangre.'},{icon:'🦴',txt:'<strong>Calcio:</strong> al evitar muchos lácteos procesados (que contienen gluten), asegurar fuentes alternativas.'},{icon:'🌿',txt:'<strong>Fibra:</strong> al evitar harinas integrales, compensar con legumbres, verduras y quinoa.'},{icon:'💊',txt:'<strong>Revisión periódica:</strong> análisis de anticuerpos anti-transglutaminasa cada 1–2 años para monitorear adhesión.'}]},
-  {key:'lac',titulo:'Sin lactosa / Intolerante',icon:'🥛',desc:'La intolerancia a la lactosa no afecta el rendimiento deportivo. Las fuentes de calcio y proteína láctea tienen alternativas directas.',alerta:{tipo:'blue',txt:'Intolerante a lactosa ≠ alérgico a proteínas de leche. Los quesos maduros (parmesano, manchego) tienen casi 0 lactosa y generalmente se toleran bien.'},bases:[{e:'🥛',n:'Lácteos sin lactosa',w:'Misma proteína y calcio que los convencionales. La tecnología elimina el disacárido, no la caseína.'},{e:'🥚',n:'Huevos',w:'Proteína completa completamente libre de lactosa.'},{e:'🌱',n:'Bebida de soja (sin azúcar)',w:'La más similar a la leche en proteína (~3.5g/100ml). Buscar versión sin azúcar.'},{e:'🧀',n:'Quesos maduros duros',w:'Parmesano, manchego, reggianito — mínima lactosa (<1g/100g). Tolerados por la mayoría.'},{e:'🫘',n:'Legumbres',w:'Hierro + proteína + calcio vegetal. Sin ningún rastro de lactosa.'},{e:'🐠',n:'Sardinas con espinas',w:'Calcio muy alto. Alternativa real al calcio de la leche.'},{e:'🥦',n:'Brócoli / Almendras',w:'Calcio vegetal. No tanta cantidad como lácteos, pero suman.'}],micros:[{icon:'🦴',txt:'<strong>Calcio:</strong> sardinas con espinas, brócoli, almendras, bebida de soja o arroz fortificada. Apuntar a 1000mg/día.'},{icon:'☀️',txt:'<strong>Vitamina D:</strong> se absorbe junto al calcio. Sol directo 20 min/día o suplemento (1000–2000 UI).'},{icon:'💊',txt:'<strong>Probióticos:</strong> el yogur sin lactosa o los fermentados ayudan a mejorar la tolerancia digestiva gradualmente.'},{icon:'🔬',txt:'<strong>No es binario:</strong> muchos intolerantes toleran hasta 12g de lactosa/día (= 1 vaso de leche). Evalúa tu propio umbral.'}]}
+  {key:'veg',titulo:'Vegetariano',icon:'🌿',desc:'Una dieta vegetariana puede sostener cualquier objetivo de composición corporal. La clave es planificación de proteína y micronutrientes críticos.',alerta:{tipo:'amber',txt:'La proteína vegetal tiene menor biodisponibilidad. Aumentá tu objetivo proteico un 15–20% por encima de lo normal.'},bases:[{e:'🥚',n:'Huevos',w:'Si los consumís, son la proteína más completa disponible para vos. No los limites.'},{e:'🧀',n:'Lácteos (ricota, cottage, yogur griego)',w:'Proteína + calcio. Pilar del vegetariano no vegano.'},{e:'🫘',n:'Lentejas + arroz',w:'La combinación clave: forma proteína completa. Hierro + zinc vegetal.'},{e:'🌱',n:'Tofu firme / Tempeh',w:'Tempeh > tofu. Fermentado, más proteína, más digestible, más micronutrientes.'},{e:'🌿',n:'Quinoa',w:'El único pseudo-cereal con proteína completa. Alto en hierro.'},{e:'🌱',n:'Edamame',w:'La legumbre más proteica. Alta en isoflavonas.'},{e:'🌻',n:'Semillas de cáñamo',w:'Proteína completa + omega-3. Agregar a batidos o ensaladas.'}],micros:[{icon:'💊',txt:'<strong>Vitamina B12:</strong> solo existe en alimentos animales. Si reducís lácteos y huevos, suplementar. No es opcional.'},{icon:'🩸',txt:'<strong>Hierro no-hemo:</strong> lentejas, espinaca, pepitas de calabaza. SIEMPRE combinar con vitamina C (kiwi, naranja, limón).'},{icon:'⚡',txt:'<strong>Zinc:</strong> pepitas de calabaza, legumbres, tahini. Menor biodisponibilidad que en carne.'},{icon:'🐟',txt:'<strong>Omega-3:</strong> chía y lino tienen ALA pero NO EPA/DHA. Para omega-3 real vegano: aceite de algas (no de peces).'},{icon:'🏋️',txt:'<strong>Creatina:</strong> no existe en plantas. Los vegetarianos tienen depósitos basales más bajos. Suplementar 3–5g/día tiene evidencia sólida.'}]},
+  {key:'cel',titulo:'Celíaco / Sin gluten',icon:'🌾',desc:'Sin trigo, avena (convencional), cebada ni centeno. No limita el rendimiento deportivo — solo requiere elegir bien las fuentes de CHO.',alerta:{tipo:'red',txt:'Contaminación cruzada: en restaurantes y productos industriales es real. Leer SIEMPRE la etiqueta "Sin gluten" certificada.'},bases:[{e:'🍚',n:'Arroz (blanco e integral)',w:'Tu CHO principal. Naturalmente sin gluten, versátil, digerible.'},{e:'🌿',n:'Quinoa',w:'Sin gluten + proteína completa + hierro. La más valiosa para celíacos.'},{e:'🍠',n:'Batata / Papa / Yuca',w:'CHO de alta densidad, naturalmente sin gluten.'},{e:'🌾',n:'Avena certificada sin gluten',w:'Está disponible en muchos países. Si la tolerás, es excelente. Verificar etiqueta.'},{e:'🌽',n:'Maíz / Harina de maíz / Polenta',w:'Naturalmente sin gluten. Controlar no tenga "puede contener trazas de gluten".'},{e:'🌱',n:'Trigo sarraceno (alforfón)',w:'A pesar del nombre, NO tiene gluten. Rico en proteína y minerales.'},{e:'🫘',n:'Legumbres certificadas',w:'Verificar etiqueta — algunas se procesan en plantas que también procesan gluten.'}],micros:[{icon:'🩸',txt:'<strong>Hierro y B12:</strong> la celiaquía no tratada daña el intestino y reduce absorción. Controlar niveles en análisis de sangre.'},{icon:'🦴',txt:'<strong>Calcio:</strong> al evitar muchos lácteos procesados (que contienen gluten), asegurar fuentes alternativas.'},{icon:'🌿',txt:'<strong>Fibra:</strong> al evitar harinas integrales, compensar con legumbres, verduras y quinoa.'},{icon:'💊',txt:'<strong>Revisión periódica:</strong> análisis de anticuerpos anti-transglutaminasa cada 1–2 años para monitorear adhesión.'}]},
+  {key:'lac',titulo:'Sin lactosa / Intolerante',icon:'🥛',desc:'La intolerancia a la lactosa no afecta el rendimiento deportivo. Las fuentes de calcio y proteína láctea tienen alternativas directas.',alerta:{tipo:'blue',txt:'Intolerante a lactosa ≠ alérgico a proteínas de leche. Los quesos maduros (parmesano, manchego) tienen casi 0 lactosa y generalmente se toleran bien.'},bases:[{e:'🥛',n:'Lácteos sin lactosa',w:'Misma proteína y calcio que los convencionales. La tecnología elimina el disacárido, no la caseína.'},{e:'🥚',n:'Huevos',w:'Proteína completa completamente libre de lactosa.'},{e:'🌱',n:'Bebida de soja (sin azúcar)',w:'La más similar a la leche en proteína (~3.5g/100ml). Buscar versión sin azúcar.'},{e:'🧀',n:'Quesos maduros duros',w:'Parmesano, manchego, reggianito — mínima lactosa (<1g/100g). Tolerados por la mayoría.'},{e:'🫘',n:'Legumbres',w:'Hierro + proteína + calcio vegetal. Sin ningún rastro de lactosa.'},{e:'🐠',n:'Sardinas con espinas',w:'Calcio muy alto. Alternativa real al calcio de la leche.'},{e:'🥦',n:'Brócoli / Almendras',w:'Calcio vegetal. No tanta cantidad como lácteos, pero suman.'}],micros:[{icon:'🦴',txt:'<strong>Calcio:</strong> sardinas con espinas, brócoli, almendras, bebida de soja o arroz fortificada. Apuntar a 1000mg/día.'},{icon:'☀️',txt:'<strong>Vitamina D:</strong> se absorbe junto al calcio. Sol directo 20 min/día o suplemento (1000–2000 UI).'},{icon:'💊',txt:'<strong>Probióticos:</strong> el yogur sin lactosa o los fermentados ayudan a mejorar la tolerancia digestiva gradualmente.'},{icon:'🔬',txt:'<strong>No es binario:</strong> muchos intolerantes toleran hasta 12g de lactosa/día (= 1 vaso de leche). Evaluá tu propio umbral.'}]}
 ];
 
 const FAQ_DATA = [
-  {q:'¿Cuánta proteína necesito realmente?',tag:'gold',a:'Para quienes entrenan: <strong>1,6–2,2 g/kg de peso corporal/día</strong>. En definición subes a 2,2–2,6 g/kg para preservar músculo en déficit. Más de eso no tiene evidencia de beneficio adicional — el exceso se oxida como energía.'},
-  {q:'¿El timing de las comidas importa?',tag:'gold',a:'Importa pero menos que el total diario. Dicho eso: proteína de calidad dentro de 1–2 hs post-entrenamiento optimiza la síntesis proteica. Si llegas a tu objetivo diario de macros, el timing es un detalle fino. Si no llegas al objetivo, el timing no sirve de nada.'},
+  {q:'¿Cuánta proteína necesito realmente?',tag:'gold',a:'Para quienes entrenan: <strong>1,6–2,2 g/kg de peso corporal/día</strong>. En definición subís a 2,2–2,6 g/kg para preservar músculo en déficit. Más de eso no tiene evidencia de beneficio adicional — el exceso se oxida como energía.'},
+  {q:'¿El timing de las comidas importa?',tag:'gold',a:'Importa pero menos que el total diario. Dicho eso: proteína de calidad dentro de 1–2 hs post-entrenamiento optimiza la síntesis proteica. Si llegás a tu objetivo diario de macros, el timing es un detalle fino. Si no llegás al objetivo, el timing no sirve de nada.'},
   {q:'¿Puedo ganar músculo siendo vegetariano?',tag:'amber',a:'Absolutamente sí. La clave: 1) consumir suficiente proteína total (aumentar target 15–20%), 2) combinar fuentes para aminoácidos esenciales, 3) suplementar B12 y considerar creatina monohidratada. La creatina no se encuentra en plantas y los vegetarianos tienen depósitos basales más bajos.'},
   {q:'¿Por qué las grasas son importantes para las hormonas?',tag:'gold',a:'El colesterol dietario es el precursor directo de las hormonas esteroideas (testosterona, estrógenos, cortisol, vitamina D). Sin grasa suficiente — especialmente grasa saturada en cantidades normales y monoinsaturada — la producción hormonal cae. Mínimo 0,8–1g de grasa/kg de peso corporal.'},
   {q:'¿Qué hacer en la semana premenstrual (fase lútea)?',tag:'amber',a:'En fase lútea (semana 3–4 del ciclo) el metabolismo basal sube hasta 300 kcal, el apetito aumenta y el rendimiento puede bajar. Estrategias: aumentar magnesio (almendras, chocolate negro +85%, espinaca) para reducir PMS, no bajar calorías agresivamente, y priorizar proteína + CHO complejos para controlar los antojos.'},
-  {q:'¿Cómo afecta el ciclo menstrual al metabolismo?',tag:'amber',a:'El ciclo tiene 4 fases con necesidades distintas. Fase folicular (días 1–14): estrógeno alto mejora la sensibilidad a la insulina — mejor momento para entrenar fuerte y subir carbohidratos. Ovulación (día 14): pico de energía y fuerza. Fase lútea temprana (días 15–21): progesterona sube, aumenta el catabolismo proteico — subir proteína 10–15% estos días. Fase lútea tardía (días 22–28): metabolismo basal sube 100–300 kcal, aumentan antojos por caída de serotonina — priorizar magnesio y triptófano.'},
+  {q:'¿Cómo afecta el ciclo menstrual al metabolismo?',tag:'amber',a:'El ciclo tiene 4 fases con necesidades distintas. Fase folicular (días 1–14): estrógeno alto mejora la sensibilidad a la insulina — mejor momento para entrenar fuerte y subir carbohidratos. Ovulación (día 14): pico de energía y fuerza. Fase lútea temprana (días 15–21): progesterona sube, aumenta el catabolismo proteico — subir proteína 10–15% estos días. Fase lútea tardía (días 22–28): metabolismo basal sube 100–300 kcal, aumentan antojos — priorizar magnesio y triptófano.'},
   {q:'¿Cómo cubro el hierro sin carne?',tag:'amber',a:'Hierro no-hemo vegetal: lentejas negras, espinaca, brócoli, pepitas de calabaza, quinoa. La clave: siempre combinar con vitamina C (kiwi, naranja, limón) en la misma comida — aumenta la absorción hasta 3 veces. Evitar té, café y calcio en la misma comida porque inhiben la absorción del hierro no-hemo.'},
   {q:'¿Cuántas comidas al día debo hacer?',tag:'gold',a:'No hay número mágico. Importa: 1) llegar a tu objetivo de macros, 2) distribuir proteína en al menos 3–4 tomas (el cuerpo no usa eficientemente más de ~40g por ingesta para síntesis), 3) que encaje con tu vida real. Más comidas no es automáticamente mejor.'},
 ];
 
-/* ═══════════════════════════════════════════
-   BUILD FUNCTIONS
-   ═══════════════════════════════════════════ */
+/* ═══ BUILD FUNCTIONS ═══ */
 
 function buildPlan(){
   const sexo = document.getElementById('sel-sexo').value;
@@ -867,7 +877,6 @@ function buildPlan(){
   const planData = PLAN_DATA[etapa][sexo];
   let html = '';
 
-  /* Hormone card */
   html += `<div class="hormone-card">
     <div class="hormone-title">${horData.titulo}</div>
     <div class="hormone-sub">${horData.sub}</div>
@@ -878,31 +887,26 @@ function buildPlan(){
   });
   html += `</div></div>`;
 
-  /* Result summary card */
   const etapaLabel = {volumen:'Volumen',definicion:'Definición',recomp:'Recomposición',mantenimiento:'Mantenimiento'}[etapa];
-  html += `<div class="result-card" style="margin-bottom:20px">
-    <div class="result-top">
-      <div class="result-name">${etapaLabel} · ${sexo === 'm' ? 'Masculino' : 'Femenino'}</div>
-      <div class="result-sub">${planData.ratio}</div>
-      <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap">
+  html += `<div class="plan-summary">
+    <div class="plan-summary-top">
+      <div class="plan-summary-title">${etapaLabel} · ${sexo === 'm' ? 'Masculino' : 'Femenino'}</div>
+      <div class="plan-summary-ratio" style="margin-top:6px">${planData.ratio}</div>
+      <div style="margin-top:10px">
         <span class="badge badge-gold">Proteína: ${planData.proteina_g}</span>
       </div>
     </div>
-    <div style="padding:16px 18px">
-      <p style="font-size:13px;color:var(--text2);line-height:1.65">${planData.desc}</p>
-    </div>
+    <div class="plan-summary-body">${planData.desc}</div>
   </div>`;
 
-  /* Restriction alert */
   if(restricciones.size > 0){
     const rLabels = {veg:'🌿 Vegetariano',cel:'🌾 Sin gluten',lac:'🥛 Sin lactosa'};
-    html += `<div class="alert-box amber" style="margin-bottom:18px">
+    html += `<div class="alert-box amber" style="margin-bottom:20px">
       <div class="alert-title amber">Restricciones activas: ${[...restricciones].map(r=>rLabels[r]).join(', ')}</div>
-      <div class="alert-body">Verás alertas adaptadas en cada alimento. Para la guía completa, revisa la pestaña <strong>Restricciones</strong>.</div>
+      <div class="alert-body">Verás alertas adaptadas en cada alimento. Para la guía completa, revisá la pestaña <strong>Restricciones</strong>.</div>
     </div>`;
   }
 
-  /* Food blocks */
   planData.bloques.forEach(bloque => {
     html += `<div class="food-block">
       <div class="food-block-header">
@@ -923,20 +927,20 @@ function buildPlan(){
         <div class="food-card-top">
           <div class="food-emoji">${al.e}</div>
           <div style="flex:1">
-            <div class="food-name">${al.n}${al.star?` <span class="star-badge">★ PRIORITARIO</span>`:''}</div>
+            <div class="food-name">${al.n}${al.star?` <span class="star-badge">★ prioritario</span>`:''}</div>
             <div class="food-why">${al.w}</div>
             <div class="food-tags">`;
       al.tags.forEach(t => {
         const cls = t.includes('g prot') || t.includes('prot/') ? 'tip'
           : t.includes('CHO') ? 'macro'
-          : /Testosterona|Estrógeno|Hormonal|Omega|Ciclo|Hierro|Folato|Zinc|Calcio|Magnesio|Vitamina|Fitoestrógeno|Omega/.test(t) ? 'micro'
+          : /Testosterona|Estrógeno|Hormonal|Omega|Ciclo|Hierro|Folato|Zinc|Calcio|Magnesio|Vitamina|Fitoestrógeno/.test(t) ? 'micro'
           : 'hor';
         html += `<span class="food-tag ${cls}">${t}</span>`;
       });
       html += `</div>`;
       if(showVeg) html += `<div style="font-size:11px;color:var(--amber);margin-top:7px;font-weight:500">⚠ Contiene proteína animal — ver Restricciones para alternativas</div>`;
       if(showCel) html += `<div style="font-size:11px;color:var(--red);margin-top:7px;font-weight:500">⚠ Verificar etiqueta "Sin gluten" certificada</div>`;
-      if(showLac) html += `<div style="font-size:11px;color:var(--blue);margin-top:7px;font-weight:500">ℹ Buscar versión sin lactosa o alternativa vegetal</div>`;
+      if(showLac) html += `<div style="font-size:11px;color:var(--blue);margin-top:7px;font-weight:500">ℹ Buscá versión sin lactosa o alternativa vegetal</div>`;
       html += `</div></div></div>`;
     });
 
@@ -956,10 +960,8 @@ function buildPlan(){
     html += `</div></div>`;
   });
 
-  /* Info banner */
-  html += `<div class="info-banner"><strong>Recuerda:</strong> esta guía proporciona alimentos y reemplazos de alta evidencia. Para tus números exactos (calorías, gramos por macro según tu peso y objetivo), lo trabajamos en la asesoría personalizada.</div>`;
+  html += `<div class="info-banner"><strong>Recordá:</strong> esta guía proporciona alimentos y reemplazos de alta evidencia. Para tus números exactos (calorías, gramos por macro según tu peso y objetivo), lo trabajamos en la asesoría personalizada.</div>`;
 
-  /* Definicion bonus */
   if(etapa === 'definicion'){
     const bonusDef = [
       {e:'🍮',n:'Gelatina Zero / Jaleas sin azúcar',d:'Postre en definición sin culpa. 0–5 kcal por porción. Satisface el antojo dulce sin impacto calórico.'},
@@ -968,15 +970,15 @@ function buildPlan(){
       {e:'🫙',n:'Caldo claro de huesos o vegetal',d:'Saciedad líquida con casi 0 calorías. Electrolitos naturales. Ideal entre comidas o como snack nocturno.'},
       {e:'🥒',n:'Pepino / Apio con sal y limón',d:'Snack libre de calorías. Alta saciedad por volumen y agua. El apio tiene efecto diurético natural.'},
       {e:'🍓',n:'Fresas / Frutillas (gran porción)',d:'100g = 32 kcal. Podés comer 300g sin problema. Vitamina C para cortisol + antioxidantes + saciedad real.'},
-      {e:'🌶',n:'Salsa picante / Tabasco',d:'Capsaicina = termogénico. Agrega sabor intenso sin calorías. Ayuda a comer más despacio y sentir más satisfacción.'},
+      {e:'🌶',n:'Salsa picante / Tabasco',d:'Capsaicina = termogénico. Agrega sabor intenso sin calorías. Ayuda a comer más despacio.'},
       {e:'🥗',n:'Mix de hojas verdes ilimitadas',d:'Rúcula, lechuga, espinaca. Sin límite en definición. Fibra + micronutrientes + volumen = hambre bajo control.'},
     ];
-    html += `<div style="margin-top:24px">
-      <div class="food-block-header" style="margin-bottom:16px">
+    html += `<div style="margin-top:26px">
+      <div class="food-block-header" style="margin-bottom:14px">
         <div class="food-block-icon">🎯</div>
-        <div><div class="food-block-title">Bonus Definición</div><div class="food-block-sub">Alimentos de alta saciedad y bajísima densidad calórica</div></div>
+        <div><div class="food-block-title">Bonus Definición</div><div class="food-block-sub">Alta saciedad · bajísima densidad calórica</div></div>
       </div>
-      <div style="display:flex;flex-direction:column;gap:10px">`;
+      <div style="display:flex;flex-direction:column;gap:9px">`;
     bonusDef.forEach(b => {
       html += `<div class="bonus-card">
         <span class="bonus-emoji">${b.e}</span>
@@ -992,28 +994,31 @@ function buildPlan(){
 function buildMacros(){
   let html = '';
   MACROS_DATA.forEach((macro,i) => {
-    html += `<div class="accord" style="border-color:${macro.color}20">
+    html += `<div class="accord">
       <div class="accord-head" onclick="toggleAccord(${i})">
-        <div class="accord-icon" style="background:${macro.bg};border:1px solid ${macro.color}25">${macro.icon}</div>
-        <div style="flex:1;padding:0 12px 0 0"><div class="accord-name">${macro.nombre}</div><div class="accord-sub">${macro.sub}</div></div>
+        <div class="accord-icon">${macro.icon}</div>
+        <div style="flex:1;padding:0 12px">
+          <div class="accord-name">${macro.nombre}</div>
+          <div class="accord-sub">${macro.sub}</div>
+        </div>
         <span class="accord-arrow" id="acc-arr-${i}">⌄</span>
       </div>
       <div class="accord-body" id="acc-body-${i}">
-        <p style="font-size:13px;color:var(--text2);line-height:1.65;margin-bottom:16px">${macro.desc}</p>
-        <div style="display:flex;flex-direction:column;gap:12px">`;
+        <p style="font-size:13px;color:var(--ink2);line-height:1.7;margin-bottom:16px">${macro.desc}</p>
+        <div style="display:flex;flex-direction:column;gap:10px">`;
     macro.items.forEach(item => {
-      html += `<div style="background:var(--ink2);border:1px solid var(--ink4);border-radius:var(--r-md);padding:16px">
+      html += `<div class="wcard" style="padding:15px">
         <div style="display:flex;gap:12px;margin-bottom:10px">
-          <span style="font-size:24px">${item.e}</span>
+          <span style="font-size:22px">${item.e}</span>
           <div>
-            <div style="font-size:14px;font-weight:600;color:var(--text);margin-bottom:4px">${item.n}</div>
-            <div style="font-size:12.5px;color:var(--text2);line-height:1.55">${item.why}</div>
+            <div style="font-size:13.5px;font-weight:600;color:var(--ink);margin-bottom:4px">${item.n}</div>
+            <div style="font-size:12.5px;color:var(--ink2);line-height:1.6">${item.why}</div>
           </div>
         </div>
-        <div style="padding:12px 14px;background:var(--ink3);border-radius:var(--r-sm);border-left:2px solid ${macro.color}">
-          <div style="font-size:9px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:${macro.color};margin-bottom:8px">🔄 Swaps y alternativas</div>`;
+        <div class="swap-block">
+          <div class="swap-title">🔄 Swaps y alternativas</div>`;
       item.swaps.forEach(s => {
-        html += `<div style="font-size:12.5px;color:var(--text2);line-height:1.5;margin-bottom:5px">${s}</div>`;
+        html += `<div style="font-size:12.5px;color:var(--ink2);line-height:1.55;margin-bottom:5px">${s}</div>`;
       });
       html += `</div></div>`;
     });
@@ -1052,7 +1057,7 @@ function buildTiming(){
     });
     html += `</div></div></div>`;
   });
-  html += `<div class="info-banner"><strong>Regla de oro:</strong> el timing optimiza, pero el total diario de macros es lo que determina los resultados. Primero llega al objetivo, después optimizá el timing.</div>`;
+  html += `<div class="info-banner"><strong>Regla de oro:</strong> el timing optimiza, pero el total diario de macros es lo que determina los resultados. Primero llegá al objetivo, después optimizá el timing.</div>`;
   document.getElementById('timing-content').innerHTML = html;
 }
 
@@ -1071,7 +1076,7 @@ function buildRestricciones(){
         <span class="rest-arrow" id="rest-arrow-${ri}">⌄</span>
       </div>
       <div class="rest-body" id="rest-body-${ri}">
-        <p style="font-size:13px;color:var(--text2);line-height:1.65;margin-bottom:14px">${r.desc}</p>`;
+        <p style="font-size:13px;color:var(--ink2);line-height:1.7;margin-bottom:14px">${r.desc}</p>`;
 
     const ac = r.alerta.tipo;
     html += `<div class="alert-box ${ac}" style="margin-bottom:16px">
@@ -1079,19 +1084,19 @@ function buildRestricciones(){
       <div class="alert-body">${r.alerta.txt}</div>
     </div>`;
 
-    html += `<div class="section-label">Alimentos base</div>
-    <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:18px">`;
+    html += `<div class="section-eyebrow" style="margin-bottom:12px">Alimentos base</div>
+    <div style="display:flex;flex-direction:column;gap:7px;margin-bottom:18px">`;
     r.bases.forEach(b => {
-      html += `<div style="display:flex;gap:12px;padding:12px 14px;background:var(--ink2);border-radius:var(--r-md);border:1px solid var(--ink4)">
-        <span style="font-size:22px">${b.e}</span>
+      html += `<div style="display:flex;gap:12px;padding:12px 13px;background:var(--white);border-radius:var(--r-md);border:1px solid var(--border)">
+        <span style="font-size:20px">${b.e}</span>
         <div>
-          <div style="font-size:13px;font-weight:500;color:var(--text);margin-bottom:3px">${b.n}</div>
-          <div style="font-size:12.5px;color:var(--text2);line-height:1.5">${b.w}</div>
+          <div style="font-size:13px;font-weight:500;color:var(--ink);margin-bottom:3px">${b.n}</div>
+          <div style="font-size:12.5px;color:var(--ink2);line-height:1.55">${b.w}</div>
         </div>
       </div>`;
     });
     html += `</div>
-    <div class="section-label">Micronutrientes críticos</div>
+    <div class="section-eyebrow" style="margin-bottom:12px">Micronutrientes críticos</div>
     <div class="micro-list">`;
     r.micros.forEach(m => {
       html += `<div class="micro-row"><div class="micro-icon">${m.icon}</div><div class="micro-text">${m.txt}</div></div>`;
@@ -1104,14 +1109,13 @@ function buildRestricciones(){
 function toggleRest(i){
   const body = document.getElementById('rest-body-'+i);
   const arrow = document.getElementById('rest-arrow-'+i);
-  const open = body.classList.contains('open');
-  body.classList.toggle('open', !open);
-  arrow.classList.toggle('open', !open);
+  body.classList.toggle('open');
+  arrow.classList.toggle('open');
 }
 
 function buildFaq(){
-  const tagLabel = {gold:'⭐ General',amber:'🌿 Ciclo/Restricciones'};
-  let html = '';
+  const tagLabel = {gold:'⭐ General',amber:'🌿 Ciclo / Restricciones'};
+  let html = '<div class="faq-container">';
   FAQ_DATA.forEach((f,i) => {
     html += `<div class="faq-item">
       <div class="faq-q" onclick="toggleFaq(${i},this)">
@@ -1119,11 +1123,12 @@ function buildFaq(){
         <span class="faq-icon">+</span>
       </div>
       <div class="faq-a" id="faq-a-${i}">
-        <span class="faq-tag ${f.tag}">${tagLabel[f.tag] || '⭐ General'}</span><br>
+        <span class="faq-tag ${f.tag}">${tagLabel[f.tag]||'⭐ General'}</span><br>
         ${f.a}
       </div>
     </div>`;
   });
+  html += '</div>';
   document.getElementById('faq-list').innerHTML = html;
 }
 
@@ -1134,16 +1139,16 @@ function toggleFaq(i, row){
 
 function buildHacks(){
   const hacks = [
-    {num:'01',color:'var(--gold)',title:'Carbohidratos intraentrenamiento para sesiones +60 min',body:'30–60g de carbohidratos simples (gel de dextrosa, plátano, arroz inflado) durante entrenos de más de 60 min reducen la fatiga central, preservan glucógeno muscular y elevan insulina lo suficiente para reducir el ambiente catabólico. Más efectivo que la cafeína sola.',tags:['Rendimiento','Anti-catabolismo','Glucógeno']},
-    {num:'02',color:'var(--blue)',title:'Leucina como disparador anabólico aislado',body:'2.5–3g de leucina libre activa mTOR de forma independiente a la proteína total. Útil si una comida es baja en proteína — agregar leucina pura mantiene la señalización anabólica activa sin depender de la comida entera.',tags:['mTOR','Anabolismo','Leucina libre']},
-    {num:'03',color:'var(--amber)',title:'Días de recarga (refeed) estratégicos',body:'En fases de déficit prolongado, 1 día de alta ingesta calórica (mantenimiento +20–30%) eleva la leptina, normaliza hormonas tiroideas y reduce el cortisol. La recarga activa la señal de abundancia energética que las hormonas anabólicas necesitan.',tags:['Leptina','Cortisol','Déficit']},
-    {num:'04',color:'var(--blue)',title:'Ciclo de proteína para sensitizar mTOR',body:'Evidencia emergente sugiere que períodos breves de baja proteína (1 día/semana con 0.8g/kg) seguidos de alta proteína pueden sensitizar los receptores de mTOR, produciendo una respuesta anabólica más intensa al volver a alta ingesta.',tags:['mTOR','Élite','Emergente']},
-    {num:'05',color:'var(--text3)',title:'Ayuno intermitente para atletas de fuerza: ¿mito o realidad?',body:'El AI (16:8) no es inferior al 5–6 comidas/día para composición corporal cuando la proteína total es adecuada. Para hipertrofia máxima, la distribución clásica es superior. Para definición, el AI es una herramienta válida.',tags:['Ayuno 16:8','MPS','Definición']},
-    {num:'06',color:'var(--green)',title:'El rol del microbioma en el rendimiento deportivo',body:'Atletas de élite tienen microbiomas distintos — mayor diversidad y más bacterias productoras de butirato (antiinflamatorio). Fermentados (kéfir, chucrut, kimchi) + fibra diversa (30+ plantas/semana) optimizan la absorción de nutrientes y reducen inflamación sistémica.',tags:['Microbioma','Fermentados','Serotonina']},
-    {num:'07',color:'var(--gold)',title:'Periodización nutricional: sincroniza la dieta con el mesociclo',body:'En semanas de alta carga (volumen máximo), sube carbohidratos 20–30%. En semanas de descarga (deload), reduce carbos y sube grasas. Esto sincroniza la disponibilidad energética con la demanda real, optimizando adaptaciones y composición corporal simultáneamente.',tags:['Periodización','Deload','Mesociclo']},
+    {num:'I',color:'var(--gold)',title:'Carbohidratos intraentrenamiento para sesiones +60 min',body:'30–60g de carbohidratos simples (gel de dextrosa, plátano, arroz inflado) durante entrenos de más de 60 min reducen la fatiga central, preservan glucógeno muscular y elevan insulina lo suficiente para reducir el ambiente catabólico. Más efectivo que la cafeína sola.',tags:['Rendimiento','Anti-catabolismo','Glucógeno']},
+    {num:'II',color:'var(--blue)',title:'Leucina como disparador anabólico aislado',body:'2.5–3g de leucina libre activa mTOR de forma independiente a la proteína total. Útil si una comida es baja en proteína — agregar leucina pura mantiene la señalización anabólica activa sin depender de la comida entera.',tags:['mTOR','Anabolismo','Leucina libre']},
+    {num:'III',color:'var(--amber)',title:'Días de recarga (refeed) estratégicos',body:'En fases de déficit prolongado, 1 día de alta ingesta calórica (mantenimiento +20–30%) eleva la leptina, normaliza hormonas tiroideas y reduce el cortisol. La recarga activa la señal de abundancia energética que las hormonas anabólicas necesitan.',tags:['Leptina','Cortisol','Déficit']},
+    {num:'IV',color:'var(--blue)',title:'Ciclo de proteína para sensitizar mTOR',body:'Evidencia emergente sugiere que períodos breves de baja proteína (1 día/semana con 0.8g/kg) seguidos de alta proteína pueden sensitizar los receptores de mTOR, produciendo una respuesta anabólica más intensa al volver a alta ingesta.',tags:['mTOR','Élite','Emergente']},
+    {num:'V',color:'var(--ink3)',title:'Ayuno intermitente para atletas de fuerza',body:'El AI (16:8) no es inferior al 5–6 comidas/día para composición corporal cuando la proteína total es adecuada. Para hipertrofia máxima, la distribución clásica es superior. Para definición, el AI es una herramienta válida.',tags:['Ayuno 16:8','MPS','Definición']},
+    {num:'VI',color:'var(--green)',title:'El rol del microbioma en el rendimiento deportivo',body:'Atletas de élite tienen microbiomas distintos — mayor diversidad y más bacterias productoras de butirato (antiinflamatorio). Fermentados (kéfir, chucrut, kimchi) + fibra diversa (30+ plantas/semana) optimizan la absorción de nutrientes y reducen inflamación sistémica.',tags:['Microbioma','Fermentados','Serotonina']},
+    {num:'VII',color:'var(--gold)',title:'Periodización nutricional: sincronizá la dieta con el mesociclo',body:'En semanas de alta carga (volumen máximo), subí carbohidratos 20–30%. En semanas de descarga (deload), reducí carbos y subí grasas. Esto sincroniza la disponibilidad energética con la demanda real, optimizando adaptaciones y composición corporal simultáneamente.',tags:['Periodización','Deload','Mesociclo']},
   ];
 
-  let html = '<div style="display:flex;flex-direction:column;gap:12px">';
+  let html = '<div style="display:flex;flex-direction:column;gap:10px">';
   hacks.forEach(h => {
     html += `<div class="hack-card">
       <div class="hack-head">
@@ -1154,7 +1159,7 @@ function buildHacks(){
         <div class="hack-desc">${h.body}</div>
         <div class="hack-tags">`;
     h.tags.forEach(t => {
-      html += `<span class="hack-tag" style="background:${h.color}15;color:${h.color};border:1px solid ${h.color}30">${t}</span>`;
+      html += `<span class="hack-tag" style="background:${h.color}18;color:${h.color};border:1px solid ${h.color}35">${t}</span>`;
     });
     html += `</div></div></div>`;
   });
@@ -1162,26 +1167,22 @@ function buildHacks(){
   document.getElementById('hacks-content').innerHTML = html;
 }
 
-/* ═══════════════════════════════════════════
-   TRACKER
-   ═══════════════════════════════════════════ */
+/* ═══ TRACKER ═══ */
 const TRACKER_DEFAULTS = {prot:0,carb:0,fat:0,targetProt:150,targetCarb:200,targetFat:60};
 let trackerDate = todayStr();
 let trackerData = {};
 let shopChecked = {};
 
-function todayStr(){
-  return new Date().toISOString().slice(0,10);
-}
+function todayStr(){return new Date().toISOString().slice(0,10);}
 
 function saveTracker(){
   if(!trackerData[trackerDate]) trackerData[trackerDate] = Object.assign({},TRACKER_DEFAULTS);
-  trackerData[trackerDate].prot  = +document.getElementById('inp-prot').value || 0;
-  trackerData[trackerDate].carb  = +document.getElementById('inp-carb').value || 0;
-  trackerData[trackerDate].fat   = +document.getElementById('inp-fat').value  || 0;
-  trackerData[trackerDate].targetProt = +document.getElementById('tgt-prot').value || 150;
-  trackerData[trackerDate].targetCarb = +document.getElementById('tgt-carb').value || 200;
-  trackerData[trackerDate].targetFat  = +document.getElementById('tgt-fat').value  || 60;
+  trackerData[trackerDate].prot = +document.getElementById('inp-prot').value||0;
+  trackerData[trackerDate].carb = +document.getElementById('inp-carb').value||0;
+  trackerData[trackerDate].fat  = +document.getElementById('inp-fat').value||0;
+  trackerData[trackerDate].targetProt = +document.getElementById('tgt-prot').value||150;
+  trackerData[trackerDate].targetCarb = +document.getElementById('tgt-carb').value||200;
+  trackerData[trackerDate].targetFat  = +document.getElementById('tgt-fat').value||60;
   updateRing();
   renderRecos();
   const t = document.getElementById('saved-toast');
@@ -1195,7 +1196,7 @@ function changeDay(delta){
   renderTracker();
 }
 
-function getDay(){return trackerData[trackerDate] || Object.assign({},TRACKER_DEFAULTS);}
+function getDay(){return trackerData[trackerDate]||Object.assign({},TRACKER_DEFAULTS);}
 function macPct(val,target){return Math.min(100,target>0?Math.round(val/target*100):0);}
 
 function fmtDate(str){
@@ -1208,20 +1209,19 @@ function fmtDate(str){
 }
 
 function buildRingSVG(day){
-  const cx=70,cy=70,r=52,sw=13;
+  const cx=70,cy=70,r=52,sw=12;
   const circ=2*Math.PI*r;
-  const pP=macPct(day.prot,day.targetProt);
-  const pC=macPct(day.carb,day.targetCarb);
-  const pF=macPct(day.fat,day.targetFat);
   const gap=circ/3;
-  const segP=gap*pP/100,segC=gap*pC/100,segF=gap*pF/100;
   function arc(d,off,c){
     return `<circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="${c}" stroke-width="${sw}" stroke-dasharray="${d} ${circ-d}" stroke-dashoffset="${-off}" stroke-linecap="round" transform="rotate(-90 ${cx} ${cy})"/>`;
   }
-  return `<circle cx="70" cy="70" r="52" fill="none" stroke="#222" stroke-width="13"/>`
-    +arc(segP,0,'#4480B8')
-    +arc(segC,gap,'#C4A35A')
-    +arc(segF,gap*2,'#B87D1A');
+  const segP=gap*macPct(day.prot,day.targetProt)/100;
+  const segC=gap*macPct(day.carb,day.targetCarb)/100;
+  const segF=gap*macPct(day.fat,day.targetFat)/100;
+  return `<circle cx="70" cy="70" r="52" fill="none" stroke="#EDE8E0" stroke-width="12"/>`
+    +arc(segP,0,'#1A4A7A')
+    +arc(segC,gap,'#B8924A')
+    +arc(segF,gap*2,'#7A5015');
 }
 
 function updateRing(){
@@ -1238,10 +1238,9 @@ function updateRing(){
   const kcal=Math.round(day.prot*4+day.carb*4+day.fat*9);
   const el=document.getElementById('ring-kcal');
   if(el) el.textContent=kcal;
-  [
-    {id:'bar-prot',pct:macPct(day.prot,day.targetProt),color:'#4480B8',pctId:'pct-prot'},
-    {id:'bar-carb',pct:macPct(day.carb,day.targetCarb),color:'#C4A35A',pctId:'pct-carb'},
-    {id:'bar-fat', pct:macPct(day.fat,day.targetFat),  color:'#B87D1A',pctId:'pct-fat'}
+  [{id:'bar-prot',pct:macPct(day.prot,day.targetProt),color:'#1A4A7A',pctId:'pct-prot'},
+   {id:'bar-carb',pct:macPct(day.carb,day.targetCarb),color:'#B8924A',pctId:'pct-carb'},
+   {id:'bar-fat', pct:macPct(day.fat,day.targetFat),  color:'#7A5015',pctId:'pct-fat'}
   ].forEach(b=>{
     const bar=document.getElementById(b.id);
     if(bar){bar.style.width=b.pct+'%';bar.style.background=b.color;}
@@ -1297,7 +1296,7 @@ function renderRecos(){
     </div>`;
   keys.forEach(key=>{
     const r=RECO_DB[key];if(!r)return;
-    html+=`<div class="reco-card ${r.tag}"><span class="reco-tag ${r.tag}">${r.label}</span><div style="font-size:13.5px;font-weight:600;color:var(--text);margin-bottom:${r.foods.length?'0':'0'}">${r.title}</div>`;
+    html+=`<div class="reco-card ${r.tag}"><span class="reco-tag ${r.tag}">${r.label}</span><div style="font-size:13.5px;font-weight:600;color:var(--ink)">${r.title}</div>`;
     if(r.foods.length){
       html+=`<div class="reco-food-list">`;
       r.foods.forEach(f=>{html+=`<div class="reco-food-row"><div class="reco-food-emoji">${f.e}</div><div><div class="reco-food-name">${f.n}</div><div class="reco-food-detail">${f.d}</div></div></div>`;});
@@ -1320,7 +1319,7 @@ function renderRecos(){
   html+=`<div class="shopping-section">
     <div class="reco-header">
       <div class="reco-header-icon">🛒</div>
-      <div><div class="reco-header-text">Lista de compras sugerida</div><div class="reco-header-sub">Toca para marcar lo que ya tienes</div></div>
+      <div><div class="reco-header-text">Lista de compras sugerida</div><div class="reco-header-sub">Tocá para marcar lo que ya tenés</div></div>
     </div>
     <div class="shop-list">`;
   items.forEach((item,i)=>{
@@ -1351,7 +1350,6 @@ function renderTracker(){
   const tomorrow=new Date(trackerDate+'T12:00:00');tomorrow.setDate(tomorrow.getDate()+1);
   const canFwd=tomorrow.toISOString().slice(0,10)<=todayStr();
   const fwdStyle=canFwd?'':'opacity:0.25;pointer-events:none';
-
   const pP=macPct(day.prot,day.targetProt);
   const pC=macPct(day.carb,day.targetCarb);
   const pF=macPct(day.fat,day.targetFat);
@@ -1373,42 +1371,38 @@ function renderTracker(){
       </div>
     </div>
     <div class="ring-legend">
-      <div class="ring-leg-item"><div class="ring-leg-dot" style="background:#4480B8"></div>Proteína</div>
-      <div class="ring-leg-item"><div class="ring-leg-dot" style="background:#C4A35A"></div>Carbos</div>
-      <div class="ring-leg-item"><div class="ring-leg-dot" style="background:#B87D1A"></div>Grasas</div>
+      <div class="ring-leg-item"><div class="ring-leg-dot" style="background:#1A4A7A"></div>Proteína</div>
+      <div class="ring-leg-item"><div class="ring-leg-dot" style="background:#B8924A"></div>Carbos</div>
+      <div class="ring-leg-item"><div class="ring-leg-dot" style="background:#7A5015"></div>Grasas</div>
     </div>
   </div>
 
-  <div class="section-label">Registra tus macros del día</div>
+  <div class="section-eyebrow">Registrá tus macros del día</div>
   <div class="macro-inputs-grid">
-
     <div class="macro-input-card prot">
       <div class="macro-input-icon">💪</div>
       <div class="macro-input-label prot">Proteína</div>
       <input class="macro-num-input" id="inp-prot" type="number" min="0" max="500" value="${day.prot}" oninput="updateRing()" aria-label="Gramos de proteína">
       <div class="macro-unit">gramos</div>
-      <div class="macro-progress-bar"><div class="macro-progress-fill" id="bar-prot" style="width:${pP}%;background:#4480B8"></div></div>
+      <div class="macro-progress-bar"><div class="macro-progress-fill" id="bar-prot" style="width:${pP}%;background:#1A4A7A"></div></div>
       <div class="macro-target-row"><span id="pct-prot">${pP}%</span><div class="target-input-wrap">/ <input class="target-input" id="tgt-prot" type="number" min="1" max="999" value="${day.targetProt}" oninput="updateRing()" aria-label="Meta de proteína">g</div></div>
     </div>
-
     <div class="macro-input-card carb">
       <div class="macro-input-icon">⚡</div>
       <div class="macro-input-label carb">Carbos</div>
       <input class="macro-num-input" id="inp-carb" type="number" min="0" max="999" value="${day.carb}" oninput="updateRing()" aria-label="Gramos de carbohidratos">
       <div class="macro-unit">gramos</div>
-      <div class="macro-progress-bar"><div class="macro-progress-fill" id="bar-carb" style="width:${pC}%;background:#C4A35A"></div></div>
+      <div class="macro-progress-bar"><div class="macro-progress-fill" id="bar-carb" style="width:${pC}%;background:#B8924A"></div></div>
       <div class="macro-target-row"><span id="pct-carb">${pC}%</span><div class="target-input-wrap">/ <input class="target-input" id="tgt-carb" type="number" min="1" max="999" value="${day.targetCarb}" oninput="updateRing()" aria-label="Meta de carbohidratos">g</div></div>
     </div>
-
     <div class="macro-input-card fat">
       <div class="macro-input-icon">🧠</div>
       <div class="macro-input-label fat">Grasas</div>
       <input class="macro-num-input" id="inp-fat" type="number" min="0" max="500" value="${day.fat}" oninput="updateRing()" aria-label="Gramos de grasas">
       <div class="macro-unit">gramos</div>
-      <div class="macro-progress-bar"><div class="macro-progress-fill" id="bar-fat" style="width:${pF}%;background:#B87D1A"></div></div>
+      <div class="macro-progress-bar"><div class="macro-progress-fill" id="bar-fat" style="width:${pF}%;background:#7A5015"></div></div>
       <div class="macro-target-row"><span id="pct-fat">${pF}%</span><div class="target-input-wrap">/ <input class="target-input" id="tgt-fat" type="number" min="1" max="999" value="${day.targetFat}" oninput="updateRing()" aria-label="Meta de grasas">g</div></div>
     </div>
-
   </div>
 
   <button class="save-btn" onclick="saveTracker()">Guardar macros del día</button>
@@ -1426,7 +1420,6 @@ function switchTab(id, btn){
     btn.classList.add('active');
     btn.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});
   }
-  // Scroll to top of content
   window.scrollTo({top:0,behavior:'smooth'});
 }
 
