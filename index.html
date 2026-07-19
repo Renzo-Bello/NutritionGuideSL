@@ -504,8 +504,109 @@ body{
   border-radius:4px;letter-spacing:0.5px;text-transform:uppercase;
 }
 
+/* ─── COPY PLAN BUTTON ─── */
+.copy-plan-btn{
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  width:100%;padding:13px;margin-top:14px;
+  border-radius:var(--r-md);border:1px solid var(--gold-line-strong);
+  background:var(--gold-bg);cursor:pointer;
+  font-family:'DM Sans',sans-serif;
+  font-size:13px;font-weight:600;color:var(--gold);
+  transition:all 0.16s;
+}
+.copy-plan-btn:active{opacity:0.75;transform:scale(0.98);}
+.copy-plan-btn.copied{border-color:var(--green-line);background:var(--green-bg);color:var(--green);}
+
+@media print{
+  .app-header,.sticky-nav,.field-group,.chips-wrap,.copy-plan-btn,
+  .porc-link,.star-badge,.swap-block,.info-banner,.safe-bottom,
+  .food-tags{display:none!important;}
+  body{background:#fff!important;color:#000!important;}
+  .panel{display:block!important;padding:0!important;}
+  .panel:not(#panel-plan){display:none!important;}
+  #panel-plan{display:block!important;}
+  .plan-summary{box-shadow:none!important;border:1px solid #ccc!important;}
+  .food-card{break-inside:avoid;border:1px solid #ddd!important;}
+  .hormone-card{display:none!important;}
+  @page{margin:1.5cm;size:A4;}
+}
+/* ─── PORCION LINK ─── */
+.porc-link{
+  display:inline-flex;align-items:center;gap:4px;
+  margin-top:8px;
+  font-family:'DM Mono',monospace;font-size:9px;font-weight:500;
+  letter-spacing:0.5px;text-transform:uppercase;
+  color:var(--gold);cursor:pointer;
+  background:var(--gold-bg);border:1px solid var(--gold-line);
+  padding:4px 9px;border-radius:4px;
+  transition:opacity 0.15s;
+}
+.porc-link:active{opacity:0.65;}
+
 /* ─── SAFE AREA ─── */
 .safe-bottom{height:calc(28px + var(--sab));}
+
+/* ─── PORCIONES ─── */
+.porc-macro-tabs{display:flex;gap:8px;margin-bottom:20px;}
+.porc-macro-tab{
+  flex:1;padding:11px 8px;
+  border-radius:var(--r-md);
+  border:1px solid var(--border-mid);
+  background:var(--white);
+  font-family:'DM Sans',sans-serif;
+  font-size:13px;font-weight:500;color:var(--ink3);
+  cursor:pointer;transition:all 0.16s;
+  text-align:center;
+}
+.porc-macro-tab.sel-p{background:var(--green-bg);border-color:var(--green-line);color:var(--green);font-weight:600;}
+.porc-macro-tab.sel-c{background:var(--gold-bg);border-color:var(--gold-line-strong);color:var(--gold);font-weight:600;}
+.porc-macro-tab:active{transform:scale(0.97);}
+.porc-amount-row{display:flex;gap:7px;margin-bottom:20px;flex-wrap:wrap;align-items:center;}
+.porc-amount-label{
+  font-family:'DM Mono',monospace;
+  font-size:9px;letter-spacing:2px;text-transform:uppercase;
+  color:var(--ink3);font-weight:500;width:100%;margin-bottom:4px;
+}
+.porc-amount-btn{
+  padding:8px 16px;border-radius:var(--r-pill);
+  border:1px solid var(--border-mid);background:var(--white);
+  font-family:'DM Mono',monospace;font-size:11px;font-weight:500;
+  color:var(--ink3);cursor:pointer;transition:all 0.15s;
+}
+.porc-amount-btn.sel-p{background:var(--green-bg);border-color:var(--green-line);color:var(--green);}
+.porc-amount-btn.sel-c{background:var(--gold-bg);border-color:var(--gold-line-strong);color:var(--gold);}
+.porc-amount-btn:active{transform:scale(0.96);}
+.porc-cat-label{
+  font-family:'DM Mono',monospace;
+  font-size:9px;letter-spacing:2px;text-transform:uppercase;
+  color:var(--gold);font-weight:500;
+  margin-bottom:10px;margin-top:2px;
+  display:flex;align-items:center;gap:8px;
+}
+.porc-cat-label::before{content:'';width:14px;height:1px;background:var(--gold);display:block;flex-shrink:0;}
+.porc-grid{display:flex;flex-direction:column;gap:8px;margin-bottom:20px;}
+.porc-card{
+  background:var(--white);border:1px solid var(--border);
+  border-radius:var(--r-lg);padding:14px 16px;
+  display:flex;align-items:center;gap:14px;
+}
+.porc-card-left{flex:1;min-width:0;}
+.porc-food-name{font-size:13.5px;font-weight:600;color:var(--ink);margin-bottom:3px;line-height:1.3;}
+.porc-food-unit{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.5px;color:var(--ink3);text-transform:uppercase;}
+.porc-card-right{text-align:right;flex-shrink:0;}
+.porc-grams{font-family:'DM Serif Display',serif;font-size:28px;font-weight:400;line-height:1;}
+.porc-grams.clr-p{color:var(--green);}
+.porc-grams.clr-c{color:var(--gold);}
+.porc-kcal{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.5px;color:var(--ink3);margin-top:3px;}
+.porc-step-label{
+  font-size:13px;font-weight:600;color:var(--ink);
+  margin-bottom:12px;margin-top:4px;
+}
+.porc-equiv{
+  font-size:12px;color:var(--ink3);line-height:1.5;
+  margin-top:6px;padding-top:6px;
+  border-top:1px solid var(--border);
+}
 
 /* ─── RESPONSIVE ─── */
 @media(min-width:440px){
@@ -544,6 +645,7 @@ body{
     <button class="nav-tab active" onclick="switchTab('plan',this)" role="tab">Mi Plan</button>
     <button class="nav-tab" onclick="switchTab('micros',this)" role="tab">Micronutrientes</button>
     <button class="nav-tab" onclick="switchTab('macros',this)" role="tab">Macros</button>
+    <button class="nav-tab" onclick="switchTab('porciones',this)" role="tab">Porciones</button>
     <button class="nav-tab" onclick="switchTab('timing',this)" role="tab">Timing</button>
     <button class="nav-tab" onclick="switchTab('restricciones',this)" role="tab">Restricciones</button>
     <button class="nav-tab" onclick="switchTab('hacks',this)" role="tab">Estrategias Pro</button>
@@ -590,6 +692,36 @@ body{
   <div class="section-eyebrow">Vitaminas y minerales</div>
   <p style="font-size:13.5px;color:var(--ink2);line-height:1.7;margin-bottom:22px;">Dosis diarias de referencia y las mejores fuentes alimentarias para cada vitamina y mineral clave en el rendimiento.</p>
   <div id="micros-content"></div>
+  <div class="safe-bottom"></div>
+</section>
+
+<!-- PANEL: PORCIONES -->
+<section class="panel" id="panel-porciones">
+  <div class="section-eyebrow">Guía de porciones</div>
+
+  <!-- Instrucción clara de uso -->
+  <div class="alert-box gold" style="margin-bottom:20px">
+    <div class="alert-title gold">¿Cómo usar esta guía?</div>
+    <div class="alert-body">Elige el nutriente que quieres medir (proteína o carbohidratos) y cuántos gramos necesitas en esa comida. La guía te muestra exactamente cuánto pesar de cada alimento para llegar a esa cantidad.</div>
+  </div>
+
+  <!-- Paso 1 -->
+  <div class="porc-step-label">Paso 1 — ¿Qué nutriente quieres medir?</div>
+  <div class="porc-macro-tabs">
+    <button class="porc-macro-tab sel-p" onclick="porcSetMacro('p',this)">🥩 Proteína</button>
+    <button class="porc-macro-tab" onclick="porcSetMacro('c',this)">🌾 Carbohidratos</button>
+  </div>
+
+  <!-- Paso 2 -->
+  <div class="porc-step-label" id="porc-step2-label">Paso 2 — ¿Cuántos gramos de proteína necesitas en esta comida?</div>
+  <div class="porc-amount-row">
+    <div id="porc-amounts"></div>
+  </div>
+
+  <!-- Resultado -->
+  <div id="porc-content"></div>
+
+  <div class="info-banner" style="margin-top:0">Los pesos son del alimento <strong>ya cocinado</strong>, salvo que se indique lo contrario. Úsalos como referencia práctica para armar tus comidas.</div>
   <div class="safe-bottom"></div>
 </section>
 
@@ -678,6 +810,17 @@ function showToast(msg){
   document.body.appendChild(t);
   requestAnimationFrame(()=>{t.style.opacity='1';});
   setTimeout(()=>{t.style.opacity='0'; setTimeout(()=>t.remove(),300);},2800);
+}
+
+function generatePDF(){
+  const btn = document.getElementById('copy-plan-btn');
+  if(btn){ btn.classList.add('copied'); btn.textContent = '⏳ Preparando PDF...'; }
+  setTimeout(()=>{
+    window.print();
+    setTimeout(()=>{
+      if(btn){ btn.classList.remove('copied'); btn.textContent = '📄 Generar PDF de mi plan'; }
+    }, 1000);
+  }, 150);
 }
 
 function toggleChip(btn, key){
@@ -783,6 +926,47 @@ const FAQ_DATA = [
 
 /* ═══ BUILD FUNCTIONS ═══ */
 
+const FOOD_PORC_MAP = {
+  'Pollo':'p','Pechuga':'p','Panitas':'p','Atún':'p','Choritos':'p','Carne':'p',
+  'Merluza':'p','Salmón':'p','Clara':'p','Huevo':'p','Cottage':'p','Yogur':'p',
+  'Quesillo':'p','Soya':'p','Edamame':'p','Lentejas':'p','Garbanzos':'p','Whey':'p',
+  'Tempeh':'p','Tofu':'p','Pescad':'p','Sardina':'p','Atun':'p',
+  'Avena':'c','Arroz':'c','Pasta':'c','Quinoa':'c','Marraqueta':'c','Pita':'c',
+  'Molde':'c','Papa':'c','Batata':'c','Camote':'c','Choclo':'c',
+  'Plátano':'c','Banana':'c','Manzana':'c','Kiwi':'c','Frutillas':'c','Uva':'c',
+  'Mango':'c','Galleta':'c','Zanahoria':'c','Betarraga':'c','Arvejas':'c',
+  'Porotos verdes':'c','Brócoli':'c','Zapallo':'c',
+};
+
+function getPorcMacro(foodName){
+  for(const [key, macro] of Object.entries(FOOD_PORC_MAP)){
+    if(foodName.toLowerCase().includes(key.toLowerCase())) return macro;
+  }
+  return null;
+}
+
+function goToPorc(foodName, macro){
+  const tabs = document.querySelectorAll('.nav-tab');
+  tabs.forEach(t => t.classList.remove('active'));
+  tabs.forEach(t => { if(t.getAttribute('onclick') && t.getAttribute('onclick').includes('porciones')) t.classList.add('active'); });
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.getElementById('panel-porciones').classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+  porcMacro = macro;
+  const macroTabs = document.querySelectorAll('.porc-macro-tab');
+  macroTabs.forEach((t,i) => {
+    const isp = i===0;
+    t.className = 'porc-macro-tab' + ((macro==='p'&&isp)||(macro==='c'&&!isp) ? ' sel-'+macro : '');
+  });
+  const label = macro==='p'
+    ? 'Paso 2 — ¿Cuántos gramos de proteína necesitas en esta comida?'
+    : 'Paso 2 — ¿Cuántos gramos de carbohidratos necesitas en esta comida?';
+  const el = document.getElementById('porc-step2-label');
+  if(el) el.textContent = label;
+  buildPorciones();
+  showToast('📊 '+foodName+' — selecciona la cantidad que necesitas');
+}
+
 function buildPlan(){
   const sexo = document.getElementById('sel-sexo').value;
   const etapa = document.getElementById('sel-etapa').value;
@@ -854,6 +1038,12 @@ function buildPlan(){
       if(showVeg) html += `<div style="font-size:11px;color:var(--amber);margin-top:7px;font-weight:500">⚠ Contiene proteína animal — ver Restricciones para alternativas</div>`;
       if(showCel) html += `<div style="font-size:11px;color:var(--red);margin-top:7px;font-weight:500">⚠ Verifica la etiqueta "Sin gluten" certificada</div>`;
       if(showLac) html += `<div style="font-size:11px;color:var(--blue);margin-top:7px;font-weight:500">ℹ Busca versión sin lactosa o alternativa vegetal</div>`;
+      // Porcion link
+      const pMacro = getPorcMacro(al.n);
+      if(pMacro){
+        const label = pMacro === 'p' ? '¿Cuánto pesar? → Ver porción' : '¿Cuánto pesar? → Ver porción';
+        html += `<span class="porc-link" onclick="goToPorc('${al.n.replace(/'/g,"\\'")}','${pMacro}')">📊 ¿Cuánto pesar?</span>`;
+      }
       html += `</div></div></div>`;
     });
 
@@ -875,7 +1065,14 @@ function buildPlan(){
 
   html += `<div class="info-banner"><strong>Recuerda:</strong> esta guía proporciona alimentos y reemplazos de alta evidencia. Para tus números exactos (calorías, gramos por macro según tu peso y objetivo), lo trabajamos en la asesoría personalizada.</div>`;
 
-  if(etapa === 'definicion'){
+  // Copy summary button
+  const etapaLabelCopy = {volumen:'Volumen',definicion:'Definición',recomp:'Recomposición corporal',mantenimiento:'Mantenimiento'}[etapa];
+  const sexoLabel = sexo === 'm' ? 'Masculino' : 'Femenino';
+  const resumenTexto = `STRENGTHLAB — Mi Plan Nutricional\n\nObjetivo: ${etapaLabelCopy} · ${sexoLabel}\nDistribución: ${planData.ratio}\nProteína objetivo: ${planData.proteina_g}\n\n${planData.bloques.map(b => b.titulo + ':\n' + b.alimentos.map(a => '• ' + a.n).join('\n')).join('\n\n')}\n\n— Guía generada en STRENGTHLAB Nutrición (@rennzolifts)`;
+  window._slabResumen = resumenTexto;
+  html += `<button class="copy-plan-btn" id="copy-plan-btn" onclick="generatePDF()">📄 Generar PDF de mi plan</button>`;
+
+  if(etapa === 'definicion' || etapa === 'recomp' || etapa === 'mantenimiento'){
     const bonusDef = [
       {e:'🍮',n:'Gelatina Zero / Jaleas sin azúcar',d:'Postre en definición sin culpa. 0–5 kcal por porción. Satisface el antojo dulce sin impacto calórico.'},
       {e:'🥤',n:'Gaseosa / Refresco Zero o Light',d:'Carbónico que aumenta saciedad a 0 kcal. Útil antes de comidas. No abusar — puede generar gases.'},
@@ -1156,6 +1353,171 @@ function switchTab(id, btn){
   window.scrollTo({top:0,behavior:'smooth'});
 }
 
+/* ─── PORCIONES ─── */
+const PORC_DATA = {
+  p: {
+    amounts: [20, 30, 40, 50],
+    categories: [
+      {
+        name: "Carnes y aves",
+        items: [
+          { name: "Pechuga de pollo", gPerMacro: 3.3, kcalPer100: 165, unit: "g cocida", equiv: g => `≈ ${(g/100).toFixed(1).replace('.0','')} filete${g>120?'s':''} medianos` },
+          { name: "Panitas de pollo", gPerMacro: 3.6, kcalPer100: 167, unit: "g cocida", equiv: g => `≈ ${Math.round(g/30)} unidades medianas` },
+          { name: "Atún en agua", gPerMacro: 3.4, kcalPer100: 116, unit: "g escurrido", equiv: g => `≈ ${(g/170).toFixed(1).replace('.0','')} lata${g>200?'s':''} estándar (170g)` },
+          { name: "Choritos en lata", gPerMacro: 5.3, kcalPer100: 172, unit: "g escurrido", equiv: g => `≈ ${Math.round(g/10)} unidades` },
+          { name: "Carne molida 90%", gPerMacro: 4.1, kcalPer100: 172, unit: "g cocida", equiv: g => `≈ ${Math.round(g/50)} hamburguesitas pequeñas` },
+          { name: "Merluza / pescado blanco", gPerMacro: 4.8, kcalPer100: 90, unit: "g cocida", equiv: g => `≈ ${(g/120).toFixed(1).replace('.0','')} porción${g>160?'es':''} de filete` },
+          { name: "Salmón", gPerMacro: 5.0, kcalPer100: 208, unit: "g cocido", equiv: g => `≈ ${(g/120).toFixed(1).replace('.0','')} porción${g>160?'es':''} de filete` },
+        ]
+      },
+      {
+        name: "Lácteos y huevos",
+        items: [
+          { name: "Clara de huevo", gPerMacro: 9.1, kcalPer100: 52, unit: "g / ml", equiv: g => `≈ ${Math.round(g/33)} claras de huevo mediano` },
+          { name: "Huevo entero", gPerMacro: 7.7, kcalPer100: 155, unit: "g", equiv: g => `≈ ${Math.round(g/55)} huevos medianos` },
+          { name: "Queso cottage", gPerMacro: 8.7, kcalPer100: 98, unit: "g", equiv: g => `≈ ${Math.round(g/15)} cucharadas soperas` },
+          { name: "Yogur griego 0%", gPerMacro: 10.0, kcalPer100: 59, unit: "g", equiv: g => `≈ ${(g/200).toFixed(1).replace('.0','')} pote${g>250?'s':''} individual (200g)` },
+          { name: "Quesillo", gPerMacro: 6.7, kcalPer100: 120, unit: "g", equiv: g => `≈ ${(g/100).toFixed(1).replace('.0','')} taco${g>130?'s':''} pequeño` },
+        ]
+      },
+      {
+        name: "Vegetales proteicos y soya",
+        items: [
+          { name: "Carne de soya texturizada", gPerMacro: 2.0, kcalPer100: 330, unit: "g seca" },
+          { name: "Edamame", gPerMacro: 5.7, kcalPer100: 122, unit: "g" },
+          { name: "Lentejas cocidas", gPerMacro: 11.1, kcalPer100: 116, unit: "g" },
+          { name: "Garbanzos cocidos", gPerMacro: 12.0, kcalPer100: 164, unit: "g" },
+        ]
+      },
+      {
+        name: "Suplementos",
+        items: [
+          { name: "Whey protein", gPerMacro: 1.3, kcalPer100: 380, unit: "g en polvo" },
+        ]
+      }
+    ]
+  },
+  c: {
+    amounts: [30, 50, 70, 100],
+    categories: [
+      {
+        name: "Granos y cereales",
+        items: [
+          { name: "Avena cruda", gPerMacro: 1.49, kcalPer100: 389, unit: "g", equiv: g => `≈ ${Math.round(g/10)} cucharadas soperas` },
+          { name: "Arroz cocido", gPerMacro: 3.7, kcalPer100: 130, unit: "g", equiv: g => `≈ ${(g/180).toFixed(1).replace('.0','')} taza${g>220?'s':''} cocida` },
+          { name: "Pasta cocida", gPerMacro: 3.7, kcalPer100: 158, unit: "g", equiv: g => `≈ ${(g/180).toFixed(1).replace('.0','')} taza${g>220?'s':''} cocida` },
+          { name: "Quinoa cocida", gPerMacro: 5.5, kcalPer100: 120, unit: "g", equiv: g => `≈ ${(g/185).toFixed(1).replace('.0','')} taza${g>220?'s':''} cocida` },
+        ]
+      },
+      {
+        name: "Panes",
+        items: [
+          { name: "Marraqueta", gPerMacro: 1.69, kcalPer100: 286, unit: "g", equiv: g => `≈ ${(g/80).toFixed(1).replace('.0','')} marraqueta${g>100?'s':''} (80g c/u)` },
+          { name: "Pan pita", gPerMacro: 1.64, kcalPer100: 275, unit: "g", equiv: g => `≈ ${(g/60).toFixed(1).replace('.0','')} pan${g>80?'es':''} pita (60g c/u)` },
+          { name: "Pan molde blanco", gPerMacro: 1.85, kcalPer100: 265, unit: "g", equiv: g => `≈ ${Math.round(g/25)} rebanada${g>30?'s':''}` },
+          { name: "Pan integral", gPerMacro: 2.2, kcalPer100: 247, unit: "g", equiv: g => `≈ ${Math.round(g/25)} rebanada${g>30?'s':''}` },
+        ]
+      },
+      {
+        name: "Tubérculos",
+        items: [
+          { name: "Papa cocida", gPerMacro: 5.6, kcalPer100: 77, unit: "g", equiv: g => `≈ ${(g/100).toFixed(1).replace('.0','')} papa${g>130?'s':''} mediana${g>130?'s':''}` },
+          { name: "Camote / batata cocido", gPerMacro: 4.7, kcalPer100: 86, unit: "g", equiv: g => `≈ ${(g/130).toFixed(1).replace('.0','')} camote${g>170?'s':''} mediano${g>170?'s':''}` },
+          { name: "Choclo cocido", gPerMacro: 4.3, kcalPer100: 96, unit: "g", equiv: g => `≈ ${(g/200).toFixed(1).replace('.0','')} choclo${g>260?'s':''} entero${g>260?'s':''}` },
+        ]
+      },
+      {
+        name: "Frutas",
+        items: [
+          { name: "Plátano / Banana", gPerMacro: 4.3, kcalPer100: 89, unit: "g", equiv: g => `≈ ${(g/120).toFixed(1).replace('.0','')} plátano${g>160?'s':''} mediano${g>160?'s':''}` },
+          { name: "Manzana", gPerMacro: 7.4, kcalPer100: 52, unit: "g", equiv: g => `≈ ${(g/180).toFixed(1).replace('.0','')} manzana${g>230?'s':''} mediana${g>230?'s':''}` },
+          { name: "Kiwi", gPerMacro: 6.7, kcalPer100: 61, unit: "g", equiv: g => `≈ ${Math.round(g/75)} kiwi${g>100?'s':''}` },
+          { name: "Frutillas", gPerMacro: 14.3, kcalPer100: 32, unit: "g", equiv: g => `≈ ${Math.round(g/12)} frutillas medianas` },
+          { name: "Uva", gPerMacro: 5.3, kcalPer100: 69, unit: "g", equiv: g => `≈ ${Math.round(g/5)} uvas` },
+          { name: "Mango", gPerMacro: 6.3, kcalPer100: 60, unit: "g", equiv: g => `≈ ${(g/200).toFixed(1).replace('.0','')} mango${g>260?'s':''} mediano${g>260?'s':''}` },
+        ]
+      },
+      {
+        name: "Snacks",
+        items: [
+          { name: "Galletas de arroz", gPerMacro: 1.33, kcalPer100: 387, unit: "g", equiv: g => `≈ ${Math.round(g/9)} galletas de arroz estándar` },
+        ]
+      },
+      {
+        name: "Verduras feculentas",
+        items: [
+          { name: "Zanahoria cruda", gPerMacro: 10.0, kcalPer100: 41, unit: "g" },
+          { name: "Betarraga cocida", gPerMacro: 7.7, kcalPer100: 44, unit: "g" },
+          { name: "Arvejas cocidas", gPerMacro: 5.0, kcalPer100: 81, unit: "g" },
+          { name: "Porotos verdes cocidos", gPerMacro: 16.7, kcalPer100: 31, unit: "g" },
+          { name: "Brócoli cocido", gPerMacro: 17.5, kcalPer100: 35, unit: "g" },
+          { name: "Zapallo cocido", gPerMacro: 14.3, kcalPer100: 26, unit: "g" },
+        ]
+      }
+    ]
+  }
+};
+
+let porcMacro = 'p';
+let porcAmt = 30;
+
+function porcSetMacro(m, btn) {
+  porcMacro = m;
+  porcAmt = PORC_DATA[m].amounts[1];
+  document.querySelectorAll('.porc-macro-tab').forEach(t => {
+    t.className = 'porc-macro-tab' + (t === btn ? ' sel-' + m : '');
+  });
+  const label = m === 'p'
+    ? 'Paso 2 — ¿Cuántos gramos de proteína necesitas en esta comida?'
+    : 'Paso 2 — ¿Cuántos gramos de carbohidratos necesitas en esta comida?';
+  const el = document.getElementById('porc-step2-label');
+  if (el) el.textContent = label;
+  buildPorciones();
+}
+
+function porcSetAmt(a) {
+  porcAmt = a;
+  buildPorciones();
+}
+
+function porcEquiv(grams, item) {
+  if (!item.equiv) return '';
+  // call the function with actual grams
+  return item.equiv(grams);
+}
+
+function buildPorciones() {
+  const d = PORC_DATA[porcMacro];
+  const amtsEl = document.getElementById('porc-amounts');
+  if (!amtsEl) return;
+  amtsEl.innerHTML = d.amounts.map(a =>
+    `<button class="porc-amount-btn${a===porcAmt?' sel-'+porcMacro:''}" onclick="porcSetAmt(${a})">${a}g</button>`
+  ).join('');
+
+  let html = '';
+  d.categories.forEach(cat => {
+    html += `<div class="porc-cat-label">${cat.name}</div><div class="porc-grid">`;
+    cat.items.forEach(item => {
+      const grams = Math.round(item.gPerMacro * porcAmt);
+      const kcal = Math.round(grams * item.kcalPer100 / 100);
+      const equiv = item.equiv ? item.equiv(grams) : '';
+      html += `<div class="porc-card">
+        <div class="porc-card-left">
+          <div class="porc-food-name">${item.name}</div>
+          <div class="porc-food-unit">${item.unit}</div>
+          ${equiv ? `<div class="porc-equiv">${equiv}</div>` : ''}
+        </div>
+        <div class="porc-card-right">
+          <div class="porc-grams clr-${porcMacro}">${grams}<span style="font-size:14px;font-family:'DM Sans',sans-serif;font-weight:400"> g</span></div>
+          <div class="porc-kcal">${kcal} kcal</div>
+        </div>
+      </div>`;
+    });
+    html += `</div>`;
+  });
+  document.getElementById('porc-content').innerHTML = html;
+}
+
 /* ── INIT ── */
 loadPrefs();
 buildPlan();
@@ -1165,6 +1527,7 @@ buildTiming();
 buildRestricciones();
 buildFaq();
 buildHacks();
+buildPorciones();
 </script>
 </body>
 </html>
