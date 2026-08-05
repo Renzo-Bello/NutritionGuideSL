@@ -111,6 +111,75 @@ body{
   white-space:nowrap;
 }
 
+/* ─── HAMBURGUESA + DRAWER ─── */
+.hamburger-btn{
+  flex-shrink:0;width:38px;height:38px;border-radius:50%;
+  background:var(--white);border:1px solid var(--border-mid);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:4px;cursor:pointer;transition:background 0.2s,border-color 0.2s;
+}
+.hamburger-btn:active{background:var(--cream);}
+.hamburger-btn span{display:block;width:15px;height:1.5px;background:var(--ink);border-radius:2px;transition:transform 0.25s cubic-bezier(.22,.61,.36,1),opacity 0.2s;}
+.hamburger-btn.open span:nth-child(1){transform:translateY(5.5px) rotate(45deg);}
+.hamburger-btn.open span:nth-child(2){opacity:0;}
+.hamburger-btn.open span:nth-child(3){transform:translateY(-5.5px) rotate(-45deg);}
+
+.drawer-overlay{
+  position:fixed;inset:0;z-index:400;
+  background:rgba(26,23,20,0.42);
+  opacity:0;pointer-events:none;
+  transition:opacity 0.28s ease;
+}
+.drawer-overlay.open{opacity:1;pointer-events:auto;}
+
+.drawer{
+  position:fixed;top:0;left:0;bottom:0;z-index:401;
+  width:min(300px,84vw);
+  background:var(--cream);
+  box-shadow:16px 0 40px rgba(26,23,20,0.18);
+  transform:translateX(-100%);
+  transition:transform 0.32s cubic-bezier(.22,.61,.36,1);
+  display:flex;flex-direction:column;
+  padding:calc(20px + var(--sat)) 0 20px;
+}
+.drawer.open{transform:translateX(0);}
+
+.drawer-head{
+  padding:0 20px 18px;border-bottom:1px solid var(--border);margin-bottom:8px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.drawer-title{font-family:'DM Serif Display',serif;font-size:19px;color:var(--ink);}
+.drawer-close{
+  width:30px;height:30px;border-radius:50%;background:var(--white);
+  border:1px solid var(--border-mid);color:var(--ink3);font-size:13px;
+  display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;
+}
+.drawer-eyebrow{
+  font-family:'DM Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;
+  color:var(--gold);font-weight:500;padding:14px 20px 8px;
+}
+.drawer-item{
+  display:flex;align-items:center;gap:14px;
+  padding:14px 20px;cursor:pointer;
+  border-left:2px solid transparent;
+  transition:background 0.18s,border-color 0.18s;
+}
+.drawer-item:active,.drawer-item:hover{background:var(--white);}
+.drawer-item.active{border-left-color:var(--gold);background:var(--white);}
+.drawer-item-icon{
+  width:38px;height:38px;border-radius:var(--r-md);flex-shrink:0;
+  background:var(--gold-bg);border:1px solid var(--gold-line);
+  display:flex;align-items:center;justify-content:center;font-size:17px;
+}
+.drawer-item-text{flex:1;min-width:0;}
+.drawer-item-name{font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;color:var(--ink);}
+.drawer-item-sub{font-size:11.5px;color:var(--ink3);margin-top:2px;line-height:1.4;}
+.drawer-item-arrow{font-size:14px;color:var(--ink4);flex-shrink:0;}
+.drawer-footer{
+  margin-top:auto;padding:16px 20px 0;border-top:1px solid var(--border);
+  font-size:11px;color:var(--ink3);line-height:1.6;
+}
+
 /* ─── NAV ─── */
 .sticky-nav{
   position:sticky;top:57px;z-index:190;
@@ -535,6 +604,71 @@ body{
   border-top:1px solid var(--border);text-align:center;line-height:1.5;
 }
 
+/* ─── INPUT MANUAL DE MACROS ─── */
+.macro-input-row{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
+.macro-input-col{
+  background:var(--white);border:1px solid var(--border-mid);border-radius:var(--r-md);
+  padding:9px 10px;border-top:2px solid var(--border-mid);
+}
+.macro-input-col.prot{border-top-color:var(--green);}
+.macro-input-col.carb{border-top-color:var(--gold);}
+.macro-input-col.fat{border-top-color:var(--amber);}
+.macro-input-label{
+  display:block;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.8px;
+  text-transform:uppercase;color:var(--ink3);margin-bottom:5px;
+}
+.macro-input-field{display:flex;align-items:baseline;gap:3px;}
+.macro-input-field input{
+  width:100%;min-width:0;border:none;background:none;outline:none;
+  font-family:'DM Serif Display',serif;font-size:19px;color:var(--ink);
+  padding:0;-moz-appearance:textfield;
+}
+.macro-input-field input::-webkit-outer-spin-button,
+.macro-input-field input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0;}
+.macro-input-field input::placeholder{color:var(--ink4);}
+.macro-input-unit{font-family:'DM Mono',monospace;font-size:10px;color:var(--ink3);flex-shrink:0;}
+
+/* ─── VALIDACIÓN DE CALCE CON KCAL ─── */
+.macro-match-badge{
+  display:flex;align-items:center;gap:10px;padding:12px 14px;
+  border-radius:var(--r-md);margin-top:2px;
+}
+.macro-match-badge.ok{background:var(--green-bg);border:1px solid var(--green-line);}
+.macro-match-badge.warn{background:var(--amber-bg);border:1px solid var(--amber-line);}
+.macro-match-icon{font-size:16px;flex-shrink:0;}
+.macro-match-text{font-size:12.5px;line-height:1.5;color:var(--ink2);}
+.macro-match-text strong{color:var(--ink);}
+.macro-match-badge.ok .macro-match-text strong{color:var(--green);}
+.macro-match-badge.warn .macro-match-text strong{color:var(--amber);}
+
+/* ─── MICRONUTRIENTE CARD (optimizada para móvil) ─── */
+.micro-card{
+  background:var(--white);border:1px solid var(--border);
+  border-radius:var(--r-lg);padding:14px;margin-bottom:10px;
+}
+.micro-card-head{
+  display:flex;align-items:flex-start;gap:11px;margin-bottom:11px;
+}
+.micro-card-emoji{font-size:21px;line-height:1;flex-shrink:0;margin-top:1px;}
+.micro-card-body{flex:1;min-width:0;}
+.micro-card-name{font-size:13.5px;font-weight:600;color:var(--ink);line-height:1.35;}
+.micro-card-rda{
+  display:inline-flex;align-items:center;
+  font-family:'DM Mono',monospace;font-size:10px;font-weight:500;
+  letter-spacing:0.3px;color:var(--gold);background:var(--gold-bg);
+  border:1px solid var(--gold-line);border-radius:var(--r-sm);
+  padding:4px 8px;margin-top:6px;line-height:1.4;
+  white-space:normal;max-width:100%;
+}
+.micro-card-why{font-size:12px;color:var(--ink2);line-height:1.55;margin-top:8px;}
+.micro-card-sources{border-top:1px solid var(--border);margin-top:11px;padding-top:11px;}
+.micro-card-sources-title{
+  font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1px;text-transform:uppercase;
+  color:var(--ink3);font-weight:500;margin-bottom:7px;display:flex;align-items:center;gap:5px;
+}
+.micro-card-tags{display:flex;flex-wrap:wrap;gap:5px;}
+.micro-card-tags .food-tag{max-width:100%;}
+
 /* ─── COPY PLAN BUTTON ─── */
 .copy-plan-btn{
   display:flex;align-items:center;justify-content:center;gap:8px;
@@ -646,6 +780,235 @@ body{
   .nav-tabs{max-width:var(--max);}
   .app-header .header-inner{max-width:var(--max);}
 }
+
+/* Pantallas muy angostas (iPhone SE y similares, ≤380px) */
+@media(max-width:380px){
+  :root{--px:16px;}
+  .accord-body{padding:14px 12px;}
+  .accord-head{padding:13px;}
+  .accord-icon{width:38px;height:38px;font-size:15px;}
+  .accord-name{font-size:14.5px;}
+  .micro-card{padding:12px;}
+  .micro-card-emoji{font-size:19px;}
+  .micro-card-name{font-size:13px;}
+  .micro-card-rda{font-size:9.5px;padding:3.5px 7px;}
+  .micro-card-why{font-size:11.5px;}
+  .food-tag{font-size:8.5px;padding:3.5px 7px;}
+}
+
+/* ─── ACCESIBILIDAD: FOCO VISIBLE ─── */
+a:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible,
+.chip-btn:focus-visible,.nav-tab:focus-visible,.porc-link:focus-visible,
+.food-card:focus-visible,.accord-head:focus-visible,.faq-q:focus-visible,
+.rest-head:focus-visible,.porc-macro-tab:focus-visible,.porc-amount-btn:focus-visible,
+.search-clear:focus-visible,.search-result-item:focus-visible{
+  outline:2px solid var(--gold);
+  outline-offset:2px;
+  border-radius:var(--r-sm);
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:0.001ms!important;animation-iteration-count:1!important;transition-duration:0.001ms!important;scroll-behavior:auto!important;}
+}
+
+/* ─── MICRO-ANIMACIONES: STAGGER ─── */
+@keyframes cardIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.food-card,.wcard,.porc-card,.bonus-card,.timing-card,.hack-card{
+  animation:cardIn 0.36s cubic-bezier(.22,.61,.36,1) backwards;
+}
+.food-grid .food-card:nth-child(1){animation-delay:0.02s}
+.food-grid .food-card:nth-child(2){animation-delay:0.06s}
+.food-grid .food-card:nth-child(3){animation-delay:0.10s}
+.food-grid .food-card:nth-child(4){animation-delay:0.14s}
+.food-grid .food-card:nth-child(5){animation-delay:0.18s}
+.food-grid .food-card:nth-child(n+6){animation-delay:0.20s}
+.porc-grid .porc-card:nth-child(1){animation-delay:0.02s}
+.porc-grid .porc-card:nth-child(2){animation-delay:0.05s}
+.porc-grid .porc-card:nth-child(3){animation-delay:0.08s}
+.porc-grid .porc-card:nth-child(4){animation-delay:0.11s}
+.porc-grid .porc-card:nth-child(n+5){animation-delay:0.13s}
+
+.nav-tab{position:relative;}
+.nav-tab .tab-underline{
+  position:absolute;left:13px;right:13px;bottom:-1px;height:2px;
+  background:var(--gold);transform:scaleX(0);transform-origin:center;
+  transition:transform 0.25s cubic-bezier(.22,.61,.36,1);
+}
+.nav-tab.active .tab-underline{transform:scaleX(1);}
+
+.chip-btn{transition:all 0.18s cubic-bezier(.22,.61,.36,1);}
+
+/* ─── BUSCADOR GLOBAL ─── */
+.search-wrap{position:relative;margin-top:16px;}
+.search-input-row{
+  display:flex;align-items:center;gap:10px;
+  background:var(--white);border:1px solid var(--border-mid);
+  border-radius:var(--r-pill);padding:11px 16px;
+  transition:border-color 0.2s;
+}
+.search-input-row:focus-within{border-color:var(--gold);}
+.search-icon{font-size:14px;color:var(--ink3);flex-shrink:0;}
+.search-input{
+  flex:1;border:none;background:none;outline:none;
+  font-family:'DM Sans',sans-serif;font-size:13.5px;color:var(--ink);
+  min-width:0;
+}
+.search-input::placeholder{color:var(--ink4);}
+.search-clear{
+  font-family:'DM Mono',monospace;font-size:11px;color:var(--ink3);
+  background:var(--cream);border:none;border-radius:50%;
+  width:20px;height:20px;flex-shrink:0;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+}
+.search-results{
+  position:absolute;top:calc(100% + 8px);left:0;right:0;z-index:250;
+  background:var(--white);border:1px solid var(--border-mid);
+  border-radius:var(--r-lg);box-shadow:0 12px 32px rgba(26,23,20,0.14);
+  max-height:360px;overflow-y:auto;
+  animation:cardIn 0.18s ease;
+}
+.search-result-group-label{
+  font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;
+  color:var(--gold);font-weight:500;padding:10px 14px 6px;
+}
+.search-result-item{
+  display:flex;align-items:center;gap:10px;padding:10px 14px;
+  cursor:pointer;border-top:1px solid var(--border);transition:background 0.15s;
+}
+.search-result-item:first-child,.search-result-group-label + .search-result-item{border-top:none;}
+.search-result-item:active,.search-result-item:hover{background:var(--cream);}
+.search-result-emoji{font-size:16px;flex-shrink:0;}
+.search-result-text{flex:1;min-width:0;}
+.search-result-name{font-size:13px;font-weight:500;color:var(--ink);line-height:1.3;}
+.search-result-meta{font-family:'DM Mono',monospace;font-size:9px;color:var(--ink3);text-transform:uppercase;letter-spacing:0.5px;margin-top:2px;}
+.search-empty{padding:18px 14px;font-size:12.5px;color:var(--ink3);text-align:center;}
+
+/* ─── PESO CORPORAL / G-KG ─── */
+.gkg-badge{
+  display:inline-flex;align-items:center;gap:6px;
+  font-family:'DM Mono',monospace;font-size:11px;font-weight:600;
+  padding:6px 12px;border-radius:var(--r-pill);margin-top:8px;
+}
+.gkg-badge.ok{background:var(--green-bg);color:var(--green);border:1px solid var(--green-line);}
+.gkg-badge.warn{background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-line);}
+
+/* ─── CONVERSOR DE ALIMENTOS ─── */
+.conv-row{display:flex;gap:10px;align-items:flex-end;margin-bottom:14px;}
+.conv-field{flex:1;min-width:0;}
+.conv-amt{width:84px;flex-shrink:0;}
+.conv-swap-btn{
+  flex-shrink:0;width:40px;height:40px;border-radius:50%;
+  background:var(--gold-bg);border:1px solid var(--gold-line);
+  color:var(--gold);font-size:15px;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  transition:transform 0.25s cubic-bezier(.22,.61,.36,1);
+  margin-bottom:2px;
+}
+.conv-swap-btn:active{transform:rotate(180deg) scale(0.92);}
+.conv-result{
+  background:var(--white);border:1px solid var(--border);
+  border-radius:var(--r-xl);padding:22px;text-align:center;
+  animation:cardIn 0.3s ease;
+}
+.conv-result-eq{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink3);margin-bottom:10px;}
+.conv-result-val{font-family:'DM Serif Display',serif;font-size:44px;color:var(--gold);line-height:1;}
+.conv-result-unit{font-family:'DM Sans',sans-serif;font-size:16px;color:var(--ink3);margin-left:4px;}
+.conv-result-food{font-size:14px;color:var(--ink2);margin-top:8px;}
+.conv-result-food strong{color:var(--ink);}
+.conv-result-detail{
+  display:flex;justify-content:center;gap:18px;margin-top:16px;padding-top:14px;
+  border-top:1px solid var(--border);
+}
+.conv-result-detail-item{text-align:center;}
+.conv-result-detail-val{font-family:'DM Serif Display',serif;font-size:17px;color:var(--ink);}
+.conv-result-detail-label{font-family:'DM Mono',monospace;font-size:8px;letter-spacing:1px;text-transform:uppercase;color:var(--ink3);margin-top:2px;}
+.conv-empty{padding:26px 16px;text-align:center;font-size:13px;color:var(--ink3);line-height:1.6;}
+
+/* ─── ANATOMÍA DE ETIQUETA NUTRICIONAL ─── */
+.label-diagram{
+  background:var(--white);border:1px solid var(--border-mid);
+  border-radius:var(--r-xl);padding:0;overflow:hidden;margin-bottom:22px;
+}
+.label-diagram-inner{padding:18px;font-family:'DM Mono',monospace;}
+.label-row{
+  display:flex;justify-content:space-between;align-items:baseline;
+  padding:7px 0;border-bottom:1px solid var(--border);font-size:12px;color:var(--ink2);
+  position:relative;
+}
+.label-row.header{border-bottom:4px solid var(--ink);padding-bottom:10px;}
+.label-row.header .label-title{font-family:'DM Serif Display',serif;font-size:22px;color:var(--ink);}
+.label-row.big{border-bottom:8px solid var(--ink);font-size:13px;font-weight:700;color:var(--ink);padding:9px 0;}
+.label-row.indent{padding-left:14px;font-size:11.5px;}
+.label-row.indent2{padding-left:28px;font-size:11px;color:var(--ink3);}
+.label-row.tag{cursor:pointer;transition:background 0.15s;border-radius:4px;margin:0 -6px;padding-left:6px!important;padding-right:6px;}
+.label-row.tag:hover,.label-row.tag.active{background:var(--gold-bg);}
+.label-row.tag::after{content:'●';color:var(--gold);font-size:8px;margin-left:6px;vertical-align:middle;}
+.label-note{
+  display:none;background:var(--gold-bg);border:1px solid var(--gold-line);
+  border-radius:var(--r-md);padding:12px 14px;margin:6px 0;font-family:'DM Sans',sans-serif;
+  font-size:12.5px;color:var(--ink2);line-height:1.6;
+}
+.label-note.open{display:block;animation:cardIn 0.25s ease;}
+.label-note strong{color:var(--ink);}
+.label-legend{
+  padding:14px 18px;background:var(--cream);border-top:1px solid var(--border);
+  font-family:'DM Sans',sans-serif;font-size:11.5px;color:var(--ink3);
+  display:flex;align-items:center;gap:8px;
+}
+
+.label-rule-card{
+  background:var(--white);border:1px solid var(--border);border-radius:var(--r-lg);
+  padding:16px;margin-bottom:10px;display:flex;gap:13px;
+}
+.label-rule-icon{
+  width:36px;height:36px;border-radius:var(--r-md);flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;font-size:16px;
+}
+.label-rule-icon.good{background:var(--green-bg);border:1px solid var(--green-line);}
+.label-rule-icon.bad{background:var(--red-bg);border:1px solid var(--red-line);}
+.label-rule-icon.info{background:var(--blue-bg);border:1px solid var(--blue-line);}
+.label-rule-title{font-size:13.5px;font-weight:600;color:var(--ink);margin-bottom:4px;}
+.label-rule-body{font-size:12.5px;color:var(--ink2);line-height:1.6;}
+
+.label-trap-card{
+  background:var(--white);border:1px solid var(--border);border-radius:var(--r-lg);
+  padding:15px;margin-bottom:9px;
+}
+.label-trap-claim{
+  font-family:'DM Serif Display',serif;font-style:italic;font-size:15px;color:var(--ink);
+  margin-bottom:6px;
+}
+.label-trap-reality{font-size:12.5px;color:var(--ink2);line-height:1.6;}
+.label-trap-reality strong{color:var(--red);}
+
+.ingredient-order-demo{
+  display:flex;flex-wrap:wrap;gap:6px;margin:10px 0;
+}
+.ingredient-chip{
+  font-family:'DM Mono',monospace;font-size:10.5px;padding:5px 10px;
+  border-radius:var(--r-pill);border:1px solid var(--border-mid);
+  background:var(--cream);color:var(--ink2);
+}
+.ingredient-chip:first-child{background:var(--red-bg);border-color:var(--red-line);color:var(--red);font-weight:600;}
+
+/* ─── REFERENCIA DE VALORES DIARIOS ─── */
+.dv-grid{display:flex;flex-direction:column;gap:8px;margin-bottom:10px;}
+.dv-card{
+  background:var(--white);border:1px solid var(--border);border-radius:var(--r-lg);
+  padding:14px 16px;display:flex;align-items:center;gap:14px;
+}
+.dv-info{flex:1;min-width:0;}
+.dv-name{font-size:13.5px;font-weight:600;color:var(--ink);margin-bottom:3px;}
+.dv-value{font-family:'DM Mono',monospace;font-size:12px;color:var(--ink2);}
+.dv-tag{
+  flex-shrink:0;font-family:'DM Mono',monospace;font-size:9.5px;font-weight:600;
+  letter-spacing:0.5px;text-transform:uppercase;padding:6px 11px;
+  border-radius:var(--r-pill);white-space:nowrap;
+}
+.dv-tag.limitar{background:var(--amber-bg);color:var(--amber);border:1px solid var(--amber-line);}
+.dv-tag.evitar{background:var(--red-bg);color:var(--red);border:1px solid var(--red-line);}
+.dv-tag.aumentar{background:var(--green-bg);color:var(--green);border:1px solid var(--green-line);}
+.dv-tag.prioritario{background:var(--blue-bg);color:var(--blue);border:1px solid var(--blue-line);}
+.dv-tag.objetivo{background:var(--gold-bg);color:var(--gold);border:1px solid var(--gold-line);}
 </style>
 </head>
 <body>
@@ -653,7 +1016,10 @@ body{
 <!-- HEADER -->
 <header class="app-header">
   <div class="header-inner">
-    <div class="header-brand">
+    <button class="hamburger-btn" id="hamburger-btn" onclick="toggleDrawer()" aria-label="Abrir menú de herramientas" aria-expanded="false" aria-controls="side-drawer">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="header-brand" style="flex:1">
       <span class="header-eyebrow">Asesorías · Renzo Bello</span>
       <span class="header-wordmark">STRENGTHLAB Nutrición</span>
     </div>
@@ -661,31 +1027,78 @@ body{
   </div>
 </header>
 
+<!-- DRAWER: HERRAMIENTAS -->
+<div class="drawer-overlay" id="drawer-overlay" onclick="closeDrawer()"></div>
+<aside class="drawer" id="side-drawer" role="dialog" aria-modal="true" aria-label="Menú de herramientas">
+  <div class="drawer-head">
+    <span class="drawer-title">Herramientas</span>
+    <button class="drawer-close" onclick="closeDrawer()" aria-label="Cerrar menú">✕</button>
+  </div>
+  <div class="drawer-eyebrow">Calculadoras y guías</div>
+  <div class="drawer-item" id="drawer-porciones" onclick="goToDrawerTab('porciones')" role="button" tabindex="0" onkeydown="if(event.key==='Enter')goToDrawerTab('porciones')">
+    <div class="drawer-item-icon">📊</div>
+    <div class="drawer-item-text">
+      <div class="drawer-item-name">Porciones</div>
+      <div class="drawer-item-sub">Cuánto pesar de cada alimento según tu macro</div>
+    </div>
+    <span class="drawer-item-arrow">›</span>
+  </div>
+  <div class="drawer-item" id="drawer-conversor" onclick="goToDrawerTab('conversor')" role="button" tabindex="0" onkeydown="if(event.key==='Enter')goToDrawerTab('conversor')">
+    <div class="drawer-item-icon">🔄</div>
+    <div class="drawer-item-text">
+      <div class="drawer-item-name">Conversor</div>
+      <div class="drawer-item-sub">Reemplaza un alimento por otro equivalente</div>
+    </div>
+    <span class="drawer-item-arrow">›</span>
+  </div>
+  <div class="drawer-item" id="drawer-etiqueta" onclick="goToDrawerTab('etiqueta')" role="button" tabindex="0" onkeydown="if(event.key==='Enter')goToDrawerTab('etiqueta')">
+    <div class="drawer-item-icon">🏷️</div>
+    <div class="drawer-item-text">
+      <div class="drawer-item-name">Anatomía de una etiqueta</div>
+      <div class="drawer-item-sub">Aprende a leer etiquetas nutricionales</div>
+    </div>
+    <span class="drawer-item-arrow">›</span>
+  </div>
+  <div class="drawer-footer">Estas herramientas complementan tu asesoría — no la reemplazan. Ante dudas, consúltalas con Renzo.</div>
+</aside>
+
 <!-- HERO -->
 <div style="border-bottom:1px solid var(--border)">
   <div class="hero">
     <div class="hero-eyebrow">Guía personalizada de nutrición</div>
     <h1 class="hero-h">Come <em>mejor</em>,<br>progresa más rápido.</h1>
     <p class="hero-p">Alimentos de alto valor nutricional adaptados a tu sexo, objetivo y restricciones. Con alternativas reales para cada situación.</p>
+
+    <div class="search-wrap" id="search-wrap">
+      <div class="search-input-row">
+        <span class="search-icon" aria-hidden="true">🔍</span>
+        <input type="text" class="search-input" id="search-input" placeholder="Buscar un alimento… ej: pollo, avena, quinoa"
+          aria-label="Buscar alimento en toda la guía"
+          autocomplete="off"
+          oninput="handleSearch(this.value)"
+          onfocus="handleSearch(this.value)">
+        <button class="search-clear" id="search-clear" style="display:none" onclick="clearSearch()" aria-label="Limpiar búsqueda">✕</button>
+      </div>
+      <div id="search-results"></div>
+    </div>
   </div>
 </div>
 
 <!-- NAV -->
 <div class="sticky-nav">
-  <nav class="nav-tabs" role="tablist">
-    <button class="nav-tab active" onclick="switchTab('plan',this)" role="tab">Mi Plan</button>
-    <button class="nav-tab" onclick="switchTab('micros',this)" role="tab">Micronutrientes</button>
-    <button class="nav-tab" onclick="switchTab('macros',this)" role="tab">Macros</button>
-    <button class="nav-tab" onclick="switchTab('porciones',this)" role="tab">Porciones</button>
-    <button class="nav-tab" onclick="switchTab('timing',this)" role="tab">Timing</button>
-    <button class="nav-tab" onclick="switchTab('restricciones',this)" role="tab">Restricciones</button>
-    <button class="nav-tab" onclick="switchTab('hacks',this)" role="tab">Estrategias Pro</button>
-    <button class="nav-tab" onclick="switchTab('faq',this)" role="tab">FAQ</button>
+  <nav class="nav-tabs" role="tablist" aria-label="Secciones de la guía">
+    <button class="nav-tab active" onclick="switchTab('plan',this)" role="tab" aria-selected="true" aria-controls="panel-plan" id="tabbtn-plan">Mi Plan<span class="tab-underline"></span></button>
+    <button class="nav-tab" onclick="switchTab('micros',this)" role="tab" aria-selected="false" aria-controls="panel-micros" id="tabbtn-micros">Micronutrientes<span class="tab-underline"></span></button>
+    <button class="nav-tab" onclick="switchTab('macros',this)" role="tab" aria-selected="false" aria-controls="panel-macros" id="tabbtn-macros">Macros<span class="tab-underline"></span></button>
+    <button class="nav-tab" onclick="switchTab('timing',this)" role="tab" aria-selected="false" aria-controls="panel-timing" id="tabbtn-timing">Timing<span class="tab-underline"></span></button>
+    <button class="nav-tab" onclick="switchTab('restricciones',this)" role="tab" aria-selected="false" aria-controls="panel-restricciones" id="tabbtn-restricciones">Restricciones<span class="tab-underline"></span></button>
+    <button class="nav-tab" onclick="switchTab('hacks',this)" role="tab" aria-selected="false" aria-controls="panel-hacks" id="tabbtn-hacks">Estrategias Pro<span class="tab-underline"></span></button>
+    <button class="nav-tab" onclick="switchTab('faq',this)" role="tab" aria-selected="false" aria-controls="panel-faq" id="tabbtn-faq">FAQ<span class="tab-underline"></span></button>
   </nav>
 </div>
 
 <!-- PANEL: MI PLAN -->
-<section class="panel active" id="panel-plan">
+<section class="panel active" id="panel-plan" role="tabpanel" aria-labelledby="tabbtn-plan">
   <div class="section-eyebrow">Configura tu guía</div>
 
   <div class="field-group">
@@ -713,6 +1126,42 @@ body{
       <span style="font-family:'DM Mono',monospace;font-size:12px;color:var(--ink3);flex-shrink:0">kcal/día</span>
     </div>
   </div>
+  <div class="field-group">
+    <label class="field-label" for="inp-peso">Tu peso corporal <span style="font-weight:400;color:var(--ink3)">(opcional — para ver g/kg reales)</span></label>
+    <div style="display:flex;gap:8px;align-items:center">
+      <input type="number" id="inp-peso" class="field-select" placeholder="Ej: 72" min="30" max="250" step="0.5"
+        style="flex:1;font-family:'DM Mono',monospace;font-size:14px;letter-spacing:0.5px"
+        oninput="savePrefs();buildPlan()">
+      <span style="font-family:'DM Mono',monospace;font-size:12px;color:var(--ink3);flex-shrink:0">kg</span>
+    </div>
+  </div>
+
+  <div class="field-group">
+    <label class="field-label">Tus macros diarios <span style="font-weight:400;color:var(--ink3)">(los que te dio Renzo en la asesoría)</span></label>
+    <div class="macro-input-row">
+      <div class="macro-input-col prot">
+        <span class="macro-input-label">Proteína</span>
+        <div class="macro-input-field">
+          <input type="number" id="inp-prot" min="0" max="600" step="1" placeholder="0" oninput="savePrefs();buildMacroSummary()">
+          <span class="macro-input-unit">g</span>
+        </div>
+      </div>
+      <div class="macro-input-col carb">
+        <span class="macro-input-label">Carbos</span>
+        <div class="macro-input-field">
+          <input type="number" id="inp-carb" min="0" max="900" step="1" placeholder="0" oninput="savePrefs();buildMacroSummary()">
+          <span class="macro-input-unit">g</span>
+        </div>
+      </div>
+      <div class="macro-input-col fat">
+        <span class="macro-input-label">Grasas</span>
+        <div class="macro-input-field">
+          <input type="number" id="inp-fat" min="0" max="300" step="1" placeholder="0" oninput="savePrefs();buildMacroSummary()">
+          <span class="macro-input-unit">g</span>
+        </div>
+      </div>
+    </div>
+  </div>
   <div id="macro-summary-card"></div>
     <div class="chips-wrap">
       <button class="chip-btn active" id="chip-ninguna" onclick="toggleChip(this,'ninguna')">✅ Sin restricciones</button>
@@ -727,7 +1176,7 @@ body{
 </section>
 
 <!-- PANEL: MICRONUTRIENTES -->
-<section class="panel" id="panel-micros">
+<section class="panel" id="panel-micros" role="tabpanel" aria-labelledby="tabbtn-micros">
   <div class="section-eyebrow">Vitaminas y minerales</div>
   <p style="font-size:13.5px;color:var(--ink2);line-height:1.7;margin-bottom:22px;">Dosis diarias de referencia y las mejores fuentes alimentarias para cada vitamina y mineral clave en el rendimiento.</p>
   <div id="micros-content"></div>
@@ -735,7 +1184,7 @@ body{
 </section>
 
 <!-- PANEL: PORCIONES -->
-<section class="panel" id="panel-porciones">
+<section class="panel" id="panel-porciones" role="tabpanel" aria-labelledby="tabbtn-porciones">
   <div class="section-eyebrow">Guía de porciones</div>
 
   <!-- Instrucción clara de uso -->
@@ -764,8 +1213,258 @@ body{
   <div class="safe-bottom"></div>
 </section>
 
+<!-- PANEL: CONVERSOR DE ALIMENTOS -->
+<section class="panel" id="panel-conversor" role="tabpanel" aria-labelledby="tabbtn-conversor">
+  <div class="section-eyebrow">Reemplaza un alimento por otro</div>
+
+  <div class="alert-box gold" style="margin-bottom:20px">
+    <div class="alert-title gold">¿Cómo funciona?</div>
+    <div class="alert-body">Elige un alimento y una cantidad, y te mostramos cuánto necesitas de otro alimento para aportar el mismo macro (proteína o carbohidratos). Ideal para reemplazar comidas sin descuadrar tu plan.</div>
+  </div>
+
+  <div class="conv-row">
+    <div class="conv-field">
+      <label class="field-label" for="conv-from">Tengo</label>
+      <select class="field-select" id="conv-from" onchange="buildConversor()"></select>
+    </div>
+    <div class="conv-amt">
+      <label class="field-label" for="conv-from-amt">Cantidad</label>
+      <input type="number" id="conv-from-amt" class="field-select" value="100" min="1" max="2000" step="5"
+        style="font-family:'DM Mono',monospace;font-size:14px;text-align:center"
+        oninput="buildConversor()">
+    </div>
+  </div>
+
+  <div class="conv-row" style="align-items:center;justify-content:center">
+    <button class="conv-swap-btn" onclick="swapConversor()" aria-label="Intercambiar alimentos">⇅</button>
+  </div>
+
+  <div class="conv-row">
+    <div class="conv-field">
+      <label class="field-label" for="conv-to">Quiero reemplazar por</label>
+      <select class="field-select" id="conv-to" onchange="buildConversor()"></select>
+    </div>
+  </div>
+
+  <div id="conv-result"></div>
+
+  <div class="info-banner">El cálculo iguala el aporte de <strong>proteína</strong> o <strong>carbohidratos</strong> (según la categoría del alimento de origen) entre ambos alimentos — no iguala calorías exactas. Ambos alimentos deben ser de la misma categoría (proteína o carbohidrato) para que el reemplazo sea coherente nutricionalmente.</div>
+  <div class="safe-bottom"></div>
+</section>
+
+<!-- PANEL: ANATOMÍA DE UNA ETIQUETA -->
+<section class="panel" id="panel-etiqueta" role="tabpanel" aria-labelledby="drawer-etiqueta">
+  <div class="section-eyebrow">Aprende a leer el envase</div>
+  <p style="font-size:13px;color:var(--ink2);line-height:1.7;margin-bottom:18px">La etiqueta nutricional es la única fuente de información objetiva sobre un producto — el resto del envase es marketing. Toca cada fila de este ejemplo para entender qué significa y por qué importa.</p>
+
+  <div class="label-diagram">
+    <div class="label-diagram-inner">
+      <div class="label-row header">
+        <span class="label-title">Información Nutricional</span>
+      </div>
+      <div class="label-row tag" onclick="toggleLabelNote(this,'porcion')" role="button" tabindex="0" onkeydown="if(event.key==='Enter')toggleLabelNote(this,'porcion')">
+        <span>Porción</span><span>30 g (2 galletas)</span>
+      </div>
+      <div id="note-porcion" class="label-note"><strong>El truco más común.</strong> Todos los valores de abajo son PARA ESTA PORCIÓN, no para el envase completo. Si la porción es de 30g pero comes 90g (el paquete entero), estás consumiendo 3 veces los valores que ves. Siempre revisa cuántas porciones trae el envase.</div>
+
+      <div class="label-row tag" onclick="toggleLabelNote(this,'porcenv')" role="button" tabindex="0" onkeydown="if(event.key==='Enter')toggleLabelNote(this,'porcenv')">
+        <span>Porciones por envase</span><span>~5</span>
+      </div>
+      <div id="note-porcenv" class="label-note"><strong>Multiplica antes de decidir.</strong> Si vas a comerte el paquete completo, multiplica cada valor de la tabla por este número. Una bolsa de "110 kcal por porción" con 5 porciones son en realidad 550 kcal si te la terminas.</div>
+
+      <div class="label-row big tag" onclick="toggleLabelNote(this,'kcal')" role="button" tabindex="0" onkeydown="if(event.key==='Enter')toggleLabelNote(this,'kcal')">
+        <span>Energía (Calorías)</span><span>140 kcal</span>
+      </div>
+      <div id="note-kcal" class="label-note"><strong>El número que todos miran, pero no el único que importa.</strong> Dos productos con las mismas calorías pueden tener composiciones totalmente distintas (uno todo azúcar, otro con proteína y fibra). Úsalo como referencia general, no como único criterio.</div>
+
+      <div class="label-row tag" onclick="toggleLabelNote(this,'grasas')" role="button" tabindex="0" onkeydown="if(event.key==='Enter')toggleLabelNote(this,'grasas')">
+        <span>Grasas totales</span><span>6 g</span>
+      </div>
+      <div id="note-grasas" class="label-note">Suma de todos los tipos de grasa. No es mala per se — mira el desglose de abajo para saber qué tipo predomina.</div>
+
+      <div class="label-row indent tag" onclick="toggleLabelNote(this,'sat')" role="button" tabindex="0" onkeydown="if(event.key==='Enter')toggleLabelNote(this,'sat')">
+        <span>Grasas saturadas</span><span>3.5 g</span>
+      </div>
+      <div id="note-sat" class="label-note"><strong>La cifra a vigilar de cerca.</strong> Consumo excesivo se asocia a peor perfil de colesterol LDL. Como referencia general, mantener las saturadas bajo control del total calórico diario es una buena práctica — revisa el % VD si el envase lo incluye.</div>
+
+      <div class="label-row indent tag" onclick="toggleLabelNote(this,'trans')" role="button" tabindex="0" onkeydown="if(event.key==='Enter')toggleLabelNote(this,'trans')">
+        <span>Grasas trans</span><span>0 g</span>
+      </div>
+      <div id="note-trans" class="label-note"><strong>Deben ser 0, sin excepciones.</strong> Ojo: por normativa, si un producto tiene menos de 0.5g por porción puede declarar "0g trans" aunque técnicamente tenga algo. Revisa la lista de ingredientes: si dice "aceite parcialmente hidrogenado", tiene trans aunque la tabla diga 0.</div>
+
+      <div class="label-row tag" onclick="toggleLabelNote(this,'cho')" role="button" tabindex="0" onkeydown="if(event.key==='Enter')toggleLabelNote(this,'cho')">
+        <span>Carbohidratos totales</span><span>18 g</span>
+      </div>
+      <div id="note-cho" class="label-note">Incluye azúcares, fibra y almidones. El total no te dice si es un carbohidrato de "buena calidad" (con fibra) o "vacío" (solo azúcar) — para eso mira las dos filas de abajo.</div>
+
+      <div class="label-row indent tag" onclick="toggleLabelNote(this,'azucar')" role="button" tabindex="0" onkeydown="if(event.key==='Enter')toggleLabelNote(this,'azucar')">
+        <span>Azúcares totales</span><span>9 g</span>
+      </div>
+      <div id="note-azucar" class="label-note"><strong>La fila más importante del producto envasado promedio.</strong> 9g equivale a poco más de 2 cucharaditas de azúcar. La OMS recomienda un tope de ~25g de azúcar añadida al día para un adulto promedio — un solo snack puede cubrir más de un tercio de ese límite.</div>
+
+      <div class="label-row indent2 tag" onclick="toggleLabelNote(this,'azucaranadida')" role="button" tabindex="0" onkeydown="if(event.key==='Enter')toggleLabelNote(this,'azucaranadida')">
+        <span>— Azúcares añadidos</span><span>8 g</span>
+      </div>
+      <div id="note-azucaranadida" class="label-note"><strong>Distinto de "azúcares totales".</strong> Este dato (cuando aparece) separa el azúcar que ya tenía el alimento naturalmente (ej. la fructosa de una fruta) del que se agregó en el proceso. El añadido es el que realmente quieres minimizar — el natural viene con fibra y micronutrientes que lo compensan.</div>
+
+      <div class="label-row indent tag" onclick="toggleLabelNote(this,'fibra')" role="button" tabindex="0" onkeydown="if(event.key==='Enter')toggleLabelNote(this,'fibra')">
+        <span>Fibra dietética</span><span>1 g</span>
+      </div>
+      <div id="note-fibra" class="label-note"><strong>Cuanta más, mejor — y aquí es baja.</strong> La fibra ralentiza la absorción de azúcar, mejora la saciedad y alimenta la microbiota. Un producto con ≥3g de fibra por porción ya es una buena señal; ≥5g es excelente.</div>
+
+      <div class="label-row big tag" onclick="toggleLabelNote(this,'prot')" role="button" tabindex="0" onkeydown="if(event.key==='Enter')toggleLabelNote(this,'prot')">
+        <span>Proteínas</span><span>2 g</span>
+      </div>
+      <div id="note-prot" class="label-note">En un snack como este, 2g es prácticamente irrelevante para tus objetivos — no cuenta como "fuente de proteína" real. Si buscas saciedad y estás entrenando, prioriza productos con proteína de dos dígitos por porción.</div>
+
+      <div class="label-row indent tag" onclick="toggleLabelNote(this,'sodio')" role="button" tabindex="0" onkeydown="if(event.key==='Enter')toggleLabelNote(this,'sodio')">
+        <span>Sodio</span><span>180 mg</span>
+      </div>
+      <div id="note-sodio" class="label-note"><strong>Vigila el acumulado del día, no un producto aislado.</strong> El límite general de referencia ronda los 2300mg/día. Productos ultraprocesados (embutidos, sopas instantáneas, snacks salados) son los que más rápido lo agotan — revisa varios a la vez si los consumes seguido.</div>
+    </div>
+    <div class="label-legend">💡 Cada fila con el punto dorado es interactiva — tócala para ver la explicación.</div>
+  </div>
+
+  <div class="section-eyebrow" style="margin-top:26px">La lista de ingredientes: la parte que casi nadie lee</div>
+  <div class="alert-box blue" style="margin-bottom:16px">
+    <div class="alert-title blue">Regla de oro</div>
+    <div class="alert-body">Los ingredientes están ordenados <strong>de mayor a menor cantidad</strong> por peso. El primer ingrediente es el que más hay en el producto — si es azúcar, agua o harina refinada, ya sabes cuál es la base real del alimento, sin importar lo que diga el frente del paquete.</div>
+  </div>
+  <div class="ingredient-order-demo">
+    <span class="ingredient-chip">Azúcar</span>
+    <span class="ingredient-chip">Harina de trigo</span>
+    <span class="ingredient-chip">Aceite vegetal</span>
+    <span class="ingredient-chip">Cacao en polvo (4%)</span>
+    <span class="ingredient-chip">Sal</span>
+    <span class="ingredient-chip">Saborizante</span>
+  </div>
+  <p style="font-size:12px;color:var(--ink3);line-height:1.6;margin-bottom:20px">Ejemplo real de orden de ingredientes: aunque el envase se venda como "galleta de cacao", el ingrediente principal — por peso — es el azúcar, no el cacao.</p>
+
+  <div class="section-eyebrow">Qué mirar primero (en orden)</div>
+  <div style="margin-bottom:22px">
+    <div class="label-rule-card">
+      <div class="label-rule-icon good">1</div>
+      <div><div class="label-rule-title">Tamaño de la porción</div><div class="label-rule-body">Antes que cualquier número, confirma a qué cantidad corresponde la tabla. Es la base de todo lo demás.</div></div>
+    </div>
+    <div class="label-rule-card">
+      <div class="label-rule-icon good">2</div>
+      <div><div class="label-rule-title">Primeros 3 ingredientes</div><div class="label-rule-body">Te dicen de qué está hecho realmente el producto. Si azúcar, jarabes o harinas refinadas aparecen entre los primeros, es un producto de baja calidad nutricional aunque el marketing diga otra cosa.</div></div>
+    </div>
+    <div class="label-rule-card">
+      <div class="label-rule-icon good">3</div>
+      <div><div class="label-rule-title">Azúcares añadidos y sodio</div><div class="label-rule-body">Los dos nutrientes que más fácilmente se acumulan sin que te des cuenta a lo largo del día.</div></div>
+    </div>
+    <div class="label-rule-card">
+      <div class="label-rule-icon good">4</div>
+      <div><div class="label-rule-title">Proteína y fibra</div><div class="label-rule-body">Los dos nutrientes que quieres maximizar — mejoran saciedad y suelen indicar un producto menos procesado.</div></div>
+    </div>
+  </div>
+
+  <div class="section-eyebrow">Sellos y frases del frente que engañan</div>
+  <div style="margin-bottom:22px">
+    <div class="label-trap-card">
+      <div class="label-trap-claim">"Light" / "Bajo en grasa"</div>
+      <div class="label-trap-reality">Reducir la grasa suele significar <strong>agregar más azúcar</strong> para compensar el sabor. Revisa siempre azúcares totales antes de asumir que "light" significa más saludable.</div>
+    </div>
+    <div class="label-trap-card">
+      <div class="label-trap-claim">"Sin azúcar añadida"</div>
+      <div class="label-trap-reality">Es verdad literal, pero el producto puede seguir siendo alto en azúcares naturales o en carbohidratos totales. No es sinónimo de "bajo en azúcar".</div>
+    </div>
+    <div class="label-trap-card">
+      <div class="label-trap-claim">"Integral" / "Multigrano"</div>
+      <div class="label-trap-reality">"Multigrano" no significa integral — puede llevar varios cereales, todos refinados. Busca que diga <strong>"100% integral"</strong> y verifica que el primer ingrediente sea harina integral, no harina refinada con colorante.</div>
+    </div>
+    <div class="label-trap-card">
+      <div class="label-trap-claim">"Natural"</div>
+      <div class="label-trap-reality">No es un término regulado con un estándar único. El azúcar de mesa y el jarabe de maíz también son "naturales" en muchos países — no garantiza nada sobre procesamiento o calidad nutricional.</div>
+    </div>
+    <div class="label-trap-card">
+      <div class="label-trap-claim">"Alto en proteína" en un snack dulce</div>
+      <div class="label-trap-reality">Revisa el gramaje real: a veces "alto en proteína" son 4-5g por porción, apenas superior a lo estándar. Compáralo contra tu objetivo diario de proteína, no contra el producto de al lado en la góndola.</div>
+    </div>
+  </div>
+
+  <div class="section-eyebrow">04 · Referencia de valores diarios</div>
+  <p style="font-size:12.5px;color:var(--ink3);line-height:1.6;margin-bottom:14px">Valores de referencia para un adulto promedio. Úsalos para poner en contexto lo que ves en cualquier etiqueta — lo que está "en tu plan" lo define tu asesoría, no esta tabla genérica.</p>
+  <div class="dv-grid">
+    <div class="dv-card">
+      <div class="dv-info">
+        <div class="dv-name">Grasas totales</div>
+        <div class="dv-value">Varía según plan: 15–30% del total calórico diario</div>
+      </div>
+      <span class="dv-tag objetivo">Según objetivo</span>
+    </div>
+    <div class="dv-card">
+      <div class="dv-info">
+        <div class="dv-name">Grasas saturadas</div>
+        <div class="dv-value">20g / día</div>
+      </div>
+      <span class="dv-tag limitar">Limitar</span>
+    </div>
+    <div class="dv-card">
+      <div class="dv-info">
+        <div class="dv-name">Grasas trans</div>
+        <div class="dv-value">0g — evitar</div>
+      </div>
+      <span class="dv-tag evitar">Evitar siempre</span>
+    </div>
+    <div class="dv-card">
+      <div class="dv-info">
+        <div class="dv-name">Sodio</div>
+        <div class="dv-value">2300mg / día</div>
+      </div>
+      <span class="dv-tag limitar">Limitar</span>
+    </div>
+    <div class="dv-card">
+      <div class="dv-info">
+        <div class="dv-name">Carbohidratos totales</div>
+        <div class="dv-value">Varía según plan</div>
+      </div>
+      <span class="dv-tag objetivo">Según objetivo</span>
+    </div>
+    <div class="dv-card">
+      <div class="dv-info">
+        <div class="dv-name">Fibra dietética</div>
+        <div class="dv-value">28g / día</div>
+      </div>
+      <span class="dv-tag aumentar">Aumentar</span>
+    </div>
+    <div class="dv-card">
+      <div class="dv-info">
+        <div class="dv-name">Azúcares añadidos</div>
+        <div class="dv-value">50g / día</div>
+      </div>
+      <span class="dv-tag limitar">Limitar</span>
+    </div>
+    <div class="dv-card">
+      <div class="dv-info">
+        <div class="dv-name">Proteína</div>
+        <div class="dv-value">Varía según plan</div>
+      </div>
+      <span class="dv-tag objetivo">Según objetivo</span>
+    </div>
+    <div class="dv-card">
+      <div class="dv-info">
+        <div class="dv-name">Vitamina D</div>
+        <div class="dv-value">20mcg / día</div>
+      </div>
+      <span class="dv-tag prioritario">Prioritario</span>
+    </div>
+    <div class="dv-card">
+      <div class="dv-info">
+        <div class="dv-name">Calcio</div>
+        <div class="dv-value">1300mg / día</div>
+      </div>
+      <span class="dv-tag prioritario">Prioritario</span>
+    </div>
+  </div>
+
+  <div class="info-banner"><strong>En resumen:</strong> ignora el frente del envase — está diseñado para venderte. La tabla nutricional y la lista de ingredientes son los únicos datos verificables por ley. Con esas dos partes, en 15 segundos puedes evaluar cualquier producto envasado.</div>
+  <div class="safe-bottom"></div>
+</section>
+
 <!-- PANEL: MACROS -->
-<section class="panel" id="panel-macros">
+<section class="panel" id="panel-macros" role="tabpanel" aria-labelledby="tabbtn-macros">
   <div class="section-eyebrow">Los 4 pilares</div>
   <p style="font-size:13.5px;color:var(--ink2);line-height:1.7;margin-bottom:22px;">Los mejores alimentos de cada macronutriente, con sus reemplazos reales para distintos estilos de vida.</p>
   <div id="macros-content"></div>
@@ -773,7 +1472,7 @@ body{
 </section>
 
 <!-- PANEL: TIMING -->
-<section class="panel" id="panel-timing">
+<section class="panel" id="panel-timing" role="tabpanel" aria-labelledby="tabbtn-timing">
   <div class="section-eyebrow">Nutrición peri-entrenamiento</div>
   <p style="font-size:13.5px;color:var(--ink2);line-height:1.7;margin-bottom:22px;">Qué comer antes, durante y después del entrenamiento. No necesitas suplementos para hacer esto bien.</p>
   <div id="timing-content"></div>
@@ -781,7 +1480,7 @@ body{
 </section>
 
 <!-- PANEL: RESTRICCIONES -->
-<section class="panel" id="panel-restricciones">
+<section class="panel" id="panel-restricciones" role="tabpanel" aria-labelledby="tabbtn-restricciones">
   <div class="section-eyebrow">Guía de restricciones</div>
   <p style="font-size:13.5px;color:var(--ink2);line-height:1.7;margin-bottom:22px;">Tener restricciones no te limita. Te obliga a ser más inteligente con los alimentos que eliges.</p>
   <div id="restricciones-content"></div>
@@ -789,7 +1488,7 @@ body{
 </section>
 
 <!-- PANEL: ESTRATEGIAS PRO -->
-<section class="panel" id="panel-hacks">
+<section class="panel" id="panel-hacks" role="tabpanel" aria-labelledby="tabbtn-hacks">
   <div class="section-eyebrow">Estrategias Pro</div>
   <p style="font-size:13.5px;color:var(--ink2);line-height:1.7;margin-bottom:22px;">Basadas en evidencia para maximizar la composición corporal y el rendimiento.</p>
   <div id="hacks-content"></div>
@@ -797,7 +1496,7 @@ body{
 </section>
 
 <!-- PANEL: FAQ -->
-<section class="panel" id="panel-faq">
+<section class="panel" id="panel-faq" role="tabpanel" aria-labelledby="tabbtn-faq">
   <div class="section-eyebrow">Preguntas frecuentes</div>
   <div id="faq-list"></div>
   <div class="safe-bottom"></div>
@@ -813,6 +1512,14 @@ function savePrefs(){
     localStorage.setItem('sl_sexo', document.getElementById('sel-sexo').value);
     localStorage.setItem('sl_etapa', document.getElementById('sel-etapa').value);
     localStorage.setItem('sl_kcal', document.getElementById('inp-kcal').value || '');
+    const pesoEl = document.getElementById('inp-peso');
+    if(pesoEl) localStorage.setItem('sl_peso', pesoEl.value || '');
+    const protEl = document.getElementById('inp-prot');
+    const carbEl = document.getElementById('inp-carb');
+    const fatEl = document.getElementById('inp-fat');
+    if(protEl) localStorage.setItem('sl_prot', protEl.value || '');
+    if(carbEl) localStorage.setItem('sl_carb', carbEl.value || '');
+    if(fatEl) localStorage.setItem('sl_fat', fatEl.value || '');
     localStorage.setItem('sl_restricciones', JSON.stringify([...restricciones]));
   }catch(e){}
 }
@@ -822,11 +1529,19 @@ function loadPrefs(){
     const sexo = localStorage.getItem('sl_sexo');
     const etapa = localStorage.getItem('sl_etapa');
     const kcal = localStorage.getItem('sl_kcal');
+    const peso = localStorage.getItem('sl_peso');
+    const prot = localStorage.getItem('sl_prot');
+    const carb = localStorage.getItem('sl_carb');
+    const fat = localStorage.getItem('sl_fat');
     const rest = localStorage.getItem('sl_restricciones');
 
     if(sexo) document.getElementById('sel-sexo').value = sexo;
     if(etapa) document.getElementById('sel-etapa').value = etapa;
     if(kcal) document.getElementById('inp-kcal').value = kcal;
+    if(peso){ const pesoEl = document.getElementById('inp-peso'); if(pesoEl) pesoEl.value = peso; }
+    if(prot){ const protEl = document.getElementById('inp-prot'); if(protEl) protEl.value = prot; }
+    if(carb){ const carbEl = document.getElementById('inp-carb'); if(carbEl) carbEl.value = carb; }
+    if(fat){ const fatEl = document.getElementById('inp-fat'); if(fatEl) fatEl.value = fat; }
     if(rest){
       const arr = JSON.parse(rest);
       restricciones = new Set(arr);
@@ -1020,14 +1735,19 @@ const MACRO_RATIOS = {
 function buildMacroSummary() {
   const kcal = parseInt(document.getElementById('inp-kcal').value, 10);
   const etapa = document.getElementById('sel-etapa').value;
+  const pesoEl = document.getElementById('inp-peso');
+  const peso = pesoEl ? parseFloat(pesoEl.value) : NaN;
   const card = document.getElementById('macro-summary-card');
   if (!card) return;
-  if (!kcal || kcal < 800) { card.innerHTML = ''; return; }
 
-  const r = MACRO_RATIOS[etapa];
-  const protG = Math.round((kcal * r.p) / 4);
-  const carbG = Math.round((kcal * r.c) / 4);
-  const fatG  = Math.round((kcal * r.f) / 9);
+  const protG = parseFloat(document.getElementById('inp-prot')?.value) || 0;
+  const carbG = parseFloat(document.getElementById('inp-carb')?.value) || 0;
+  const fatG  = parseFloat(document.getElementById('inp-fat')?.value) || 0;
+
+  const hasAnyMacro = protG > 0 || carbG > 0 || fatG > 0;
+  if (!hasAnyMacro) { card.innerHTML = ''; return; }
+
+  const macroKcal = Math.round(protG * 4 + carbG * 4 + fatG * 9);
 
   const ranges = {
     volumen:      { min: 1.8, max: 2.2 },
@@ -1037,35 +1757,87 @@ function buildMacroSummary() {
   };
   const range = ranges[etapa];
 
+  // ─── g/kg de proteína ───
+  let gkgLine;
+  if (peso && peso >= 30 && protG > 0) {
+    const gkg = protG / peso;
+    const inRange = gkg >= range.min && gkg <= range.max;
+    gkgLine = `<div class="gkg-badge ${inRange ? 'ok' : 'warn'}">
+        ${inRange ? '✓' : '⚠'} ${gkg.toFixed(2)} g/kg — tu rango óptimo es ${range.min}–${range.max} g/kg
+      </div>`;
+  } else if (protG > 0) {
+    gkgLine = `<div style="margin-top:2px;font-size:12px;color:var(--ink3);line-height:1.6">
+        💡 Ingresa tu peso arriba para ver tu g/kg real de proteína.
+      </div>`;
+  } else {
+    gkgLine = '';
+  }
+
+  // ─── Validación de calce con kcal ───
+  let matchHtml = '';
+  if (kcal && kcal >= 800) {
+    const diff = kcal - macroKcal;
+    const absDiff = Math.abs(diff);
+    const pctDiff = (absDiff / kcal) * 100;
+    const tolerant = pctDiff <= 3; // ±3% se considera "calza"
+
+    if (tolerant) {
+      matchHtml = `<div class="macro-match-badge ok">
+        <span class="macro-match-icon">✓</span>
+        <div class="macro-match-text"><strong>Tus macros calzan con tus ${kcal} kcal.</strong> Suman ${macroKcal} kcal (diferencia de ${absDiff} kcal).</div>
+      </div>`;
+    } else {
+      // Sugerencia de en qué macro ajustar: prioriza carbos > grasas, cuidando no tocar proteína
+      const sign = diff > 0 ? 'faltan' : 'sobran';
+      const carbAdjust = Math.round(absDiff / 4);
+      const fatAdjust = Math.round(absDiff / 9);
+      const action = diff > 0 ? 'Sube' : 'Baja';
+      matchHtml = `<div class="macro-match-badge warn">
+        <span class="macro-match-icon">⚠</span>
+        <div class="macro-match-text">
+          <strong>Te ${sign} ${absDiff} kcal (${pctDiff.toFixed(1)}%).</strong> Tus macros suman ${macroKcal} kcal, pero tu meta es ${kcal} kcal.
+          <br>Ajuste sugerido: ${action} <strong>${carbAdjust}g de carbohidratos</strong> o <strong>${fatAdjust}g de grasas</strong> — la proteína ya está definida, mejor no tocarla.
+        </div>
+      </div>`;
+    }
+  } else {
+    matchHtml = `<div style="font-size:12px;color:var(--ink3);line-height:1.6;padding:10px 12px;background:var(--cream);border-radius:var(--r-md)">
+      💡 Ingresa tus calorías diarias arriba para verificar si estos macros calzan.
+    </div>`;
+  }
+
+  const protPct = macroKcal > 0 ? Math.round((protG*4/macroKcal)*100) : 0;
+  const carbPct = macroKcal > 0 ? Math.round((carbG*4/macroKcal)*100) : 0;
+  const fatPct  = macroKcal > 0 ? Math.round((fatG*9/macroKcal)*100) : 0;
+
   card.innerHTML = `
     <div class="macro-card">
-      <div class="macro-card-title">📊 Tu distribución de macros para ${kcal} kcal</div>
+      <div class="macro-card-title">📊 Tus macros ingresados</div>
       <div class="macro-row-grid">
         <div class="macro-pill prot">
-          <div class="macro-pill-val">${protG}</div>
+          <div class="macro-pill-val">${protG || 0}</div>
           <div class="macro-pill-unit">gramos</div>
           <div class="macro-pill-label">Proteína</div>
         </div>
         <div class="macro-pill carb">
-          <div class="macro-pill-val">${carbG}</div>
+          <div class="macro-pill-val">${carbG || 0}</div>
           <div class="macro-pill-unit">gramos</div>
           <div class="macro-pill-label">Carbohidratos</div>
         </div>
         <div class="macro-pill fat">
-          <div class="macro-pill-val">${fatG}</div>
+          <div class="macro-pill-val">${fatG || 0}</div>
           <div class="macro-pill-unit">gramos</div>
           <div class="macro-pill-label">Grasas</div>
         </div>
       </div>
       <div class="macro-kcal-note">
-        ${Math.round(r.p*100)}% proteína · ${Math.round(r.c*100)}% carbohidratos · ${Math.round(r.f*100)}% grasas
-        <br><strong>${r.label}</strong>
+        ${protPct}% proteína · ${carbPct}% carbohidratos · ${fatPct}% grasas
+        <br>Estos macros suman <strong>${macroKcal} kcal</strong>
       </div>
-      <div style="margin-top:12px;padding-top:10px;border-top:1px solid var(--border);font-size:12px;color:var(--ink3);line-height:1.6">
-        💡 Para tu objetivo, el rango óptimo de proteína es <strong style="color:var(--green)">${range.min}–${range.max} g por kg de peso corporal</strong>. Divide tus ${protG}g entre tu peso para verificar que estés dentro del rango.
-      </div>
+      <div style="margin-top:12px">${matchHtml}</div>
+      ${gkgLine ? `<div style="margin-top:10px">${gkgLine}</div>` : ''}
       <div style="margin-top:10px;padding:10px 12px;background:var(--cream);border-radius:var(--r-md);font-size:11px;color:var(--ink3);line-height:1.6">
-        ⚠️ <strong style="color:var(--ink2)">Esta es una guía de referencia.</strong> Los macros exactos según tu peso, composición corporal y objetivo se definen en la asesoría personalizada con Renzo.
+        ⚠️ <strong style="color:var(--ink2)">Ingresa aquí los macros exactos que te dio Renzo en tu asesoría.</strong> Esta herramienta solo verifica que calcen con tus calorías — no los calcula por ti.
       </div>
     </div>`;
 }
@@ -1259,23 +2031,21 @@ function buildMicros(){
         <span class="accord-arrow" id="micro-acc-arr-${i}">⌄</span>
       </div>
       <div class="accord-body" id="micro-acc-body-${i}">
-        <p style="font-size:13px;color:var(--ink2);line-height:1.7;margin-bottom:16px">${cat.desc}</p>
-        <div style="display:flex;flex-direction:column;gap:10px">`;
+        <p style="font-size:13px;color:var(--ink2);line-height:1.7;margin-bottom:14px">${cat.desc}</p>
+        <div>`;
     cat.items.forEach(item => {
-      html += `<div class="wcard" style="padding:15px">
-        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:10px">
-          <div style="display:flex;gap:12px">
-            <span style="font-size:22px">${item.e}</span>
-            <div>
-              <div style="font-size:13.5px;font-weight:600;color:var(--ink);margin-bottom:4px">${item.n}</div>
-              <div style="font-size:12.5px;color:var(--ink2);line-height:1.6">${item.why}</div>
-            </div>
+      html += `<div class="micro-card">
+        <div class="micro-card-head">
+          <span class="micro-card-emoji">${item.e}</span>
+          <div class="micro-card-body">
+            <div class="micro-card-name">${item.n}</div>
+            <div class="micro-card-rda">${item.rda}</div>
           </div>
-          <span class="badge badge-gold" style="white-space:nowrap;flex-shrink:0">${item.rda}</span>
         </div>
-        <div class="swap-block">
-          <div class="swap-title">🍽️ Mejores fuentes</div>
-          <div class="food-tags" style="margin-top:2px">`;
+        <div class="micro-card-why">${item.why}</div>
+        <div class="micro-card-sources">
+          <div class="micro-card-sources-title">🍽️ Mejores fuentes</div>
+          <div class="micro-card-tags">`;
       item.foods.forEach(f => {
         html += `<span class="food-tag micro">${f}</span>`;
       });
@@ -1448,13 +2218,59 @@ function getRestriccionBanner(){
 
 function switchTab(id, btn){
   document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
-  document.querySelectorAll('.nav-tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t=>{t.classList.remove('active');t.setAttribute('aria-selected','false');});
   document.getElementById('panel-'+id).classList.add('active');
   if(btn){
     btn.classList.add('active');
+    btn.setAttribute('aria-selected','true');
     btn.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});
   }
   window.scrollTo({top:0,behavior:'smooth'});
+  if(id === 'conversor') buildConversor();
+  // Sincroniza el estado visual del drawer si el tab abierto vive ahí
+  document.querySelectorAll('.drawer-item').forEach(d=>d.classList.remove('active'));
+  const drawerMatch = document.getElementById('drawer-'+id);
+  if(drawerMatch) drawerMatch.classList.add('active');
+}
+
+/* ─── MENÚ HAMBURGUESA / DRAWER ─── */
+function toggleDrawer(){
+  const isOpen = document.getElementById('side-drawer').classList.contains('open');
+  if(isOpen) closeDrawer(); else openDrawer();
+}
+function openDrawer(){
+  document.getElementById('side-drawer').classList.add('open');
+  document.getElementById('drawer-overlay').classList.add('open');
+  document.getElementById('hamburger-btn').classList.add('open');
+  document.getElementById('hamburger-btn').setAttribute('aria-expanded','true');
+  document.body.style.overflow = 'hidden';
+}
+function closeDrawer(){
+  document.getElementById('side-drawer').classList.remove('open');
+  document.getElementById('drawer-overlay').classList.remove('open');
+  document.getElementById('hamburger-btn').classList.remove('open');
+  document.getElementById('hamburger-btn').setAttribute('aria-expanded','false');
+  document.body.style.overflow = '';
+}
+function goToDrawerTab(id){
+  // Ningún nav-tab visible corresponde a estas pestañas — se abren sin botón asociado
+  switchTab(id, null);
+  closeDrawer();
+}
+document.addEventListener('keydown', (e)=>{
+  if(e.key === 'Escape') closeDrawer();
+});
+
+/* ─── ETIQUETA NUTRICIONAL INTERACTIVA ─── */
+function toggleLabelNote(row, key){
+  const note = document.getElementById('note-'+key);
+  const isOpen = note.classList.contains('open');
+  document.querySelectorAll('.label-note.open').forEach(n=>n.classList.remove('open'));
+  document.querySelectorAll('.label-row.tag.active').forEach(r=>r.classList.remove('active'));
+  if(!isOpen){
+    note.classList.add('open');
+    row.classList.add('active');
+  }
 }
 
 /* ─── PORCIONES ─── */
@@ -1621,6 +2437,228 @@ function buildPorciones() {
   });
   document.getElementById('porc-content').innerHTML = html;
 }
+
+/* ─── CONVERSOR DE ALIMENTOS ─── */
+// Aplana PORC_DATA en una lista única de alimentos con su categoría (p/c)
+function getAllConvFoods(){
+  const list = [];
+  ['p','c'].forEach(macro=>{
+    PORC_DATA[macro].categories.forEach(cat=>{
+      cat.items.forEach(item=>{
+        list.push({ name:item.name, macro, gPerMacro:item.gPerMacro, kcalPer100:item.kcalPer100, unit:item.unit, catName:cat.name });
+      });
+    });
+  });
+  return list;
+}
+
+function populateConvSelects(){
+  const fromSel = document.getElementById('conv-from');
+  const toSel = document.getElementById('conv-to');
+  if(!fromSel || !toSel) return;
+  if(fromSel.options.length) return; // ya poblado
+
+  const foods = getAllConvFoods();
+  const groups = { p:[], c:[] };
+  foods.forEach(f=>groups[f.macro].push(f));
+
+  function buildOptions(){
+    let html = '';
+    html += `<optgroup label="🥩 Proteínas">`;
+    groups.p.forEach(f=>{ html += `<option value="${f.name}">${f.name}</option>`; });
+    html += `</optgroup><optgroup label="🌾 Carbohidratos">`;
+    groups.c.forEach(f=>{ html += `<option value="${f.name}">${f.name}</option>`; });
+    html += `</optgroup>`;
+    return html;
+  }
+
+  fromSel.innerHTML = buildOptions();
+  toSel.innerHTML = buildOptions();
+
+  // Valores iniciales distintos y de la misma categoría para un ejemplo coherente
+  const defaultFrom = groups.c.find(f=>f.name==='Marraqueta') ? 'Marraqueta' : groups.c[0]?.name;
+  const defaultTo = groups.c.find(f=>f.name==='Avena cruda') ? 'Avena cruda' : groups.c[1]?.name;
+  if(defaultFrom) fromSel.value = defaultFrom;
+  if(defaultTo) toSel.value = defaultTo;
+}
+
+function swapConversor(){
+  const fromSel = document.getElementById('conv-from');
+  const toSel = document.getElementById('conv-to');
+  if(!fromSel || !toSel) return;
+  const tmp = fromSel.value;
+  fromSel.value = toSel.value;
+  toSel.value = tmp;
+  buildConversor();
+}
+
+function buildConversor(){
+  populateConvSelects();
+  const foods = getAllConvFoods();
+  const fromName = document.getElementById('conv-from')?.value;
+  const toName = document.getElementById('conv-to')?.value;
+  const fromAmt = parseFloat(document.getElementById('conv-from-amt')?.value) || 0;
+  const resultEl = document.getElementById('conv-result');
+  if(!resultEl) return;
+
+  const fromFood = foods.find(f=>f.name===fromName);
+  const toFood = foods.find(f=>f.name===toName);
+
+  if(!fromFood || !toFood || fromAmt <= 0){
+    resultEl.innerHTML = `<div class="conv-empty">Selecciona ambos alimentos y una cantidad válida para ver el resultado.</div>`;
+    return;
+  }
+
+  const macroLabel = fromFood.macro === 'p' ? 'proteína' : 'carbohidratos';
+  const sameMacro = fromFood.macro === toFood.macro;
+
+  // gPerMacro = gramos de alimento por cada gramo de macro → macro total = amt / gPerMacro
+  const macroTotal = fromAmt / fromFood.gPerMacro;
+  const toAmt = Math.round(macroTotal * toFood.gPerMacro);
+  const fromKcal = Math.round(fromAmt * fromFood.kcalPer100 / 100);
+  const toKcal = Math.round(toAmt * toFood.kcalPer100 / 100);
+
+  let warning = '';
+  if(!sameMacro){
+    warning = `<div class="alert-box amber" style="margin-top:14px;text-align:left">
+      <div class="alert-title amber">⚠ Categorías distintas</div>
+      <div class="alert-body">"${fromFood.name}" aporta principalmente ${fromFood.macro==='p'?'proteína':'carbohidratos'} y "${toFood.name}" aporta ${toFood.macro==='p'?'proteína':'carbohidratos'}. El cálculo iguala el macro de origen (${macroLabel}), pero no son intercambiables nutricionalmente — revisa tu plan si buscas mantener ambos macros equilibrados.</div>
+    </div>`;
+  }
+
+  resultEl.innerHTML = `
+    <div class="conv-result">
+      <div class="conv-result-eq">${Math.round(macroTotal)}g de ${macroLabel} equivalen a</div>
+      <div><span class="conv-result-val">${toAmt}</span><span class="conv-result-unit">g</span></div>
+      <div class="conv-result-food">de <strong>${toFood.name}</strong></div>
+      <div class="conv-result-detail">
+        <div class="conv-result-detail-item">
+          <div class="conv-result-detail-val">${fromAmt}g</div>
+          <div class="conv-result-detail-label">${fromFood.name}</div>
+        </div>
+        <div class="conv-result-detail-item">
+          <div class="conv-result-detail-val">${fromKcal} kcal</div>
+          <div class="conv-result-detail-label">Original</div>
+        </div>
+        <div class="conv-result-detail-item">
+          <div class="conv-result-detail-val">${toKcal} kcal</div>
+          <div class="conv-result-detail-label">Reemplazo</div>
+        </div>
+      </div>
+    </div>
+    ${warning}`;
+}
+
+/* ─── BUSCADOR GLOBAL ─── */
+function buildSearchIndex(){
+  const idx = [];
+  // Alimentos de PLAN_DATA (todos los planes/sexos, deduplicados por nombre)
+  const seenPlan = new Set();
+  Object.values(PLAN_DATA).forEach(bySexo=>{
+    Object.values(bySexo).forEach(plan=>{
+      plan.bloques.forEach(bloque=>{
+        bloque.alimentos.forEach(al=>{
+          if(!seenPlan.has(al.n)){
+            seenPlan.add(al.n);
+            idx.push({ name:al.n, emoji:al.e, group:'Mi Plan', tab:'plan', meta:bloque.titulo });
+          }
+        });
+      });
+    });
+  });
+  // Alimentos de MACROS_DATA
+  MACROS_DATA.forEach(macro=>{
+    macro.items.forEach(item=>{
+      idx.push({ name:item.n, emoji:item.e, group:'Macros', tab:'macros', meta:macro.nombre });
+    });
+  });
+  // Alimentos de PORC_DATA (con acceso directo al conversor de porciones)
+  ['p','c'].forEach(macro=>{
+    PORC_DATA[macro].categories.forEach(cat=>{
+      cat.items.forEach(item=>{
+        idx.push({ name:item.name, emoji: macro==='p'?'🥩':'🌾', group:'Porciones', tab:'porciones', meta:cat.name, porcMacro:macro });
+      });
+    });
+  });
+  // Alimentos base de restricciones
+  RESTRICCIONES_FULL.forEach(r=>{
+    r.bases.forEach(b=>{
+      idx.push({ name:b.n, emoji:b.e, group:'Restricciones', tab:'restricciones', meta:r.titulo });
+    });
+  });
+  return idx;
+}
+
+let _searchIndex = null;
+
+function handleSearch(q){
+  const clearBtn = document.getElementById('search-clear');
+  const resultsEl = document.getElementById('search-results');
+  q = (q||'').trim();
+  if(clearBtn) clearBtn.style.display = q ? 'flex' : 'none';
+  if(!q){ resultsEl.innerHTML = ''; return; }
+  if(!_searchIndex) _searchIndex = buildSearchIndex();
+
+  const qLower = q.toLowerCase();
+  const matches = _searchIndex.filter(f=>f.name.toLowerCase().includes(qLower)).slice(0, 20);
+
+  if(!matches.length){
+    resultsEl.innerHTML = `<div class="search-results"><div class="search-empty">No encontramos "${q}". Prueba con otro nombre.</div></div>`;
+    return;
+  }
+
+  // Deduplicar por nombre+tab para no repetir el mismo item en el mismo grupo
+  const byGroup = {};
+  matches.forEach(m=>{
+    if(!byGroup[m.group]) byGroup[m.group] = [];
+    byGroup[m.group].push(m);
+  });
+
+  let html = '<div class="search-results">';
+  Object.entries(byGroup).forEach(([group, items])=>{
+    html += `<div class="search-result-group-label">${group}</div>`;
+    items.slice(0,6).forEach((m,i)=>{
+      const idxSafe = _searchIndex.indexOf(m);
+      html += `<div class="search-result-item" tabindex="0" role="button" onclick="goToSearchResult(${idxSafe})" onkeydown="if(event.key==='Enter')goToSearchResult(${idxSafe})">
+        <span class="search-result-emoji">${m.emoji}</span>
+        <div class="search-result-text">
+          <div class="search-result-name">${m.name}</div>
+          <div class="search-result-meta">${m.meta}</div>
+        </div>
+      </div>`;
+    });
+  });
+  html += '</div>';
+  resultsEl.innerHTML = html;
+}
+
+function goToSearchResult(idx){
+  const item = _searchIndex[idx];
+  if(!item) return;
+  clearSearch();
+  const btn = document.getElementById('tabbtn-'+item.tab);
+  switchTab(item.tab, btn);
+  if(item.tab === 'porciones' && item.porcMacro){
+    setTimeout(()=>goToPorc(item.name, item.porcMacro), 250);
+  } else if(item.tab === 'conversor'){
+    setTimeout(buildConversor, 100);
+  }
+  showToast(`📍 Mostrando "${item.name}"`);
+}
+
+function clearSearch(){
+  const input = document.getElementById('search-input');
+  const clearBtn = document.getElementById('search-clear');
+  const resultsEl = document.getElementById('search-results');
+  if(input) input.value = '';
+  if(clearBtn) clearBtn.style.display = 'none';
+  if(resultsEl) resultsEl.innerHTML = '';
+}
+
+document.addEventListener('click', (e)=>{
+  const wrap = document.getElementById('search-wrap');
+  if(wrap && !wrap.contains(e.target)) clearSearch();
+});
 
 /* ── INIT ── */
 loadPrefs();
