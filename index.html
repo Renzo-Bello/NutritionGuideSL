@@ -1192,6 +1192,7 @@ a:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible,
 .shop-item.done .shop-item-why{opacity:0.45;}
 .shop-emoji{margin-right:6px;}
 </style>
+<link rel="stylesheet" href="companion.css?v=20261023">
 </head>
 <body>
 
@@ -1221,7 +1222,7 @@ a:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible,
     <div class="drawer-item-icon">🛒</div>
     <div class="drawer-item-text">
       <div class="drawer-item-name">Compras</div>
-      <div class="drawer-item-sub">Los alimentos de mayor calidad por macronutriente y fibra</div>
+      <div class="drawer-item-sub">Lista calculada desde tu menú semanal</div>
     </div>
     <span class="drawer-item-arrow">›</span>
   </div>
@@ -1253,12 +1254,15 @@ a:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible,
   <div class="drawer-footer">Estas herramientas complementan tu asesoría — no la reemplazan. Ante dudas, consúltalas con Renzo.</div>
 </aside>
 
+<div id="ng-save-error" class="ng-save-error" role="alert" hidden></div>
+<main id="ng-app" class="ng-shell"></main>
+<div id="ng-knowledge">
 <!-- HERO -->
 <div style="border-bottom:1px solid var(--border)">
   <div class="hero">
     <div class="hero-eyebrow">Guía personalizada de nutrición</div>
-    <h1 class="hero-h">Come <em>mejor</em>,<br>progresa más rápido.</h1>
-    <p class="hero-p">Alimentos de alto valor nutricional adaptados a tu sexo, objetivo y restricciones. Con alternativas reales para cada situación.</p>
+    <h1 class="hero-h">Tu guía para<br><em>el día a día.</em></h1>
+    <p class="hero-p">Consulta porciones, reemplazos y conceptos básicos. Tu pauta personalizada es la referencia para decidir cantidades.</p>
 
     <div class="search-wrap" id="search-wrap">
       <div class="search-input-row">
@@ -1283,7 +1287,7 @@ a:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible,
     <button class="nav-tab" onclick="switchTab('macros',this)" role="tab" aria-selected="false" aria-controls="panel-macros" id="tabbtn-macros">Macros<span class="tab-underline"></span></button>
     <button class="nav-tab" onclick="switchTab('timing',this)" role="tab" aria-selected="false" aria-controls="panel-timing" id="tabbtn-timing">Timing<span class="tab-underline"></span></button>
     <button class="nav-tab" onclick="switchTab('restricciones',this)" role="tab" aria-selected="false" aria-controls="panel-restricciones" id="tabbtn-restricciones">Restricciones<span class="tab-underline"></span></button>
-    <button class="nav-tab" onclick="switchTab('hacks',this)" role="tab" aria-selected="false" aria-controls="panel-hacks" id="tabbtn-hacks">Estrategias Pro<span class="tab-underline"></span></button>
+    <button class="nav-tab" onclick="switchTab('hacks',this)" role="tab" aria-selected="false" aria-controls="panel-hacks" id="tabbtn-hacks">Hábitos prácticos<span class="tab-underline"></span></button>
     <button class="nav-tab" onclick="switchTab('faq',this)" role="tab" aria-selected="false" aria-controls="panel-faq" id="tabbtn-faq">FAQ<span class="tab-underline"></span></button>
   </nav>
 </div>
@@ -1724,7 +1728,7 @@ a:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible,
 
 <!-- PANEL: ESTRATEGIAS PRO -->
 <section class="panel" id="panel-hacks" role="tabpanel" aria-labelledby="tabbtn-hacks">
-  <div class="section-eyebrow">Estrategias Pro</div>
+  <div class="section-eyebrow">Hábitos prácticos</div>
   <p style="font-size:13.5px;color:var(--ink2);line-height:1.7;margin-bottom:22px;">Basadas en evidencia para maximizar la composición corporal y el rendimiento.</p>
   <div id="hacks-content"></div>
   <div class="safe-bottom"></div>
@@ -1737,6 +1741,7 @@ a:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible,
   <div class="safe-bottom"></div>
 </section>
 
+</div><!-- /knowledge -->
 <script>
 /* ═══ DATA ═══ */
 let restricciones = new Set();
@@ -1998,7 +2003,7 @@ function buildMacroSummary() {
     const gkg = protG / peso;
     const inRange = gkg >= range.min && gkg <= range.max;
     gkgLine = `<div class="gkg-badge ${inRange ? 'ok' : 'warn'}">
-        ${inRange ? '✓' : '⚠'} ${gkg.toFixed(2)} g/kg — tu rango óptimo es ${range.min}–${range.max} g/kg
+        ${inRange ? '✓' : '⚠'} ${gkg.toFixed(2)} g/kg — referencia general: ${range.min}–${range.max} g/kg; tu pauta individual tiene prioridad
       </div>`;
   } else if (protG > 0) {
     gkgLine = `<div style="margin-top:2px;font-size:12px;color:var(--ink3);line-height:1.6">
@@ -2031,7 +2036,7 @@ function buildMacroSummary() {
         <span class="macro-match-icon">⚠</span>
         <div class="macro-match-text">
           <strong>Te ${sign} ${absDiff} kcal (${pctDiff.toFixed(1)}%).</strong> Tus macros suman ${macroKcal} kcal, pero tu meta es ${kcal} kcal.
-          <br>Ajuste sugerido: ${action} <strong>${carbAdjust}g de carbohidratos</strong> o <strong>${fatAdjust}g de grasas</strong> — la proteína ya está definida, mejor no tocarla.
+          <br>Revisa que hayas copiado correctamente tu pauta y consulta con Renzo antes de cambiar cantidades.
         </div>
       </div>`;
     }
@@ -2085,27 +2090,7 @@ function buildPlan(){
   const planData = PLAN_DATA[etapa][sexo];
   let html = '';
 
-  html += `<div class="hormone-card">
-    <div class="hormone-title">${horData.titulo}</div>
-    <div class="hormone-sub">${horData.sub}</div>
-    <div class="hormone-desc">${horData.desc}</div>
-    <div class="micro-list">`;
-  horData.micros.forEach(m => {
-    html += `<div class="micro-row"><div class="micro-icon">${m.icon}</div><div class="micro-text">${m.txt}</div></div>`;
-  });
-  html += `</div></div>`;
-
-  const etapaLabel = {volumen:'Volumen',definicion:'Definición',recomp:'Recomposición',mantenimiento:'Mantenimiento'}[etapa];
-  html += `<div class="plan-summary">
-    <div class="plan-summary-top">
-      <div class="plan-summary-title">${etapaLabel} · ${sexo === 'm' ? 'Masculino' : 'Femenino'}</div>
-      <div class="plan-summary-ratio" style="margin-top:6px">${planData.ratio}</div>
-      <div style="margin-top:10px">
-        <span class="badge badge-gold">Proteína: ${planData.proteina_g}</span>
-      </div>
-    </div>
-    <div class="plan-summary-body">${planData.desc}</div>
-  </div>`;
+  html += `<div class="info-banner"><strong>Tu pauta tiene prioridad.</strong> Los valores que ingresaste provienen de tu asesoría. Usa esta sección como material de consulta y vuelve a «Hoy» para elegir y registrar tus comidas.</div>`;
 
   if(restricciones.size > 0){
     const rLabels = {veg:'🌿 Vegetariano',cel:'🌾 Sin gluten',lac:'🥛 Sin lactosa'};
@@ -2124,9 +2109,9 @@ function buildPlan(){
       <div class="food-grid">`;
 
     bloque.alimentos.forEach(al => {
-      const isAnimal = ['🥩','🍗','🎣','🐟','🐠','🦐'].includes(al.e);
-      const hasGluten = al.e === '🌾';
-      const hasLactose = al.e === '🧀';
+      const isAnimal = /carne|pollo|pavo|pescado|atún|salmón|sardina|merluza|chorito|marisco|hígado|panita|camarón|vacuno|cerdo|trucha|anchoa|ostras/i.test(al.n);
+      const hasGluten = /trigo|pan|pasta|avena|cebada|centeno|cuscús|couscous|harina|tortilla/i.test(al.n);
+      const hasLactose = /leche|yogur|yogurt|queso|quesillo|cottage|lácteo|kéfir/i.test(al.n) && !/sin lactosa/i.test(al.n);
       const showVeg = restricciones.has('veg') && isAnimal;
       const showCel = restricciones.has('cel') && hasGluten;
       const showLac = restricciones.has('lac') && hasLactose;
@@ -2182,32 +2167,6 @@ function buildPlan(){
   const resumenTexto = `STRENGTHLAB — Mi Plan Nutricional\n\nObjetivo: ${etapaLabelCopy} · ${sexoLabel}\nDistribución: ${planData.ratio}\nProteína objetivo: ${planData.proteina_g}\n\n${planData.bloques.map(b => b.titulo + ':\n' + b.alimentos.map(a => '• ' + a.n).join('\n')).join('\n\n')}\n\n— Guía generada en STRENGTHLAB Nutrición (@rennzolifts)`;
   window._slabResumen = resumenTexto;
   html += `<button class="copy-plan-btn" id="copy-plan-btn" onclick="generatePDF()">📄 Generar PDF de mi plan</button>`;
-
-  if(etapa === 'definicion' || etapa === 'recomp' || etapa === 'mantenimiento'){
-    const bonusDef = [
-      {e:'🍮',n:'Gelatina Zero / Jaleas sin azúcar',d:'Postre en definición sin culpa. 0–5 kcal por porción. Satisface el antojo dulce sin impacto calórico.'},
-      {e:'🥤',n:'Gaseosa / Refresco Zero o Light',d:'Carbónico que aumenta saciedad a 0 kcal. Útil antes de comidas. No abusar — puede generar gases.'},
-      {e:'☕',n:'Café negro / Té verde sin azúcar',d:'Termogénico natural. El café sube el metabolismo 3–11%. El té verde tiene EGCG que potencia la oxidación de grasa. Hasta 3 tazas/día.'},
-      {e:'🫙',n:'Caldo claro de huesos o vegetal',d:'Saciedad líquida con casi 0 calorías. Electrolitos naturales. Ideal entre comidas o como snack nocturno.'},
-      {e:'🥒',n:'Pepino / Apio con sal y limón',d:'Snack libre de calorías. Alta saciedad por volumen y agua. El apio tiene efecto diurético natural.'},
-      {e:'🍓',n:'Fresas / Frutillas (gran porción)',d:'100g = 32 kcal. Puedes comer 300g sin problema. Vitamina C para cortisol + antioxidantes + saciedad real.'},
-      {e:'🌶',n:'Salsa picante / Tabasco',d:'Capsaicina = termogénico. Agrega sabor intenso sin calorías. Ayuda a comer más despacio.'},
-      {e:'🥗',n:'Mix de hojas verdes ilimitadas',d:'Rúcula, lechuga, espinaca. Sin límite en definición. Fibra + micronutrientes + volumen = hambre bajo control.'},
-    ];
-    html += `<div style="margin-top:26px">
-      <div class="food-block-header" style="margin-bottom:14px">
-        <div class="food-block-icon">🎯</div>
-        <div><div class="food-block-title">Bonus Definición</div><div class="food-block-sub">Alta saciedad · bajísima densidad calórica</div></div>
-      </div>
-      <div style="display:flex;flex-direction:column;gap:9px">`;
-    bonusDef.forEach(b => {
-      html += `<div class="bonus-card">
-        <span class="bonus-emoji">${b.e}</span>
-        <div><div class="bonus-name">${b.n}</div><div class="bonus-desc">${b.d}</div></div>
-      </div>`;
-    });
-    html += `</div></div>`;
-  }
 
   document.getElementById('plan-content').innerHTML = html;
   updateSetupSummary();
@@ -2404,37 +2363,14 @@ function toggleFaq(i, row){
 }
 
 function buildHacks(){
-  let html = getRestriccionBanner();
-  const hacks = [
-    {num:'I',color:'var(--gold)',title:'Carbohidratos intraentrenamiento para sesiones +60 min',body:'30–60g de carbohidratos simples (gel de dextrosa, plátano, arroz inflado) durante entrenos de más de 60 min reducen la fatiga central, preservan glucógeno muscular y elevan insulina lo suficiente para reducir el ambiente catabólico. Más efectivo que la cafeína sola.',tags:['Rendimiento','Anti-catabolismo','Glucógeno']},
-    {num:'II',color:'var(--blue)',title:'Leucina como disparador anabólico aislado',body:'2.5–3g de leucina libre activa mTOR de forma independiente a la proteína total. Útil si una comida es baja en proteína — agregar leucina pura mantiene la señalización anabólica activa sin depender de la comida entera.',tags:['mTOR','Anabolismo','Leucina libre']},
-    {num:'III',color:'var(--amber)',title:'Días de recarga (refeed) estratégicos',body:'En fases de déficit prolongado, 1 día de alta ingesta calórica (mantenimiento +20–30%) eleva la leptina, normaliza hormonas tiroideas y reduce el cortisol. La recarga activa la señal de abundancia energética que las hormonas anabólicas necesitan.',tags:['Leptina','Cortisol','Déficit']},
-    {num:'IV',color:'var(--blue)',title:'Ciclo de proteína para sensitizar mTOR',body:'Evidencia emergente sugiere que períodos breves de baja proteína (1 día/semana con 0.8g/kg) seguidos de alta proteína pueden sensitizar los receptores de mTOR, produciendo una respuesta anabólica más intensa al volver a alta ingesta.',tags:['mTOR','Élite','Emergente']},
-    {num:'V',color:'var(--ink3)',title:'Ayuno intermitente para atletas de fuerza',body:'El AI (16:8) no es inferior al 5–6 comidas/día para composición corporal cuando la proteína total es adecuada. Para hipertrofia máxima, la distribución clásica es superior. Para definición, el AI es una herramienta válida.',tags:['Ayuno 16:8','MPS','Definición']},
-    {num:'VI',color:'var(--green)',title:'El rol del microbioma en el rendimiento deportivo',body:'Atletas de élite tienen microbiomas distintos — mayor diversidad y más bacterias productoras de butirato (antiinflamatorio). Fermentados (kéfir, chucrut, kimchi) + fibra diversa (30+ plantas/semana) optimizan la absorción de nutrientes y reducen inflamación sistémica.',tags:['Microbioma','Fermentados','Serotonina']},
-    {num:'VII',color:'var(--gold)',title:'Periodización nutricional: sincroniza la dieta con el mesociclo',body:'En semanas de alta carga (volumen máximo), sube carbohidratos 20–30%. En semanas de descarga (deload), reduce carbos y sube grasas. Esto sincroniza la disponibilidad energética con la demanda real, optimizando adaptaciones y composición corporal simultáneamente.',tags:['Periodización','Deload','Mesociclo']},
-  ];
-
-  html += '<div style="display:flex;flex-direction:column;gap:10px">';
-  hacks.forEach(h => {
-    html += `<div class="hack-card">
-      <div class="hack-head">
-        <div class="hack-num" style="color:${h.color}">${h.num}</div>
-        <div class="hack-title">${h.title}</div>
-      </div>
-      <div class="hack-body">
-        <div class="hack-desc">${h.body}</div>
-        <div class="hack-tags">`;
-    h.tags.forEach(t => {
-      html += `<span class="hack-tag" style="background:${h.color}18;color:${h.color};border:1px solid ${h.color}35">${t}</span>`;
-    });
-    html += `</div></div></div>`;
-  });
-  html += '</div>';
-  document.getElementById('hacks-content').innerHTML = html;
+  document.getElementById('hacks-content').innerHTML = `
+  <div class="wcard"><h3>Decide antes de tener prisa</h3><p>Guarda dos o tres comidas que te gusten en Favoritas. Úsalas como punto de partida para organizar tu semana.</p></div>
+  <div class="wcard"><h3>Prepara una alternativa sencilla</h3><p>Ten una opción para los días con poco tiempo. En «Qué comer» puedes filtrar por comidas de 10 minutos o sin cocinar.</p></div>
+  <div class="wcard"><h3>Registra lo que realmente ocurrió</h3><p>Si cambiaste una comida, anótalo. Esa información permite conversar sobre obstáculos y ajustar tu pauta.</p></div>
+  <div class="wcard"><h3>Retoma en la siguiente comida</h3><p>Un cambio de planes no invalida el resto de tu semana. Revisa qué necesitas para facilitar la próxima decisión.</p></div>
+  <div class="wcard"><h3>Elige un próximo paso</h3><p>Completa tu reflexión semanal con una acción concreta: hacer las compras, dejar una colación preparada o registrar después de almorzar.</p></div>`;
 }
 
-/* ─── RESTRICCION BANNER HELPER ─── */
 function getRestriccionBanner(){
   if(restricciones.size === 0) return '';
   const rInfo = {
@@ -3114,5 +3050,12 @@ buildFaq();
 buildHacks();
 buildPorciones();
 </script>
+<nav class="ng-bottom" aria-label="Navegación principal"><div class="ng-bottom-inner"><button class="ng-navbtn" data-tab="today"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10 12 3l9 7v10a1 1 0 0 1-1 1h-6v-7h-4v7H4a1 1 0 0 1-1-1Z"/></svg><span>Hoy</span></button><button class="ng-navbtn" data-tab="meals"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 3v7m3-7v7m-6-7v7c0 4 6 4 6 0M4 14v7M16 3c-4 5-4 10 0 10h3M19 3v18"/></svg><span>Qué comer</span></button><button class="ng-navbtn" data-tab="week"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4m10-4v4M3 11h18m-13 4h2m4 0h2"/></svg><span>Mi semana</span></button><button class="ng-navbtn" data-tab="summary"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V10m8 10V4m8 16v-7M2 22h20"/></svg><span>Mi progreso</span></button><button class="ng-navbtn" data-tab="learn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v16M12 5C9 2 4 3 2 4v15c4-1 7-1 10 2 3-3 6-3 10-2V4c-3-1-7-2-10 1Z"/></svg><span>Mi guía</span></button></div></nav>
+<dialog id="ng-dialog" class="ng-modal" aria-label="Opciones de alimentación"></dialog>
+<div id="ng-toast" class="ng-toast" role="status" aria-live="polite" hidden></div>
+<input id="ng-import-file" type="file" accept="application/json,.json" hidden>
+<script src="companion-data.js?v=20261023"></script>
+<script src="companion.js?v=20261023"></script>
 </body>
 </html>
+

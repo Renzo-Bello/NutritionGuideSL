@@ -1,0 +1,47 @@
+/* Reference portions, not prescriptions. Nutrients are rounded estimates per 100 g/ml.
+   Package labels and the client's prescribed plan take precedence. */
+window.SLAB_FOODS = {
+ oats:{name:'Avena',state:'seca, certificada sin gluten si corresponde',unit:'g',p:13,c:60,f:7,k:379,group:'Despensa',veg:true,gf:true,lf:true},
+ yogurt:{name:'Yogur natural alto en proteína',state:'listo para consumir',unit:'g',p:10,c:4,f:2,k:74,group:'Refrigerados',veg:true,gf:true,lf:false},
+ milk:{name:'Leche semidescremada sin lactosa',state:'lista para consumir',unit:'ml',p:3.4,c:4.8,f:1.6,k:47,group:'Refrigerados',veg:true,gf:true,lf:true},
+ banana:{name:'Plátano / banana',state:'sin cáscara',unit:'g',p:1.1,c:23,f:.3,k:89,group:'Frutas y verduras',veg:true,gf:true,lf:true},
+ apple:{name:'Manzana',state:'porción comestible',unit:'g',p:.3,c:14,f:.2,k:52,group:'Frutas y verduras',veg:true,gf:true,lf:true},
+ bread:{name:'Pan blanco',state:'listo para consumir',unit:'g',p:9,c:49,f:3.2,k:266,group:'Panadería',veg:true,gf:false,lf:true},
+ ricecake:{name:'Galletas de arroz',state:'listas; verificar ingredientes',unit:'g',p:8,c:81,f:3,k:387,group:'Despensa',veg:true,gf:true,lf:true},
+ egg:{name:'Huevo',state:'cocido, sin cáscara (1 unidad ≈ 50 g)',unit:'g',p:12.6,c:1.1,f:10.6,k:155,group:'Refrigerados',veg:true,gf:true,lf:true},
+ avocado:{name:'Palta',state:'sin cáscara ni carozo',unit:'g',p:2,c:8.5,f:14.7,k:160,group:'Frutas y verduras',veg:true,gf:true,lf:true},
+ tomato:{name:'Tomate',state:'crudo',unit:'g',p:.9,c:3.9,f:.2,k:18,group:'Frutas y verduras',veg:true,gf:true,lf:true},
+ chicken:{name:'Pechuga de pollo',state:'cocida, sin piel',unit:'g',p:31,c:0,f:3.6,k:165,group:'Proteínas',veg:false,gf:true,lf:true},
+ rice:{name:'Arroz',state:'cocido',unit:'g',p:2.7,c:28,f:.3,k:130,group:'Despensa',veg:true,gf:true,lf:true},
+ potato:{name:'Papa',state:'cocida',unit:'g',p:1.9,c:20,f:.1,k:87,group:'Frutas y verduras',veg:true,gf:true,lf:true},
+ pasta:{name:'Pasta de trigo',state:'cocida',unit:'g',p:5.8,c:31,f:.9,k:158,group:'Despensa',veg:true,gf:false,lf:true},
+ tuna:{name:'Atún al agua',state:'escurrido',unit:'g',p:25.5,c:0,f:.8,k:116,group:'Despensa',veg:false,gf:true,lf:true},
+ lentil:{name:'Lentejas',state:'cocidas y escurridas',unit:'g',p:9,c:20,f:.4,k:116,group:'Despensa',veg:true,gf:true,lf:true},
+ chickpea:{name:'Garbanzos',state:'cocidos y escurridos',unit:'g',p:8.9,c:27.4,f:2.6,k:164,group:'Despensa',veg:true,gf:true,lf:true},
+ tofu:{name:'Tofu firme',state:'escurrido',unit:'g',p:15,c:2,f:8,k:140,group:'Proteínas',veg:true,gf:true,lf:true},
+ vegetables:{name:'Verduras mixtas',state:'cocidas, sin aceite añadido',unit:'g',p:2,c:6,f:.3,k:35,group:'Frutas y verduras',veg:true,gf:true,lf:true},
+ oil:{name:'Aceite de oliva',state:'peso del aceite agregado',unit:'g',p:0,c:0,f:100,k:884,group:'Despensa',veg:true,gf:true,lf:true},
+ peanuts:{name:'Maní sin sal',state:'listo para consumir',unit:'g',p:26,c:16,f:49,k:567,group:'Despensa',veg:true,gf:true,lf:true},
+ peanutbutter:{name:'Pasta de maní',state:'sin azúcar añadida',unit:'g',p:25,c:20,f:50,k:588,group:'Despensa',veg:true,gf:true,lf:true},
+ cheese:{name:'Quesillo',state:'listo para consumir',unit:'g',p:15,c:3,f:6,k:126,group:'Refrigerados',veg:true,gf:true,lf:false}
+};
+window.SLAB_MEALS = [
+ {id:'yogurt-oats',name:'Bowl de yogur, avena y plátano',emoji:'🥣',type:'Desayuno',time:5,cost:'Económico',portable:true,noCook:true,ingredients:[['yogurt',200],['oats',40],['banana',100]],steps:'Mezcla el yogur con la avena y agrega el plátano en rodajas. Puedes dejarlo preparado la noche anterior en el refrigerador.'},
+ {id:'eggs-toast',name:'Pan con huevo y tomate',emoji:'🍳',type:'Desayuno',time:10,cost:'Económico',portable:false,noCook:false,ingredients:[['bread',80],['egg',100],['tomato',100]],steps:'Sirve el pan con dos huevos cocidos o revueltos en sartén antiadherente y tomate. Si agregas aceite, regístralo por separado.'},
+ {id:'smoothie',name:'Batido de plátano, avena y maní',emoji:'🥤',type:'Desayuno',time:5,cost:'Económico',portable:true,noCook:true,ingredients:[['milk',250],['oats',40],['banana',100],['peanutbutter',20]],steps:'Licúa todos los ingredientes. Usa leche sin lactosa y, si corresponde, avena certificada sin gluten. Mantén refrigerado hasta consumir.'},
+ {id:'rice-eggs',name:'Galletas de arroz con huevo y palta',emoji:'🥑',type:'Desayuno',time:10,cost:'Medio',portable:false,noCook:false,ingredients:[['ricecake',35],['egg',100],['avocado',50]],steps:'Cocina los huevos. Distribuye la palta y el huevo sobre las galletas justo antes de comer.'},
+ {id:'tofu-toast',name:'Tostadas con tofu y tomate',emoji:'🍞',type:'Desayuno',time:10,cost:'Medio',portable:false,noCook:false,ingredients:[['bread',80],['tofu',150],['tomato',100],['oil',5]],steps:'Desmenuza el tofu y caliéntalo en una sartén con el aceite. Sirve sobre el pan con tomate y condimentos a gusto.'},
+ {id:'chicken-rice',name:'Pollo con arroz y verduras',emoji:'🍚',type:'Principal',time:25,cost:'Económico',portable:true,noCook:false,ingredients:[['chicken',120],['rice',180],['vegetables',150],['oil',5]],steps:'Cocina completamente el pollo y prepara arroz y verduras. Pesa las cantidades indicadas ya cocidas. Añade el aceite al servir.'},
+ {id:'tuna-potato',name:'Ensalada de papa y atún',emoji:'🥔',type:'Principal',time:20,cost:'Económico',portable:true,noCook:false,ingredients:[['tuna',120],['potato',250],['tomato',150],['oil',10]],steps:'Cuece las papas y déjalas enfriar. Mezcla con el atún escurrido, el tomate y el aceite. Conserva refrigerado.'},
+ {id:'pasta-chicken',name:'Pasta con pollo y verduras',emoji:'🍝',type:'Principal',time:25,cost:'Económico',portable:true,noCook:false,ingredients:[['pasta',180],['chicken',100],['vegetables',150],['oil',5]],steps:'Cocina la pasta y el pollo. Pesa las porciones ya cocidas y mezcla con las verduras y el aceite.'},
+ {id:'lentil-bowl',name:'Lentejas con arroz y huevo',emoji:'🍲',type:'Principal',time:15,cost:'Económico',portable:true,noCook:false,ingredients:[['lentil',180],['rice',100],['egg',50],['vegetables',100],['oil',5]],steps:'Usa lentejas y arroz previamente cocidos. Calienta junto a las verduras y sirve con un huevo cocido y el aceite.'},
+ {id:'tofu-rice',name:'Bowl de tofu, arroz y verduras',emoji:'🥦',type:'Principal',time:20,cost:'Medio',portable:true,noCook:false,ingredients:[['tofu',180],['rice',180],['vegetables',150],['oil',5]],steps:'Dora el tofu con el aceite, cocina las verduras y sirve con el arroz cocido. Elige condimentos compatibles con tus restricciones.'},
+ {id:'chickpea-salad',name:'Ensalada de garbanzos y huevo',emoji:'🥗',type:'Principal',time:10,cost:'Económico',portable:true,noCook:false,ingredients:[['chickpea',160],['egg',100],['tomato',150],['oil',5]],steps:'Mezcla los garbanzos cocidos y escurridos con tomate. Agrega los huevos cocidos y el aceite. Puedes usar garbanzos en conserva enjuagados.'},
+ {id:'tuna-sandwich',name:'Sándwich de atún y palta',emoji:'🥪',type:'Principal',time:5,cost:'Económico',portable:true,noCook:true,ingredients:[['bread',100],['tuna',100],['avocado',50],['tomato',80]],steps:'Escurre el atún y arma el sándwich con palta y tomate. Si lo llevas fuera, mantenlo refrigerado hasta comer.'},
+ {id:'chickpea-tofu',name:'Ensalada rápida de tofu y garbanzos',emoji:'🥙',type:'Principal',time:10,cost:'Medio',portable:true,noCook:true,ingredients:[['chickpea',150],['tofu',150],['tomato',150],['oil',5]],steps:'Usa tofu apto para consumo directo según su envase y garbanzos cocidos en conserva. Escurre y mezcla con tomate y aceite; de lo contrario, cocina antes el tofu.'},
+ {id:'yogurt-fruit',name:'Yogur con fruta y maní',emoji:'🍎',type:'Colación',time:3,cost:'Económico',portable:true,noCook:true,ingredients:[['yogurt',170],['apple',150],['peanuts',15]],steps:'Corta la manzana y sírvela con yogur y maní. Mantén el yogur refrigerado.'},
+ {id:'banana-milk',name:'Leche y plátano',emoji:'🍌',type:'Colación',time:2,cost:'Económico',portable:true,noCook:true,ingredients:[['milk',250],['banana',120]],steps:'Toma la leche y acompaña con el plátano, o licúalos. Usa leche sin lactosa y respeta la conservación indicada en el envase.'},
+ {id:'cheese-bread',name:'Pan con quesillo y tomate',emoji:'🧀',type:'Colación',time:5,cost:'Económico',portable:true,noCook:true,ingredients:[['bread',60],['cheese',80],['tomato',80]],steps:'Arma el pan con quesillo y tomate. Mantén refrigerado si lo preparas con anticipación.'},
+ {id:'apple-peanuts',name:'Manzana y maní',emoji:'🥜',type:'Colación',time:2,cost:'Económico',portable:true,noCook:true,ingredients:[['apple',180],['peanuts',25]],steps:'Lava la manzana y acompaña con la porción de maní. Una alternativa fácil de transportar.'},
+ {id:'rice-peanut',name:'Galletas de arroz con plátano y maní',emoji:'🍘',type:'Colación',time:3,cost:'Económico',portable:true,noCook:true,ingredients:[['ricecake',25],['banana',80],['peanutbutter',15]],steps:'Unta la pasta de maní en las galletas y agrega el plátano en rodajas justo antes de comer.'}
+];
