@@ -10,7 +10,8 @@ Herramienta estática para elegir comidas, organizar una semana, registrar lo co
 - Registros libres con notas y fotografías reducidas; edición y eliminación.
 - Resumen semanal revisable, copiable, descargable o compartible mediante el navegador.
 - Respaldo y recuperación en JSON. Validación del respaldo y aviso de fallos de almacenamiento.
-- Herramientas originales de porciones, equivalencias y contenidos bajo «Mi guía».
+- Navegación unificada en el menú hamburguesa: Hoy, Qué comer, Mi semana, Progreso y Calculadoras y guías.
+- Herramientas originales agrupadas por pauta, calculadoras y guías prácticas, con botón para volver al catálogo.
 
 ## Datos y límites
 
